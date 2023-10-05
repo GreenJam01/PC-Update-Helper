@@ -11,12 +11,7 @@ import java.util.List;
 @Component
 public class HardwareRepository {
     @PostConstruct
-    private void init(){
-        hardwares = new ArrayList<>();
-        hardwares.add(new GPU(1,"Nvidia GTX 4080", 100000));
-        hardwares.add(new CPU(2, "Intel i-7400",100000));
-        hardwares.add(new CPU(2, "Intel i-7400",100000));
-    }
+    private void init(){}
     public List <Hardware> hardwares;
     public List<Hardware> getAll(){
         return hardwares;
