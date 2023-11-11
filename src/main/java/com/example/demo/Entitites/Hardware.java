@@ -29,6 +29,9 @@ public abstract class Hardware {
         this.cost = cost;
         this.rate = rate;
     }
+    public  Hardware(){
+
+    }
 
     private int id;
     private String name;

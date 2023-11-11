@@ -11,7 +11,10 @@ public class RAM extends Hardware {
         this.memoryFrequancy = memoryFrequancy;
         this.memoryTimings = memoryTimings;
     }
+    public RAM() {
+        super();
 
+    }
     public String getMemoryType() {return memoryType;}
     public void setMemoryType(String memoryType) {this.memoryType = memoryType;}
     public String getManufacturer() {return manufacturer;}

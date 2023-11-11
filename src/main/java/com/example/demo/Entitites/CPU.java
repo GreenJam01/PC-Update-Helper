@@ -15,6 +15,11 @@ public class CPU extends Hardware {
         this.clockFrequency_L3 = clockFrequency_L3;
     }
 
+    public CPU() {
+        super();
+
+    }
+
 
     public String getModel() {return model;}
     public void setModel(String model) {this.model = model;}

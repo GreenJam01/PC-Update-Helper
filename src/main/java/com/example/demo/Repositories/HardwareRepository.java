@@ -11,7 +11,12 @@ import java.util.List;
 @Component
 public class HardwareRepository {
     @PostConstruct
-    private void init(){}
+    private void init(){
+        hardwares = new ArrayList<>();
+        hardwares.add(new GPU(1,"Nvidia GTX 4080", "Intel","Geforce", 12, 32, null ,2312,8));
+        hardwares.add(new GPU(1,"Nvidia GTX 4080", "Intel","Geforce", 12, 32, null ,2312,8));
+        hardwares.add(new GPU(1,"Nvidia GTX 4080", "Intel","Geforce", 12, 32, null ,2312,8));
+    }
     public List <Hardware> hardwares;
     public List<Hardware> getAll(){
         return hardwares;

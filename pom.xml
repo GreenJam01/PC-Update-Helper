@@ -41,7 +41,7 @@
 		<dependency>
 			<groupId>org.flywaydb</groupId>
 			<artifactId>flyway-core</artifactId>
-			<version>5.2.4</version>
+			<version>9.22.2</version>
 		</dependency>
 
 		<dependency>
@@ -54,6 +54,13 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+
+		<dependency>
+			<groupId>org.springdoc</groupId>
+			<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+			<version>2.0.2</version>
+		</dependency>
+
 		<!--<dependency>-->
 		<!--<groupId>org.springframework.security</groupId>-->
 		<!--<artifactId>spring-security-test</artifactId>-->
@@ -70,7 +77,7 @@
 			<plugin>
 				<groupId>org.flywaydb</groupId>
 				<artifactId>flyway-maven-plugin</artifactId>
-				<version>5.2.4</version>
+				<version>9.22.2</version>
 				<configuration>
 					<url>jdbc:postgresql://localhost:5432/postgres?currentSchema=boot</url>
 					<user>postgres</user>

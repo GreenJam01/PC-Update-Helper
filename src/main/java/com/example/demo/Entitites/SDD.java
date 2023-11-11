@@ -12,7 +12,10 @@ public class SDD extends Hardware {
         this.readSpeed = readSpeed;
         this.wrightSpeed = wrightSpeed;
     }
+    public SDD() {
+        super();
 
+    }
     public String getManufacturer() {return manufacturer;}
     public void setManufacturer(String manufacturer) {this.manufacturer = manufacturer;}
     public String getType() {return type;}

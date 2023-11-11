@@ -14,7 +14,10 @@ public class Motherboard extends Hardware {
         this.PCIExpressSlotsNum = PCIExpressSlotsNum;
         this.interfacesSupport = interfacesSupport;
     }
+    public Motherboard() {
+        super();
 
+    }
     public String getModel() {return model;}
     public void setModel(String model) {this.model = model;}
     public String getSocket() {return socket;}
