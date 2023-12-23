@@ -1,0 +1,19 @@
+.input{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 1em;
+}
+
+.input__field{
+    padding: 0.5em 1em;
+    background-color: rgba(128, 126, 173, 0.47);
+    border-color: #3849d4;
+    color: white;
+    transition-duration: 0.2s;
+}
+
+.input__field:focus{
+    outline: none;
+    background-color: rgba(128, 126, 173, 0.2);
+}
