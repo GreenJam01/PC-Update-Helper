@@ -11,17 +11,17 @@ public class AssemblyEntity {
     private Long id;
     private String CPU;
     private String GPU;
-    private String OP;
+    private String RAM;
     private String motherboard;
     private String HDD;
 
     public AssemblyEntity() {
     }
 
-    public AssemblyEntity(String CPU, String GPU, String OP, String motherboard, String HDD) {
+    public AssemblyEntity(String CPU, String GPU, String RAM, String motherboard, String HDD) {
         this.CPU = CPU;
         this.GPU = GPU;
-        this.OP = OP;
+        this.RAM = RAM;
         this.motherboard = motherboard;
         this.HDD = HDD;
     }
@@ -50,12 +50,12 @@ public class AssemblyEntity {
         this.GPU = GPU;
     }
 
-    public String getOP() {
-        return OP;
+    public String getRAM() {
+        return RAM;
     }
 
-    public void setOP(String OP) {
-        this.OP = OP;
+    public void setRAM(String RAM) {
+        this.RAM = RAM;
     }
 
     public String getMotherboard() {
@@ -80,7 +80,7 @@ public class AssemblyEntity {
                 "id=" + id +
                 ", CPU='" + CPU + '\'' +
                 ", GPU='" + GPU + '\'' +
-                ", OP='" + OP + '\'' +
+                ", RAM='" + RAM + '\'' +
                 ", motherboard='" + motherboard + '\'' +
                 ", HDD='" + HDD + '\'' +
                 '}';

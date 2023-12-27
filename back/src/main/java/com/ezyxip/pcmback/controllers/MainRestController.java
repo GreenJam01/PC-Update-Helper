@@ -30,7 +30,7 @@ public class MainRestController {
         try {
             AssemblyEntity _assembly = assemblyRepository
                     .save(new AssemblyEntity(assembly.getCPU(), assembly.getGPU(),
-                            assembly.getOP(),assembly.getMotherboard(), assembly.getHDD()));
+                            assembly.getRAM(),assembly.getMotherboard(), assembly.getHDD()));
             return new ResponseEntity<>(assembly, HttpStatus.CREATED);
         } catch (Exception e) {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
