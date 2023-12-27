@@ -8,4 +8,9 @@ import java.util.List;
 public interface AssemblyRepository extends CrudRepository<AssemblyEntity, Long> {
     List<AssemblyEntity> findAll();
     AssemblyEntity findFirstByOrderByIdDesc();
+
+
+
+
+
 }
