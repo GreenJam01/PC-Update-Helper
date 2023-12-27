@@ -20,18 +20,4 @@ public class MainRestController {
     private AssemblyEntity getLastAssemblyEndpoint(){
         return getLastAssembly();
     }
-
-    @PostMapping("/addAssembly")
-    public ResponseEntity<AssemblyEntity> createTutorial(@RequestBody AssemblyEntity assembly) {
-        try {
-            AssemblyEntity _tutorial = assemblyRepository
-                    .save(new AssemblyEntity(assembly.getCPU(), assembly.getOP(),
-                            assembly.getGPU(),
-                            assembly.getHDD(),
-                            assembly.getMotherboard()));
-            return new ResponseEntity<>(_tutorial, HttpStatus.CREATED);
-        } catch (Exception e) {
-            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-    }
 }

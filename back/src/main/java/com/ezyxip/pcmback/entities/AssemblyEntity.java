@@ -9,7 +9,6 @@ import jakarta.persistence.Table;
 public class AssemblyEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String CPU;
     private String GPU;
