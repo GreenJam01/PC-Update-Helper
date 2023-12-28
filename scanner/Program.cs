@@ -1,16 +1,49 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Management;
+using System.Net;
+using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text.Json;
-using System.IO;
+using System.Threading.Tasks;
 
 namespace getHardwareInformation
 {
-    
-    class Program
+    internal class Program
+
     {
-        static void Main(string[] args)
+        private static async Task<Uri> CreateProductAsync(Hardware product)
         {
+            try
+            {
+                client.DefaultRequestHeaders.Add("Connection", "Keep-Alive");
+                ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls11;
+                HttpResponseMessage response = await client.PostAsJsonAsync(
+                    "/assemblies", product);
+                response.EnsureSuccessStatusCode();
+
+                // return URI of the created resource.
+                return response.Headers.Location;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            return null;
+        }
+
+        private static HttpClient client = new HttpClient();
+
+        private static void Main(string[] args)
+        {
+            RunAsync().GetAwaiter().GetResult();
+        }
+
+        private static async Task RunAsync()
+        {
+            client.BaseAddress = new Uri("http://localhost:8080/");
+            client.DefaultRequestHeaders.Accept.Add(
+            new MediaTypeWithQualityHeaderValue("application/json"));
             var hardware = new Hardware
             {
                 motherboard = OutputResult(GetOtherInfo("Win32_BaseBoard", "Manufacturer")) + " " + OutputResult(GetOtherInfo("Win32_BaseBoard", "Product")),
@@ -23,8 +56,9 @@ namespace getHardwareInformation
             };
             string fileName = "hardware.json";
             string jsonString = JsonSerializer.Serialize(hardware);
-            File.WriteAllText(fileName, jsonString);
+            var result = await CreateProductAsync(hardware);
         }
+
         public class Hardware
         {
             public string motherboard { get; set; }
@@ -33,6 +67,7 @@ namespace getHardwareInformation
             public string hdd { get; set; }
             public string cpu { get; set; }
         }
+
         private static List<string> GetHardwareInfo(string WIN32_Class, string ClassItemField)
         {
             List<string> result = new List<string>();
@@ -68,6 +103,7 @@ namespace getHardwareInformation
 
             return results;
         }
+
         private static string OutputResult(List<string> result)
         {
             string str = "";
