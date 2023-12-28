@@ -7,7 +7,7 @@ import jakarta.persistence.*;
 public class AssemblyEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String CPU;
     private String GPU;
