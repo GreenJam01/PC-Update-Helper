@@ -26,10 +26,10 @@ export function Button<T>(
     return(
       <button
           className={"button "+ buttonType + (className ? className : "")}
-        //   onClick={(event)=>{clickListener(event, filling!)}}
+          onClick={(event)=>{clickListener(event, filling!)}}
           onFocus={()=>{onFocus()}}
           onBlur={()=>{onBlur()}}
-          onClick={onClick} // Передаем свойство onClick внутреннему элементу button
+          //onClick={onClick} // Передаем свойство onClick внутреннему элементу button
       >
           {children}
       </button>
