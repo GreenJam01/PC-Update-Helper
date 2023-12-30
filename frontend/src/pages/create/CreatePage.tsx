@@ -21,11 +21,11 @@ import {Assembly} from "C:/Users/KChauenov/PC-Update-Helper/frontend/src/data/as
               const response = await fetch("http://localhost:8080/assemblies", {
                 method: "POST",
                 headers: {
-                  "Content-Type": "application/json"
+                  "Content-Type": "application/json",
                 },
-                body: JSON.stringify(formData)
+                body: JSON.stringify(formData),
               });
-        
+          
               if (response.ok) {
                 const data = await response.json();
                 // Обработка успешного ответа
@@ -38,7 +38,7 @@ import {Assembly} from "C:/Users/KChauenov/PC-Update-Helper/frontend/src/data/as
               console.error("Ошибка при отправке запроса:", error);
             }
           };
-        
+         
           const handleInputChange = (field: any, value: any) => {
             setFormData((prevData) => ({
               ...prevData,

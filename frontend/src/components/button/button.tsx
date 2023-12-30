@@ -23,13 +23,16 @@ export function Button<T>(
     }
   ){
     let buttonType = "button--" + type + " ";
+    const handleButtonClick = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+      clickListener(event, filling!);
+      onClick(); // Вызываем переданный обработчик события onClick
+    };
     return(
       <button
           className={"button "+ buttonType + (className ? className : "")}
-          onClick={(event)=>{clickListener(event, filling!)}}
+          onClick={handleButtonClick} // Используем обработчик нажатия кнопки, который вызывает clickListener и onClick
           onFocus={()=>{onFocus()}}
           onBlur={()=>{onBlur()}}
-          //onClick={onClick} // Передаем свойство onClick внутреннему элементу button
       >
           {children}
       </button>
