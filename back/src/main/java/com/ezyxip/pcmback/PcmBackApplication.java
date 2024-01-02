@@ -3,8 +3,13 @@ package com.ezyxip.pcmback;
 //import com.ezyxip.pcmback.controllers.MainController;
 //import com.fasterxml.classmate.TypeResolver;
 //import org.springframework.beans.factory.annotation.Autowired;
+import com.ezyxip.pcmback.controllers.HardwareController;
+import com.ezyxip.pcmback.controllers.MainController;
+import com.ezyxip.pcmback.repositories.CPURepository;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.web.bind.annotation.RestController;
 //import org.springframework.context.annotation.Bean;
 //import org.springframework.context.annotation.ComponentScan;
 //import org.springframework.http.HttpMethod;
@@ -32,10 +37,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 //@EnableSwagger2
-//@ComponentScan(basePackageClasses = {
-//        MainController.class,
-//        RestController.class
-//})
+@ComponentScan(basePackageClasses = {
+        MainController.class,
+        RestController.class,
+        HardwareController.class
+
+})
 public class PcmBackApplication {
 
     public static void main(String[] args) {

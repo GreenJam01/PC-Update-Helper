@@ -3,8 +3,8 @@ package com.ezyxip.pcmback.entities;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import jakarta.persistence.*;
 @Entity
-@Table(name = "CPU")
-public class CPUEntity{
+@Table(name = "Motherboard")
+public class MotherboardEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -12,11 +12,11 @@ public class CPUEntity{
     @Column(name = "Title")
     private  String title;
     @JsonCreator
-    public CPUEntity(String title) {
+    public MotherboardEntity(String title) {
         this.title= title;
     }
 
-    public CPUEntity() {
+    public MotherboardEntity() {
     }
 
     public Long getId() {
@@ -37,7 +37,7 @@ public class CPUEntity{
 
     @Override
     public String toString() {
-        return "CPU {" +
+        return "Motherboard {" +
                 "id=" + id +
                 "title" + title +
                 '}';

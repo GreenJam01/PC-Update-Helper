@@ -7,12 +7,17 @@ import jakarta.persistence.*;
 public class AssemblyEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    @Column(name = "CPU")
     private String CPU;
+    @Column(name = "GPU")
     private String GPU;
+    @Column(name = "RAM")
     private String RAM;
+    @Column(name = "Motherboard")
     private String motherboard;
+    @Column(name = "HDD")
     private String HDD;
 
     public AssemblyEntity() {

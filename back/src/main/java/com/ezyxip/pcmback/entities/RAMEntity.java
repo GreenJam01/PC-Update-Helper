@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import jakarta.persistence.*;
 @Entity
 @Table(name = "CPU")
-public class CPUEntity{
+public class RAMEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -12,11 +12,11 @@ public class CPUEntity{
     @Column(name = "Title")
     private  String title;
     @JsonCreator
-    public CPUEntity(String title) {
+    public RAMEntity(String title) {
         this.title= title;
     }
 
-    public CPUEntity() {
+    public RAMEntity() {
     }
 
     public Long getId() {

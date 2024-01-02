@@ -16,19 +16,17 @@ import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
 @RestController
 @RequestMapping("/")
+@CrossOrigin
 public class MainRestController {
 
     @Autowired
     private AssemblyRepository assemblyRepository;
 
-    @Autowired
-    private CPURepository cpuRepository;
-
     @GetMapping(value = "/getLastAssembly", produces = APPLICATION_JSON_VALUE)
     private ResponseEntity<AssemblyEntity> getLastAssemblyEndpoint(){
         return ResponseEntity.ok( assemblyRepository.findFirstByOrderByIdDesc());
     }
-    @CrossOrigin
+
     @PostMapping(value = "/assemblies", produces = APPLICATION_JSON_VALUE)
     public ResponseEntity<AssemblyEntity> createAssembly(@RequestBody AssemblyEntity assembly) {
         try {
@@ -83,15 +81,6 @@ public class MainRestController {
         }
     }
 
-    @PostMapping(value = "/cpu", produces = APPLICATION_JSON_VALUE)
-    public ResponseEntity<CPUEntity> createCPU(@RequestBody CPUEntity cpu) {
-        try {
-            CPUEntity _cpu = cpuRepository
-                    .save(new CPUEntity(cpu.getTitle()));
-            return new ResponseEntity<>(_cpu, HttpStatus.CREATED);
-        } catch (Exception e) {
-            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-    }
+
 
 }
