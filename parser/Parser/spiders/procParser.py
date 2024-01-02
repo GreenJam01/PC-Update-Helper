@@ -19,17 +19,5 @@ class ProcparserSpider(scrapy.Spider):
     def parse(self, response):
         for proc in response.css("div.app-catalog-1tp0ino.e1an64qs0 a"):
             yield {
-                    "gpu": proc.attrib["title"].split(",")[0] 
-                  }
-        
-    # def parse(self, response):
-    #     for proc in response.css("div.app-catalog-1tp0ino.e1an64qs0 a"):
-    #         yield {
-    #                 "gpu": proc.attrib["title"].split(",")[0] 
-    #               }
-
-    def parseMother(self, response):
-        for motherboard in response.css("div.app-catalog-1tp0ino.e1an64qs0 a"):
-            yield {
-                    "motherboard": motherboard.attrib["title"].split(",")[0] 
+                    "cpu": proc.attrib["title"].split(",")[0].partition(' ')[2]
                   }
