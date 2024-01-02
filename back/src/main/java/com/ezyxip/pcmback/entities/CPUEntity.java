@@ -1,10 +1,19 @@
 package com.ezyxip.pcmback.entities;
 
 import jakarta.persistence.*;
-
 @Entity
 @Table(name = "CPU")
-public class CPUEntity {
+public class CPUEntity{
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+
+    @Column(name = "Title")
+    private  String title;
+    public CPUEntity(String title) {
+        this.title= title;
+    }
+
     public Long getId() {
         return id;
     }
@@ -21,14 +30,11 @@ public class CPUEntity {
         this.title = title;
     }
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-
-    public CPUEntity(String title) {
-        this.title = title;
+    @Override
+    public String toString() {
+        return "CPU {" +
+                "id=" + id +
+                '}';
     }
-
-    private  String title;
 
 }

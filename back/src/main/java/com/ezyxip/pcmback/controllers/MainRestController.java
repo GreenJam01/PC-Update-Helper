@@ -1,7 +1,9 @@
 package com.ezyxip.pcmback.controllers;
 
 import com.ezyxip.pcmback.entities.AssemblyEntity;
+import com.ezyxip.pcmback.entities.CPUEntity;
 import com.ezyxip.pcmback.repositories.AssemblyRepository;
+import com.ezyxip.pcmback.repositories.CPURepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,13 +21,16 @@ public class MainRestController {
     @Autowired
     private AssemblyRepository assemblyRepository;
 
+    @Autowired
+    private CPURepository cpuRepository;
+
     @GetMapping(value = "/getLastAssembly", produces = APPLICATION_JSON_VALUE)
     private ResponseEntity<AssemblyEntity> getLastAssemblyEndpoint(){
         return ResponseEntity.ok( assemblyRepository.findFirstByOrderByIdDesc());
     }
-
+    @CrossOrigin
     @PostMapping(value = "/assemblies", produces = APPLICATION_JSON_VALUE)
-    public ResponseEntity<AssemblyEntity> createTutorial(@RequestBody AssemblyEntity assembly) {
+    public ResponseEntity<AssemblyEntity> createAssembly(@RequestBody AssemblyEntity assembly) {
         try {
             AssemblyEntity _assembly = assemblyRepository
                     .save(new AssemblyEntity(assembly.getCPU(), assembly.getGPU(),
@@ -53,7 +58,7 @@ public class MainRestController {
                 new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
     @PutMapping("/assemblies/{id}")
-    public ResponseEntity<AssemblyEntity> updateTutorial(@PathVariable("id") long id, @RequestBody AssemblyEntity assembly) {
+    public ResponseEntity<AssemblyEntity> updateAssembly(@PathVariable("id") long id, @RequestBody AssemblyEntity assembly) {
         Optional<AssemblyEntity> assemblyData = assemblyRepository.findById(id);
 
         if (assemblyData.isPresent()) {
@@ -69,7 +74,7 @@ public class MainRestController {
         }
     }
     @DeleteMapping("/assemblies/{id}")
-    public ResponseEntity<HttpStatus> deleteTutorial(@PathVariable("id") long id) {
+    public ResponseEntity<HttpStatus> deleteAssembly(@PathVariable("id") long id) {
         try {
             assemblyRepository.deleteById(id);
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
@@ -77,4 +82,16 @@ public class MainRestController {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
+    @PostMapping(value = "/cpu", produces = APPLICATION_JSON_VALUE)
+    public ResponseEntity<CPUEntity> createCPU(@RequestBody CPUEntity cpu) {
+        try {
+            CPUEntity _cpu = cpuRepository
+                    .save(new CPUEntity(cpu.getTitle()));
+            return new ResponseEntity<>(_cpu, HttpStatus.CREATED);
+        } catch (Exception e) {
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
 }
