@@ -8,7 +8,7 @@ type Assembly = {
     id: number,
     cpu: string,
     gpu: string,
-    op: string,
+    ram: string,
     motherboard: string,
     hdd: string
 }
@@ -32,7 +32,7 @@ export function ScanPage() {
 
     return (
         <>
-        <div className={"a12 xs12 s12 center"}><h1>Что-то про ПК</h1></div>
+        <div className={"a12 xs12 s12 center"}><h1>PC Update Helper</h1></div>
             <Container className={"assemble_page__container"}>
                 <div className={"assemble_page__section a6 xs12 s12"}>
                     <h1>Процессор:</h1>
@@ -46,7 +46,7 @@ export function ScanPage() {
                     <h1>Материнская плата:</h1>
                     <input className={"scan-page__input__field"} value={assembly?.motherboard}/>
                     <h1>Оперативная память:</h1>
-                    <input className={"scan-page__input__field"} value={assembly?.op}/>
+                    <input className={"scan-page__input__field"} value={assembly?.ram}/>
                 </div>
             </Container>
             <div className={"isolated center"}>

@@ -4,6 +4,7 @@ import {AssemblePage} from "../pages/assemble/AssemblePage";
 import {UpgradePage} from "../pages/upgrade/UpgradePage";
 import {CreatePage} from "../pages/create/CreatePage";
 import {ScanPage} from "../pages/scan-page/ScanPage";
+import { MyAssembliesPage } from "../pages/my-assemblies/MyAssembliesPage";
 
 export const router = createBrowserRouter([
     {
@@ -26,4 +27,9 @@ export const router = createBrowserRouter([
         path: "/app/create",
         element: <CreatePage/>,
     },
+    {
+        path: "/app/myassemblies",
+        element: <MyAssembliesPage/>
+        
+    }
 ]);

@@ -13,6 +13,10 @@ export function IndexPage(){
                 <h1>Улучшить старый ПК</h1>
                 <LinkButton href={"/app/upgrade"}>УЛУЧШИТЬ!!!</LinkButton>
             </div>
+            <div className={"a6 xs12 s12 center"}>
+                <h1>Мои сборки</h1>
+                <LinkButton href={"/app/myassemblies"}>Мои сборки!!!</LinkButton>
+            </div>
         </Container>
     )
 }
