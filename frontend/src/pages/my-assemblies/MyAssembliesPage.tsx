@@ -1,6 +1,7 @@
 import {LinkButton} from "../../components/link-button/link-button";
 import {Container} from "../../components/container/container";
 import {useEffect, useState} from "react";
+import { Button } from "../../components/button/button";
 
 
 export function MyAssembliesPage(){
@@ -39,7 +40,7 @@ type Assembly = {
           <p>Оперативная память: {assembly.ram}</p>
           <p>Видеокарта: {assembly.gpu}</p>
           <p>HDD: {assembly.hdd}</p>
-          <button onClick={() => handleDelete(assembly.id)}>Удалить</button>
+          <Button onClick={() => handleDelete(assembly.id)}>Удалить</Button>
         </li>
       ))}
     </ul>
