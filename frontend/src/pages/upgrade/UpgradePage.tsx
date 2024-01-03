@@ -8,7 +8,7 @@ export function  UpgradePage(){
                 <div className={"a12 xs12 s12 center"}><h1>Что-то про ПК</h1></div>
                 <div className={"a6 xs12 s12 center"}>
                     <h1>Сканировать ПК</h1>
-                    <LinkButton href={"/app/scan"}>СКАНИРОВАТЬ!!!</LinkButton>
+                    <LinkButton href={"/app/infopage"}>СКАНИРОВАТЬ!!!</LinkButton>
                 </div>
                 <div className={"a6 xs12 s12 center"}>
                     <h1>Собрать новый</h1>
