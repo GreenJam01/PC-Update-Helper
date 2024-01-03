@@ -5,7 +5,7 @@ export function  UpgradePage(){
     return(
         <>
             <Container>
-                <div className={"a12 xs12 s12 center"}><h1>Что-то про ПК</h1></div>
+                <div className={"a12 xs12 s12 center"}><h1>PC Update Helper</h1></div>
                 <div className={"a6 xs12 s12 center"}>
                     <h1>Сканировать ПК</h1>
                     <LinkButton href={"/app/infopage"}>СКАНИРОВАТЬ!!!</LinkButton>

@@ -9,7 +9,7 @@ import {Button} from "../../components/button/button";
 export function AssemblePage(){
     return(
         <>
-        <div className={"a12 xs12 s12 center"}><h1>Что-то про ПК</h1></div>
+        <div className={"a12 xs12 s12 center"}><h1>PC Update Helper</h1></div>
             <Container className={"assemble_page__container"}>
                 <div className={"assemble_page__section a6 xs12 s12"}>
                     <h1>Цена:</h1>
