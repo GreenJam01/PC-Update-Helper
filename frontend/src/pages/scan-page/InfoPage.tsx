@@ -22,7 +22,7 @@ export function InfoPage() {
                 Скачайте программу по кнопке ниже, запустите скрипт, после этого нажмите на кнопку "Далее".
                 </div>
             <div className={"isolated center"}>
-            <a href="/path/to/your/file" download>
+            <a href="../../../compiledScanner/Scanner.exe" download>
                 <Button>Скачать</Button>
                 </a>
             </div>
