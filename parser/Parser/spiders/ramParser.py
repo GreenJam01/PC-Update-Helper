@@ -15,5 +15,5 @@ class RamparserSpider(scrapy.Spider):
     def parse(self, response):
         for ram in response.css("div.app-catalog-oacxam.e1xes8vl0 a"):
             yield {
-                    "ram": ram.attrib["title"].split(",")[0][19:]
+                    "title": ram.attrib["title"].split(",")[0][19:]
                   }

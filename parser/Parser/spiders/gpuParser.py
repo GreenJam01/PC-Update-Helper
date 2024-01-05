@@ -15,5 +15,5 @@ class GpuparserSpider(scrapy.Spider):
     def parse(self, response):
         for proc in response.css("div.app-catalog-1tp0ino.e1an64qs0 a"):
             yield {
-                    "gpu": proc.attrib["title"].split(",")[0].partition(' ')[2]
+                    "title": proc.attrib["title"].split(",")[0].partition(' ')[2]
                   }

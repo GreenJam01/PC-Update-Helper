@@ -15,5 +15,5 @@ class HddparserSpider(scrapy.Spider):
     def parse(self, response):
         for hdd in response.css("div.app-catalog-1tp0ino.e1an64qs0 a"):
             yield {
-                    "hdd": hdd.attrib["title"].split(",")[0][13:]
+                    "title": hdd.attrib["title"].split(",")[0][13:]
                   }

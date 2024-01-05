@@ -15,5 +15,5 @@ class MotherboardparserSpider(scrapy.Spider):
     def parse(self, response): 
         for motherboard in response.css("div.app-catalog-1tp0ino.e1an64qs0 a"):
             yield {
-                    "motherboard": motherboard.attrib["title"].split(",")[0][18:]
+                    "title": motherboard.attrib["title"].split(",")[0][18:]
                   }
