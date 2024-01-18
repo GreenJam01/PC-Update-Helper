@@ -45,7 +45,7 @@ import Select from 'react-select';
           const handleInputChange = (fieldName: keyof Assembly) => (selectedOption: any) => {
             setFormData((prevData) => ({
               ...prevData,
-              [fieldName]: selectedOption.title,
+              [fieldName]: selectedOption.label,
             }));
           };
   const [processors, setProcessors] = useState([]);
