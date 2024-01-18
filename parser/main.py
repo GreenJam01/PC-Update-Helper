@@ -39,31 +39,36 @@ ramFile = open("parser/ ram.json")
 hddFile = open("parser/ hdd.json")
 motherboardFile = open("parser/ motherboard.json")
 
-while (gpuFile.read(4) == '[\n\n]'):
+# while (gpuFile.read(4) == '[\n\n]'):
+if (gpuFile.read(4) == '[\n\n]'):
     open('parser/ gpu.json', 'w').close()
     p12 = call( ["scrapy", "crawl", "{0}".format(nameGpu), "-O {0}.json".format("gpu")]
               , cwd='parser/', stdout=subprocess.DEVNULL)
     gpuFile = open("parser/ gpu.json")
 
-while (cpuFile.read(4) == '[\n\n]'):
+if (cpuFile.read(4) == '[\n\n]'):
+# while (cpuFile.read(4) == '[\n\n]'):
     open('parser/ cpu.json', 'w').close()
     p22 = call( ["scrapy", "crawl", "{0}".format(nameCpu), "-O {0}.json".format("cpu")]
               , cwd='parser/', stdout=subprocess.DEVNULL)
     gpuFile = open("parser/ cpu.json")
 
-while (ramFile.read(4) == '[\n\n]'):
+if (ramFile.read(4) == '[\n\n]'):
+# while (ramFile.read(4) == '[\n\n]'):
     open('parser/ ram.json', 'w').close()
     p32 = call( ["scrapy", "crawl", "{0}".format(nameRam), "-O {0}.json".format("ram")]
               , cwd='parser/', stdout=subprocess.DEVNULL)
     ramFile = open("parser/ ram.json")
 
-while (hddFile.read(4) == '[\n\n]'):
+if (hddFile.read(4) == '[\n\n]'):
+# while (hddFile.read(4) == '[\n\n]'):
     open('parser/ hdd.json', 'w').close()
     p42 = call( ["scrapy", "crawl", "{0}".format(nameHdd), "-O {0}.json".format("hdd")]
               , cwd='parser/', stdout=subprocess.DEVNULL)
     hddFile = open("parser/ hdd.json")
 
-while (motherboardFile.read(4) == '[\n\n]'):
+if (motherboardFile.read(4) == '[\n\n]'):
+# while (motherboardFile.read(4) == '[\n\n]'):
     open('parser/ motherboard.json', 'w').close()
     p52 = call( ["scrapy", "crawl", "{0}".format(nameMotherboard), "-O {0}.json".format("motherboard")]
               , cwd='parser/', stdout=subprocess.DEVNULL)

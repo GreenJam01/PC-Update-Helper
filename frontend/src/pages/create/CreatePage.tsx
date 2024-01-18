@@ -4,10 +4,9 @@ import {SelectList} from "../../components/select-list/select-list";
 // import {hdd, motherboards, processors, videoCards, RAMs, SSD} from "../../data/appointment-list";
 import {Button} from "../../components/button/button";
 import {useEffect, useState} from "react";
-import {Assembly} from "C:/Users/KChauenov/PC-Update-Helper/frontend/src/data/assembly_dto"
+import {Assembly} from "../../data/assembly_dto"
 import Select from 'react-select';
 //import { motherboards } from "../../data/appointment-list";
-import AsyncSelect from 'react-select/async';
 
     export function CreatePage() {
         const initialFormData: Assembly = {
@@ -64,16 +63,17 @@ import AsyncSelect from 'react-select/async';
 
         const gpuResponse = await fetch('http://localhost:8080/hardware/get-all-gpu');
         const gpuData = await gpuResponse.json();
-        setVideoCards(cpuData.map((item: { id: number, title: string }) => ({ value: item.id, label: item.title })));
+        setVideoCards(gpuData.map((item: { id: number, title: string }) => ({ value: item.id, label: item.title })));
         const ramResponse = await fetch('http://localhost:8080/hardware/get-all-ram');
         const ramData = await ramResponse.json();
-        setRAMs(cpuData.map((item: { id: number, title: string }) => ({ value: item.id, label: item.title })));
+        // setRAMs(ramData.map((item: { id: number, title: string }) => ({ value: item.id, label: item.title })));
+        setRAMs(gpuData.map((item: { id: number, title: string }) => ({ value: item.id, label: item.title })));
         const hddResponse = await fetch('http://localhost:8080/hardware/get-all-hdd');
         const hddData = await hddResponse.json();
-        setHDDs(cpuData.map((item: { id: number, title: string }) => ({ value: item.id, label: item.title })));
+        setHDDs(hddData.map((item: { id: number, title: string }) => ({ value: item.id, label: item.title })));
         const motherboardResponse = await fetch('http://localhost:8080/hardware/get-all-motherboard');
         const motherboardData = await motherboardResponse.json();
-        setMotherboards(cpuData.map((item: { id: number, title: string }) => ({ value: item.id, label: item.title })));
+        setMotherboards(motherboardData.map((item: { id: number, title: string }) => ({ value: item.id, label: item.title })));
 
       } catch (error) {
         // Обработка ошибки, если не удалось получить данные

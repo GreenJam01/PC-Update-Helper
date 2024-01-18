@@ -31,19 +31,18 @@ type Assembly = {
         <>
             <Container>
                 <div className={"a12 xs12 s12 center"}><h1>PC Update Helper</h1></div>
-                <div className={"a6 xs12 s12 center"}>
-                <ul>
-      {assemblies.map(assembly => (
-        <li >
-          <p>Материнская плата: {assembly.motherboard}</p>
-          <p>Процессор: {assembly.cpu}</p>
-          <p>Оперативная память: {assembly.ram}</p>
-          <p>Видеокарта: {assembly.gpu}</p>
-          <p>HDD: {assembly.hdd}</p>
-          <Button onClick={() => handleDelete(assembly.id)}>Удалить</Button>
-        </li>
-      ))}
-    </ul>
+                <div className="skipX3"></div>
+                <div className={"ao xs12 s12 center myAssembly"}>
+                  {assemblies.map(assembly => (
+                    <div className={"someAssembly"}>
+                      <p>Материнская плата: {assembly.motherboard}</p>
+                      <p>Процессор: {assembly.cpu}</p>
+                      <p>Оперативная память: {assembly.ram}</p>
+                      <p>Видеокарта: {assembly.gpu}</p>
+                      <p>HDD: {assembly.hdd}</p>
+                      <Button onClick={() => handleDelete(assembly.id)}>Удалить</Button>
+                    </div>
+                  ))}
                 </div>
             </Container>
             <div className={"isolated center"}>

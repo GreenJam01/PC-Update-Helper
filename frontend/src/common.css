@@ -10,10 +10,6 @@ body{
     margin: 0;
 }
 
-input[type=radio]{
-
-}
-
 .center{
     text-align: center;
     align-items: center;
@@ -34,4 +30,22 @@ input[type=radio]{
 
 .wide{
     width: 80%;
+}
+
+.myAssembly{
+    padding: 0px 10px 16px 10px;
+}
+
+.someAssembly{
+    margin-top: 15px;
+    padding: 0px 10px 16px 10px;
+    border: 2px solid #ffff00;
+    border-radius: 10px;
+    background-color:rgba(255, 255, 255, 0.65)
+}
+
+.someAssembly > p{
+    font-size: 18px;
+    font-weight: 500;
+    color: black;
 }
