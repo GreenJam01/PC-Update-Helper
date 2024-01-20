@@ -3,7 +3,7 @@ package com.ezyxip.pcmback.entities;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import jakarta.persistence.*;
 @Entity
-@Table(name = "CPU")
+@Table(name = "RAM")
 public class RAMEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
