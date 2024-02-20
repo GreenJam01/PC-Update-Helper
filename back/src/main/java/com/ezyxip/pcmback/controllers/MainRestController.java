@@ -4,6 +4,8 @@ import com.ezyxip.pcmback.entities.AssemblyEntity;
 import com.ezyxip.pcmback.entities.CPUEntity;
 import com.ezyxip.pcmback.repositories.AssemblyRepository;
 import com.ezyxip.pcmback.repositories.CPURepository;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,16 +19,21 @@ import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 @RestController
 @RequestMapping("/")
 @CrossOrigin
+@Tag(name="Главный контроллер сборок", description="Контроллер позволяет взаимодейтсвовать с ресурсом сборок")
 public class MainRestController {
 
     @Autowired
     private AssemblyRepository assemblyRepository;
-
+    @Operation(
+            summary = "Получить последнюю сборку"
+    )
     @GetMapping(value = "/getLastAssembly", produces = APPLICATION_JSON_VALUE)
     private ResponseEntity<AssemblyEntity> getLastAssemblyEndpoint(){
         return ResponseEntity.ok( assemblyRepository.findFirstByOrderByIdDesc());
     }
-
+    @Operation(
+            summary = "Добавить сборку в базу данных"
+    )
     @PostMapping(value = "/assemblies", produces = APPLICATION_JSON_VALUE)
     public ResponseEntity<AssemblyEntity> createAssembly(@RequestBody AssemblyEntity assembly) {
         try {
@@ -38,6 +45,9 @@ public class MainRestController {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+    @Operation(
+            summary = "Получить список сборок из таблицы"
+    )
     @GetMapping(value = "/assemblies", produces = APPLICATION_JSON_VALUE)
     public ResponseEntity<List<AssemblyEntity>> getAllAssemblies() {
         try {
@@ -46,7 +56,9 @@ public class MainRestController {
             return new ResponseEntity<>(null, HttpStatus.NO_CONTENT);
         }
     }
-
+    @Operation(
+            summary = "Получить сборку по идентификатору"
+    )
     @GetMapping("/assemblies/{id}")
     public ResponseEntity<AssemblyEntity> getAssemblyById(@PathVariable("id") long id) {
         Optional<AssemblyEntity> assemblyData = assemblyRepository.findById(id);
@@ -55,6 +67,9 @@ public class MainRestController {
                 new ResponseEntity<>(assembly, HttpStatus.OK)).orElseGet(() ->
                 new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
+    @Operation(
+            summary = "Отредактировать сборку по идентификатору"
+    )
     @PutMapping("/assemblies/{id}")
     public ResponseEntity<AssemblyEntity> updateAssembly(@PathVariable("id") long id, @RequestBody AssemblyEntity assembly) {
         Optional<AssemblyEntity> assemblyData = assemblyRepository.findById(id);
@@ -71,6 +86,9 @@ public class MainRestController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
+    @Operation(
+            summary = "Удалить сборку по идентификатору"
+    )
     @DeleteMapping("/assemblies/{id}")
     public ResponseEntity<HttpStatus> deleteAssembly(@PathVariable("id") long id) {
         try {
