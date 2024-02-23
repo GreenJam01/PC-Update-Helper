@@ -9,85 +9,109 @@ public class AssemblyEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @Column(name = "CPU")
-    private String CPU;
-    @Column(name = "GPU")
-    private String GPU;
-    @Column(name = "RAM")
-    private String RAM;
-    @Column(name = "Motherboard")
-    private String motherboard;
-    @Column(name = "HDD")
-    private String HDD;
+
+    @ManyToOne
+    @JoinColumn(name = "cpu_id")
+    private CPUEntity cpuEntity;
+
+    @ManyToOne
+    @JoinColumn(name = "gpu_id")
+    private GPUEntity gpuEntity;
+
+    @ManyToOne
+    @JoinColumn(name = "hdd_id")
+    private HDDEntity hddEntity;
+
+    @ManyToOne
+    @JoinColumn(name = "motherboard_id")
+    private MotherboardEntity motherboardEntity;
+
+    @ManyToOne
+    @JoinColumn(name = "ram_id")
+    private RAMEntity ramEntity;
+
+    @ManyToOne
+    @JoinColumn(name = "ssd_id")
+    private SSDEntity ssdEntity;
+
+    public Long getId() {
+        return id;
+    }
 
     public AssemblyEntity() {
     }
 
-    public AssemblyEntity(String CPU, String GPU, String RAM, String motherboard, String HDD) {
-        this.CPU = CPU;
-        this.GPU = GPU;
-        this.RAM = RAM;
-        this.motherboard = motherboard;
-        this.HDD = HDD;
-    }
-
-    public Long getId() {
-        return id;
+    public AssemblyEntity(CPUEntity cpuEntity, GPUEntity gpuEntity, HDDEntity hddEntity, MotherboardEntity motherboardEntity, RAMEntity ramEntity, SSDEntity ssdEntity) {
+        this.cpuEntity = cpuEntity;
+        this.gpuEntity = gpuEntity;
+        this.hddEntity = hddEntity;
+        this.motherboardEntity = motherboardEntity;
+        this.ramEntity = ramEntity;
+        this.ssdEntity = ssdEntity;
     }
 
     public void setId(Long id) {
         this.id = id;
     }
 
-    public String getCPU() {
-        return CPU;
+    public CPUEntity getCPU() {
+        return cpuEntity;
     }
 
-    public void setCPU(String CPU) {
-        this.CPU = CPU;
+    public void setCPU(CPUEntity cpuEntity) {
+        this.cpuEntity = cpuEntity;
     }
 
-    public String getGPU() {
-        return GPU;
+    public GPUEntity getGPU() {
+        return gpuEntity;
     }
 
-    public void setGPU(String GPU) {
-        this.GPU = GPU;
+    public void setGPU(GPUEntity gpuEntity) {
+        this.gpuEntity = gpuEntity;
     }
 
-    public String getRAM() {
-        return RAM;
+    public HDDEntity getHDD() {
+        return hddEntity;
     }
 
-    public void setRAM(String RAM) {
-        this.RAM = RAM;
+    public void setHDD(HDDEntity hddEntity) {
+        this.hddEntity = hddEntity;
     }
 
-    public String getMotherboard() {
-        return motherboard;
+    public MotherboardEntity getMotherboard() {
+        return motherboardEntity;
     }
 
-    public void setMotherboard(String motherboard) {
-        this.motherboard = motherboard;
+    public void setMotherboard(MotherboardEntity motherboardEntity) {
+        this.motherboardEntity = motherboardEntity;
     }
 
-    public String getHDD() {
-        return HDD;
+    public RAMEntity getRAM() {
+        return ramEntity;
     }
 
-    public void setHDD(String HDD) {
-        this.HDD = HDD;
+    public void setRAM(RAMEntity ramEntity) {
+        this.ramEntity = ramEntity;
+    }
+
+    public SSDEntity getSSD() {
+        return ssdEntity;
+    }
+
+    public void setSSD(SSDEntity ssdEntity) {
+        this.ssdEntity = ssdEntity;
     }
 
     @Override
     public String toString() {
         return "AssemblyEntity{" +
                 "id=" + id +
-                ", CPU='" + CPU + '\'' +
-                ", GPU='" + GPU + '\'' +
-                ", RAM='" + RAM + '\'' +
-                ", motherboard='" + motherboard + '\'' +
-                ", HDD='" + HDD + '\'' +
+                ", CPU='" + cpuEntity + '\'' +
+                ", GPU='" + gpuEntity + '\'' +
+                ", RAM='" + ramEntity + '\'' +
+                ", motherboard='" + motherboardEntity + '\'' +
+                ", HDD='" + hddEntity + '\'' +
+                ", HDD='" + ssdEntity + '\'' +
                 '}';
     }
 }

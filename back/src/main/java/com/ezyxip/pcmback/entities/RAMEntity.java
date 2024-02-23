@@ -11,9 +11,56 @@ public class RAMEntity{
 
     @Column(name = "Title")
     private  String title;
-    @JsonCreator
-    public RAMEntity(String title) {
-        this.title= title;
+    @Column(name = "Brand")
+    private String brand;
+
+    @Column(name = "Volume")
+    private String volume;
+
+    @Column(name ="Frequency")
+    private String frequency;
+    @Column(name = "Price")
+    private Integer price;
+
+
+    public RAMEntity(String title, String brand, String volume, String frequency, Integer price) {
+        this.title = title;
+        this.brand = brand;
+        this.volume = volume;
+        this.frequency = frequency;
+        this.price = price;
+    }
+
+    public String getBrand() {
+        return brand;
+    }
+
+    public void setBrand(String brand) {
+        this.brand = brand;
+    }
+
+    public String getVolume() {
+        return volume;
+    }
+
+    public void setVolume(String volume) {
+        this.volume = volume;
+    }
+
+    public String getFrequency() {
+        return frequency;
+    }
+
+    public void setFrequency(String frequency) {
+        this.frequency = frequency;
+    }
+
+    public Integer getPrice() {
+        return price;
+    }
+
+    public void setPrice(Integer price) {
+        this.price = price;
     }
 
     public RAMEntity() {

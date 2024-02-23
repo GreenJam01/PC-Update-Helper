@@ -11,10 +11,74 @@ public class GPUEntity{
 
     @Column(name = "Title")
     private  String title;
-    @JsonCreator
-    public GPUEntity(String title) {
-        this.title= title;
+
+    @Column(name = "Brand")
+    private String Brand;
+
+    @Column(name = "MemoryVolume")
+    private String MemoryVolume;
+
+    @Column(name = "MemoryFrequency")
+    private String memoryFrequency;
+
+    @Column(name = "BusWidth")
+    private String busWidth;
+
+    @Column(name = "Price")
+    private Integer price;
+
+
+
+    public GPUEntity(String title, String brand, String memoryVolume, String memoryFrequency, String busWidth, Integer price) {
+        this.title = title;
+        Brand = brand;
+        MemoryVolume = memoryVolume;
+        this.memoryFrequency = memoryFrequency;
+        this.busWidth = busWidth;
+        this.price = price;
     }
+
+    public String getBrand() {
+        return Brand;
+    }
+
+    public void setBrand(String brand) {
+        Brand = brand;
+    }
+
+    public String getMemoryVolume() {
+        return MemoryVolume;
+    }
+
+    public void setMemoryVolume(String memoryVolume) {
+        MemoryVolume = memoryVolume;
+    }
+
+    public String getMemoryFrequency() {
+        return memoryFrequency;
+    }
+
+    public void setMemoryFrequency(String memoryFrequency) {
+        this.memoryFrequency = memoryFrequency;
+    }
+
+    public String getBusWidth() {
+        return busWidth;
+    }
+
+    public void setBusWidth(String busWidth) {
+        this.busWidth = busWidth;
+    }
+
+    public Integer getPrice() {
+        return price;
+    }
+
+    public void setPrice(Integer price) {
+        this.price = price;
+    }
+
+
 
     public GPUEntity() {
     }

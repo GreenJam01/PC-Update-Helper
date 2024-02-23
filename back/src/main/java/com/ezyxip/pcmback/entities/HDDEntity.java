@@ -11,10 +11,59 @@ public class HDDEntity{
 
     @Column(name = "Title")
     private  String title;
-    @JsonCreator
-    public HDDEntity(String title) {
-        this.title= title;
+
+    @Column(name = "Brand")
+    private String brand;
+
+    @Column(name = "Memory")
+    private String memory;
+
+    public HDDEntity(String title, String brand, String memory, String anInterface, Integer price) {
+        this.title = title;
+        this.brand = brand;
+        this.memory = memory;
+        Interface = anInterface;
+        this.price = price;
     }
+
+
+    @Column(name="Interface")
+    private String Interface;
+
+    public String getBrand() {
+        return brand;
+    }
+
+    public void setBrand(String brand) {
+        this.brand = brand;
+    }
+
+    public String getMemory() {
+        return memory;
+    }
+
+    public void setMemory(String memory) {
+        this.memory = memory;
+    }
+
+    public String getInterface() {
+        return Interface;
+    }
+
+    public void setInterface(String anInterface) {
+        Interface = anInterface;
+    }
+
+    public Integer getPrice() {
+        return price;
+    }
+
+    public void setPrice(Integer price) {
+        this.price = price;
+    }
+
+    @Column(name="Price")
+    private Integer price;
 
     public HDDEntity() {
     }
