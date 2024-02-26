@@ -6,6 +6,8 @@ import {CreatePage} from "../pages/create/CreatePage";
 import {ScanPage} from "../pages/scan-page/ScanPage";
 import { MyAssembliesPage } from "../pages/my-assemblies/MyAssembliesPage";
 import { InfoPage } from "../pages/scan-page/InfoPage";
+import LoginPage from "../pages/login/Login";
+import RegisterPage from "../pages/register/Register"
 
 export const router = createBrowserRouter([
     {
@@ -35,5 +37,13 @@ export const router = createBrowserRouter([
     {
         path: "/app/infopage",
         element: <InfoPage/>
+    },
+    {
+        path: "/login",
+        element: <LoginPage/>
+    },
+    {
+        path: "/register",
+        element: <RegisterPage/>
     }
 ]);

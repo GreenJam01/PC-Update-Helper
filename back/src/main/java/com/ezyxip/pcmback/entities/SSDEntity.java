@@ -1,6 +1,9 @@
 package com.ezyxip.pcmback.entities;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.Cascade;
+
+import java.util.List;
 
 @Entity
 @Table(name = "SSD")
@@ -105,6 +108,14 @@ public class SSDEntity {
     private String maxRecordingSpeed;
     @Column(name = "Price")
     private Integer price;
+
+    @OneToMany(mappedBy = "ssdEntity")
+    @Cascade(org.hibernate.annotations.CascadeType.ALL)
+    private List<AssemblyEntity> assemblies;
+
+    public List<AssemblyEntity> getAssemblies() {
+        return assemblies;
+    }
     @Override
     public String toString() {
         return "SSD {" +

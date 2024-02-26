@@ -4,7 +4,7 @@ from selenium.webdriver.chrome.options import Options
 import requests
 
 def parseRam():
-	urlRam = "http://localhost:8080/hardware/post-ram-list"
+	urlRam = "http://localhost:8081/hardware/post-ram-list"
 
 	headers = {'Content-type': 'application/json', 'Connection': 'Keep-Alive'}
 

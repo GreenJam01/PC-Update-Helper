@@ -3,6 +3,7 @@ package com.ezyxip.pcmback;
 //import com.ezyxip.pcmback.controllers.MainController;
 //import com.fasterxml.classmate.TypeResolver;
 //import org.springframework.beans.factory.annotation.Autowired;
+import com.ezyxip.pcmback.controllers.AuthController;
 import com.ezyxip.pcmback.controllers.HardwareController;
 import com.ezyxip.pcmback.controllers.MainController;
 import com.ezyxip.pcmback.repositories.CPURepository;
@@ -40,7 +41,8 @@ import org.springframework.web.bind.annotation.RestController;
 @ComponentScan(basePackageClasses = {
         MainController.class,
         RestController.class,
-        HardwareController.class
+        HardwareController.class,
+        AuthController.class
 
 })
 public class PcmBackApplication {

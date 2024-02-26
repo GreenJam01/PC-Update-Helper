@@ -3,7 +3,7 @@ package com.ezyxip.pcmback.entities;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "ASSEMBLIES")
+@Table(name = "Assemblies")
 public class AssemblyEntity {
 
     @Id

@@ -4,7 +4,7 @@ from selenium.webdriver.chrome.options import Options
 import requests
 
 def parseHdd():
-	urlHdd = "http://localhost:8080/hardware/post-hdd-list"
+	urlHdd = "http://localhost:8081/hardware/post-hdd-list"
 
 	headers = {'Content-type': 'application/json', 'Connection': 'Keep-Alive'}
 

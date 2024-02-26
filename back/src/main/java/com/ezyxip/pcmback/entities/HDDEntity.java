@@ -2,6 +2,10 @@ package com.ezyxip.pcmback.entities;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import jakarta.persistence.*;
+import org.hibernate.annotations.Cascade;
+
+import java.util.List;
+
 @Entity
 @Table(name = "HDD")
 public class HDDEntity{
@@ -24,6 +28,14 @@ public class HDDEntity{
         this.memory = memory;
         Interface = anInterface;
         this.price = price;
+    }
+
+    @OneToMany(mappedBy = "hddEntity")
+    @Cascade(org.hibernate.annotations.CascadeType.ALL)
+    private List<AssemblyEntity> assemblies;
+
+    public List<AssemblyEntity> getAssemblies() {
+        return assemblies;
     }
 
 

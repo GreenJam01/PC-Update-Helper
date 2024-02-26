@@ -41,7 +41,7 @@ namespace getHardwareInformation
 
         private static async Task RunAsync()
         {
-            client.BaseAddress = new Uri("http://localhost:8080/");
+            client.BaseAddress = new Uri("http://localhost:8081/");
             client.DefaultRequestHeaders.Accept.Add(
             new MediaTypeWithQualityHeaderValue("application/json"));
             var hardware = new Hardware

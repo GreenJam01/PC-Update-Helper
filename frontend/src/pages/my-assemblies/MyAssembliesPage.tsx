@@ -16,14 +16,14 @@ type Assembly = {
   };
 
   useEffect(() => {
-    fetch('http://localhost:8080/assemblies')
+    fetch('http://localhost:8081/assemblies')
       .then(response => response.json())
       .then(data => setAssemblies(data))
       .catch(error => console.error('Ошибка при получении данных:', error));
   }, []);
 
   const handleDelete = (id : number) => {
-    fetch(`http://localhost:8080/assemblies/${id}`, { method: 'DELETE' })
+    fetch(`http://localhost:8081/assemblies/${id}`, { method: 'DELETE' })
       .then(() => setAssemblies(assemblies.filter(assembly => assembly.id !== id)))
       .catch(error => console.error('Ошибка при удалении данных:', error));
   };

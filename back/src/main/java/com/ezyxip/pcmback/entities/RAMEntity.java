@@ -2,6 +2,10 @@ package com.ezyxip.pcmback.entities;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import jakarta.persistence.*;
+import org.hibernate.annotations.Cascade;
+
+import java.util.List;
+
 @Entity
 @Table(name = "RAM")
 public class RAMEntity{
@@ -21,6 +25,14 @@ public class RAMEntity{
     private String frequency;
     @Column(name = "Price")
     private Integer price;
+
+    @OneToMany(mappedBy = "ramEntity")
+    @Cascade(org.hibernate.annotations.CascadeType.ALL)
+    private List<AssemblyEntity> assemblies;
+
+    public List<AssemblyEntity> getAssemblies() {
+        return assemblies;
+    }
 
 
     public RAMEntity(String title, String brand, String volume, String frequency, Integer price) {

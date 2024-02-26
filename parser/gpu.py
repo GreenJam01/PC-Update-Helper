@@ -4,7 +4,7 @@ from selenium.webdriver.chrome.options import Options
 import requests
 
 def parseGpu():
-	urlGpu = "http://localhost:8080/hardware/post-gpu-list"
+	urlGpu = "http://localhost:8081/hardware/post-gpu-list"
 
 	headers = {'Content-type': 'application/json', 'Connection': 'Keep-Alive'}
 

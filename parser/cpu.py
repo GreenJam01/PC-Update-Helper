@@ -4,7 +4,7 @@ from selenium.webdriver.chrome.options import Options
 import requests
 
 def parseCpu():
-	urlCpu = "http://localhost:8080/hardware/post-cpu-list"
+	urlCpu = "http://localhost:8081/hardware/post-cpu-list"
 
 	headers = {'Content-type': 'application/json', 'Connection': 'Keep-Alive'}
 

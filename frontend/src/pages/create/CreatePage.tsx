@@ -21,7 +21,7 @@ import Select from 'react-select';
         const handleFormSubmit = async () => {
             try {
 
-              const response = await fetch("http://localhost:8080/assemblies", {
+              const response = await fetch("http://localhost:8081/assemblies", {
                 method: "POST",
                 headers: {
                   "Content-Type": "application/json",
@@ -57,21 +57,21 @@ import Select from 'react-select';
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const cpuResponse = await fetch('http://localhost:8080/hardware/get-all-cpu');
+        const cpuResponse = await fetch('http://localhost:8081/hardware/get-all-cpu');
         const cpuData = await cpuResponse.json();
         setProcessors(cpuData.map((item: { id: number, title: string }) => ({ value: item.id, label: item.title })));
 
-        const gpuResponse = await fetch('http://localhost:8080/hardware/get-all-gpu');
+        const gpuResponse = await fetch('http://localhost:8081/hardware/get-all-gpu');
         const gpuData = await gpuResponse.json();
         setVideoCards(gpuData.map((item: { id: number, title: string }) => ({ value: item.id, label: item.title })));
-        const ramResponse = await fetch('http://localhost:8080/hardware/get-all-ram');
+        const ramResponse = await fetch('http://localhost:8081/hardware/get-all-ram');
         const ramData = await ramResponse.json();
         // setRAMs(ramData.map((item: { id: number, title: string }) => ({ value: item.id, label: item.title })));
         setRAMs(gpuData.map((item: { id: number, title: string }) => ({ value: item.id, label: item.title })));
-        const hddResponse = await fetch('http://localhost:8080/hardware/get-all-hdd');
+        const hddResponse = await fetch('http://localhost:8081/hardware/get-all-hdd');
         const hddData = await hddResponse.json();
         setHDDs(hddData.map((item: { id: number, title: string }) => ({ value: item.id, label: item.title })));
-        const motherboardResponse = await fetch('http://localhost:8080/hardware/get-all-motherboard');
+        const motherboardResponse = await fetch('http://localhost:8081/hardware/get-all-motherboard');
         const motherboardData = await motherboardResponse.json();
         setMotherboards(motherboardData.map((item: { id: number, title: string }) => ({ value: item.id, label: item.title })));
 
