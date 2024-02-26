@@ -7,7 +7,7 @@ from threading import Thread
 
 if __name__ == '__main__':
     Thread(target = parseCpu).start()
-    Thread(target = parseGpu).start()
-    Thread(target = parseHdd).start()
-    Thread(target = parseRam).start()
-    Thread(target = parseMb).start()
+    # Thread(target = parseGpu).start()
+    # Thread(target = parseHdd).start()
+    # Thread(target = parseRam).start()
+    # Thread(target = parseMb).start()
