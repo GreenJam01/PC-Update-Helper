@@ -7,8 +7,10 @@ export function Container(
         className?: string
     }
 ){
+    if (className !== "") 
+        className = "_" + className 
     return(
-        <div className={"container " + className}>
+        <div className={"wrapper" + className}>
             {children}
         </div>
     )
