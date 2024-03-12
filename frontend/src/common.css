@@ -4,8 +4,10 @@
 body{
     font-family: 'Open Sans', sans-serif;
     /* background-color: #020405; */
-    background-image: url(https://images.hdqwalls.com/download/earth-rocket-minimalism-1600x1200.jpg);
-    background-size:cover;
+    /* background-image: url(https://images.hdqwalls.com/download/earth-rocket-minimalism-1600x1200.jpg); */
+    background: url("resourses/White-Wallpaper-1-XL.jpg") center center/cover repeat;; 
+    /* background-color: #fff; */
+    /* background-size:cover; */
     color: white;
     margin: 0;
 }

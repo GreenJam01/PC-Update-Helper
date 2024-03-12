@@ -1,16 +1,125 @@
-.container{
-    display: grid;
-
-    grid-template-columns: repeat(12, 1fr);
-    grid-template-rows: auto;
-    align-items: start;
-    gap: 15px;
-
-    max-width: 90%;
-    margin-left: auto;
-    margin-right: auto;
+.wrapper{
+    padding: 0 15vw 0 15vw;
 }
 
+.wrapper_promo {
+    padding: 50px 0 0 0;
+	display: flex;
+	gap: 15%;
+}
+
+.promo_img {
+    width: 25vw;
+}
+.promo_imgText {
+    font-size: 22px;
+    text-align: center;
+    color: #0058d3;;
+}
+.promo_info{
+    padding: 5vw 0 0 0;
+}
+.promo_info_main{
+    font-size: 32px;
+    color: #0058d3;
+}
+.promo_info_add{
+    margin-top: 5px;
+    font-size: 18px;
+    color: #0058d3;
+}
+.aboutUs_header{
+    text-align: center;
+    color: #0058d3;
+}
+.aboutUs_wrapper{
+    display: flex;
+    justify-content: space-around;
+    /* gap: 250px; */
+}
+.aboutUs_item{
+    width: 250px;
+    height: 300px;
+    /* border-radius: 3px;
+    border-width: 3px;
+    border-color: rgba(0, 0, 255, 0.3);
+    border-style: solid; */
+    padding: 15px 5px 0 5px;
+}
+.aboutUs_imgCircle {
+    display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 113px;
+	height: 113px;
+	background-color: #5099ff;
+	border-radius: 100%;
+    margin: 0 auto;
+}
+.aboutUs_img {
+    width: 35px;
+}
+.aboutUs_descr{
+    margin-top: 20px;
+    color: #0058d3;
+    text-align: center;
+}
+.wrapper_aboutUs {
+    position: relative;
+    margin-top: 50px;
+}
+.wrapper_choice{
+    position: relative;
+}
+.choice {
+	min-height: 895px;
+	padding: 57px 0 138px 0;
+	background: url('../../resourses/mobile_app.png') center (center / cover) no-repeat;
+}
+.choice_img {
+	position: relative;
+	display: block;
+	margin: 30px auto 0 auto;
+	z-index: 2;
+}
+.choice_descr {
+	text-align: center;
+	color: #222222;
+	font-size: 17px;
+	font-weight: 300;
+	line-height: 24px;
+}
+.black {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 500px;
+    width: 100vw;
+    background-color: #08083f;
+    transform: translate(-15vw);
+    z-index: 1;
+}
+.choice_title {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+}
+.choice_subtitle {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+}
+.choice_assemble {
+    text-align: center;
+    color: #0058d3;
+    font-size: 30px;
+    font-weight: 700;
+}
+.choice_button {
+    display: block;
+    margin: 20px auto 0 auto;
+    padding: 0.5em 4.5em !important
+}
 .a12{
     grid-column: 12 span;
 }

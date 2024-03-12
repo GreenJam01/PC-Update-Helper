@@ -1,4 +1,4 @@
-import "./container.css"
+import "./promo.css"
 import React from "react";
 
 export function Container(
@@ -7,11 +7,9 @@ export function Container(
         className?: string
     }
 ){
-    if (className !== "") 
-        className = "_" + className 
     return(
-        <div className={"wrapper" + className}>
+        <section className={"wrapper " + className}>
             {children}
-        </div>
+        </section>
     )
 }
