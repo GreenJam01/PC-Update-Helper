@@ -2,18 +2,11 @@ import {LinkButton} from "../../components/link-button/link-button";
 import {Container} from "../../components/container/container";
 import {useEffect, useState} from "react";
 import { Button } from "../../components/button/button";
+import { Assembly } from "../../data/assembly_dto";
 
 
 export function MyAssembliesPage(){
     const [assemblies, setAssemblies] = useState<Assembly[]>([]);
-type Assembly = {
-    id: number;
-    motherboard: string | null;
-    cpu: string | null;
-    ram: string | null;
-    gpu: string | null;
-    hdd: string | null;
-  };
 
   useEffect(() => {
     fetch('http://localhost:8081/assemblies')
@@ -22,7 +15,7 @@ type Assembly = {
       .catch(error => console.error('Ошибка при получении данных:', error));
   }, []);
 
-  const handleDelete = (id : number) => {
+  const handleDelete = (id:string) => {
     fetch(`http://localhost:8081/assemblies/${id}`, { method: 'DELETE' })
       .then(() => setAssemblies(assemblies.filter(assembly => assembly.id !== id)))
       .catch(error => console.error('Ошибка при удалении данных:', error));

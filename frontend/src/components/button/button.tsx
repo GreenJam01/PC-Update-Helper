@@ -10,7 +10,8 @@ export function Button<T>(
       clickListener = (e, t) => {},
       onFocus = () => {},
       onBlur = () => {},
-      onClick = () => {} // Добавим свойство onClick в параметры компонента
+      onClick = () => {}, // Добавим свойство onClick в параметры компонента
+      ref = undefined
     }: {
       children: React.ReactNode,
       className?: string,
@@ -20,6 +21,7 @@ export function Button<T>(
       onFocus?: () => void,
       onBlur?: () => void,
       onClick?: () => void // Обновленное свойство onClick
+      ref?: React.Ref<HTMLButtonElement>
     }
   ){
     let buttonType = "button--" + type + " ";
@@ -33,6 +35,7 @@ export function Button<T>(
           onClick={handleButtonClick} // Используем обработчик нажатия кнопки, который вызывает clickListener и onClick
           onFocus={()=>{onFocus()}}
           onBlur={()=>{onBlur()}}
+          ref={ref}
       >
           {children}
       </button>
