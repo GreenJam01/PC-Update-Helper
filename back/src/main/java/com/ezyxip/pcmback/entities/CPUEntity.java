@@ -30,11 +30,11 @@ public class CPUEntity{
     }
 
     public String getCoresNumber() {
-        return CoresNumber;
+        return coresNumber;
     }
 
     public void setCoresNumber(String coresNumber) {
-        CoresNumber = coresNumber;
+        coresNumber = coresNumber;
     }
 
     public String getThreadsNumber() {
@@ -51,8 +51,8 @@ public class CPUEntity{
     @Column(name = "Frequency")
     private String frequency;
 
-    @Column(name = "CoresNumber")
-    private String CoresNumber;
+    @Column(name = "coresNumber")
+    private String coresNumber;
 
     @Column(name = "ThreadsNumber")
     private  String threadsNumber;
@@ -68,7 +68,7 @@ public class CPUEntity{
         this.title = title;
         this.brand = brand;
         this.frequency = frequency;
-        CoresNumber = coresNumber;
+        coresNumber = coresNumber;
         this.threadsNumber = threadsNumber;
         Price = price;
     }

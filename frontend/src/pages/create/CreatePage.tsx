@@ -4,12 +4,13 @@ import {SelectList} from "../../components/select-list/select-list";
 // import {hdd, motherboards, processors, videoCards, RAMs, SSD} from "../../data/appointment-list";
 import {Button} from "../../components/button/button";
 import {useEffect, useState} from "react";
-import {Assembly} from "../../data/assembly_dto"
+import {Assembly} from "../../types/assembly_dto"
 import Select from 'react-select';
 //import { motherboards } from "../../data/appointment-list";
 
     export function CreatePage() {
         const initialFormData: Assembly = {
+            id: "",
             cpu: "",
             gpu: "",
             ram: "",

@@ -15,6 +15,7 @@ export function Header(){
                         <li><a className={"navigation_button"} href="/app/scan">Сохранить сборку</a></li>
                         <li><a className={"navigation_button"} href="/app/create">Что это</a></li>
                         <li><a className={"navigation_button"} href="/app/myassemblies">Мои сборки</a></li>
+                        <li><a className={"navigation_button"} href="/app/hardwares">Каталог железа</a></li>
                         <li><a className={"navigation_button"} href="/app/infopage">Сканировать ПК</a></li>
                     </ul>
                 </nav>

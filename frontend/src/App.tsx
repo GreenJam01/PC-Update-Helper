@@ -11,6 +11,7 @@ import { ScanPage } from './pages/scan-page/ScanPage';
 import { MyAssembliesPage } from './pages/my-assemblies/MyAssembliesPage';
 import LoginPage from './pages/login/Login';
 import RegisterPage from './pages/register/Register';
+import { HardwaresPage } from './pages/hardwares/Hardwares';
 
 
 
@@ -18,8 +19,7 @@ function App() {
   return (
     <>
     <BrowserRouter>
-    <Menu/>
-    
+    <Menu/> 
       <Routes>
         <Route path = "/app/">
           <Route index element={<IndexPage/>}/>
@@ -30,6 +30,7 @@ function App() {
           <Route path = "/app/infopage" element = {<LoginPage/>}/>
           <Route path="/app/login" element = {<LoginPage/>}/>
           <Route path="/app/register" element = {<RegisterPage/>}/>
+          <Route path="/app/hardwares" element = {<HardwaresPage/>}/>
         </Route>
         
       </Routes>
