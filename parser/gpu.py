@@ -58,11 +58,15 @@ def parseGpu():
 			brand = properties[brandInd+5:]
 			brand = brand.split()[0]
 
-			modelInd = properties.find("Модель")
-			chipInd = properties.find("Видеочипсет")
-			model = properties[modelInd+6:chipInd-2]
+			chipsetInd = properties.find("Видеочипсет")
+			interfaceInd = properties.find("Интерфейс")
+			chipset = properties[chipsetInd+11:interfaceInd-1]
+			
 
-			title = brand + " " + model
+			modelInd = properties.find("Модель")
+			model = properties[modelInd+6:chipsetInd-2]
+
+			title = brand + " " + chipset + " " + model
 
 			mvInd = properties.find("Объем видеопамяти")
 			mv = properties[mvInd+17:]
@@ -84,8 +88,18 @@ def parseGpu():
 			j += 1
 
 	final = json.dumps(sborka, indent=2)
+	# для отладки
+	if len(sborka) != 0:
+		# для отладки
+		f = open('gpu.txt', 'w+')
+		f.write(final)
+		f.close()
+	else:
+		parseGpu()
 
-	headers = {'Content-type': 'application/json', 'Connection': 'Keep-Alive'}
-	urlGpu = "http://localhost:8080/hardware/post-gpu-list"
+	# post на сервер
 
-	r = requests.post(urlGpu, data=final, headers=headers)
+	# headers = {'Content-type': 'application/json', 'Connection': 'Keep-Alive'}
+	# urlGpu = "http://localhost:8080/hardware/post-gpu-list"
+
+	# r = requests.post(urlGpu, data=final, headers=headers)
