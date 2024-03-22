@@ -1,5 +1,6 @@
 package com.ezyxip.pcmback.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 @Entity
@@ -7,9 +8,10 @@ import jakarta.persistence.*;
 public class AssemblyEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "cpu_id")
     private CPUEntity cpuEntity;

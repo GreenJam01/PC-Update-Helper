@@ -1,13 +1,14 @@
 package com.ezyxip.pcmback.entities;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import org.hibernate.annotations.Cascade;
 
 import java.util.List;
 
 @Entity
-@Table(name = "RAM")
+@Table(name = "ram")
 public class RAMEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -25,7 +26,7 @@ public class RAMEntity{
     private String frequency;
     @Column(name = "Price")
     private Integer price;
-
+    @JsonIgnore
     @OneToMany(mappedBy = "ramEntity")
     @Cascade(org.hibernate.annotations.CascadeType.ALL)
     private List<AssemblyEntity> assemblies;

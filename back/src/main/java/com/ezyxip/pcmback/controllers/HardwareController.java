@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 @CrossOrigin
@@ -48,8 +49,17 @@ public class HardwareController {
         try {
             List<CPUEntity> savedList = new ArrayList<>();
             for (CPUEntity cpuEntity : list) {
-                CPUEntity savedEntity = cpuRepository.save(cpuEntity);
-                savedList.add(savedEntity);
+                Optional<CPUEntity> cpuData = cpuRepository.findByTitle(cpuEntity.getTitle());
+                if(cpuData.isPresent()){
+                    CPUEntity cpu = cpuData.get();
+                    cpu.setPrice(cpuEntity.getPrice());
+                    cpuRepository.save(cpu);
+                    savedList.add(cpu);
+                }
+                else {
+                    CPUEntity savedEntity = cpuRepository.save(cpuEntity);
+                    savedList.add(savedEntity);
+                }
             }
             return new ResponseEntity<>(savedList, HttpStatus.CREATED);
         } catch (Exception e) {
@@ -74,9 +84,18 @@ public class HardwareController {
     public ResponseEntity<List<GPUEntity>> createGPUList(@RequestBody List<GPUEntity> list) {
         try {
             List<GPUEntity> savedList = new ArrayList<>();
-            for (GPUEntity cpuEntity : list) {
-                GPUEntity savedEntity = gpuRepository.save(cpuEntity);
-                savedList.add(savedEntity);
+            for (GPUEntity gpuEntity : list) {
+                Optional<GPUEntity> gpuData = gpuRepository.findByTitle(gpuEntity.getTitle());
+                if(gpuData.isPresent()){
+                    GPUEntity gpu = gpuData.get();
+                    gpu.setPrice(gpuEntity.getPrice());
+                    gpuRepository.save(gpu);
+                    savedList.add(gpu);
+                }
+                else {
+                    GPUEntity savedEntity = gpuRepository.save(gpuEntity);
+                    savedList.add(savedEntity);
+                }
             }
             return new ResponseEntity<>(savedList, HttpStatus.CREATED);
         } catch (Exception e) {
@@ -102,8 +121,17 @@ public class HardwareController {
         try {
             List<RAMEntity> savedList = new ArrayList<>();
             for (RAMEntity ramEntity : list) {
-                RAMEntity savedEntity = ramRepository.save(ramEntity);
-                savedList.add(savedEntity);
+                Optional<RAMEntity> ramData = ramRepository.findByTitle(ramEntity.getTitle());
+                if(ramData.isPresent()){
+                    RAMEntity ram = ramData.get();
+                    ram.setPrice(ramEntity.getPrice());
+                    ramRepository.save(ram);
+                    savedList.add(ram);
+                }
+                else {
+                    RAMEntity savedEntity = ramRepository.save(ramEntity);
+                    savedList.add(savedEntity);
+                }
             }
             return new ResponseEntity<>(savedList, HttpStatus.CREATED);
         } catch (Exception e) {
@@ -127,10 +155,20 @@ public class HardwareController {
     @PostMapping(value = "/post-hdd-list", produces = APPLICATION_JSON_VALUE)
     public ResponseEntity<List<HDDEntity>> createHDDList(@RequestBody List<HDDEntity> list) {
         try {
+
             List<HDDEntity> savedList = new ArrayList<>();
             for (HDDEntity hddEntity : list) {
-                HDDEntity savedEntity = hddRepository.save(hddEntity);
-                savedList.add(savedEntity);
+                Optional<HDDEntity> hddData = hddRepository.findByTitle(hddEntity.getTitle());
+                if(hddData.isPresent()){
+                    HDDEntity hdd = hddData.get();
+                    hdd.setPrice(hddEntity.getPrice());
+                    hddRepository.save(hdd);
+                    savedList.add(hdd);
+                }
+                else {
+                    HDDEntity savedEntity = hddRepository.save(hddEntity);
+                    savedList.add(savedEntity);
+                }
             }
             return new ResponseEntity<>(savedList, HttpStatus.CREATED);
         } catch (Exception e) {
@@ -142,6 +180,7 @@ public class HardwareController {
     @PostMapping(value = "/post-motherboard", produces = APPLICATION_JSON_VALUE)
     public ResponseEntity<MotherboardEntity> createMotherboard(@RequestBody MotherboardEntity mothBoard) {
         try {
+
             MotherboardEntity _gpu = motherboardRepository
                     .save(new MotherboardEntity(mothBoard.getTitle(), mothBoard.getBrand(), mothBoard.getSocket(),mothBoard.getMemoryType(),mothBoard.getMaxMemory(),mothBoard.getPrice()));
             return new ResponseEntity<>(_gpu, HttpStatus.CREATED);
@@ -154,9 +193,18 @@ public class HardwareController {
     public ResponseEntity<List<MotherboardEntity>> createMotherboardList(@RequestBody List<MotherboardEntity> list) {
         try {
             List<MotherboardEntity> savedList = new ArrayList<>();
-            for (MotherboardEntity cpuEntity : list) {
-                MotherboardEntity savedEntity = motherboardRepository.save(cpuEntity);
-                savedList.add(savedEntity);
+            for (MotherboardEntity mbEntity : list) {
+                Optional<MotherboardEntity> mbData = motherboardRepository.findByTitle(mbEntity.getTitle());
+                if(mbData.isPresent()){
+                    MotherboardEntity mb = mbData.get();
+                    mb.setPrice(mbEntity.getPrice());
+                    motherboardRepository.save(mb);
+                    savedList.add(mb);
+                }
+                else {
+                    MotherboardEntity savedEntity = motherboardRepository.save(mbEntity);
+                    savedList.add(savedEntity);
+                }
             }
             return new ResponseEntity<>(savedList, HttpStatus.CREATED);
         } catch (Exception e) {

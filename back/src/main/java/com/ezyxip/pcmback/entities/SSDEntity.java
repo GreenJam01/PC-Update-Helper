@@ -1,12 +1,13 @@
 package com.ezyxip.pcmback.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import org.hibernate.annotations.Cascade;
 
 import java.util.List;
 
 @Entity
-@Table(name = "SSD")
+@Table(name = "ssd")
 public class SSDEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -22,7 +23,7 @@ public class SSDEntity {
         this.title = title;
         this.brand = brand;
         this.memory = memory;
-        Interface = anInterface;
+        this.Interface = anInterface;
         this.maxReadingSpeed = maxReadingSpeed;
         this.maxRecordingSpeed = maxRecordingSpeed;
         this.price = price;
@@ -108,7 +109,7 @@ public class SSDEntity {
     private String maxRecordingSpeed;
     @Column(name = "Price")
     private Integer price;
-
+    @JsonIgnore
     @OneToMany(mappedBy = "ssdEntity")
     @Cascade(org.hibernate.annotations.CascadeType.ALL)
     private List<AssemblyEntity> assemblies;

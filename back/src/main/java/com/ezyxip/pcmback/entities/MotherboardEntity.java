@@ -1,13 +1,14 @@
 package com.ezyxip.pcmback.entities;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import org.hibernate.annotations.Cascade;
 
 import java.util.List;
 
 @Entity
-@Table(name = "Motherboard")
+@Table(name = "motherboard")
 public class MotherboardEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -24,7 +25,7 @@ public class MotherboardEntity{
 
     @Column(name ="MemoryType")
     private String memoryType;
-
+    @JsonIgnore
     @OneToMany(mappedBy = "motherboardEntity")
     @Cascade(org.hibernate.annotations.CascadeType.ALL)
     private List<AssemblyEntity> assemblies;

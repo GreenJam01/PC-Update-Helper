@@ -1,6 +1,7 @@
 package com.ezyxip.pcmback.entities;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jdk.jfr.Frequency;
 import org.hibernate.annotations.Cascade;
@@ -8,7 +9,7 @@ import org.hibernate.annotations.Cascade;
 import java.util.List;
 
 @Entity
-@Table(name = "CPU")
+@Table(name = "cpu")
 public class CPUEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -56,6 +57,7 @@ public class CPUEntity{
 
     @Column(name = "ThreadsNumber")
     private  String threadsNumber;
+    @JsonIgnore
     @OneToMany(mappedBy = "cpuEntity")
     @Cascade(org.hibernate.annotations.CascadeType.ALL)
     private List<AssemblyEntity> assemblies;
@@ -68,7 +70,7 @@ public class CPUEntity{
         this.title = title;
         this.brand = brand;
         this.frequency = frequency;
-        coresNumber = coresNumber;
+        this.coresNumber = coresNumber;
         this.threadsNumber = threadsNumber;
         Price = price;
     }

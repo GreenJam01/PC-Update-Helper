@@ -118,6 +118,7 @@
                     <schemas>
                         <schema>boot</schema>
                     </schemas>
+                    <cleanDisabled>false</cleanDisabled>
                 </configuration>
             </plugin>
 

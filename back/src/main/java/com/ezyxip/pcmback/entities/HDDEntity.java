@@ -7,7 +7,7 @@ import org.hibernate.annotations.Cascade;
 import java.util.List;
 
 @Entity
-@Table(name = "HDD")
+@Table(name = "hdd")
 public class HDDEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

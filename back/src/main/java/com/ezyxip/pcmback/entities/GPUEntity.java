@@ -1,13 +1,14 @@
 package com.ezyxip.pcmback.entities;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import org.hibernate.annotations.Cascade;
 
 import java.util.List;
 
 @Entity
-@Table(name = "GPU")
+@Table(name = "gpu")
 public class GPUEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -30,7 +31,7 @@ public class GPUEntity{
 
     @Column(name = "Price")
     private Integer price;
-
+    @JsonIgnore
     @OneToMany(mappedBy = "gpuEntity")
     @Cascade(org.hibernate.annotations.CascadeType.ALL)
     private List<AssemblyEntity> assemblies;
@@ -45,8 +46,8 @@ public class GPUEntity{
 
     public GPUEntity(String title, String brand, String memoryVolume, String memoryFrequency, String busWidth, Integer price) {
         this.title = title;
-        Brand = brand;
-        MemoryVolume = memoryVolume;
+        this.Brand = brand;
+        this.MemoryVolume = memoryVolume;
         this.memoryFrequency = memoryFrequency;
         this.busWidth = busWidth;
         this.price = price;
