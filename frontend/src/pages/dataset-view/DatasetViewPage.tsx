@@ -1,5 +1,3 @@
-import { useState } from "react";
-import { Assembly } from "../../types/assembly_dto";
 
 // Получение информации о комплектующих из базы
 // Тестовые данные
@@ -16,39 +14,53 @@ const buildsData = [
     // ...
 ];
 
-export function DatasetViewPage() {
-    const [assemblies, setAssemblies] = useState<Assembly[]>([]);
-    
+interface TableProps {
+    // TODO: переделать под типы комплектующих
+    data: string[][];
+}
+
+const Table : React.FC<TableProps> = ({data}) => {
+    return (
+        <table>
+            <tbody>
+                {data.map((row, rowIndex) => (
+                    <tr key={rowIndex}>
+                        {row.map((cellContent, cellIndex) => (
+                            <td key={cellIndex}>{cellContent}</td>
+                        ))}
+                    </tr>
+                ))}
+            </tbody>
+        </table>
+    );
+};
+
+
+const DatasetViewPage : React.FC = () => {
+    // TODO: Переписать под типы комплектующих
+    const tableData1 : string[][] = [
+        [],
+        [],
+    ];
+
+    // TODO: Переписать под типы комплектующих
+    const tableData2 : string[][] = [
+        [],
+        [],
+    ];
 
     return (
-        <div>
-            <h2>База данных сборок компьютеров</h2>
-            <div>
+        <div style={{display: 'flex'}}>
+            <div style={{marginRight: '20px'}}>
                 <h2>До</h2>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Компоненты</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <td></td>
-                        <td></td>
-                    </tbody>
-                </table>
+                <Table data={ tableData1 } />
+            </div>
+            <div>
                 <h2>После</h2>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Компоненты</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <td></td>
-                        <td></td>
-                    </tbody>
-                </table>
+                <Table data={ tableData2 } />
             </div>
         </div>
     );
 };
+
+export default DatasetViewPage;

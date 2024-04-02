@@ -12,8 +12,6 @@ import RegisterPage from './pages/register/Register';
 import { ScanPage } from './pages/scan-page/ScanPage';
 import { UpgradePage } from './pages/upgrade/UpgradePage';
 
-
-
 function App() {
   return (
     <>
