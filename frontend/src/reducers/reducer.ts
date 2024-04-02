@@ -1,6 +1,7 @@
 import { createReducer } from '@reduxjs/toolkit';
-import { hardwares } from '../data/hardware-list';
 import { setHardware } from '../actions/action';
+import { hardwares } from '../data/hardware-list';
+
 const initalState = {
   hardware: hardwares[0]
 };
@@ -11,4 +12,5 @@ const reducer = createReducer(initalState, (builder) => {
       state.hardware = action.payload;
     })
 });
-export {reducer};
+export { reducer };
+

@@ -1,17 +1,16 @@
-import React from 'react';
-import "./common.css"
-import "./adaptive.css"
-import {BrowserRouter, Route, RouterProvider, Routes} from "react-router-dom";
-import {router} from "./data/routers";
-import Menu from "./components/menu/Menu"
-import { IndexPage } from './pages/index/IndexPage';
-import { UpgradePage } from './pages/upgrade/UpgradePage';
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import "./adaptive.css";
+import "./common.css";
+import Menu from "./components/menu/Menu";
 import { AssemblePage } from './pages/assemble/AssemblePage';
-import { ScanPage } from './pages/scan-page/ScanPage';
-import { MyAssembliesPage } from './pages/my-assemblies/MyAssembliesPage';
-import LoginPage from './pages/login/Login';
-import RegisterPage from './pages/register/Register';
+import { DatasetViewPage } from "./pages/dataset-view/DatasetViewPage";
 import { HardwaresPage } from './pages/hardwares/Hardwares';
+import { IndexPage } from './pages/index/IndexPage';
+import LoginPage from './pages/login/Login';
+import { MyAssembliesPage } from './pages/my-assemblies/MyAssembliesPage';
+import RegisterPage from './pages/register/Register';
+import { ScanPage } from './pages/scan-page/ScanPage';
+import { UpgradePage } from './pages/upgrade/UpgradePage';
 
 
 
@@ -31,6 +30,7 @@ function App() {
           <Route path="/app/login" element = {<LoginPage/>}/>
           <Route path="/app/register" element = {<RegisterPage/>}/>
           <Route path="/app/hardwares" element = {<HardwaresPage/>}/>
+          <Route path="/app/dataset-view" element = {<DatasetViewPage/>}/>
         </Route>
         
       </Routes>

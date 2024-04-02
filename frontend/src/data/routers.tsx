@@ -1,14 +1,15 @@
-import {createBrowserRouter} from "react-router-dom";
-import {IndexPage} from "../pages/index/IndexPage";
-import {AssemblePage} from "../pages/assemble/AssemblePage";
-import {UpgradePage} from "../pages/upgrade/UpgradePage";
-import {CreatePage} from "../pages/create/CreatePage";
-import {ScanPage} from "../pages/scan-page/ScanPage";
-import { MyAssembliesPage } from "../pages/my-assemblies/MyAssembliesPage";
-import { InfoPage } from "../pages/scan-page/InfoPage";
-import LoginPage from "../pages/login/Login";
-import RegisterPage from "../pages/register/Register"
+import { createBrowserRouter } from "react-router-dom";
+import { AssemblePage } from "../pages/assemble/AssemblePage";
+import { CreatePage } from "../pages/create/CreatePage";
+import { DatasetViewPage } from "../pages/dataset-view/DatasetViewPage";
 import { HardwaresPage } from "../pages/hardwares/Hardwares";
+import { IndexPage } from "../pages/index/IndexPage";
+import LoginPage from "../pages/login/Login";
+import { MyAssembliesPage } from "../pages/my-assemblies/MyAssembliesPage";
+import RegisterPage from "../pages/register/Register";
+import { InfoPage } from "../pages/scan-page/InfoPage";
+import { ScanPage } from "../pages/scan-page/ScanPage";
+import { UpgradePage } from "../pages/upgrade/UpgradePage";
 
 export const router = createBrowserRouter([
     {
@@ -50,5 +51,9 @@ export const router = createBrowserRouter([
     {
         path: "/hardwares",
         element: <HardwaresPage/>
+    },
+    {
+        path: "/dataset-view",
+        element: <DatasetViewPage/>,
     }
 ]);
