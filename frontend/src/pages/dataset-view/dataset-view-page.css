@@ -1,0 +1,45 @@
+.data-view-page {
+    display: flex;
+    flex-direction: column;
+    align-items: centr;
+}
+
+.block-container {
+    display: flex;
+    align-items: center;
+}
+
+.left,
+.right {
+    display: flex;
+    flex: 1;
+    flex-wrap: wrap;
+}
+
+.cpu-block,
+.gpu-block,
+.hdd-block,
+.ram-block,
+.ssd-block {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 5px;
+    cursor: pointer;
+}
+
+/*TODO: сделать автоматизированный масштаб*/
+/* Пространство между блоками */
+.spacer {
+    width: 50 px;
+}
+
+.panel {
+    margin-top: 20px;
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+
+/* На будущее*/
+/*.highlight {
+    background-color: : yellow;
+}*/
