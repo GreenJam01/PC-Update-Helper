@@ -13,9 +13,9 @@ import java.util.List;
 import java.util.Optional;
 
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
+@RestController
 @CrossOrigin
 @RequestMapping("/hardware")
-@RestController
 @Tag(name="Контроллер железа", description="Контроллер позволяет взаимодейтсвовать с ресурсом hardware")
 public class HardwareController {
     @Autowired

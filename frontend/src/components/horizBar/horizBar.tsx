@@ -1,8 +1,8 @@
-import "./horizBar.css"
+import './horizBar.css';
 
 export function HorizontalBar(){
-    return(
-        <div className={"horizBar"}>
-        </div>
-    )
+  return(
+    <div className={'horizBar'}>
+    </div>
+  );
 }

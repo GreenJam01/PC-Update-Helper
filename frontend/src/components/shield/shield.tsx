@@ -1,15 +1,15 @@
-import React from "react";
-import "./shield.css"
+import React from 'react';
+import './shield.css';
 
 export function Shield(
-    {children, className}:{
-        children: React.ReactNode,
-        className?: string
+  {children, className}:{
+        children: React.ReactNode;
+        className?: string;
     }
 ){
-    return(
-        <div className={"shield " + className}>
-            {children}
-        </div>
-    )
+  return(
+    <div className={`shield ${ className}`}>
+      {children}
+    </div>
+  );
 }

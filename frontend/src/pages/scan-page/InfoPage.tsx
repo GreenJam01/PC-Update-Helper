@@ -1,29 +1,29 @@
-import {LinkButton} from "../../components/link-button/link-button";
-import {Container} from "../../components/container/container";
-import {Button} from "../../components/button/button";
-import "./scan-page.css"
-import {useEffect, useState} from "react";
+import {LinkButton} from '../../components/link-button/link-button';
+import {Container} from '../../components/container/container';
+import {Button} from '../../components/button/button';
+import './scan-page.css';
+import {useEffect, useState} from 'react';
 
 export function InfoPage() {
 
-    return (
-        <>
-        <div className={"a12 xs12 s12 center"}><h1>PC Update Helper</h1></div>
-            <div className={"center"}>
+  return (
+    <>
+      <div className={'a12 xs12 s12 center'}><h1>PC Update Helper</h1></div>
+      <div className={'center'}>
                 Скачайте программу по кнопке ниже, запустите скрипт, после этого нажмите на кнопку "Далее".
-                </div>
-            <div className={"isolated center"}>
-            <a href="https://disk.yandex.ru/d/ioq-5D-3WMcnXQ">
-                <Button>Скачать</Button>
-                </a>
-            </div>
-            <div className={"isolated center"}>
-            <LinkButton href={"/app/scan"}>Далее</LinkButton>
-                
-            </div>
-            <div className={"isolated center"}>
-                <LinkButton href={"/app/"}>На главную</LinkButton>
-            </div>
-        </>
-    )
+      </div>
+      <div className={'isolated center'}>
+        <a href="https://disk.yandex.ru/d/ioq-5D-3WMcnXQ">
+          <Button>Скачать</Button>
+        </a>
+      </div>
+      <div className={'isolated center'}>
+        <LinkButton href={'/app/scan'}>Далее</LinkButton>
+
+      </div>
+      <div className={'isolated center'}>
+        <LinkButton href={'/app/'}>На главную</LinkButton>
+      </div>
+    </>
+  );
 }

@@ -21,6 +21,10 @@ export const createAPI = (): AxiosInstance => {
   const api = axios.create({
     baseURL: BASE_URL,
     timeout: TIME_OUT,
+    headers: {
+      Authorization: `Bearer ${getToken()}`,
+      'Content-Type': 'application/json'
+    },
   });
 
   api.interceptors.response.use(

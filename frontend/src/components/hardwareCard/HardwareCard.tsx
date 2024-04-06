@@ -1,15 +1,16 @@
-import { Link } from "react-router-dom";
-import { Hardware } from "../../types/hardwares";
+import { Link } from 'react-router-dom';
+import { Hardware } from '../../types/hardwares';
 
 type HardwareCardProps = {hardware: Hardware}
 export function HardwareCard(props: HardwareCardProps){
-    return(
+  return(
     <Link to={`/${typeof props.hardware}/${props.hardware.id}`}>
-    <article
-        className={`hardware__card`}>
-        <div className={`hardware__image-wrapper hardware-card__image-wrapper`}>
+      <article
+        className={'hardware__card'}
+      >
+        <div className={'hardware__image-wrapper hardware-card__image-wrapper'}>
           {/* <a href="#"> */}
-            <img className="hardware-card__image" src={props.hardware.urlImage} width="260" height="200" alt="hardware image"/>
+          <img className="hardware-card__image" src={props.hardware.urlImage} width="260" height="200" alt="hardware image"/>
           {/* </a> */}
         </div>
         <div className="hardware-card__info">
@@ -23,6 +24,6 @@ export function HardwareCard(props: HardwareCardProps){
           </h2>
         </div>
       </article>
-      </Link>
-    )
+    </Link>
+  );
 }

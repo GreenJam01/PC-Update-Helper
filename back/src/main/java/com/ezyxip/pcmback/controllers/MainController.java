@@ -7,12 +7,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 @Controller
 public class MainController {
-    @RequestMapping(value="/")
-    public String redirectToApp(){
-        return "redirect:/app";
-    }
 
-    @RequestMapping(value="/app/**")
+    @RequestMapping(value="/")
     public String startPage(){
         return "/index.html";
     }

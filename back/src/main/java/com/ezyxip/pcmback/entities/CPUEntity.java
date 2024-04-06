@@ -11,8 +11,9 @@ import java.util.List;
 @Entity
 @Table(name = "cpu")
 public class CPUEntity{
+
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "Title")

@@ -1,9 +1,7 @@
 package com.ezyxip.pcmback.controllers;
 
-import com.ezyxip.pcmback.entities.AssemblyEntity;
-import com.ezyxip.pcmback.entities.CPUEntity;
-import com.ezyxip.pcmback.repositories.AssemblyRepository;
-import com.ezyxip.pcmback.repositories.CPURepository;
+import com.ezyxip.pcmback.entities.*;
+import com.ezyxip.pcmback.repositories.*;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +22,20 @@ public class MainRestController {
 
     @Autowired
     private AssemblyRepository assemblyRepository;
+    @Autowired
+    private GPURepository gpuRepository;
+
+    @Autowired
+    private CPURepository cpuRepository;
+
+    @Autowired
+    private RAMRepository ramRepository;
+
+    @Autowired
+    private HDDRepository hddRepository;
+
+    @Autowired
+    private MotherboardRepository motherboardRepository;
     @Operation(
             summary = "Получить последнюю сборку"
     )
@@ -34,13 +46,25 @@ public class MainRestController {
     @Operation(
             summary = "Добавить сборку в базу данных"
     )
-    @PostMapping(value = "/assemblies", produces = APPLICATION_JSON_VALUE)
+
+    @PostMapping(value = "/assemblies",consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
     public ResponseEntity<AssemblyEntity> createAssembly(@RequestBody AssemblyEntity assembly) {
         try {
-            AssemblyEntity _assembly = assemblyRepository
-                    .save(new AssemblyEntity(assembly.getCPU(), assembly.getGPU(),
-                            assembly.getHDD(),assembly.getMotherboard(), assembly.getRAM(), assembly.getSSD()));
-            return new ResponseEntity<>(assembly, HttpStatus.CREATED);
+            Optional<CPUEntity> cpuEntity = cpuRepository.findById(assembly.getCPU().getId());
+            Optional<GPUEntity> gpuEntity = gpuRepository.findById(assembly.getGPU().getId());
+            Optional<RAMEntity> ramEntity = ramRepository.findById(assembly.getRAM().getId());
+            Optional<HDDEntity> hddEntity = hddRepository.findById(assembly.getHDD().getId());
+            Optional<MotherboardEntity> motherboardEntity = motherboardRepository.findById(assembly.getMotherboard().getId());
+            if(cpuEntity.isPresent()&& gpuEntity.isPresent() && ramEntity.isPresent() && hddEntity.isPresent()
+            && motherboardEntity.isPresent()) {
+                AssemblyEntity _assembly = assemblyRepository
+                        .save(new AssemblyEntity(assembly.getCPU(), assembly.getGPU(),
+                                assembly.getHDD(), assembly.getMotherboard(), assembly.getRAM()));
+                return new ResponseEntity<>(assembly, HttpStatus.CREATED);
+            }
+            else {
+                throw new Exception();
+            }
         } catch (Exception e) {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }

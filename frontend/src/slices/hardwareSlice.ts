@@ -1,6 +1,6 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit/react';
 import { AppData } from '../constants';
-import { CPU, GPU, HDD, Motherboard, RAM, SSD } from '../types/hardwares';
+import { CPU, GPU, HDD, Motherboard, RAM} from '../types/hardwares';
 import { fetchHardwaresAction } from '../store/api-actions';
 
 
@@ -10,7 +10,6 @@ type HardwareState = {
   ram: RAM[];
   motherboard: Motherboard[];
   hdd: HDD[];
-  ssd: SSD[];
   isHardwareDataLoading:boolean;
 }
 
@@ -20,9 +19,8 @@ const initialState:HardwareState = {
   ram: [],
   motherboard: [],
   hdd: [],
-  ssd:[],
   isHardwareDataLoading:false
-}
+};
 export const hardwareSlice = createSlice({
   initialState, name: AppData.Hardware,
   reducers: {
@@ -42,7 +40,6 @@ export const hardwareSlice = createSlice({
         state.ram = action.payload.ram;
         state.motherboard = action.payload.motherboard;
         state.hdd = action.payload.hdd;
-        state.ssd = action.payload.ssd;
       })
       .addCase(fetchHardwaresAction.rejected, (state) => {
         state.isHardwareDataLoading = false;
@@ -54,7 +51,6 @@ export const hardwareSlice = createSlice({
     ram: (state) => state.ram,
     motherboard: (state) => state.motherboard,
     hdd: (state) => state.hdd,
-    ssd: (state) => state.ssd,
     isHardwareDataLoading: (state) => state.isHardwareDataLoading,
   },
 });

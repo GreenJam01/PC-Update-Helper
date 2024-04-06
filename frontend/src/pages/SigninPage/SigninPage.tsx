@@ -1,38 +1,38 @@
-import React, { useState } from "react";
-import { NavigateFunction, useNavigate } from 'react-router-dom';
-import { Formik, Field, Form, ErrorMessage } from "formik";
-import * as Yup from "yup";
+import React, { useState } from 'react';
+import { Formik, Field, Form, ErrorMessage } from 'formik';
+import * as Yup from 'yup';
 
-import { signinAction } from "../../store/api-actions";
+import { signinAction } from '../../store/api-actions';
+import { useAppDispatch } from '../../hooks/use-app';
 
 type Props = {}
 
-const LoginPage: React.FC<Props> = () => {
-  let navigate: NavigateFunction = useNavigate();
+const SigninPage: React.FC<Props> = () => {
+  const dispatch = useAppDispatch();
 
   const [loading, setLoading] = useState<boolean>(false);
-  const [message, setMessage] = useState<string>("");
+  const [message, setMessage] = useState<string>('');
 
   const initialValues: {
     email: string;
     password: string;
   } = {
-    email: "",
-    password: "",
+    email: '',
+    password: '',
   };
 
   const validationSchema = Yup.object().shape({
-    username: Yup.string().required("This field is required!"),
-    password: Yup.string().required("This field is required!"),
+    username: Yup.string().required('This field is required!'),
+    password: Yup.string().required('This field is required!'),
   });
 
   const handleLogin = (formValue: { email: string; password: string }) => {
     const { email, password } = formValue;
 
-    setMessage("");
+    setMessage('');
     setLoading(true);
 
-    signinAction({email, password});
+    dispatch(signinAction({email, password}));
   };
 
   return (
@@ -92,4 +92,4 @@ const LoginPage: React.FC<Props> = () => {
   );
 };
 
-export default LoginPage;
+export default SigninPage;

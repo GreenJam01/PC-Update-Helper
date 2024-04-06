@@ -2,39 +2,42 @@ package com.ezyxip.pcmback.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 @Entity
 @Table(name = "Assemblies")
 public class AssemblyEntity {
 
+    @JsonIgnore
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @JsonIgnore
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "cpu_id")
     private CPUEntity cpuEntity;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "gpu_id")
     private GPUEntity gpuEntity;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "hdd_id")
     private HDDEntity hddEntity;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "motherboard_id")
     private MotherboardEntity motherboardEntity;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "ram_id")
     private RAMEntity ramEntity;
-
-    @ManyToOne
-    @JoinColumn(name = "ssd_id")
-    private SSDEntity ssdEntity;
 
     public Long getId() {
         return id;
@@ -43,13 +46,17 @@ public class AssemblyEntity {
     public AssemblyEntity() {
     }
 
-    public AssemblyEntity(CPUEntity cpuEntity, GPUEntity gpuEntity, HDDEntity hddEntity, MotherboardEntity motherboardEntity, RAMEntity ramEntity, SSDEntity ssdEntity) {
+    public AssemblyEntity(CPUEntity cpuEntity,
+                          GPUEntity gpuEntity,
+                          HDDEntity hddEntity,
+                          MotherboardEntity motherboardEntity,
+                          RAMEntity ramEntity) {
         this.cpuEntity = cpuEntity;
         this.gpuEntity = gpuEntity;
         this.hddEntity = hddEntity;
         this.motherboardEntity = motherboardEntity;
         this.ramEntity = ramEntity;
-        this.ssdEntity = ssdEntity;
+       // this.ssdEntity = ssdEntity;
     }
 
     public void setId(Long id) {
@@ -96,13 +103,13 @@ public class AssemblyEntity {
         this.ramEntity = ramEntity;
     }
 
-    public SSDEntity getSSD() {
-        return ssdEntity;
-    }
-
-    public void setSSD(SSDEntity ssdEntity) {
-        this.ssdEntity = ssdEntity;
-    }
+//    public SSDEntity getSSD() {
+//        return ssdEntity;
+//    }
+//
+//    public void setSSD(SSDEntity ssdEntity) {
+//        this.ssdEntity = ssdEntity;
+//    }
 
     @Override
     public String toString() {
@@ -113,7 +120,6 @@ public class AssemblyEntity {
                 ", RAM='" + ramEntity + '\'' +
                 ", motherboard='" + motherboardEntity + '\'' +
                 ", HDD='" + hddEntity + '\'' +
-                ", HDD='" + ssdEntity + '\'' +
                 '}';
     }
 }

@@ -63,13 +63,13 @@ export type SSD = {
     price: number;
 };
 
-export type Hardware = CPU | RAM | GPU | HDD | Motherboard | SSD;
+export type Hardware = CPU | RAM | GPU | HDD | Motherboard;
 
 export type Hardwares = {
-    cpu: CPU[],
-    gpu: GPU[],
-    ram: RAM[],
-    motherboard: Motherboard[],
-    hdd: HDD[],
-    ssd: SSD[]
+    cpu: CPU[];
+    gpu: GPU[];
+    ram: RAM[];
+    motherboard: Motherboard[];
+    hdd: HDD[];
+
 }

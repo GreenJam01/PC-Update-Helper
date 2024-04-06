@@ -10,8 +10,9 @@ import java.util.List;
 @Entity
 @Table(name = "ram")
 public class RAMEntity{
+
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "Title")
