@@ -80,7 +80,16 @@ def parseCpu():
 			j += 1
 
 	final = json.dumps(sborka, indent=2)
-	headers = {'Content-type': 'application/json', 'Connection': 'Keep-Alive'}
-	urlCpu = "http://localhost:8080/hardware/post-cpu-list"
+	if len(sborka) != 0:
+		# для отладки
+		f = open('cpu.txt', 'w+')
+		f.write(final)
+		f.close()
+	else:
+		parseCpu()
 
-	r = requests.post(urlCpu, data=final, headers=headers)
+	# post на сервер
+	# headers = {'Content-type': 'application/json', 'Connection': 'Keep-Alive'}
+	# urlCpu = "http://localhost:8080/hardware/post-cpu-list"
+
+	# r = requests.post(urlCpu, data=final, headers=headers)
