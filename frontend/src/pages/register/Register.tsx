@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 
-import IUser from "../../types/user.type";
+import IUser from "../../types/user";
 import { register } from "../../services/authService";
 
 const RegisterPage: React.FC = () => {

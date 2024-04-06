@@ -4,15 +4,6 @@ import {Button} from "../../components/button/button";
 import "./scan-page.css"
 import {useEffect, useState} from "react";
 
-type Assembly = {
-    id: number,
-    cpu: string,
-    gpu: string,
-    ram: string,
-    motherboard: string,
-    hdd: string
-}
-
 export function InfoPage() {
 
     return (

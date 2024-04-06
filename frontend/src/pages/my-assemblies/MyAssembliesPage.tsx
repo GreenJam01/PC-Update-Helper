@@ -2,7 +2,7 @@ import {LinkButton} from "../../components/link-button/link-button";
 import {Container} from "../../components/container/container";
 import {useEffect, useState} from "react";
 import { Button } from "../../components/button/button";
-import { Assembly } from "../../types/assembly_dto";
+import { Assembly } from "../../types/assembly";
 
 
 export function MyAssembliesPage(){

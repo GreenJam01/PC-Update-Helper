@@ -1,6 +1,6 @@
 export type CPU = {
     id: number;
-    urlImage: '3244';
+    urlImage: string;
     title: string;
     price: number;
     brand: string;
@@ -64,3 +64,12 @@ export type SSD = {
 };
 
 export type Hardware = CPU | RAM | GPU | HDD | Motherboard | SSD;
+
+export type Hardwares = {
+    cpu: CPU[],
+    gpu: GPU[],
+    ram: RAM[],
+    motherboard: Motherboard[],
+    hdd: HDD[],
+    ssd: SSD[]
+}

@@ -8,9 +8,9 @@ export function HardwareCard(props: HardwareCardProps){
     <article
         className={`hardware__card`}>
         <div className={`hardware__image-wrapper hardware-card__image-wrapper`}>
-          <a href="#">
+          {/* <a href="#"> */}
             <img className="hardware-card__image" src={props.hardware.urlImage} width="260" height="200" alt="hardware image"/>
-          </a>
+          {/* </a> */}
         </div>
         <div className="hardware-card__info">
           <div className="hardware-card__price-wrapper">

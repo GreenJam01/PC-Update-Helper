@@ -4,7 +4,7 @@ import {SelectList} from "../../components/select-list/select-list";
 // import {hdd, motherboards, processors, videoCards, RAMs, SSD} from "../../data/appointment-list";
 import {Button} from "../../components/button/button";
 import {useEffect, useState} from "react";
-import {Assembly} from "../../types/assembly_dto"
+import {Assembly} from "../../types/assembly"
 import Select from 'react-select';
 //import { motherboards } from "../../data/appointment-list";
 

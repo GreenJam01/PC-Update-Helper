@@ -3,7 +3,7 @@ import { NavigateFunction, useNavigate } from 'react-router-dom';
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 
-import { login } from "../../services/authService";
+import { signinAction } from "../../store/api-actions";
 
 type Props = {}
 
@@ -14,10 +14,10 @@ const LoginPage: React.FC<Props> = () => {
   const [message, setMessage] = useState<string>("");
 
   const initialValues: {
-    username: string;
+    email: string;
     password: string;
   } = {
-    username: "",
+    email: "",
     password: "",
   };
 
@@ -26,29 +26,13 @@ const LoginPage: React.FC<Props> = () => {
     password: Yup.string().required("This field is required!"),
   });
 
-  const handleLogin = (formValue: { username: string; password: string }) => {
-    const { username, password } = formValue;
+  const handleLogin = (formValue: { email: string; password: string }) => {
+    const { email, password } = formValue;
 
     setMessage("");
     setLoading(true);
 
-    login(username, password).then(
-      () => {
-        navigate("/profile");
-        window.location.reload();
-      },
-      (error) => {
-        const resMessage =
-          (error.response &&
-            error.response.data &&
-            error.response.data.message) ||
-          error.message ||
-          error.toString();
-
-        setLoading(false);
-        setMessage(resMessage);
-      }
-    );
+    signinAction({email, password});
   };
 
   return (

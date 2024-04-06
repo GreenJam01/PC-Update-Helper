@@ -1,0 +1,30 @@
+import { PayloadAction, createSlice } from "@reduxjs/toolkit"
+import { AppData } from "../constants"
+import { Assembly } from "../types/assembly"
+
+export type AssembliesState = {
+    assemblies: Assembly[],
+    isAssembliesDataLoading:boolean
+}
+
+const initialState: AssembliesState = {
+    assemblies: [],
+    isAssembliesDataLoading: false
+}
+
+export const assembliesSlice = createSlice({
+    name: AppData.Assemblies,
+    initialState,
+    reducers: {
+        setIsDataLoading: (state, action: PayloadAction<boolean>) => {
+            state.isAssembliesDataLoading = action.payload;
+        },
+        setAssemblies: (state, action: PayloadAction<Assembly[]>) => {
+            state.assemblies = action.payload;
+        }
+    },
+    selectors: {
+        assemblies: (state) => state.assemblies,
+        isAssembliesDataLoading: (state) => state.isAssembliesDataLoading
+    }
+})
