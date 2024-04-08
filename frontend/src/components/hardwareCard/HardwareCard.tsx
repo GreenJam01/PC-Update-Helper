@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
-import { Hardware } from '../../types/hardwares';
+import { HardwareType } from '../../types/hardwares';
 
-type HardwareCardProps = {hardware: Hardware}
+type HardwareCardProps = {hardware: HardwareType}
 export function HardwareCard(props: HardwareCardProps){
   return(
     <Link to={`/${typeof props.hardware}/${props.hardware.id}`}>

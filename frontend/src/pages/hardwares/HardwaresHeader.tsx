@@ -1,17 +1,17 @@
 
+import { Link } from 'react-router-dom';
 import { hardwares } from '../../data/hardware-list';
-import { useAppDispatch } from '../../hooks/use-app';
+import { AppRoutes } from '../../constants';
 
 export function HardwareHeader(){
-  const dispatch = useAppDispatch();
   return (
     <>
       {
         hardwares.map((i) => (
           <li className="hardware__item" key={i}>
-            <a className="hardware-link tabs__item" >
+            <Link className="hardware-link tabs__item" to={`${AppRoutes.HardwaresPage}/${i}`}>
               <span>{i}</span>
-            </a>
+            </Link>
           </li>
         ))
       }

@@ -1,7 +1,10 @@
 import { HardwareList } from '../../components/hardwareList/HardwareList';
+import { HardwaresType } from '../../types/hardwares';
 import { HardwareHeader } from './HardwaresHeader';
-
-export function HardwaresPage(){
+export type HardwarePageProps = {
+  hardwares: HardwaresType;
+}
+export function HardwaresPage(props:HardwarePageProps){
   return (
     <div>
       <main>
@@ -17,7 +20,7 @@ export function HardwaresPage(){
           <div>
             <section >
               {/* <SortForm/> */}
-              <HardwareList />
+              <HardwareList hardwares={props.hardwares} />
             </section>
           </div>
         </div>

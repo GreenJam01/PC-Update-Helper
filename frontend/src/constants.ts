@@ -51,3 +51,11 @@ export enum AuthorizationStatus {
     Unknown = 'UNKNOWN',
     Authorized = 'Authorized',
   }
+
+export const HARDWARES = {
+  cpu: 'cpu',
+  gpu: 'gpu',
+  ram: 'ram',
+  motherboard: 'motherboard',
+  hdd: 'hdd'
+};

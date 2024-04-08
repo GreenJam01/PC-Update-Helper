@@ -2,6 +2,7 @@ import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { AppData } from '../constants';
 import { Assembly } from '../types/assembly';
 import { fetchAssemblies } from '../store/api-actions';
+import { toast } from 'react-toastify';
 
 export type AssembliesState = {
     assemblies: Assembly[];
@@ -28,6 +29,7 @@ export const assembliesSlice = createSlice({
     builder.addCase(fetchAssemblies.fulfilled, (state, action) => {
       state.isAssembliesDataLoading = true;
       state.assemblies = action.payload;
+      toast.success('Сборки получены');
     });
   },
   selectors: {

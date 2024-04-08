@@ -2,6 +2,8 @@ import { PayloadAction, createSlice } from '@reduxjs/toolkit/react';
 import { AppData } from '../constants';
 import { CPU, GPU, HDD, Motherboard, RAM} from '../types/hardwares';
 import { fetchHardwaresAction } from '../store/api-actions';
+import { hardwares } from '../data/hardware-list';
+import { toast } from 'react-toastify';
 
 
 type HardwareState = {
@@ -10,6 +12,7 @@ type HardwareState = {
   ram: RAM[];
   motherboard: Motherboard[];
   hdd: HDD[];
+  selectedHardwareHeader: string;
   isHardwareDataLoading:boolean;
 }
 
@@ -19,6 +22,7 @@ const initialState:HardwareState = {
   ram: [],
   motherboard: [],
   hdd: [],
+  selectedHardwareHeader: hardwares[0],
   isHardwareDataLoading:false
 };
 export const hardwareSlice = createSlice({
@@ -27,6 +31,9 @@ export const hardwareSlice = createSlice({
     setIsDataLoading: (state, action: PayloadAction<boolean>) => {
       state.isHardwareDataLoading = action.payload;
     },
+    setSelectedHardwareHeader: (state, action: PayloadAction<string>) => {
+      state.selectedHardwareHeader = action.payload;
+    }
   },
   extraReducers(builder) {
     builder
@@ -40,6 +47,7 @@ export const hardwareSlice = createSlice({
         state.ram = action.payload.ram;
         state.motherboard = action.payload.motherboard;
         state.hdd = action.payload.hdd;
+        toast.success('Железо получено');
       })
       .addCase(fetchHardwaresAction.rejected, (state) => {
         state.isHardwareDataLoading = false;
@@ -51,6 +59,7 @@ export const hardwareSlice = createSlice({
     ram: (state) => state.ram,
     motherboard: (state) => state.motherboard,
     hdd: (state) => state.hdd,
+    selectedHardwareHeader: (state) => state.selectedHardwareHeader,
     isHardwareDataLoading: (state) => state.isHardwareDataLoading,
   },
 });
