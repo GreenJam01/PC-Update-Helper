@@ -39,7 +39,6 @@ export const assembliesSlice = createSlice({
         toast.error('Сборки не получены');
       })
       .addCase(deleteAssembly.fulfilled, (state, action) => {
-        console.log(action.payload.id);
         state.assemblies = state.assemblies.filter((assembly) => assembly.id !== action.payload.id);
         toast.success('Сборка удалена');
       }

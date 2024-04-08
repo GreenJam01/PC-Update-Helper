@@ -7,5 +7,5 @@ import { assembliesSlice } from '../slices/assembliesSlice';
 export const rootReducer = combineReducers({
   [AppData.Hardware]: hardwareSlice.reducer,
   [AppData.Auth]: authSlice.reducer,
-  [AppData.Assemblies]: assembliesSlice.reducer
+  [AppData.Assemblies]: assembliesSlice.reducer,
 });

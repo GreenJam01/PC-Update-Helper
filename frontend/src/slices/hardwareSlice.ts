@@ -1,4 +1,4 @@
-import { PayloadAction, createSlice } from '@reduxjs/toolkit/react';
+import { PayloadAction, createSelector, createSlice } from '@reduxjs/toolkit/react';
 import { AppData } from '../constants';
 import { CPU, GPU, HDD, Motherboard, RAM} from '../types/hardwares';
 import { fetchHardwaresAction } from '../store/api-actions';
@@ -23,7 +23,7 @@ const initialState:HardwareState = {
   motherboard: [],
   hdd: [],
   selectedHardwareHeader: hardwares[0],
-  isHardwareDataLoading:false
+  isHardwareDataLoading:false,
 };
 export const hardwareSlice = createSlice({
   initialState, name: AppData.Hardware,
@@ -63,5 +63,46 @@ export const hardwareSlice = createSlice({
     isHardwareDataLoading: (state) => state.isHardwareDataLoading,
   },
 });
-export const hardwaresSelectors = hardwareSlice.selectors;
+export const hardwaresSelectors = {
+  getBrandsCpu: createSelector(hardwareSlice.selectors.cpu,
+    (cpus) => cpus.reduce((acc:string[], cpu) => {
+      if (!acc.includes(cpu.brand)) {
+        acc.push(cpu.brand);
+      }
+      return acc;
+    }, [])
+  ),
+  getBrandsGpu: createSelector(hardwareSlice.selectors.gpu,
+    (gpus) => gpus.reduce((acc:string[], gpu) => {
+      if (!acc.includes(gpu.brand)) {
+        acc.push(gpu.brand);
+      }
+      return acc;
+    }, [])
+  ),
+  getBrandsHdd: createSelector(hardwareSlice.selectors.hdd,
+    (hdds) => hdds.reduce((acc:string[], hdd) => {
+      if (!acc.includes(hdd.brand)) {
+        acc.push(hdd.brand);
+      }
+      return acc;
+    }, [])
+  ),
+  getBrandsRam: createSelector(hardwareSlice.selectors.ram,
+    (rams) => rams.reduce((acc:string[], ram) => {
+      if (!acc.includes(ram.brand)) {
+        acc.push(ram.brand);
+      }
+      return acc;
+    }, [])
+  ),
+  getBrandsMotherboards: createSelector(hardwareSlice.selectors.motherboard,
+    (motherboards) => motherboards.reduce((acc:string[], motherboard) => {
+      if (!acc.includes(motherboard.brand)) {
+        acc.push(motherboard.brand);
+      }
+      return acc;
+    }, [])
+  ),
+  ...hardwareSlice.selectors,};
 export const hardwaresActions = hardwareSlice.actions;

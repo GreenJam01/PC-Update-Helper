@@ -6,6 +6,7 @@ export enum AppData{
     Hardware = 'hardware',
     Assemblies = 'assemblies',
     Favorites = 'favorites',
+    FilterSort = 'filter-sort',
 }
 
 export enum AppRoutes {

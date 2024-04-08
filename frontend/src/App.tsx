@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import './common.css';
 import './adaptive.css';
 import { Navigate, Route, Routes} from 'react-router-dom';
@@ -9,14 +9,16 @@ import { ScanPage } from './pages/scan-page/ScanPage';
 import { MyAssembliesPage } from './pages/my-assemblies/MyAssembliesPage';
 import SigninPage from './pages/SigninPage/SigninPage';
 import SignupPage from './pages/Signup/Signup';
-import { HardwaresPage } from './pages/hardwares/HardwaresPage';
+import { CPUHardwaresPage } from './pages/hardwares/CPUHardwaresPage';
 import { AppRoutes, HARDWARES } from './constants';
 import { InfoPage } from './pages/scan-page/InfoPage';
 import { getToken } from './services/token';
 import { checkAuthAction } from './store/api-actions';
 import { CreatePage } from './pages/create/CreatePage';
-import { useAppSelector } from './hooks/use-app';
-import { hardwaresSelectors } from './slices/hardwareSlice';
+import { GPUHardwaresPage } from './pages/hardwares/GPUHardwaresPage';
+import { HDDHardwaresPage } from './pages/hardwares/HDDHardwaresPage';
+import { RAMHardwaresPage } from './pages/hardwares/RAMHardwaresPage';
+import { MotherboardHardwaresPage } from './pages/hardwares/MotherboardHardwaresPage';
 
 
 function App() {
@@ -26,11 +28,7 @@ function App() {
       checkAuthAction();
     }
   }, [token]);
-  const cpus = useAppSelector(hardwaresSelectors.cpu);
-  const gpus = useAppSelector(hardwaresSelectors.gpu);
-  const rams = useAppSelector(hardwaresSelectors.ram);
-  const motherboards = useAppSelector(hardwaresSelectors.motherboard);
-  const hdds = useAppSelector(hardwaresSelectors.hdd);
+
   return (
     <Routes>
       <Route path = {AppRoutes.Main}>
@@ -46,11 +44,11 @@ function App() {
           <Route index path={AppRoutes.HardwaresPage}
             element = {<Navigate to ={`${AppRoutes.HardwaresPage}/${HARDWARES.cpu}`}/>}
           />
-          <Route path={`${AppRoutes.HardwaresPage}/${HARDWARES.cpu}`} element = {<HardwaresPage hardwares={cpus} type={HARDWARES.cpu}/>}/>
-          <Route path={`${AppRoutes.HardwaresPage}/${HARDWARES.gpu}`} element = {<HardwaresPage hardwares={gpus} type={HARDWARES.gpu}/>}/>
-          <Route path={`${AppRoutes.HardwaresPage}/${HARDWARES.hdd}`} element = {<HardwaresPage hardwares={hdds} type={HARDWARES.hdd}/>}/>
-          <Route path={`${AppRoutes.HardwaresPage}/${HARDWARES.ram}`} element = {<HardwaresPage hardwares={rams} type={HARDWARES.ram}/>}/>
-          <Route path={`${AppRoutes.HardwaresPage}/${HARDWARES.motherboard}`} element = {<HardwaresPage hardwares={motherboards} type={HARDWARES.motherboard}/>}/>
+          <Route path={`${AppRoutes.HardwaresPage}/${HARDWARES.cpu}`} element = {<CPUHardwaresPage type={HARDWARES.cpu}/>}/>
+          <Route path={`${AppRoutes.HardwaresPage}/${HARDWARES.gpu}`} element = {<GPUHardwaresPage type={HARDWARES.gpu}/>}/>
+          <Route path={`${AppRoutes.HardwaresPage}/${HARDWARES.hdd}`} element = {<HDDHardwaresPage type={HARDWARES.hdd}/>}/>
+          <Route path={`${AppRoutes.HardwaresPage}/${HARDWARES.ram}`} element = {<RAMHardwaresPage type={HARDWARES.ram}/>}/>
+          <Route path={`${AppRoutes.HardwaresPage}/${HARDWARES.motherboard}`} element = {<MotherboardHardwaresPage type={HARDWARES.motherboard}/>}/>
 
         </Route>
         <Route path = {AppRoutes.CreatePage} element = {<CreatePage/>}/>

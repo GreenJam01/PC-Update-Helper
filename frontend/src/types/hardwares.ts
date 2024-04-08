@@ -61,7 +61,6 @@ export type SSD = {
     brand: string;
     memory: string;
     anInterface: string;
-    
     price: number;
 };
 
