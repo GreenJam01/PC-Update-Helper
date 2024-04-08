@@ -27,6 +27,9 @@ export type HDD = {
     brand: string;
     memory: string;
     anInterface: string;
+    maxReadingSpeed: string;
+    maxRecordingSpeed: string;
+    isSSD: boolean;
     price: number;
 }
 
@@ -58,8 +61,7 @@ export type SSD = {
     brand: string;
     memory: string;
     anInterface: string;
-    maxReadingSpeed: string;
-    maxRecordingSpeed: string;
+    
     price: number;
 };
 

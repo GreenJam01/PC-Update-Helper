@@ -145,7 +145,8 @@ public class HardwareController {
     public ResponseEntity<HDDEntity> createGPU(@RequestBody HDDEntity hdd) {
         try {
             HDDEntity _gpu = hddRepository
-                    .save(new HDDEntity(hdd.getTitle(), hdd.getBrand(), hdd.getMemory(), hdd.getInterface(), hdd.getMaxRecordingSpeed(), hdd.getMaxReadingSpeed(), hdd.isSSD(),hdd.getPrice()));
+                    .save(new HDDEntity(hdd.getTitle(), hdd.getBrand(), hdd.getMemory(), hdd.getInterface()
+                            , hdd.getMaxRecordingSpeed(), hdd.getMaxReadingSpeed(), hdd.isSSD(),hdd.getPrice()));
             return new ResponseEntity<>(_gpu, HttpStatus.CREATED);
         } catch (Exception e) {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
@@ -250,6 +251,7 @@ public class HardwareController {
     @GetMapping(value = "get-all-hdd")
     public ResponseEntity<List<HDDEntity>> getAllHDD() {
         try {
+            var rep = hddRepository.findAll();
             return ResponseEntity.ok(hddRepository.findAll());
         } catch (Exception e) {
             return new ResponseEntity<>(null, HttpStatus.NO_CONTENT);
