@@ -256,5 +256,49 @@ public class HardwareController {
         }
     }
 
+    @GetMapping("/cpu/{id}")
+    public ResponseEntity<CPUEntity> getCpuById(@PathVariable("id") long id) {
+        Optional<CPUEntity> cpuData = cpuRepository.findById(id);
+
+        return cpuData.map(cpu ->
+                new ResponseEntity<>(cpu, HttpStatus.OK)).orElseGet(() ->
+                new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    }
+    @GetMapping("/gpu/{id}")
+    public ResponseEntity<GPUEntity> getGpuById(@PathVariable("id") long id) {
+        Optional<GPUEntity> gpuData = gpuRepository.findById(id);
+
+        return gpuData.map(gpu ->
+                new ResponseEntity<>(gpu, HttpStatus.OK)).orElseGet(() ->
+                new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    }
+
+    @GetMapping("/ram/{id}")
+    public ResponseEntity<RAMEntity> getRamById(@PathVariable("id") long id) {
+        Optional<RAMEntity> ramData = ramRepository.findById(id);
+
+        return ramData.map(ram ->
+                new ResponseEntity<>(ram, HttpStatus.OK)).orElseGet(() ->
+                new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    }
+
+    @GetMapping("/hdd/{id}")
+    public ResponseEntity<HDDEntity> getHddById(@PathVariable("id") long id) {
+        Optional<HDDEntity> hddData = hddRepository.findById(id);
+
+        return hddData.map(hdd ->
+                new ResponseEntity<>(hdd, HttpStatus.OK)).orElseGet(() ->
+                new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    }
+
+    @GetMapping("/motherboard/{id}")
+    public ResponseEntity<MotherboardEntity> getmotherboardById(@PathVariable("id") long id) {
+        Optional<MotherboardEntity> motherboardData = motherboardRepository.findById(id);
+
+        return motherboardData.map(motherboard ->
+                new ResponseEntity<>(motherboard, HttpStatus.OK)).orElseGet(() ->
+                new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    }
+
 
 }
