@@ -1,7 +1,7 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { AppData } from '../constants';
 import { Assembly } from '../types/assembly';
-import { fetchAssemblies } from '../store/api-actions';
+import { createAssembly, deleteAssembly, fetchAssemblies } from '../store/api-actions';
 import { toast } from 'react-toastify';
 
 export type AssembliesState = {
@@ -23,14 +23,36 @@ export const assembliesSlice = createSlice({
     },
     setAssemblies: (state, action: PayloadAction<Assembly[]>) => {
       state.assemblies = action.payload;
-    }
+    },
   },
   extraReducers(builder) {
     builder.addCase(fetchAssemblies.fulfilled, (state, action) => {
-      state.isAssembliesDataLoading = true;
+      state.isAssembliesDataLoading = false;
       state.assemblies = action.payload;
       toast.success('Сборки получены');
-    });
+    })
+      .addCase(fetchAssemblies.pending, (state)=> {
+        state.isAssembliesDataLoading = true;
+      })
+      .addCase(fetchAssemblies.rejected, (state) => {
+        state.isAssembliesDataLoading = false;
+        toast.error('Сборки не получены');
+      })
+      .addCase(deleteAssembly.fulfilled, (state, action) => {
+        console.log(action.payload.id);
+        state.assemblies = state.assemblies.filter((assembly) => assembly.id !== action.payload.id);
+        toast.success('Сборка удалена');
+      }
+      )
+      .addCase(deleteAssembly.rejected, () => {
+        toast.error('Сборка не удалена');
+      })
+      .addCase(createAssembly.fulfilled, (state, action) => {
+        state.assemblies.push(action.payload);
+        toast.success('Сборка создана');
+      }
+      );
+
   },
   selectors: {
     assemblies: (state) => state.assemblies,
@@ -39,3 +61,4 @@ export const assembliesSlice = createSlice({
 });
 
 export const AssembliesSelectors = assembliesSlice.selectors;
+export const AssembliesActions = assembliesSlice.actions;

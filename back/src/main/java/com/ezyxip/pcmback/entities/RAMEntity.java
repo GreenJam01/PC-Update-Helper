@@ -3,10 +3,13 @@ package com.ezyxip.pcmback.entities;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.Cascade;
 
 import java.util.List;
-
+@NoArgsConstructor
+@Data
 @Entity
 @Table(name = "ram")
 public class RAMEntity{
@@ -77,8 +80,6 @@ public class RAMEntity{
         this.price = price;
     }
 
-    public RAMEntity() {
-    }
 
     public Long getId() {
         return id;

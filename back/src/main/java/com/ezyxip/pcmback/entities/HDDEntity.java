@@ -3,10 +3,13 @@ package com.ezyxip.pcmback.entities;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.Cascade;
 
 import java.util.List;
-
+@NoArgsConstructor
+@Data
 @Entity
 @Table(name = "hdd")
 public class HDDEntity{
@@ -24,12 +27,31 @@ public class HDDEntity{
     @Column(name = "Memory")
     private String memory;
 
-    public HDDEntity(String title, String brand, String memory, String anInterface, Integer price) {
+    @Column(name="Interface")
+    private String Interface;
+
+    @Column(name="Price")
+    private Integer price;
+
+    @Column(name="maxRecordingSpeed")
+    private String maxRecordingSpeed;
+
+    @Column(name="maxReadingSpeed")
+    private String maxReadingSpeed;
+
+    @Column(name="isSSD")
+    private boolean isSSD;
+
+    public HDDEntity(String title, String brand, String memory, String anInterface,
+                     String maxRecordingSpeed, String maxReadingSpeed, Boolean isSSD,Integer price) {
         this.title = title;
         this.brand = brand;
         this.memory = memory;
         Interface = anInterface;
         this.price = price;
+        this.maxReadingSpeed = maxReadingSpeed;
+        this.maxRecordingSpeed = maxRecordingSpeed;
+        this.isSSD= isSSD;
     }
     @JsonIgnore
     @OneToMany(mappedBy = "hdd")
@@ -40,9 +62,6 @@ public class HDDEntity{
         return assemblies;
     }
 
-
-    @Column(name="Interface")
-    private String Interface;
 
     public String getBrand() {
         return brand;
@@ -76,11 +95,8 @@ public class HDDEntity{
         this.price = price;
     }
 
-    @Column(name="Price")
-    private Integer price;
 
-    public HDDEntity() {
-    }
+
 
     public Long getId() {
         return id;

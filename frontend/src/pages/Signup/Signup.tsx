@@ -1,15 +1,14 @@
 import React, { useState } from 'react';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-import { store } from '../../store';
 import { signupAction } from '../../store/api-actions';
 import { AuthData } from '../../types/auth-data';
+import { useAppDispatch } from '../../hooks/use-app';
 
 
 const SignupPage: React.FC = () => {
   const [successful, setSuccessful] = useState<boolean>(false);
-  const [message, setMessage] = useState<string>('');
-
+  const dispatch = useAppDispatch();
   const initialValues: AuthData = {
     username: '',
     email: '',
@@ -44,7 +43,7 @@ const SignupPage: React.FC = () => {
 
   const handleRegister = (formValue: AuthData) => {
     const { username, email, password } = formValue;
-    store.dispatch(signupAction({username, email, password}));
+    dispatch(signupAction({username, email, password}));
 
   };
 
@@ -104,18 +103,6 @@ const SignupPage: React.FC = () => {
               </div>
             )}
 
-            {message && (
-              <div className="form-group">
-                <div
-                  className={
-                    successful ? 'alert alert-success' : 'alert alert-danger'
-                  }
-                  role="alert"
-                >
-                  {message}
-                </div>
-              </div>
-            )}
           </Form>
         </Formik>
       </div>

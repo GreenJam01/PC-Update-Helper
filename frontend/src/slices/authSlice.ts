@@ -48,6 +48,10 @@ export const authSlice = createSlice({
       ).addCase(signoutAction.fulfilled, (state) => {
         state.authorizationStatus = AuthorizationStatus.NoAuth;
         state.user = null;
+      })
+      .addCase(signupAction.rejected, (state) => {
+        state.authorizationStatus = AuthorizationStatus.NoAuth;
+        toast.warn('Ошибка регистрации');
       });
   },
   selectors: {

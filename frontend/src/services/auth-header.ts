@@ -1,5 +1,7 @@
+import { Nullable } from "../types/nullable";
+
 export default function authHeader() {
-  const userStr = localStorage.getItem('user');
+  const userStr : Nullable<string> = localStorage.getItem('user');
   let user = null;
   if (userStr) {
     user = JSON.parse(userStr);

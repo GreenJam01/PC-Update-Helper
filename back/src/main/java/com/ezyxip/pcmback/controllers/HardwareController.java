@@ -145,7 +145,7 @@ public class HardwareController {
     public ResponseEntity<HDDEntity> createGPU(@RequestBody HDDEntity hdd) {
         try {
             HDDEntity _gpu = hddRepository
-                    .save(new HDDEntity(hdd.getTitle(), hdd.getBrand(), hdd.getMemory(), hdd.getInterface(), hdd.getPrice()));
+                    .save(new HDDEntity(hdd.getTitle(), hdd.getBrand(), hdd.getMemory(), hdd.getInterface(), hdd.getMaxRecordingSpeed(), hdd.getMaxReadingSpeed(), hdd.isSSD(),hdd.getPrice()));
             return new ResponseEntity<>(_gpu, HttpStatus.CREATED);
         } catch (Exception e) {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);

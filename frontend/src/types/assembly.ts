@@ -1,7 +1,7 @@
 import { CPU, GPU, HDD, Motherboard, RAM } from './hardwares';
 
 export type Assembly = {
-    id?: string;
+    id: number;
     cpu?: CPU;
     gpu?: GPU;
     ram?: RAM;

@@ -4,10 +4,13 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jdk.jfr.Frequency;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.Cascade;
 
 import java.util.List;
-
+@Data
+@NoArgsConstructor
 @Entity
 @Table(name = "cpu")
 public class CPUEntity{
@@ -91,8 +94,6 @@ public class CPUEntity{
         Price = price;
     }
 
-    public CPUEntity() {
-    }
 
     public Long getId() {
         return id;

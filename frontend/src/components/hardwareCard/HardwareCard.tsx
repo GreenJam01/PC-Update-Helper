@@ -1,17 +1,16 @@
 import { Link } from 'react-router-dom';
 import { HardwareType } from '../../types/hardwares';
+import { AppRoutes } from '../../constants';
 
-type HardwareCardProps = {hardware: HardwareType}
+type HardwareCardProps = {hardware: HardwareType; type: string}
 export function HardwareCard(props: HardwareCardProps){
   return(
-    <Link to={`/${typeof props.hardware}/${props.hardware.id}`}>
+    <Link to={`${AppRoutes.HardwaresPage}/${props.type}/${props.hardware.id}`}>
       <article
         className={'hardware__card'}
       >
         <div className={'hardware__image-wrapper hardware-card__image-wrapper'}>
-          {/* <a href="#"> */}
           <img className="hardware-card__image" src={props.hardware.urlImage} width="260" height="200" alt="hardware image"/>
-          {/* </a> */}
         </div>
         <div className="hardware-card__info">
           <div className="hardware-card__price-wrapper">

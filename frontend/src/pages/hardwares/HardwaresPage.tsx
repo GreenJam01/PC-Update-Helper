@@ -3,6 +3,7 @@ import { HardwaresType } from '../../types/hardwares';
 import { HardwareHeader } from './HardwaresHeader';
 export type HardwarePageProps = {
   hardwares: HardwaresType;
+  type: string;
 }
 export function HardwaresPage(props:HardwarePageProps){
   return (
@@ -20,7 +21,7 @@ export function HardwaresPage(props:HardwarePageProps){
           <div>
             <section >
               {/* <SortForm/> */}
-              <HardwareList hardwares={props.hardwares} />
+              <HardwareList hardwares={props.hardwares} type ={props.type} />
             </section>
           </div>
         </div>

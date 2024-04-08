@@ -2,14 +2,16 @@ package com.ezyxip.pcmback.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
-
+@Data
+@NoArgsConstructor
 @Entity
 @Table(name = "Assemblies")
 public class AssemblyEntity {
 
-    @JsonIgnore
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -43,8 +45,6 @@ public class AssemblyEntity {
         return id;
     }
 
-    public AssemblyEntity() {
-    }
 
     public AssemblyEntity(CPUEntity cpu,
                           GPUEntity gpu,

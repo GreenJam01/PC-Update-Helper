@@ -69,8 +69,8 @@ export const signupAction = createAsyncThunk<UserData,AuthData, {
     extra: AxiosInstance;
   }>(
     'user/signup',
-    async ({email, password}, {extra: api}) => {
-      const {data: user} = await api.post<UserData>(APIRoutes.Signup, {email, password});
+    async ({username,email, password}, {extra: api}) => {
+      const {data: user} = await api.post<UserData>(APIRoutes.Signup, {username,email, password});
       return user;
     },
   );
@@ -99,3 +99,15 @@ export const createAssembly = createAsyncThunk<Assembly, Assembly, {
       return assemblyCreated;
     },
   );
+
+export const deleteAssembly = createAsyncThunk<Assembly, Assembly, {
+  dispatch: AppDispatch;
+  state: State;
+  extra: AxiosInstance;
+}>(
+  'data/deleteAssembly',
+  async (assembly, { extra: api}) => {
+    await api.delete<Assembly>(`${APIRoutes.Assembly }/${ assembly.id}`);
+    return assembly;
+  },
+);

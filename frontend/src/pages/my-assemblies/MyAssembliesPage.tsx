@@ -1,15 +1,14 @@
 import {LinkButton} from '../../components/link-button/link-button';
 import {Container} from '../../components/container/container';
-import {useEffect, useState} from 'react';
 import { Button } from '../../components/button/button';
-import { Assembly } from '../../types/assembly';
-import { useAppSelector } from '../../hooks/use-app';
+import { useAppDispatch, useAppSelector } from '../../hooks/use-app';
 import { AssembliesSelectors } from '../../slices/assembliesSlice';
+import { deleteAssembly } from '../../store/api-actions';
 
 
 export function MyAssembliesPage(){
-
   const assemblies = useAppSelector(AssembliesSelectors.assemblies);
+  const dispatch = useAppDispatch();
   return(
     <>
       <Container>
@@ -23,7 +22,12 @@ export function MyAssembliesPage(){
               <p>Оперативная память: {assembly.ram?.title}</p>
               <p>Видеокарта: {assembly.gpu?.title}</p>
               <p>HDD: {assembly.hdd?.title}</p>
-              {/* <Button onClick={() => handleDelete(assembly.id)}>Удалить</Button> */}
+              <Button onClick={() => {
+                dispatch(deleteAssembly(assembly));
+              }}
+              >
+                Удалить
+              </Button>
             </div>
           ))}
         </div>

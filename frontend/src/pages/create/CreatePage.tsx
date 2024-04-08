@@ -63,13 +63,13 @@ export function CreatePage() {
       <Container className={'assemble_page__container'}>
         <div className={'assemble_page__section a6 xs12 s12'}>
           <h1>Процессор:</h1>
+          {cpus &&
           <Select options={cpus.map((cpu) => ({ value: cpu, label: cpu.title }))}
             ref={cpuRef}
-
             styles={selectStyles}
-          />
+          />}
           <h1>Видеокарта:</h1>
-          {
+          { gpus &&
             <Select options={gpus.map((gpu)=> ({value:gpu, label:gpu.title}))}
               ref={gpuRef}
               styles={selectStyles}
@@ -77,6 +77,7 @@ export function CreatePage() {
           }
           <h1>HDD:</h1>
           {
+            hdds &&
             <Select options={hdds.map((hdd)=> ({value:hdd, label:hdd.title}))}
               ref={hddRef}
               styles={selectStyles}
@@ -86,6 +87,7 @@ export function CreatePage() {
         <div className={'assemble_page__section a6 xs12 s12'}>
           <h1>Материнская плата:</h1>
           {
+            motherboards &&
             <Select options={motherboards.map((motherboard)=> ({value: motherboard, label: motherboard.title}))}
               styles={selectStyles}
               ref={motherboardRef}
@@ -93,6 +95,7 @@ export function CreatePage() {
           }
           <h1>Оперативная память:</h1>
           {
+            rams &&
             <Select options={rams.map((ram) =>({value:ram, label: ram.title}))}
               styles={selectStyles}
               ref={ramRef}

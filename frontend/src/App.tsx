@@ -46,11 +46,11 @@ function App() {
           <Route index path={AppRoutes.HardwaresPage}
             element = {<Navigate to ={`${AppRoutes.HardwaresPage}/${HARDWARES.cpu}`}/>}
           />
-          <Route path={`${AppRoutes.HardwaresPage}/${HARDWARES.cpu}`} element = {<HardwaresPage hardwares={cpus} />}/>
-          <Route path={`${AppRoutes.HardwaresPage}/${HARDWARES.gpu}`} element = {<HardwaresPage hardwares={gpus}/>}/>
-          <Route path={`${AppRoutes.HardwaresPage}/${HARDWARES.hdd}`} element = {<HardwaresPage hardwares={hdds}/>}/>
-          <Route path={`${AppRoutes.HardwaresPage}/${HARDWARES.ram}`} element = {<HardwaresPage hardwares={rams}/>}/>
-          <Route path={`${AppRoutes.HardwaresPage}/${HARDWARES.motherboard}`} element = {<HardwaresPage hardwares={motherboards}/>}/>
+          <Route path={`${AppRoutes.HardwaresPage}/${HARDWARES.cpu}`} element = {<HardwaresPage hardwares={cpus} type={HARDWARES.cpu}/>}/>
+          <Route path={`${AppRoutes.HardwaresPage}/${HARDWARES.gpu}`} element = {<HardwaresPage hardwares={gpus} type={HARDWARES.gpu}/>}/>
+          <Route path={`${AppRoutes.HardwaresPage}/${HARDWARES.hdd}`} element = {<HardwaresPage hardwares={hdds} type={HARDWARES.hdd}/>}/>
+          <Route path={`${AppRoutes.HardwaresPage}/${HARDWARES.ram}`} element = {<HardwaresPage hardwares={rams} type={HARDWARES.ram}/>}/>
+          <Route path={`${AppRoutes.HardwaresPage}/${HARDWARES.motherboard}`} element = {<HardwaresPage hardwares={motherboards} type={HARDWARES.motherboard}/>}/>
 
         </Route>
         <Route path = {AppRoutes.CreatePage} element = {<CreatePage/>}/>
