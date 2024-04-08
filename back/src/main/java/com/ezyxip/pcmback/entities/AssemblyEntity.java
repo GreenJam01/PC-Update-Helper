@@ -14,30 +14,30 @@ public class AssemblyEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "cpu_id")
-    private CPUEntity cpuEntity;
+    private CPUEntity cpu;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "gpu_id")
-    private GPUEntity gpuEntity;
+    private GPUEntity gpu;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "hdd_id")
-    private HDDEntity hddEntity;
+    private HDDEntity hdd;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "motherboard_id")
-    private MotherboardEntity motherboardEntity;
+    private MotherboardEntity motherboard;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "ram_id")
-    private RAMEntity ramEntity;
+    private RAMEntity ram;
 
     public Long getId() {
         return id;
@@ -46,16 +46,16 @@ public class AssemblyEntity {
     public AssemblyEntity() {
     }
 
-    public AssemblyEntity(CPUEntity cpuEntity,
-                          GPUEntity gpuEntity,
-                          HDDEntity hddEntity,
-                          MotherboardEntity motherboardEntity,
-                          RAMEntity ramEntity) {
-        this.cpuEntity = cpuEntity;
-        this.gpuEntity = gpuEntity;
-        this.hddEntity = hddEntity;
-        this.motherboardEntity = motherboardEntity;
-        this.ramEntity = ramEntity;
+    public AssemblyEntity(CPUEntity cpu,
+                          GPUEntity gpu,
+                          HDDEntity hdd,
+                          MotherboardEntity motherboard,
+                          RAMEntity ram) {
+        this.cpu = cpu;
+        this.gpu = gpu;
+        this.hdd = hdd;
+        this.motherboard = motherboard;
+        this.ram = ram;
        // this.ssdEntity = ssdEntity;
     }
 
@@ -64,43 +64,43 @@ public class AssemblyEntity {
     }
 
     public CPUEntity getCPU() {
-        return cpuEntity;
+        return cpu;
     }
 
     public void setCPU(CPUEntity cpuEntity) {
-        this.cpuEntity = cpuEntity;
+        this.cpu = cpuEntity;
     }
 
     public GPUEntity getGPU() {
-        return gpuEntity;
+        return gpu;
     }
 
     public void setGPU(GPUEntity gpuEntity) {
-        this.gpuEntity = gpuEntity;
+        this.gpu = gpuEntity;
     }
 
     public HDDEntity getHDD() {
-        return hddEntity;
+        return hdd;
     }
 
     public void setHDD(HDDEntity hddEntity) {
-        this.hddEntity = hddEntity;
+        this.hdd = hddEntity;
     }
 
     public MotherboardEntity getMotherboard() {
-        return motherboardEntity;
+        return motherboard;
     }
 
     public void setMotherboard(MotherboardEntity motherboardEntity) {
-        this.motherboardEntity = motherboardEntity;
+        this.motherboard = motherboardEntity;
     }
 
     public RAMEntity getRAM() {
-        return ramEntity;
+        return ram;
     }
 
     public void setRAM(RAMEntity ramEntity) {
-        this.ramEntity = ramEntity;
+        this.ram = ramEntity;
     }
 
 //    public SSDEntity getSSD() {
@@ -115,11 +115,11 @@ public class AssemblyEntity {
     public String toString() {
         return "AssemblyEntity{" +
                 "id=" + id +
-                ", CPU='" + cpuEntity + '\'' +
-                ", GPU='" + gpuEntity + '\'' +
-                ", RAM='" + ramEntity + '\'' +
-                ", motherboard='" + motherboardEntity + '\'' +
-                ", HDD='" + hddEntity + '\'' +
+                ", CPU='" + cpu + '\'' +
+                ", GPU='" + gpu + '\'' +
+                ", RAM='" + ram + '\'' +
+                ", motherboard='" + motherboard + '\'' +
+                ", HDD='" + hdd + '\'' +
                 '}';
     }
 }

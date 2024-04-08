@@ -33,7 +33,7 @@ public class GPUEntity{
     @Column(name = "Price")
     private Integer price;
     @JsonIgnore
-    @OneToMany(mappedBy = "gpuEntity")
+    @OneToMany(mappedBy = "gpu")
     @Cascade(org.hibernate.annotations.CascadeType.ALL)
     private List<AssemblyEntity> assemblies;
 

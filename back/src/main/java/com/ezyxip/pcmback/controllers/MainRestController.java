@@ -75,7 +75,8 @@ public class MainRestController {
     @GetMapping(value = "/assemblies", produces = APPLICATION_JSON_VALUE)
     public ResponseEntity<List<AssemblyEntity>> getAllAssemblies() {
         try {
-            return ResponseEntity.ok(assemblyRepository.findAll());
+            List<AssemblyEntity> assemblies = assemblyRepository.findAll();
+            return ResponseEntity.ok(assemblies);
         } catch (Exception e) {
             return new ResponseEntity<>(null, HttpStatus.NO_CONTENT);
         }

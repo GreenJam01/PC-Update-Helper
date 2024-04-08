@@ -32,7 +32,7 @@ public class HDDEntity{
         this.price = price;
     }
     @JsonIgnore
-    @OneToMany(mappedBy = "hddEntity")
+    @OneToMany(mappedBy = "hdd")
     @Cascade(org.hibernate.annotations.CascadeType.ALL)
     private List<AssemblyEntity> assemblies;
 

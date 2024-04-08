@@ -1,6 +1,7 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { AppData } from '../constants';
 import { Assembly } from '../types/assembly';
+import { fetchAssemblies } from '../store/api-actions';
 
 export type AssembliesState = {
     assemblies: Assembly[];
@@ -22,6 +23,12 @@ export const assembliesSlice = createSlice({
     setAssemblies: (state, action: PayloadAction<Assembly[]>) => {
       state.assemblies = action.payload;
     }
+  },
+  extraReducers(builder) {
+    builder.addCase(fetchAssemblies.fulfilled, (state, action) => {
+      state.isAssembliesDataLoading = true;
+      state.assemblies = action.payload;
+    });
   },
   selectors: {
     assemblies: (state) => state.assemblies,

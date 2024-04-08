@@ -28,7 +28,7 @@ public class RAMEntity{
     @Column(name = "Price")
     private Integer price;
     @JsonIgnore
-    @OneToMany(mappedBy = "ramEntity")
+    @OneToMany(mappedBy = "ram")
     @Cascade(org.hibernate.annotations.CascadeType.ALL)
     private List<AssemblyEntity> assemblies;
 

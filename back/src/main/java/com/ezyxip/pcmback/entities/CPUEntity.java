@@ -59,7 +59,7 @@ public class CPUEntity{
     @Column(name = "ThreadsNumber")
     private  String threadsNumber;
     @JsonIgnore
-    @OneToMany(mappedBy = "cpuEntity")
+    @OneToMany(mappedBy = "cpu")
     @Cascade(org.hibernate.annotations.CascadeType.ALL)
     private List<AssemblyEntity> assemblies;
 

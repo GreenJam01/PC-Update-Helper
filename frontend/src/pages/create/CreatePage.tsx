@@ -1,16 +1,15 @@
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import {LinkButton} from '../../components/link-button/link-button';
 import {Container} from '../../components/container/container';
-import {SelectList} from '../../components/select-list/select-list';
 // import {hdd, motherboards, processors, videoCards, RAMs, SSD} from "../../data/appointment-list";
 import {Button} from '../../components/button/button';
-import {useEffect, useRef, useState} from 'react';
-import {Assembly} from '../../types/assembly';
-import Select, { Options, SelectInstance } from 'react-select';
+import {useRef} from 'react';
+import Select, { SelectInstance } from 'react-select';
 import { useAppDispatch, useAppSelector } from '../../hooks/use-app';
 import { hardwaresSelectors } from '../../slices/hardwareSlice';
 import { createAssembly } from '../../store/api-actions';
 import { CPU, GPU, HDD, Motherboard, RAM } from '../../types/hardwares';
-import { onChange } from 'react-toastify/dist/core/store';
+import { AppRoutes } from '../../constants';
 //import { motherboards } from "../../data/appointment-list";
 
 export function CreatePage() {
@@ -21,27 +20,25 @@ export function CreatePage() {
   const hddRef = useRef<SelectInstance<HDD> | null>(null);
   const motherboardRef = useRef<SelectInstance<Motherboard> | null>(null);
 
-  
 
   const handleFormSubmit = () => {
-    if (cpuRef.current!==null && gpuRef.current!==null && ramRef.current !== null&&
-      hddRef.current!==null && motherboardRef.current!==null
+    if (cpuRef.current !== null && gpuRef.current !== null && ramRef.current !== null &&
+      hddRef.current !== null && motherboardRef.current !== null
     ) {
-      console.log(cpuRef.current.getValue().at(0).value)
       const cpu = cpuRef.current.getValue().at(0).value;
       const gpu = gpuRef.current.getValue().at(0).value;
       const ram = ramRef.current.getValue().at(0).value;
       const hdd = hddRef.current.getValue().at(0).value;
       const motherboard = motherboardRef.current.getValue().at(0).value;
       dispatch(createAssembly(
-        {cpu: cpu, 
-        ram: ram,
-        gpu: gpu, 
-        hdd: hdd, 
-        motherboard: motherboard}));
-      };
+        {cpu: cpu,
+          ram: ram,
+          gpu: gpu,
+          hdd: hdd,
+          motherboard: motherboard}));
     }
-  
+  };
+
 
   const cpus = useAppSelector(hardwaresSelectors.cpu);
   const gpus = useAppSelector(hardwaresSelectors.gpu);
@@ -67,39 +64,47 @@ export function CreatePage() {
         <div className={'assemble_page__section a6 xs12 s12'}>
           <h1>Процессор:</h1>
           <Select options={cpus.map((cpu) => ({ value: cpu, label: cpu.title }))}
-          ref={cpuRef}
-            
+            ref={cpuRef}
+
             styles={selectStyles}
           />
           <h1>Видеокарта:</h1>
-          {<Select options={gpus.map((gpu)=> ({value:gpu, label:gpu.title}))}
-          ref={gpuRef}
-            styles={selectStyles}
-          /> }
+          {
+            <Select options={gpus.map((gpu)=> ({value:gpu, label:gpu.title}))}
+              ref={gpuRef}
+              styles={selectStyles}
+            />
+          }
           <h1>HDD:</h1>
-          {<Select options={hdds.map((hdd)=> ({value:hdd, label:hdd.title}))}
-          ref={hddRef}
-            styles={selectStyles}
-          /> }
+          {
+            <Select options={hdds.map((hdd)=> ({value:hdd, label:hdd.title}))}
+              ref={hddRef}
+              styles={selectStyles}
+            />
+          }
         </div>
         <div className={'assemble_page__section a6 xs12 s12'}>
           <h1>Материнская плата:</h1>
-          {<Select options={motherboards.map((motherboard)=> ({value: motherboard, label: motherboard.title}))}
-            styles={selectStyles}
-            ref={motherboardRef}
-          /> }
+          {
+            <Select options={motherboards.map((motherboard)=> ({value: motherboard, label: motherboard.title}))}
+              styles={selectStyles}
+              ref={motherboardRef}
+            />
+          }
           <h1>Оперативная память:</h1>
-          {<Select options={rams.map((ram) =>({value:ram, label: ram.title}))}
-            styles={selectStyles}
-            ref={ramRef}
-          /> }
+          {
+            <Select options={rams.map((ram) =>({value:ram, label: ram.title}))}
+              styles={selectStyles}
+              ref={ramRef}
+            />
+          }
         </div>
       </Container>
       <div className={'isolated center'}>
         <Button onClick={handleFormSubmit}>Собрать</Button>
       </div>
       <div className={'isolated center'}>
-        <LinkButton href={'/app/'}>На главную</LinkButton>
+        <LinkButton href={AppRoutes.Main}>На главную</LinkButton>
       </div>
     </>
   );

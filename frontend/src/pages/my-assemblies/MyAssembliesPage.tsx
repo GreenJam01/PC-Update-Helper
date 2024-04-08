@@ -10,7 +10,6 @@ import { AssembliesSelectors } from '../../slices/assembliesSlice';
 export function MyAssembliesPage(){
 
   const assemblies = useAppSelector(AssembliesSelectors.assemblies);
-
   return(
     <>
       <Container>
@@ -19,11 +18,11 @@ export function MyAssembliesPage(){
         <div className={'ao xs12 s12 center myAssembly'}>
           {assemblies.map((assembly) => (
             <div className={'someAssembly'} key={assembly.id}>
-              <p>Материнская плата: {assembly.MotherboardEntity.title}</p>
-              <p>Процессор: {assembly.CPUEntity.title}</p>
-              <p>Оперативная память: {assembly.RAMEntity.title}</p>
-              <p>Видеокарта: {assembly.GPUEntity.title}</p>
-              <p>HDD: {assembly.HDDEntity.title}</p>
+              <p>Материнская плата: {assembly.motherboard?.title}</p>
+              <p>Процессор: {assembly.cpu?.title}</p>
+              <p>Оперативная память: {assembly.ram?.title}</p>
+              <p>Видеокарта: {assembly.gpu?.title}</p>
+              <p>HDD: {assembly.hdd?.title}</p>
               {/* <Button onClick={() => handleDelete(assembly.id)}>Удалить</Button> */}
             </div>
           ))}

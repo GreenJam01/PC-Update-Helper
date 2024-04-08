@@ -45,7 +45,10 @@ export const authSlice = createSlice({
         state.authorizationStatus = AuthorizationStatus.Auth;
         state.user = action.payload;
       }
-      );
+      ).addCase(signoutAction.fulfilled, (state) => {
+        state.authorizationStatus = AuthorizationStatus.NoAuth;
+        state.user = null;
+      });
   },
   selectors: {
     getAuthorizationStatus: (state) => state.authorizationStatus,

@@ -94,11 +94,6 @@ export const createAssembly = createAsyncThunk<Assembly, Assembly, {
   }>(
     'data/createAssembly',
     async (assembly, { extra: api}) => {
-      console.log({'gpu':assembly.gpu,
-        'motherboard':assembly.motherboard,
-        'hdd':assembly.hdd,
-        'cpu':assembly.cpu,
-        'ram':assembly.ram});
       const {data: assemblyCreated} = await api.post<Assembly>(APIRoutes.Assembly,
         assembly);
       return assemblyCreated;

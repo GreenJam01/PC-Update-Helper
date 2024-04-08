@@ -27,7 +27,7 @@ public class MotherboardEntity{
     @Column(name ="MemoryType")
     private String memoryType;
     @JsonIgnore
-    @OneToMany(mappedBy = "motherboardEntity")
+    @OneToMany(mappedBy = "motherboard")
     @Cascade(org.hibernate.annotations.CascadeType.ALL)
     private List<AssemblyEntity> assemblies;
 
