@@ -6,6 +6,7 @@
 	text-decoration: none;
 }
 .hardware__card__wrapper {
+	width: 270px;
 	text-decoration: none;
 	border: 3px solid #786cffcb;
 	border-radius: 15px;

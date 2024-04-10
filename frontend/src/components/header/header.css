@@ -1,9 +1,13 @@
 .header {
 	display: flex;
-	padding: 25px 8px 8px 35px;
+	padding: 8px;
     align-items: center;
     justify-content: space-around;
-	/* background-color: #0a0075; */
+	background-color: #efefef;
+    border: 3px solid #ffdea0;
+    border-radius: 30px;
+    width: 95%;
+    margin: 0 auto;
 }
 
 .navigation {
@@ -17,11 +21,12 @@
 }
 .navigation_button {
 	text-decoration: none;
-	color: #ffe17e;
 	transition: 0.5s;
 	font-size: 24px;
     font-weight: 700;
-	text-shadow: 0 0 4px #000000;
+	color: #ffd858;
+    text-shadow: 0 0 4px #000000;
+    font-family: cursive;
 	/* -webkit-text-stroke: 0.2px #00000050; */
 }
 .navigation_button:hover {

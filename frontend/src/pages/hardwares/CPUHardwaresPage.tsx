@@ -3,7 +3,8 @@ import { HardwareList } from '../../components/hardwareList/HardwareList';
 import { useAppSelector } from '../../hooks/use-app';
 import { hardwaresSelectors } from '../../slices/hardwareSlice';
 import { HardwareHeader } from './HardwaresHeader';
-import './CPUHardwaresPage.css'
+import './HardwaresPage.css'
+import { Header } from '../../components/header/header';
 export type CPUHardwarePageProps = {
   type: string;
 }
@@ -16,6 +17,7 @@ export function CPUHardwaresPage(props:CPUHardwarePageProps){
     .concat(<option value=''>Без фильтра</option>).reverse();
   return (
     <div>
+      <Header/>
       <main>
         <h1 className='componentTitle'>CPU</h1>
         <div>
