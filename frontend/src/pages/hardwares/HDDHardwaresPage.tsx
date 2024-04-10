@@ -3,6 +3,8 @@ import { HardwareList } from '../../components/hardwareList/HardwareList';
 import { useAppSelector } from '../../hooks/use-app';
 import { hardwaresSelectors } from '../../slices/hardwareSlice';
 import { HardwareHeader } from './HardwaresHeader';
+import './HardwaresPage.css'
+import { Header } from '../../components/header/header';
 export type HDDHardwarePageProps = {
   type: string;
 }
@@ -15,21 +17,22 @@ export function HDDHardwaresPage(props:HDDHardwarePageProps){
     .concat(<option value=''>Без фильтра</option>).reverse();
   return (
     <div>
+      <Header/>
       <main>
-        <h1>HDD</h1>
+        <h1 className='componentTitle'>HDD</h1>
         <div>
           <section >
-            <ul >
+            <ul className='componentTitles'>
               <HardwareHeader/>
             </ul>
           </section>
         </div>
-        <div >
-          <div>
-            <section >
-              <select onChange={(e) => setFilterHdd(e.target.value)}>
+        <div className='componentWrapper'>
+          <div className='listWrapper'>
+              <select className='listFilter' onChange={(e) => setFilterHdd(e.target.value)}>
                 {selectFilterOptions}
               </select>
+            <section className='hardware-listWrapper'>
               <HardwareList hardwares={hdds.filter((i) => i.brand === filterHdd || filterHdd === '')} type ={props.type} />
             </section>
           </div>

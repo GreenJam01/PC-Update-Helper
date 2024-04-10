@@ -3,6 +3,8 @@ import { HardwareList } from '../../components/hardwareList/HardwareList';
 import { useAppSelector } from '../../hooks/use-app';
 import { hardwaresSelectors } from '../../slices/hardwareSlice';
 import { HardwareHeader } from './HardwaresHeader';
+import './HardwaresPage.css'
+import { Header } from '../../components/header/header';
 export type MotherboardHardwarePageProps = {
   type: string;
 }
@@ -15,21 +17,22 @@ export function MotherboardHardwaresPage(props:MotherboardHardwarePageProps){
     .concat(<option value=''>Без фильтра</option>).reverse();
   return (
     <div>
+      <Header/>
       <main>
-        <h1>CPU</h1>
+        <h1 className='componentTitle'>CPU</h1>
         <div>
           <section >
-            <ul >
+            <ul className='componentTitles'>
               <HardwareHeader/>
             </ul>
           </section>
         </div>
-        <div >
-          <div>
-            <select onChange={(e) => setFilterMotherboard(e.target.value)}>
+        <div className='componentWrapper'>
+          <div className='listWrapper'>
+            <select className='listFilter' onChange={(e) => setFilterMotherboard(e.target.value)}>
               {selectFilterOptions}
             </select>
-            <section >
+            <section className='hardware-listWrapper'>
               <HardwareList
                 hardwares={motherboards.filter((i) => i.brand === filterMotherboard || filterMotherboard === '')}
                 type ={props.type}

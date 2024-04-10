@@ -3,6 +3,8 @@ import { HardwareList } from '../../components/hardwareList/HardwareList';
 import { useAppSelector } from '../../hooks/use-app';
 import { hardwaresSelectors } from '../../slices/hardwareSlice';
 import { HardwareHeader } from './HardwaresHeader';
+import './HardwaresPage.css'
+import { Header } from '../../components/header/header';
 export type GPUHardwarePageProps = {
   type: string;
 }
@@ -15,21 +17,22 @@ export function GPUHardwaresPage(props:GPUHardwarePageProps){
     .concat(<option value=''>Без фильтра</option>).reverse();
   return (
     <div>
+      <Header/>
       <main>
-        <h1>GPU</h1>
+        <h1 className='componentTitle'>GPU</h1>
         <div>
           <section >
-            <ul >
+            <ul className='componentTitles'>
               <HardwareHeader/>
             </ul>
           </section>
         </div>
-        <div >
-          <div>
-            <select onChange={(e) => setFilterGpu(e.target.value)}>
+        <div className='componentWrapper'>
+          <div className='listWrapper'>
+            <select className='listFilter' onChange={(e) => setFilterGpu(e.target.value)}>
               {selectFilterOptions}
             </select>
-            <section >
+            <section className='hardware-listWrapper'>
               <HardwareList hardwares={gpus.filter((i) => i.brand === filterGpu || filterGpu === '')} type ={props.type} />
             </section>
           </div>
