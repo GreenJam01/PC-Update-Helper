@@ -3,6 +3,7 @@ import { HardwareList } from '../../components/hardwareList/HardwareList';
 import { useAppSelector } from '../../hooks/use-app';
 import { hardwaresSelectors } from '../../slices/hardwareSlice';
 import { HardwareHeader } from './HardwaresHeader';
+import './CPUHardwaresPage.css'
 export type CPUHardwarePageProps = {
   type: string;
 }
@@ -16,20 +17,20 @@ export function CPUHardwaresPage(props:CPUHardwarePageProps){
   return (
     <div>
       <main>
-        <h1>CPU</h1>
+        <h1 className='componentTitle'>CPU</h1>
         <div>
-          <section >
-            <ul >
+          <section>
+            <ul className='componentTitles'>
               <HardwareHeader/>
             </ul>
           </section>
         </div>
-        <div >
-          <div>
-            <select onChange={(e) => setFilterCpu(e.target.value)}>
+        <div className='componentWrapper'>
+          <div className='listWrapper'>
+            <select className='listFilter' onChange={(e) => setFilterCpu(e.target.value)}>
               {selectFilterOptions}
             </select>
-            <section >
+            <section className='hardware-listWrapper'>
               <HardwareList hardwares={cpus.filter((i) => i.brand === filterCpu || filterCpu === '')} type ={props.type} />
             </section>
           </div>

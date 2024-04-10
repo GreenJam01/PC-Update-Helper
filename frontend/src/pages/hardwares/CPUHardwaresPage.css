@@ -1,0 +1,33 @@
+.componentTitles {
+	list-style-type: none;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+}
+.componentTitle {
+	text-align: center;
+	color: #ffd858;
+	text-shadow: 0 0 4px #000000;
+	font-family: cursive;
+}
+.componentWrapper {
+	display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.listWrapper{
+	width: 80%;
+}
+.hardware-list {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	flex-wrap: wrap;
+}
+.listFilter {
+	display: block;
+    margin: 0 auto;
+}
+.hardware-listWrapper {
+	margin-top: 20px;
+}

@@ -1,0 +1,21 @@
+.hardware-card__name-text {
+	text-decoration: none;
+	color: #0058d3;
+}
+.tabs__item {
+	text-decoration: none;
+}
+.hardware__card__wrapper {
+	text-decoration: none;
+	border: 3px solid #786cffcb;
+	border-radius: 15px;
+	padding: 12px;
+	background-color: #fff;
+	margin: 5px;
+}
+.hardware-card__price-value {
+	color: #0058d3;
+}
+.hardware-card__name-text-brand {
+	font-weight: 600;
+}

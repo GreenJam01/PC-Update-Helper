@@ -1,2 +1,2 @@
 
-export const hardwares = ['cpu', 'gpu', 'ram', 'hdd', 'motherboard'];
+export const hardwares = ['Cpu', 'Gpu', 'Ram', 'Hdd', 'Motherboard'];

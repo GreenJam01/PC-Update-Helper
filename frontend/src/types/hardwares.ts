@@ -1,6 +1,6 @@
 export type CPU = {
     id: number;
-    urlImage: string;
+    urlImage: 'https://ir.ozone.ru/s3/multimedia-f/6685279503.jpg';
     title: string;
     price: number;
     brand: string;

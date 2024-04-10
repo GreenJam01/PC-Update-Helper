@@ -1,0 +1,17 @@
+.hardwareList {
+	display: flex;
+    justify-content: space-around;
+}
+.hardware__item {
+	list-style-type: none;
+	color: #000;
+}
+.hardwareTitle {
+	text-align: center;
+	color: #000;
+}
+.hardware-link__title {
+	font-size: 22px;
+	font-family: cursive;
+	color: #002fff;;
+}
