@@ -54,7 +54,10 @@ export const hardwareSlice = createSlice({
       });
   },
   selectors: {
-    cpu: (state) => state.cpu,
+    cpu: (state) => state.cpu.map((cpu) => ({
+      ...cpu,
+      urlImage: 'https://ir.ozone.ru/s3/multimedia-f/6685279503.jpg'
+    })),
     gpu: (state) => state.gpu,
     ram: (state) => state.ram,
     motherboard: (state) => state.motherboard,
