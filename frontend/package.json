@@ -10,6 +10,9 @@
     "test": "vitest --passWithNoTests"
   },
   "dependencies": {
+    "@emotion/react": "^11.11.4",
+    "@emotion/styled": "^11.11.5",
+    "@mui/material": "^5.15.15",
     "axios": "^1.6.8",
     "classnames": "2.3.2",
     "formik": "^2.4.5",
