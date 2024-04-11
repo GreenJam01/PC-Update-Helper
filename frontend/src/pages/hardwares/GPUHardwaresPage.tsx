@@ -30,7 +30,7 @@ export function GPUHardwaresPage(props:GPUHardwarePageProps){
         </div>
         <div className='componentWrapper'>
           <div className='listWrapper'>
-            <Select className='listFilter' onChange={(e) => setFilterGpu(e.target.value)}>
+            <Select className='listFilter' onChange={(e) => setFilterGpu(e.target.value as string)}>
               {selectFilterOptions}
             </Select>
             <section className='hardware-listWrapper'>

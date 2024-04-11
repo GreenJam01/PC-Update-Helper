@@ -32,7 +32,7 @@ export function RAMHardwaresPage(props:RAMHardwarePageProps){
         </div>
         <div className='componentWrapper'>
           <div className='listWrapper'>
-          <Select className='listFilter' onChange={(e) => setFilterRam(e.target.value)}>
+          <Select className='listFilter' onChange={(e) => setFilterRam(e.target.value as string)}>
               {selectFilterOptions}
             </Select>
             <section className='hardware-listWrapper'>

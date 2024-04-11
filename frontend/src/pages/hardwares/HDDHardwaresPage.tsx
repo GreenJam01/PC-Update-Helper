@@ -30,7 +30,7 @@ export function HDDHardwaresPage(props:HDDHardwarePageProps){
         </div>
         <div className='componentWrapper'>
           <div className='listWrapper'>
-            <Select className='listFilter' onChange={(e) => setFilterHdd(e.target.value)}>
+            <Select className='listFilter' onChange={(e) => setFilterHdd(e.target.value as string)}>
               {selectFilterOptions}
             </Select>
             <section className='hardware-listWrapper'>

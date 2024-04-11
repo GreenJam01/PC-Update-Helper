@@ -30,7 +30,7 @@ export function MotherboardHardwaresPage(props:MotherboardHardwarePageProps){
         </div>
         <div className='componentWrapper'>
           <div className='listWrapper'>
-            <Select className='listFilter' onChange={(e) => setFilterMotherboard(e.target.value)}>
+            <Select className='listFilter' onChange={(e) => setFilterMotherboard(e.target.value as string)}>
               {selectFilterOptions}
             </Select>
             <section className='hardware-listWrapper'>

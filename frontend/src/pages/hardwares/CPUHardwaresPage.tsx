@@ -31,7 +31,7 @@ export function CPUHardwaresPage(props:CPUHardwarePageProps){
         </div>
         <div className='componentWrapper'>
           <div className='listWrapper'>
-            <Select className='listFilter' onChange={(e) => setFilterCpu(e.target.value)}>
+            <Select className='listFilter' onChange={(e) => setFilterCpu(e.target.value as string)}>
               {selectFilterOptions}
             </Select>
             <section className='hardware-listWrapper'>
