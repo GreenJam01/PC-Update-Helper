@@ -8,6 +8,7 @@ import pcIcomSave from '../../resourses/pc_icon_save.png';
 import choiceImg from '../../resourses/choiceImg.png';
 import { Footer } from '../../components/footer/footer';
 import { LinkButton } from '../../components/link-button/link-button';
+import { AppRoutes } from '../../constants';
 // import { Promo } from "../../components/promo/promo";
 
 export function IndexPage(){
@@ -64,7 +65,7 @@ export function IndexPage(){
             <h2 className="choice_title">Выбор - отличная штука!</h2>
             <div className="choice_subtitle">Соберите компьютер, который подходит вам по целям и бюджету</div>
             <img src={choiceImg} alt="uber car" className="choice_img"/>
-            <LinkButton children={'СОБРАТЬ ПК'} href="/app/create" className="choice_button"></LinkButton>
+            <LinkButton children={'СОБРАТЬ ПК'} href={AppRoutes.AssemblePage} className="choice_button"></LinkButton>
             {/* <a className={"choice_assemble"} href="/app">Собери свой пк</a> */}
           </div>
         </Container>

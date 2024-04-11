@@ -3,8 +3,9 @@ import { HardwareList } from '../../components/hardwareList/HardwareList';
 import { useAppSelector } from '../../hooks/use-app';
 import { hardwaresSelectors } from '../../slices/hardwareSlice';
 import { HardwareHeader } from './HardwaresHeader';
-import './HardwaresPage.css'
+import './HardwaresPage.css';
 import { Header } from '../../components/header/header';
+import { MenuItem, Select } from '@mui/material';
 export type HDDHardwarePageProps = {
   type: string;
 }
@@ -13,8 +14,8 @@ export function HDDHardwaresPage(props:HDDHardwarePageProps){
   const brands = useAppSelector(hardwaresSelectors.getBrandsHdd);
   const [filterHdd, setFilterHdd] = useState<(string)>('');
   const selectFilterOptions = brands.map((brand) =>
-    (<option key={brand} value={brand}> {brand} </option>))
-    .concat(<option value=''>Без фильтра</option>).reverse();
+    (<MenuItem key={brand} value={brand}> {brand} </MenuItem>))
+    .concat(<MenuItem value=''>Без фильтра</MenuItem>).reverse();
   return (
     <div>
       <Header/>
@@ -29,9 +30,9 @@ export function HDDHardwaresPage(props:HDDHardwarePageProps){
         </div>
         <div className='componentWrapper'>
           <div className='listWrapper'>
-              <select className='listFilter' onChange={(e) => setFilterHdd(e.target.value)}>
-                {selectFilterOptions}
-              </select>
+            <Select className='listFilter' onChange={(e) => setFilterHdd(e.target.value)}>
+              {selectFilterOptions}
+            </Select>
             <section className='hardware-listWrapper'>
               <HardwareList hardwares={hdds.filter((i) => i.brand === filterHdd || filterHdd === '')} type ={props.type} />
             </section>

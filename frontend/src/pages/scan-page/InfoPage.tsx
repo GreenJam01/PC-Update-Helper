@@ -3,12 +3,15 @@ import {Container} from '../../components/container/container';
 import {Button} from '../../components/button/button';
 import './scan-page.css';
 import {useEffect, useState} from 'react';
+import { AppRoutes } from '../../constants';
+import { Header } from '../../components/header/header';
 
 export function InfoPage() {
 
   return (
     <>
-      <div className={'a12 xs12 s12 center'}><h1>PC Update Helper</h1></div>
+      <Header/>
+      <div className={'a12 xs12 s12 center'}><h1>Просканировать ПК</h1></div>
       <div className={'center'}>
                 Скачайте программу по кнопке ниже, запустите скрипт, после этого нажмите на кнопку "Далее".
       </div>
@@ -18,11 +21,11 @@ export function InfoPage() {
         </a>
       </div>
       <div className={'isolated center'}>
-        <LinkButton href={'/app/scan'}>Далее</LinkButton>
+        <LinkButton href={AppRoutes.ScanPage}>Далее</LinkButton>
 
       </div>
       <div className={'isolated center'}>
-        <LinkButton href={'/app/'}>На главную</LinkButton>
+        <LinkButton href={AppRoutes.Main}>На главную</LinkButton>
       </div>
     </>
   );

@@ -6,7 +6,7 @@ import { getDefaultHardwareImage } from '../../util/util';
 type HardwareCardProps = {hardware: HardwareType; type: string}
 export function HardwareCard({hardware, type}: HardwareCardProps){
   return(
-    <Link className='hardware__card__wrapper' to={`${AppRoutes.HardwaresPage}/${type}/${hardware.id}`}>
+    <div className='hardware__card__wrapper'>
       <article
         className={'hardware__card'}
       >
@@ -91,6 +91,6 @@ export function HardwareCard({hardware, type}: HardwareCardProps){
 
         </div>
       </article>
-    </Link>
+    </div>
   );
 }

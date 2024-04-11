@@ -3,8 +3,9 @@ import { HardwareList } from '../../components/hardwareList/HardwareList';
 import { useAppSelector } from '../../hooks/use-app';
 import { hardwaresSelectors } from '../../slices/hardwareSlice';
 import { HardwareHeader } from './HardwaresHeader';
-import './HardwaresPage.css'
+import './HardwaresPage.css';
 import { Header } from '../../components/header/header';
+import { MenuItem, Select } from '@mui/material';
 export type MotherboardHardwarePageProps = {
   type: string;
 }
@@ -13,13 +14,13 @@ export function MotherboardHardwaresPage(props:MotherboardHardwarePageProps){
   const brands = useAppSelector(hardwaresSelectors.getBrandsMotherboards);
   const [filterMotherboard, setFilterMotherboard] = useState<(string)>('');
   const selectFilterOptions = brands.map((brand) =>
-    (<option key={brand} value={brand}> {brand} </option>))
-    .concat(<option value=''>Без фильтра</option>).reverse();
+    (<MenuItem key={brand} value={brand}> {brand} </MenuItem>))
+    .concat(<MenuItem value=''>Без фильтра</MenuItem>).reverse();
   return (
     <div>
       <Header/>
       <main>
-        <h1 className='componentTitle'>CPU</h1>
+        <h1 className='componentTitle'>Motherboard</h1>
         <div>
           <section >
             <ul className='componentTitles'>
@@ -29,9 +30,9 @@ export function MotherboardHardwaresPage(props:MotherboardHardwarePageProps){
         </div>
         <div className='componentWrapper'>
           <div className='listWrapper'>
-            <select className='listFilter' onChange={(e) => setFilterMotherboard(e.target.value)}>
+            <Select className='listFilter' onChange={(e) => setFilterMotherboard(e.target.value)}>
               {selectFilterOptions}
-            </select>
+            </Select>
             <section className='hardware-listWrapper'>
               <HardwareList
                 hardwares={motherboards.filter((i) => i.brand === filterMotherboard || filterMotherboard === '')}

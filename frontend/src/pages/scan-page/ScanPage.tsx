@@ -3,6 +3,8 @@ import {Container} from '../../components/container/container';
 import {Button} from '../../components/button/button';
 import './scan-page.css';
 import {useEffect, useState} from 'react';
+import { AppRoutes } from '../../constants';
+import { Header } from '../../components/header/header';
 
 type Assembly = {
     id: number;
@@ -32,7 +34,8 @@ export function ScanPage() {
 
   return (
     <>
-      <div className={'a12 xs12 s12 center'}><h1>PC Update Helper</h1></div>
+      <Header/>
+      <div className={'a12 xs12 s12 center'}><h1>Scan Page</h1></div>
       <Container className={'assemble_page__container'}>
         <div className={'assemble_page__section a6 xs12 s12'}>
           <h1>Процессор:</h1>
@@ -53,7 +56,7 @@ export function ScanPage() {
         <Button>Собрать</Button>
       </div>
       <div className={'isolated center'}>
-        <LinkButton href={'/app/'}>На главную</LinkButton>
+        <LinkButton href={AppRoutes.Main}>На главную</LinkButton>
       </div>
     </>
   );

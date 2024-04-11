@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import myImage from '../../resourses/logo.png';
 import './header.css';
 import { AppRoutes } from '../../constants';
@@ -6,9 +6,9 @@ import { AppRoutes } from '../../constants';
 export function Header(){
   return(
     <header className={'header'}>
-      <a className={'header_logo'} href="/app" title={'На главную'}>
+      <NavLink className={'header_logo'} to={AppRoutes.Main} title={'На главную'}>
         <img width="75" height="75" src={myImage} alt="Main Logo"></img>
-      </a>
+      </NavLink>
       <nav className={'navigation'}>
         <ul className={'navigation_list'}>
           <li><Link to={AppRoutes.Main} className={'navigation_button'}> На главную </Link></li>

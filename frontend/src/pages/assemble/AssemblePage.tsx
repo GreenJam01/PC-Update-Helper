@@ -5,6 +5,7 @@ import './assemble.css';
 import {SelectList} from '../../components/select-list/select-list';
 import {appointmentList} from '../../data/appointment-list';
 import {Button} from '../../components/button/button';
+import { AppRoutes } from '../../constants';
 
 export function AssemblePage(){
   return(
@@ -34,7 +35,7 @@ export function AssemblePage(){
         <Button>Собрать</Button>
       </div>
       <div className = {'isolated center'}>
-        <LinkButton href={'/app/'}>На главную</LinkButton>
+        <LinkButton href={AppRoutes.Main}>На главную</LinkButton>
       </div>
     </>
   );

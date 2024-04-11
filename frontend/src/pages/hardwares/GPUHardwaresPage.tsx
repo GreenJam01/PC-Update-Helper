@@ -3,7 +3,8 @@ import { HardwareList } from '../../components/hardwareList/HardwareList';
 import { useAppSelector } from '../../hooks/use-app';
 import { hardwaresSelectors } from '../../slices/hardwareSlice';
 import { HardwareHeader } from './HardwaresHeader';
-import './HardwaresPage.css'
+import { MenuItem, Select } from '@mui/material';
+import './HardwaresPage.css';
 import { Header } from '../../components/header/header';
 export type GPUHardwarePageProps = {
   type: string;
@@ -13,8 +14,8 @@ export function GPUHardwaresPage(props:GPUHardwarePageProps){
   const brands = useAppSelector(hardwaresSelectors.getBrandsGpu);
   const [filterGpu, setFilterGpu] = useState<(string)>('');
   const selectFilterOptions = brands.map((brand) =>
-    (<option key={brand} value={brand}> {brand} </option>))
-    .concat(<option value=''>Без фильтра</option>).reverse();
+    (<MenuItem key={brand} value={brand}> {brand} </MenuItem>))
+    .concat(<MenuItem value=''>Без фильтра</MenuItem>).reverse();
   return (
     <div>
       <Header/>
@@ -29,9 +30,9 @@ export function GPUHardwaresPage(props:GPUHardwarePageProps){
         </div>
         <div className='componentWrapper'>
           <div className='listWrapper'>
-            <select className='listFilter' onChange={(e) => setFilterGpu(e.target.value)}>
+            <Select className='listFilter' onChange={(e) => setFilterGpu(e.target.value)}>
               {selectFilterOptions}
-            </select>
+            </Select>
             <section className='hardware-listWrapper'>
               <HardwareList hardwares={gpus.filter((i) => i.brand === filterGpu || filterGpu === '')} type ={props.type} />
             </section>
