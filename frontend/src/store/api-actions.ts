@@ -117,3 +117,15 @@ export const deleteAssembly = createAsyncThunk<Assembly, Assembly, {
     return assembly;
   },
 );
+
+export const putAssembly = createAsyncThunk<Assembly, Assembly, {
+  dispatch: AppDispatch;
+  state: State;
+  extra: AxiosInstance;
+}>(
+  'data/putAssembly',
+  async (assembly, { extra: api}) => {
+    await api.put<Assembly>(`${APIRoutes.Assembly }/${ assembly.id}`, assembly);
+    return assembly;
+  },
+);

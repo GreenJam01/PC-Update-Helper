@@ -1,7 +1,7 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { AppData } from '../constants';
 import { Assembly } from '../types/assembly';
-import { createAssembly, deleteAssembly, fetchAssemblies } from '../store/api-actions';
+import { createAssembly, deleteAssembly, fetchAssemblies, putAssembly } from '../store/api-actions';
 import { toast } from 'react-toastify';
 
 export type AssembliesState = {
@@ -50,8 +50,15 @@ export const assembliesSlice = createSlice({
         state.assemblies.push(action.payload);
         toast.success('Сборка создана');
       }
+      )
+      .addCase(putAssembly.fulfilled, (state, action) => {
+        const updatedAssembly = action.payload; // новая сборка
+        const index = state.assemblies.findIndex((assembly) => assembly.id === updatedAssembly.id);
+        if (index !== -1) {
+          state.assemblies[index] = updatedAssembly; // заменяем старую сборку на новую
+        }
+      }
       );
-
   },
   selectors: {
     assemblies: (state) => state.assemblies,

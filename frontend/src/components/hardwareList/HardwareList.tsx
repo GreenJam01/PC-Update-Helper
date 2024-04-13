@@ -2,7 +2,7 @@ import { BeatLoader } from 'react-spinners';
 import { useAppSelector } from '../../hooks/use-app';
 import { hardwaresSelectors } from '../../slices/hardwareSlice';
 import { HardwareType } from '../../types/hardwares';
-import { HardwareCard } from '../hardwareCard/HardwareCard';
+import { HardwareCard } from '../hardware-card/HardwareCard';
 
 type HardwareListProps = {hardwares?: HardwareType[]; type:string}
 export function HardwareList(props: HardwareListProps){
