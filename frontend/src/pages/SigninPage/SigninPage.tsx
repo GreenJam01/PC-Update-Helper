@@ -5,19 +5,18 @@ import * as Yup from 'yup';
 import { signinAction } from '../../store/api-actions';
 import { useAppDispatch } from '../../hooks/use-app';
 
-type Props = {}
 
-const SigninPage: React.FC<Props> = () => {
+const SigninPage = () => {
   const dispatch = useAppDispatch();
 
   const [loading, setLoading] = useState<boolean>(false);
   const [message, setMessage] = useState<string>('');
 
   const initialValues: {
-    email: string;
+    username: string;
     password: string;
   } = {
-    email: '',
+    username: '',
     password: '',
   };
 
@@ -26,13 +25,13 @@ const SigninPage: React.FC<Props> = () => {
     password: Yup.string().required('This field is required!'),
   });
 
-  const handleLogin = (formValue: { email: string; password: string }) => {
-    const { email, password } = formValue;
+  const handleLogin = (formValue: { username: string; password: string }) => {
+    const { username, password } = formValue;
 
     setMessage('');
     setLoading(true);
 
-    dispatch(signinAction({email, password}));
+    dispatch(signinAction({username, password}));
   };
 
   return (

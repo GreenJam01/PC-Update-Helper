@@ -1,3 +1,5 @@
+import { Sort } from './types/sort';
+
 export const BASE_URL = 'http://localhost:8081/';
 export const TIME_OUT = 5000;
 
@@ -9,18 +11,19 @@ export enum AppData{
     FilterSort = 'filter-sort',
 }
 
+
 export enum AppRoutes {
-    Signin = '/signin',
-    Signup = '/signup',
-    Main = '/',
-    ScanPage = '/scan-page',
-    MyAssembliesPage = '/my-assemblies',
-    AssemblePage = '/assemble',
-    UpgradePage = '/upgrade',
-    HardwaresPage = '/hardwares',
-    InfoPage = '/infopage',
-    CreatePage = '/create',
-    FavoritesPage = '/favorites',
+  Signin = '/signin',
+  Signup = '/signup',
+  Main = '/',
+  ScanPage = '/scan-page',
+  MyAssembliesPage = '/my-assemblies',
+  AssemblePage = '/assemble',
+  UpgradePage = '/upgrade',
+  HardwaresPage = '/hardwares',
+  InfoPage = '/infopage',
+  CreatePage = '/create',
+  FavoritesPage = '/favorites',
 }
 
 export enum APIRoutes {
@@ -50,7 +53,6 @@ export enum AuthorizationStatus {
     Auth = 'AUTH',
     NoAuth = 'NO_AUTH',
     Unknown = 'UNKNOWN',
-    Authorized = 'Authorized',
   }
 
 export const HARDWARES = {
@@ -60,3 +62,21 @@ export const HARDWARES = {
   motherboard: 'motherboard',
   hdd: 'hdd'
 };
+
+export const Sorts: { [key: string]: Sort } = {
+  None: {
+    name: 'Без сортировки',
+    func: () => 0
+  },
+  PriceLowToHigh: {
+    name: 'Сначала дешевые',
+    func: (a, b) => a.price - b.price // Функция сортировки для сортировки по цене от меньшей к большей
+  },
+  PriceHighToLow: {
+    name: 'Сначала дорогие',
+    func: (a, b) => b.price - a.price // Функция сортировки для сортировки по цене от большей к меньшей
+  },
+};
+
+export const filterLess = 'Без фильтра';
+

@@ -18,9 +18,6 @@ export function UpgradePage(){
           <LinkButton href={AppRoutes.CreatePage}>СОБРАТЬ!!!</LinkButton>
         </div>
       </Container>
-      <div className={'isolated center'}>
-        <LinkButton href={AppRoutes.Main}>На главную</LinkButton>
-      </div>
     </>
   );
 }

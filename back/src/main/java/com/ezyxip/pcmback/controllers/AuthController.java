@@ -16,20 +16,22 @@ import com.ezyxip.pcmback.repositories.RoleRepository;
 import com.ezyxip.pcmback.repositories.UserRepository;
 import com.ezyxip.pcmback.security.jwt.JwtUtils;
 import com.ezyxip.pcmback.security.services.UserDetailsImpl;
+import com.ezyxip.pcmback.security.services.UserDetailsServiceImpl;
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
+import org.springframework.util.StringUtils;
+import org.springframework.web.bind.annotation.*;
 
 
 @RestController
@@ -38,6 +40,9 @@ import org.springframework.web.bind.annotation.RestController;
 public class AuthController {
     @Autowired
     AuthenticationManager authenticationManager;
+
+    @Autowired
+    UserDetailsServiceImpl userDetailsService;
 
     @Autowired
     UserRepository userRepository;
@@ -58,14 +63,14 @@ public class AuthController {
                 .authenticate(new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword()));
 
         SecurityContextHolder.getContext().setAuthentication(authentication);
-        String jwt = jwtUtils.generateJwtToken(authentication);
+        String token = jwtUtils.generateJwtToken(authentication);
 
         UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
         List<String> roles = userDetails.getAuthorities().stream().map(item -> item.getAuthority())
                 .collect(Collectors.toList());
 
         return ResponseEntity
-                .ok(new JwtResponse(jwt, userDetails.getId(), userDetails.getUsername(), userDetails.getEmail(), roles));
+                .ok(new JwtResponse(token, userDetails.getId(), userDetails.getUsername(), userDetails.getEmail(), roles));
     }
 
     @PostMapping("/signup")
@@ -116,5 +121,38 @@ public class AuthController {
         userRepository.save(user);
 
         return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
+    }
+
+    @GetMapping("/signin")
+    public ResponseEntity<?> getCurrentUser(HttpServletRequest request) {
+        String token = parseJwt(request);
+
+        if (jwtUtils.validateJwtToken(token)) {
+            String username = jwtUtils.getUserNameFromJwtToken(token);
+
+            UserDetails userDetails = userDetailsService.loadUserByUsername(username);
+            UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(userDetails, null,
+                    userDetails.getAuthorities());
+            UserDetailsImpl user = (UserDetailsImpl) authentication.getPrincipal();
+
+            authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
+            List<String> roles = userDetails.getAuthorities().stream().map(item -> item.getAuthority())
+                    .collect(Collectors.toList());
+            SecurityContextHolder.getContext().setAuthentication(authentication);
+
+            return ResponseEntity.ok(new JwtResponse(token, user.getId(), user.getUsername(), user.getEmail(), roles));
+        }
+
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Authentication error");
+    }
+
+    private String parseJwt(HttpServletRequest request) {
+        String headerAuth = request.getHeader("Authorization");
+
+        if (StringUtils.hasText(headerAuth) && headerAuth.startsWith("Bearer ")) {
+            return headerAuth.substring(7, headerAuth.length());
+        }
+
+        return null;
     }
 }

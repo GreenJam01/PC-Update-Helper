@@ -1,6 +1,4 @@
-import { Link } from 'react-router-dom';
 import { HardwareType } from '../../types/hardwares';
-import { AppRoutes } from '../../constants';
 import './HardwareCard.css';
 import { getDefaultHardwareImage } from '../../util/util';
 type HardwareCardProps = {hardware: HardwareType; type: string}
@@ -62,13 +60,13 @@ export function HardwareCard({hardware, type}: HardwareCardProps){
             </>}
           {
             'memory' in hardware &&
-              'anInterface' in hardware &&
+              'interface' in hardware &&
               <>
                 <div className="hardware-card__name">
-                  <a href="#" className='hardware-card__name-text'>Память - {hardware.memory}</a>
+                  <a href="#" className='hardware-card__name-text'>Память - {hardware.memory} Гб</a>
                 </div>
                 <div className="hardware-card__name">
-                  <a href="#" className='hardware-card__name-text'>Частота - {hardware.maxReadingSpeed}</a>
+                  <a href="#" className='hardware-card__name-text'>Интерфейс - {hardware.interface}</a>
                 </div>
               </>
           }

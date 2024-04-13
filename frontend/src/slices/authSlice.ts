@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { Nullable } from '../types/nullable';
 import { AppData, AuthorizationStatus } from '../constants';
 import { UserData } from '../types/user';
-import { checkAuthAction, signinAction, signoutAction, signupAction } from '../store/api-actions';
+import { checkAuthAction, signinAction, signupAction } from '../store/api-actions';
 import { toast } from 'react-toastify';
 
 type AuthState = {
@@ -22,6 +22,9 @@ export const authSlice = createSlice({
     setAuthorizationStatus: (state, action: PayloadAction<AuthorizationStatus>) => {
       state.authorizationStatus = action.payload;
     },
+    setUser:(state, action: PayloadAction<Nullable<UserData>>) => {
+      state.user = action.payload;
+    },
   },
   extraReducers(builder) {
     builder
@@ -37,6 +40,7 @@ export const authSlice = createSlice({
       .addCase(signinAction.fulfilled, (state, action) => {
         state.authorizationStatus = AuthorizationStatus.Auth;
         state.user = action.payload;
+        toast.success(`Привет, ${action.payload.username}`);
       })
       .addCase(signinAction.rejected, (state) => {
         state.authorizationStatus = AuthorizationStatus.NoAuth;
@@ -44,11 +48,13 @@ export const authSlice = createSlice({
       .addCase(signupAction.fulfilled, (state, action) => {
         state.authorizationStatus = AuthorizationStatus.Auth;
         state.user = action.payload;
+        toast.success('Аккаунт создан');
       }
-      ).addCase(signoutAction.fulfilled, (state) => {
-        state.authorizationStatus = AuthorizationStatus.NoAuth;
-        state.user = null;
-      })
+      )
+      // .addCase(signoutAction.fulfilled, (state) => {
+      //   state.authorizationStatus = AuthorizationStatus.NoAuth;
+      //   state.user = null;
+      // })
       .addCase(signupAction.rejected, (state) => {
         state.authorizationStatus = AuthorizationStatus.NoAuth;
         toast.warn('Ошибка регистрации');
@@ -63,4 +69,4 @@ export const authSlice = createSlice({
 
 export const authSelectors = authSlice.selectors;
 
-export const { setAuthorizationStatus } = authSlice.actions;
+export const { setAuthorizationStatus, setUser } = authSlice.actions;

@@ -19,6 +19,7 @@ import { GPUHardwaresPage } from './pages/hardwares/GPUHardwaresPage';
 import { HDDHardwaresPage } from './pages/hardwares/HDDHardwaresPage';
 import { RAMHardwaresPage } from './pages/hardwares/RAMHardwaresPage';
 import { MotherboardHardwaresPage } from './pages/hardwares/MotherboardHardwaresPage';
+import PrivateRoute from './components/private-route/private-route';
 
 
 function App() {
@@ -36,10 +37,25 @@ function App() {
         <Route path = {AppRoutes.UpgradePage} element={<UpgradePage/>}/>
         <Route path={AppRoutes.AssemblePage} element = {<AssemblePage/>}/>
         <Route path= {AppRoutes.ScanPage} element = {<ScanPage/>}/>
-        <Route path = {AppRoutes.MyAssembliesPage} element = {<MyAssembliesPage/>}/>
+        <Route path = {AppRoutes.MyAssembliesPage} element = {
+          <PrivateRoute>
+            <MyAssembliesPage/>
+          </PrivateRoute>
+        }
+        />
         <Route path = {AppRoutes.InfoPage} element = {<InfoPage/>}/>
-        <Route path={AppRoutes.Signin} element = {<SigninPage/>}/>
-        <Route path={AppRoutes.Signup} element = {<SignupPage/>}/>
+        <Route path={AppRoutes.Signin} element = {
+          <PrivateRoute onlyUnAuth>
+            <SigninPage/>
+          </PrivateRoute>
+        }
+        />
+        <Route path={AppRoutes.Signup} element = {
+          <PrivateRoute onlyUnAuth>
+            <SignupPage/>
+          </PrivateRoute>
+        }
+        />
         <Route >
           <Route index path={AppRoutes.HardwaresPage}
             element = {<Navigate to ={`${AppRoutes.HardwaresPage}/${HARDWARES.cpu}`}/>}

@@ -2,11 +2,12 @@ import { createAction, createAsyncThunk } from '@reduxjs/toolkit';
 import { AppDispatch, State } from '../types/store';
 import { AxiosInstance } from 'axios';
 import { CPU, GPU, HDD, Hardwares, Motherboard, RAM } from '../types/hardwares';
-import { APIRoutes, AppRoutes } from '../constants';
+import { APIRoutes, AppRoutes, AuthorizationStatus } from '../constants';
 import { AuthData } from '../types/auth-data';
 import { dropToken, saveToken } from '../services/token';
 import { UserData } from '../types/user';
 import { Assembly } from '../types/assembly';
+import { setAuthorizationStatus, setUser } from '../slices/authSlice';
 
 export const redirectToRoute = createAction<AppRoutes>('redirectToRoute');
 
@@ -26,14 +27,28 @@ export const fetchHardwaresAction = createAsyncThunk<Hardwares, undefined, {
   }
 );
 
+export const fetchAssemblies = createAsyncThunk<Assembly[], undefined, {
+  dispatch: AppDispatch;
+  state: State;
+  extra: AxiosInstance;
+}>(
+  'data/fetchAssemblies',
+  async (_arg, { extra: api}) => {
+    const {data: assemblies} = await api.get<Assembly[]>(APIRoutes.Assembly);
+    return assemblies;
+  },
+);
+
 export const checkAuthAction = createAsyncThunk<UserData, undefined, {
   dispatch: AppDispatch;
   state: State;
   extra: AxiosInstance;
 }>(
   'user/checkAuth',
-  async (_arg, { extra: api}) => {
+  async (_arg, { dispatch, extra: api}) => {
     const {data: user} = await api.get<UserData>(APIRoutes.Signin);
+    dispatch(fetchAssemblies());
+    console.log(user);
     return user;
   },
 );
@@ -43,9 +58,10 @@ export const signinAction = createAsyncThunk<UserData, AuthData, {
     extra: AxiosInstance;
   }>(
     'user/signin',
-    async ({email, password}, {dispatch, extra: api}) => {
-      const {data: user} = await api.post<UserData>(APIRoutes.Signin, {email, password});
-      saveToken(user.token);
+    async ({username, password}, {dispatch, extra: api}) => {
+      const {data: user} = await api.post<UserData>(APIRoutes.Signin, {username, password});
+      saveToken(user.accessToken);
+      dispatch(fetchAssemblies());
       dispatch(redirectToRoute(AppRoutes.Main));
       return user;
     },
@@ -57,8 +73,10 @@ export const signoutAction = createAsyncThunk<void, undefined, {
     extra: AxiosInstance;
   }>(
     'user/logout',
-    async (_arg, { extra: api}) => {
-      await api.delete(APIRoutes.Signout);
+    (_arg, {dispatch, }) => {
+      dispatch(setAuthorizationStatus(AuthorizationStatus.NoAuth));
+      dispatch(setUser(null));
+      dispatch(redirectToRoute(AppRoutes.Main));
       dropToken();
     },
   );
@@ -72,18 +90,6 @@ export const signupAction = createAsyncThunk<UserData,AuthData, {
     async ({username,email, password}, {extra: api}) => {
       const {data: user} = await api.post<UserData>(APIRoutes.Signup, {username,email, password});
       return user;
-    },
-  );
-
-export const fetchAssemblies = createAsyncThunk<Assembly[], undefined, {
-    dispatch: AppDispatch;
-    state: State;
-    extra: AxiosInstance;
-  }>(
-    'data/fetchAssemblies',
-    async (_arg, { extra: api}) => {
-      const {data: assemblies} = await api.get<Assembly[]>(APIRoutes.Assembly);
-      return assemblies;
     },
   );
 

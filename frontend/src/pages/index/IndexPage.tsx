@@ -65,7 +65,7 @@ export function IndexPage(){
             <h2 className="choice_title">Выбор - отличная штука!</h2>
             <div className="choice_subtitle">Соберите компьютер, который подходит вам по целям и бюджету</div>
             <img src={choiceImg} alt="uber car" className="choice_img"/>
-            <LinkButton children={'СОБРАТЬ ПК'} href={AppRoutes.AssemblePage} className="choice_button"></LinkButton>
+            <LinkButton href={AppRoutes.AssemblePage} className="choice_button">Собрать ПК</LinkButton>
             {/* <a className={"choice_assemble"} href="/app">Собери свой пк</a> */}
           </div>
         </Container>

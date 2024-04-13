@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
-import { hardwares } from '../../data/hardware-list';
-import { AppRoutes } from '../../constants';
-import './Hardwares.css'
+import { hardwares } from '../../../data/hardware-list';
+import { AppRoutes } from '../../../constants';
+import './Hardwares.css';
 
 export function HardwareHeader(){
   return (

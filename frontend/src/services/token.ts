@@ -1,9 +1,9 @@
-const AUTH_TOKEN_KEY_NAME = 'pc-up-token-token';
+const AUTH_TOKEN_KEY_NAME = 'access_token';
 export type Token = string;
 
 export const getToken = (): Token => {
   const token = localStorage.getItem(AUTH_TOKEN_KEY_NAME);
-  return token ?? '';
+  return `Bearer ${token}` ?? '';
 };
 
 export const saveToken = (token: Token): void => {

@@ -1,9 +1,10 @@
 import { PayloadAction, createSelector, createSlice } from '@reduxjs/toolkit/react';
-import { AppData } from '../constants';
+import { AppData, Sorts } from '../constants';
 import { CPU, GPU, HDD, Motherboard, RAM} from '../types/hardwares';
 import { fetchHardwaresAction } from '../store/api-actions';
 import { hardwares } from '../data/hardware-list';
 import { toast } from 'react-toastify';
+import { Sort } from '../types/sort';
 
 
 type HardwareState = {
@@ -14,6 +15,7 @@ type HardwareState = {
   hdd: HDD[];
   selectedHardwareHeader: string;
   isHardwareDataLoading:boolean;
+  sort: Sort;
 }
 
 const initialState:HardwareState = {
@@ -24,6 +26,7 @@ const initialState:HardwareState = {
   hdd: [],
   selectedHardwareHeader: hardwares[0],
   isHardwareDataLoading:false,
+  sort: Sorts.None
 };
 export const hardwareSlice = createSlice({
   initialState, name: AppData.Hardware,
@@ -33,6 +36,9 @@ export const hardwareSlice = createSlice({
     },
     setSelectedHardwareHeader: (state, action: PayloadAction<string>) => {
       state.selectedHardwareHeader = action.payload;
+    },
+    setHardwareSorting: (state, action: PayloadAction<Sort>) => {
+      state.sort = action.payload;
     }
   },
   extraReducers(builder) {
@@ -54,19 +60,29 @@ export const hardwareSlice = createSlice({
       });
   },
   selectors: {
-    cpu: (state) => state.cpu.map((cpu) => ({
-      ...cpu,
-      urlImage: 'https://ir.ozone.ru/s3/multimedia-f/6685279503.jpg'
-    } as CPU)),
+    cpu: (state) => state.cpu,
     gpu: (state) => state.gpu,
     ram: (state) => state.ram,
     motherboard: (state) => state.motherboard,
     hdd: (state) => state.hdd,
     selectedHardwareHeader: (state) => state.selectedHardwareHeader,
     isHardwareDataLoading: (state) => state.isHardwareDataLoading,
+    sort: (state) => state.sort
   },
 });
 export const hardwaresSelectors = {
+  ...hardwareSlice.selectors,
+  getCpu: createSelector(hardwareSlice.selectors.cpu,
+    hardwareSlice.selectors.sort, (cpus, sort) => [...cpus].sort(sort.func)),
+  getGpu: createSelector(hardwareSlice.selectors.gpu,
+    hardwareSlice.selectors.sort, (gpus, sort) => [...gpus].sort(sort.func)),
+  getRam: createSelector(hardwareSlice.selectors.ram,
+    hardwareSlice.selectors.sort, (rams, sort) => [...rams].sort(sort.func)),
+  getHdd: createSelector(hardwareSlice.selectors.hdd,
+    hardwareSlice.selectors.sort, (hdds, sort) => [...hdds].sort(sort.func)),
+  getMotherboard: createSelector(hardwareSlice.selectors.motherboard,
+    hardwareSlice.selectors.sort, (motherboards, sort) => [...motherboards].sort(sort.func)),
+
   getBrandsCpu: createSelector(hardwareSlice.selectors.cpu,
     (cpus) => cpus.reduce((acc:string[], cpu) => {
       if (!acc.includes(cpu.brand)) {
@@ -106,6 +122,5 @@ export const hardwaresSelectors = {
       }
       return acc;
     }, [])
-  ),
-  ...hardwareSlice.selectors,};
+  ),};
 export const hardwaresActions = hardwareSlice.actions;

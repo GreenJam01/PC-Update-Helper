@@ -4,20 +4,22 @@ import { useState } from 'react';
 import { HardwareList } from '../../components/hardwareList/HardwareList';
 import { useAppSelector } from '../../hooks/use-app';
 import { hardwaresSelectors } from '../../slices/hardwareSlice';
-import { HardwareHeader } from './HardwaresHeader';
-import './HardwaresPage.css'
+import { HardwareHeader } from './HardwaresHeader/HardwaresHeader';
+import './HardwaresPage.css';
 import { Header } from '../../components/header/header';
-import { MenuItem, Select } from '@mui/material';
+import { FormControl, InputLabel, MenuItem, Select } from '@mui/material';
+import { filterLess } from '../../constants';
+import { SortForm } from '../../components/sort-form/sort-form';
 export type RAMHardwarePageProps = {
   type: string;
 }
 export function RAMHardwaresPage(props:RAMHardwarePageProps){
-  const rams = useAppSelector(hardwaresSelectors.ram);
+  const rams = useAppSelector(hardwaresSelectors.getRam);
   const brands = useAppSelector(hardwaresSelectors.getBrandsRam);
-  const [filterRam, setFilterRam] = useState<(string)>('');
+  const [filterRam, setFilterRam] = useState<(string)>(filterLess);
   const selectFilterOptions = brands.map((brand) =>
     (<MenuItem key={brand} value={brand}> {brand} </MenuItem>))
-    .concat(<MenuItem value=''>Без фильтра</MenuItem>).reverse();
+    .concat(<MenuItem value={filterLess}>Без фильтра</MenuItem>).reverse();
   return (
     <div>
       <Header/>
@@ -32,11 +34,15 @@ export function RAMHardwaresPage(props:RAMHardwarePageProps){
         </div>
         <div className='componentWrapper'>
           <div className='listWrapper'>
-          <Select className='listFilter' onChange={(e) => setFilterRam(e.target.value as string)}>
-              {selectFilterOptions}
-            </Select>
+            <FormControl sx={{ m: 1, minWidth: 120 }}>
+              <InputLabel id="demo-controlled-open-select-label">Фильтр</InputLabel>
+              <Select onChange={(e) => setFilterRam(e.target.value as string)}>
+                {selectFilterOptions}
+              </Select>
+            </FormControl>
+            <SortForm/>
             <section className='hardware-listWrapper'>
-              <HardwareList hardwares={rams.filter((i) => i.brand === filterRam || filterRam === '')} type ={props.type} />
+              <HardwareList hardwares={rams.filter((i) => i.brand === filterRam || filterRam === filterLess)} type ={props.type} />
             </section>
           </div>
         </div>

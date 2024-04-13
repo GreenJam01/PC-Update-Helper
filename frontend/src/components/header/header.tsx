@@ -1,9 +1,12 @@
 import { Link, NavLink } from 'react-router-dom';
 import myImage from '../../resourses/logo.png';
 import './header.css';
-import { AppRoutes } from '../../constants';
+import { AppRoutes, AuthorizationStatus } from '../../constants';
+import { useAppSelector } from '../../hooks/use-app';
+import { authSelectors } from '../../slices/authSlice';
 
 export function Header(){
+  const authorizationStatus = useAppSelector(authSelectors.getAuthorizationStatus);
   return(
     <header className={'header'}>
       <NavLink className={'header_logo'} to={AppRoutes.Main} title={'На главную'}>
@@ -16,7 +19,7 @@ export function Header(){
           <li><Link to={AppRoutes.CreatePage} className={'navigation_button'}>Конфигурация нового ПК</Link></li>
           {/* <li><Link to={AppRoutes.ScanPage} className={'navigation_button'}>Сохранить сборку</Link></li> */}
           {/* <li><Link to={AppRoutes.CreatePage} className={'navigation_button'}>Что это</Link></li> */}
-          <li><Link to={AppRoutes.MyAssembliesPage} className={'navigation_button'}>Мои сборки</Link></li>
+          {authorizationStatus === AuthorizationStatus.Auth && <li><Link to={AppRoutes.MyAssembliesPage} className={'navigation_button'}>Мои сборки</Link></li>}
           <li><Link to={AppRoutes.HardwaresPage} className={'navigation_button'}>Каталог железа</Link></li>
           <li><Link to={AppRoutes.ScanPage} className={'navigation_button'}>Сканировать ПК</Link></li>
         </ul>
