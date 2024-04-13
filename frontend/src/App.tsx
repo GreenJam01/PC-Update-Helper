@@ -4,7 +4,7 @@ import './adaptive.css';
 import { Navigate, Route, Routes} from 'react-router-dom';
 import { IndexPage } from './pages/index/IndexPage';
 import { UpgradePage } from './pages/upgrade/UpgradePage';
-import { AssemblePage } from './pages/assemble/AssemblePage';
+import { AssemblePage } from './pages/assemble/assemble';
 import { ScanPage } from './pages/scan-page/ScanPage';
 import { MyAssembliesPage } from './pages/my-assemblies/MyAssembliesPage';
 import SigninPage from './pages/SigninPage/SigninPage';

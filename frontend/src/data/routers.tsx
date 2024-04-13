@@ -1,6 +1,6 @@
 import {createBrowserRouter} from "react-router-dom";
 import {IndexPage} from "../pages/index/IndexPage";
-import {AssemblePage} from "../pages/assemble/AssemblePage";
+import {AssemblePage} from "../pages/assemble/assemble";
 import {UpgradePage} from "../pages/upgrade/UpgradePage";
 import {CreatePage} from "../pages/create/CreatePage";
 import {ScanPage} from "../pages/scan-page/ScanPage";

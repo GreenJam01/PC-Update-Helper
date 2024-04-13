@@ -6,11 +6,13 @@ import {SelectList} from '../../components/select-list/select-list';
 import {appointmentList} from '../../data/appointment-list';
 import {Button} from '../../components/button/button';
 import { AppRoutes } from '../../constants';
+import { Header } from '../../components/header/header';
 
 export function AssemblePage(){
   return(
     <>
-      <div className={'a12 xs12 s12 center'}><h1>PC Update Helper</h1></div>
+      <Header/>
+      <div className={'a12 xs12 s12 center'}><h1>Улучшить ПК</h1></div>
       <Container className={'assemble_page__container'}>
         <div className={'assemble_page__section a6 xs12 s12'}>
           <h1>Цена:</h1>
