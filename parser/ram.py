@@ -6,7 +6,7 @@ from selenium.webdriver.chrome.options import Options
 import requests
 import json
 
-def parseRam():
+def parseRam(extraStr):
 	agents = [ "user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.140 Safari/537.36 Edge/17.17134",
 				"user-agent=Mozilla/5.0 (Linux; Android 10; Redmi Note 7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.91 Mobile Safari/537.36",
 				"user-agent=Mozilla/5.0 (iPhone; CPU iPhone OS 13_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.4 Mobile/15E148 Safari/604.1",
@@ -19,16 +19,19 @@ def parseRam():
 	options.add_argument("--headless")
 	options.add_argument(agents[0])
 	driver = webdriver.Chrome("parser\chromedriver.exe", options=options)
-	driver.get("https://www.citilink.ru/catalog/moduli-pamyati/")
+	driver.get("https://www.citilink.ru" + extraStr)
 
 	html = driver.page_source
 
 	soup = BeautifulSoup(html)
-
+	temp_soup = soup
 	links = []
 
 	for link in soup.find_all('a', class_='app-catalog-9gnskf e1259i3g0'):
 		links.append("https://www.citilink.ru" + link['href'] + "properties/")
+
+	if len(links) == 0:
+		parseRam(extraStr)
 
 	final = json.dumps(links, indent=2)
 
@@ -91,6 +94,26 @@ def parseRam():
 		parseRam()
 
 	# post на сервер
-	# headers = {'Content-type': 'application/json', 'Connection': 'Keep-Alive'}
-	# urlRam = "http://localhost:8080/hardware/post-ram-list"
-	# r = requests.post(urlRam, data=final, headers=headers)
+	headers = {'Content-type': 'application/json', 'Connection': 'Keep-Alive'}
+	urlRam = "http://localhost:8081/hardware/post-ram-list"
+
+	r = requests.post(urlRam, data=final, headers=headers)
+	soup = temp_soup
+
+	# print(123)
+	try:
+		if(soup.find('a', class_='app-catalog-peotpw e1mnvjgw0') != None):
+			nextPages = soup.find_all('div', class_='app-catalog-1l2pgm7 e1glls3k0')
+			nextPage = None
+			# print(123)
+			try:
+				nextPage = nextPages[1].find('a', class_='app-catalog-peotpw e1mnvjgw0')['href']
+			except IndexError:
+				nextPage = nextPages[0].find('a', class_='app-catalog-peotpw e1mnvjgw0')['href']
+			print(nextPage)
+			parseRam(nextPage)
+
+		print("4to")
+	except TypeError:
+		print("blllll")
+		qwe = 1
