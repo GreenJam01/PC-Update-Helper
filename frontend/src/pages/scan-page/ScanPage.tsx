@@ -22,7 +22,7 @@ export function ScanPage() {
     async function fetchData(){
       const request = new Request('/getLastAssembly');
       const response = await fetch(request);
-      const result:Assembly = await response.json();
+      const result : Assembly = await response.json();
 
       setAssembly(result);
     }

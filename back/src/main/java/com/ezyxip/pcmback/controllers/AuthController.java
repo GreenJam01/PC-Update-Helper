@@ -125,7 +125,7 @@ public class AuthController {
 
     @GetMapping("/signin")
     public ResponseEntity<?> getCurrentUser(HttpServletRequest request) {
-        String token = parseJwt(request);
+        String token = jwtUtils.parseJwt(request);
 
         if (jwtUtils.validateJwtToken(token)) {
             String username = jwtUtils.getUserNameFromJwtToken(token);
@@ -146,13 +146,5 @@ public class AuthController {
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Authentication error");
     }
 
-    private String parseJwt(HttpServletRequest request) {
-        String headerAuth = request.getHeader("Authorization");
 
-        if (StringUtils.hasText(headerAuth) && headerAuth.startsWith("Bearer ")) {
-            return headerAuth.substring(7, headerAuth.length());
-        }
-
-        return null;
-    }
 }

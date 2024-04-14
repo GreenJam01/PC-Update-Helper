@@ -11,6 +11,7 @@ import { SortForm } from '../../components/sort-form/sort-form';
 import { filterLess } from '../../constants';
 import InputLabel from '@mui/material/InputLabel/InputLabel';
 import FormControl from '@mui/material/FormControl/FormControl';
+import SelectMui from '../../components/select-mui/select-mui';
 export type CPUHardwarePageProps = {
   type: string;
 }
@@ -35,7 +36,7 @@ export function CPUHardwaresPage(props:CPUHardwarePageProps){
         </div>
         <div className='componentWrapper'>
           <div className='listWrapper'>
-            <FormControl sx={{ m: 1, minWidth: 120 }}>
+            <FormControl sx={{ m: 1, minWidth: 120 }} className="form-control-container">
               <InputLabel id="demo-controlled-open-select-label">Фильтр</InputLabel>
               <Select onChange={(e) => setFilterCpu(e.target.value as string)}>
                 {selectFilterOptions}

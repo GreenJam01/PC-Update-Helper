@@ -65,15 +65,15 @@ export const HARDWARES = {
 
 export const Sorts: { [key: string]: Sort } = {
   None: {
-    name: 'Без сортировки',
+    title: 'Без сортировки',
     func: () => 0
   },
   PriceLowToHigh: {
-    name: 'Сначала дешевые',
+    title: 'Сначала дешевые',
     func: (a, b) => a.price - b.price // Функция сортировки для сортировки по цене от меньшей к большей
   },
   PriceHighToLow: {
-    name: 'Сначала дорогие',
+    title: 'Сначала дорогие',
     func: (a, b) => b.price - a.price // Функция сортировки для сортировки по цене от большей к меньшей
   },
 };

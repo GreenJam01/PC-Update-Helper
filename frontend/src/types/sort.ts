@@ -1,6 +1,6 @@
 import { HardwareType } from './hardwares';
 
 export type Sort = {
-    name: string;
+    title: string;
     func: (a: HardwareType, b: HardwareType) => number;
 }

@@ -48,7 +48,6 @@ export const checkAuthAction = createAsyncThunk<UserData, undefined, {
   async (_arg, { dispatch, extra: api}) => {
     const {data: user} = await api.get<UserData>(APIRoutes.Signin);
     dispatch(fetchAssemblies());
-    console.log(user);
     return user;
   },
 );
@@ -113,7 +112,7 @@ export const deleteAssembly = createAsyncThunk<Assembly, Assembly, {
 }>(
   'data/deleteAssembly',
   async (assembly, { extra: api}) => {
-    await api.delete<Assembly>(`${APIRoutes.Assembly }/${ assembly.id}`);
+    await api.delete<Assembly>(`${APIRoutes.Assembly }/${assembly.id}`);
     return assembly;
   },
 );

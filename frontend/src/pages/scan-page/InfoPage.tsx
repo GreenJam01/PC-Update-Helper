@@ -1,8 +1,6 @@
 import {LinkButton} from '../../components/link-button/link-button';
-import {Container} from '../../components/container/container';
 import {Button} from '../../components/button/button';
 import './scan-page.css';
-import {useEffect, useState} from 'react';
 import { AppRoutes } from '../../constants';
 import { Header } from '../../components/header/header';
 

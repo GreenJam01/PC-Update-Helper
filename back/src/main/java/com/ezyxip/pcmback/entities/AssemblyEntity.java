@@ -1,11 +1,16 @@
 package com.ezyxip.pcmback.entities;
 
+import com.ezyxip.pcmback.entities.User.User;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
+
+import java.util.List;
+
 @Data
 @NoArgsConstructor
 @Entity
@@ -41,6 +46,11 @@ public class AssemblyEntity {
     @JoinColumn(name = "ram_id")
     private RAMEntity ram;
 
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @JoinColumn(name = "user_id")
+    private User user;
+
     public Long getId() {
         return id;
     }
@@ -50,12 +60,14 @@ public class AssemblyEntity {
                           GPUEntity gpu,
                           HDDEntity hdd,
                           MotherboardEntity motherboard,
-                          RAMEntity ram) {
+                          RAMEntity ram,
+                          User user) {
         this.cpu = cpu;
         this.gpu = gpu;
         this.hdd = hdd;
         this.motherboard = motherboard;
         this.ram = ram;
+        this.user = user;
        // this.ssdEntity = ssdEntity;
     }
 
