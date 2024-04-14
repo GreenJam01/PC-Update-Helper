@@ -1,4 +1,4 @@
-import { Link, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import myImage from '../../resourses/logo.png';
 import './header.css';
 import { AppRoutes, AuthorizationStatus } from '../../constants';

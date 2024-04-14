@@ -11,7 +11,6 @@ import { SortForm } from '../../components/sort-form/sort-form';
 import { filterLess } from '../../constants';
 import InputLabel from '@mui/material/InputLabel/InputLabel';
 import FormControl from '@mui/material/FormControl/FormControl';
-import SelectMui from '../../components/select-mui/select-mui';
 export type CPUHardwarePageProps = {
   type: string;
 }

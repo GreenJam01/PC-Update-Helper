@@ -22,7 +22,7 @@ export const createAPI = (): AxiosInstance => {
     baseURL: BASE_URL,
     timeout: TIME_OUT,
     headers: {
-      Authorization: `Bearer ${getToken()}`,
+      Authorization: `${getToken()}`,
       'Content-Type': 'application/json'
     },
   });
