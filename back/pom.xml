@@ -141,7 +141,7 @@
                             <outputDirectory> src/main/resources/static</outputDirectory>
                             <resources>
                                 <resource>
-                                    <directory> ../frontend/build </directory>
+                                    <directory> ../frontend/dist </directory>
                                 </resource>
                             </resources>
                         </configuration>
