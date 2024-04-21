@@ -1,0 +1,16 @@
+[
+  {
+    "title": "PATRIOT PVS416G300C",
+    "brand": "PATRIOT",
+    "volume": "16",
+    "frequency": "3000",
+    "price": "4290"
+  },
+  {
+    "title": "AMD \u043d\u0435",
+    "brand": "AMD",
+    "volume": "2",
+    "frequency": "800",
+    "price": "1390"
+  }
+]

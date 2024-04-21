@@ -1,0 +1,18 @@
+[
+  {
+    "title": "ASROCK AMD  Radeon RX 7800XT RX7800XT CL 16GO",
+    "brand": "ASROCK",
+    "memoryVolume": "16",
+    "busWidth": "256",
+    "memoryFrequency": "16000",
+    "price": "64700"
+  },
+  {
+    "title": "ASROCK AMD  Radeon RX 7900XTX RX7900XTX TCW 24GO",
+    "brand": "ASROCK",
+    "memoryVolume": "24",
+    "busWidth": "384",
+    "memoryFrequency": "20000",
+    "price": "121600"
+  }
+]

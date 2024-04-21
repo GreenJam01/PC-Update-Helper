@@ -4,42 +4,38 @@ from hdd import parseHdd
 from gpu import parseGpu
 from motherboard import parseMb
 from ssd import parseSsd
+import schedule
+import time
 import multiprocessing
+import eureka
 
-if __name__ == '__main__':
-	# parseGpu()
-	# parseRam()
-	# parseMb()
-	# parseHdd()
-	# parseSsd()
-	# proc1 = multiprocessing.Process(target=parseCpu, args=["/catalog/processory/"])
-	# proc2 = multiprocessing.Process(target=parseGpu)
-	# proc3 = multiprocessing.Process(target=parseRam)
-	# proc4 = multiprocessing.Process(target=parseMb)
-	# proc5 = multiprocessing.Process(target=parseHdd)
-	# proc6 = multiprocessing.Process(target=parseSsd)
-	# proc1.start()
+def parse_cpu_daily():
+    parseCpu("/catalog/processory/")
 
-	#parseCpu("/catalog/processory/")
-	#parseGpu("/catalog/videokarty/")
-	#parseRam("/catalog/moduli-pamyati/")
-	#parseMb("/catalog/materinskie-platy/")
-	#parseHdd("/catalog/zhestkie-diski/")
-	parseSsd("/catalog/ssd-nakopiteli/")
-	
+def parse_gpu_daily():
+    parseGpu("/catalog/videokarty/")
 
-	# proc2.start()
-	# proc3.start()
-	# proc4.start()
-	# proc5.start()
-	# proc6.start()
+def parse_ram_daily():
+    parseRam("/catalog/moduli-pamyati/")
 
+def parse_mb_daily():
+    parseMb("/catalog/materinskie-platy/")
 
-	# proc1.join()
-	# proc2.join()
-	# proc3.join()
-    # Thread(target = parseCpu).start()
-    # Thread(target = parseGpu).start()
-    # # Thread(target = parseHdd).start()
-    # Thread(target = parseRam).start()
-    # # Thread(target = parseMb).start()
+def parse_hdd_daily():
+    parseHdd("/catalog/zhestkie-diski/")
+
+def parse_ssd_daily():
+    parseSsd("/catalog/ssd-nakopiteli/")
+
+# schedule.every().day.at("01:00").do(parse_cpu_daily)
+# schedule.every().day.at("02:00").do(parse_gpu_daily)
+# schedule.every().day.at("03:00").do(parse_ram_daily)
+# schedule.every().day.at("04:00").do(parse_mb_daily)
+schedule.every().day.at("05:00").do(parse_hdd_daily)
+# schedule.every().day.at("06:00").do(parse_ssd_daily)
+
+if __name__ == "__main__":
+    eureka.init()
+    while True:
+        schedule.run_all()
+        time.sleep(1)

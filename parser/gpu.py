@@ -2,9 +2,10 @@ import random
 import time
 from bs4 import BeautifulSoup
 from selenium import webdriver
-from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.edge.options import Options
 import requests
 import json
+import eureka
 
 def parseGpu(extraStr):
 	agents = ["user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.140 Safari/537.36 Edge/17.17134",
@@ -16,9 +17,8 @@ def parseGpu(extraStr):
 				"user-agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 11_1_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4638.69"]
 		# browser = webdriver.Chrome("parserSoup\chromedriver.exe")
 	options = Options()
-	options.add_argument("--headless")
-	options.add_argument(agents[0])
-	driver = webdriver.Chrome("parser\chromedriver.exe", options=options)
+	options.binary_location = "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe"
+	driver = webdriver.Edge(options = options, executable_path='parser\\msedgedriver.exe')
 	driver.get("https://www.citilink.ru" + extraStr)
 
 	html = driver.page_source
@@ -41,13 +41,13 @@ def parseGpu(extraStr):
 		i = 0
 		j = 1
 
-		while i < len(links):
+		while i < 2:
 			# time.sleep(6)
 			if j >= 3:
 				newOpt =  Options()
 				newOpt.add_argument("--headless")
 				newOpt.add_argument(agents[random.randint(0,6)])
-				driver = webdriver.Chrome("parser\chromedriver.exe", options=newOpt)
+				driver = webdriver.Chrome("parser\\chromedriver.exe", options=newOpt)
 				j = 0
 			driver.get(links[i])
 			soup = BeautifulSoup(driver.page_source)
@@ -104,7 +104,7 @@ def parseGpu(extraStr):
 		# post на сервер
 
 		headers = {'Content-type': 'application/json', 'Connection': 'Keep-Alive'}
-		urlGpu = "http://localhost:8081/hardware/post-gpu-list"
+		urlGpu = f"{eureka.url}/hardware/post-gpu-list"
 
 		r = requests.post(urlGpu, data=final, headers=headers)
 		soup = temp_soup

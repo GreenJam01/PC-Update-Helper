@@ -1,0 +1,42 @@
+[
+  {
+    "title": "SEAGATE ST16000NM000J",
+    "brand": "SEAGATE",
+    "memory": "16384",
+    "interface": "SATA III",
+    "maxReadingSpeed": "0",
+    "maxRecordingSpeed": "0",
+    "price": "34990",
+    "isSsd": "false"
+  },
+  {
+    "title": "WD WD33PURZ",
+    "brand": "WD",
+    "memory": "3072",
+    "interface": "SATA III",
+    "maxReadingSpeed": "0",
+    "maxRecordingSpeed": "0",
+    "price": "9990",
+    "isSsd": "false"
+  },
+  {
+    "title": "WD WD1003FZEX",
+    "brand": "WD",
+    "memory": "1024",
+    "interface": "SATA III",
+    "maxReadingSpeed": "0",
+    "maxRecordingSpeed": "0",
+    "price": "9990",
+    "isSsd": "false"
+  },
+  {
+    "title": "WD WD8001PURP",
+    "brand": "WD",
+    "memory": "8192",
+    "interface": "SATA III",
+    "maxReadingSpeed": "0",
+    "maxRecordingSpeed": "0",
+    "price": "25990",
+    "isSsd": "false"
+  }
+]

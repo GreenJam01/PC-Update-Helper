@@ -1,0 +1,12 @@
+[
+  {
+    "title": "NETAC NT01NV2000-1T0-E4X",
+    "brand": "NETAC",
+    "memory": "1024",
+    "interface": "PCIe 3.0 x4",
+    "maxReadingSpeed": "2500",
+    "maxRecordingSpeed": "2100",
+    "price": "8190",
+    "isSsd": 1
+  }
+]

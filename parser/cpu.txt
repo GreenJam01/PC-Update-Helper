@@ -1,0 +1,466 @@
+[
+  {
+    "title": "Intel Core i5 13600K",
+    "coresNumber": "14",
+    "price": "37290",
+    "brand": "INTEL",
+    "frequency": "3.5",
+    "threadsNumber": "20"
+  },
+  {
+    "title": "Intel Core i3 10100",
+    "coresNumber": "4",
+    "price": "11990",
+    "brand": "INTEL",
+    "frequency": "3.6",
+    "threadsNumber": "8"
+  },
+  {
+    "title": "Intel Core i5 14600KF",
+    "coresNumber": "14",
+    "price": "35990",
+    "brand": "INTEL",
+    "frequency": "3.5",
+    "threadsNumber": "20"
+  },
+  {
+    "title": "AMD Ryzen 9 7950X",
+    "coresNumber": "16",
+    "price": "69990",
+    "brand": "AMD",
+    "frequency": "4.5",
+    "threadsNumber": "32"
+  },
+  {
+    "title": "Intel Celeron G5905",
+    "coresNumber": "2",
+    "price": "4190",
+    "brand": "INTEL",
+    "frequency": "3.5",
+    "threadsNumber": "2"
+  },
+  {
+    "title": "AMD Ryzen 7 3700X",
+    "coresNumber": "8",
+    "price": "16990",
+    "brand": "AMD",
+    "frequency": "3.6",
+    "threadsNumber": "16"
+  },
+  {
+    "title": "Intel Core i7 13700K",
+    "coresNumber": "16",
+    "price": "48990",
+    "brand": "INTEL",
+    "frequency": "3.4",
+    "threadsNumber": "24"
+  },
+  {
+    "title": "Intel Core i5 11400",
+    "coresNumber": "6",
+    "price": "16490",
+    "brand": "INTEL",
+    "frequency": "2.6",
+    "threadsNumber": "12"
+  },
+  {
+    "title": "AMD Ryzen 7 7700X",
+    "coresNumber": "8",
+    "price": "39990",
+    "brand": "AMD",
+    "frequency": "4.5",
+    "threadsNumber": "16"
+  },
+  {
+    "title": "Intel Core i7 12700KF",
+    "coresNumber": "12",
+    "price": "35990",
+    "brand": "INTEL",
+    "frequency": "3.6",
+    "threadsNumber": "20"
+  },
+  {
+    "title": "Intel Core i5 12500",
+    "coresNumber": "6",
+    "price": "23790",
+    "brand": "INTEL",
+    "frequency": "3.0",
+    "threadsNumber": "12"
+  },
+  {
+    "title": "Intel Core i5 10600KF",
+    "coresNumber": "6",
+    "price": "11390",
+    "brand": "INTEL",
+    "frequency": "4.1",
+    "threadsNumber": "12"
+  },
+  {
+    "title": "Intel Core i5 10400F",
+    "coresNumber": "6",
+    "price": "10690",
+    "brand": "INTEL",
+    "frequency": "2.9",
+    "threadsNumber": "12"
+  },
+  {
+    "title": "Intel Core i7 11700F",
+    "coresNumber": "8",
+    "price": "22890",
+    "brand": "INTEL",
+    "frequency": "2.5",
+    "threadsNumber": "16"
+  },
+  {
+    "title": "AMD Ryzen 5 7600",
+    "coresNumber": "6",
+    "price": "22990",
+    "brand": "AMD",
+    "frequency": "3.8",
+    "threadsNumber": "12"
+  },
+  {
+    "title": "Intel Core i7 11700",
+    "coresNumber": "8",
+    "price": "24990",
+    "brand": "INTEL",
+    "frequency": "2.5",
+    "threadsNumber": "16"
+  },
+  {
+    "title": "Intel Core i7 13700F",
+    "coresNumber": "16",
+    "price": "43990",
+    "brand": "INTEL",
+    "frequency": "2.1",
+    "threadsNumber": "24"
+  },
+  {
+    "title": "Intel Pentium Gold G6400",
+    "coresNumber": "2",
+    "price": "9290",
+    "brand": "INTEL",
+    "frequency": "4",
+    "threadsNumber": "4"
+  },
+  {
+    "title": "Intel Core i9 11900KF",
+    "coresNumber": "8",
+    "price": "26990",
+    "brand": "INTEL",
+    "frequency": "3.5",
+    "threadsNumber": "16"
+  },
+  {
+    "title": "Intel Core i7 12700F",
+    "coresNumber": "12",
+    "price": "32990",
+    "brand": "INTEL",
+    "frequency": "2.1",
+    "threadsNumber": "20"
+  },
+  {
+    "title": "Intel Core i9 14900KF",
+    "coresNumber": "24",
+    "price": "72990",
+    "brand": "INTEL",
+    "frequency": "3.2",
+    "threadsNumber": "32"
+  },
+  {
+    "title": "AMD Ryzen 7 5800X",
+    "coresNumber": "8",
+    "price": "26990",
+    "brand": "AMD",
+    "frequency": "3.8",
+    "threadsNumber": "16"
+  },
+  {
+    "title": "Intel Core i9 13900K",
+    "coresNumber": "24",
+    "price": "72990",
+    "brand": "INTEL",
+    "frequency": "3",
+    "threadsNumber": "32"
+  },
+  {
+    "title": "Intel Core i5 11500",
+    "coresNumber": "6",
+    "price": "18590",
+    "brand": "INTEL",
+    "frequency": "2.7",
+    "threadsNumber": "12"
+  },
+  {
+    "title": "AMD Ryzen 7 5700X3D",
+    "coresNumber": "8",
+    "price": "28990",
+    "brand": "AMD",
+    "frequency": "3",
+    "threadsNumber": "16"
+  },
+  {
+    "title": "AMD Ryzen 9 7900X",
+    "coresNumber": "12",
+    "price": "49990",
+    "brand": "AMD",
+    "frequency": "4.7",
+    "threadsNumber": "24"
+  },
+  {
+    "title": "Intel Core i7 10700",
+    "coresNumber": "8",
+    "price": "23990",
+    "brand": "INTEL",
+    "frequency": "2.9",
+    "threadsNumber": "16"
+  },
+  {
+    "title": "Intel Core i5 10400",
+    "coresNumber": "6",
+    "price": "16590",
+    "brand": "INTEL",
+    "frequency": "2.9",
+    "threadsNumber": "12"
+  },
+  {
+    "title": "Intel Core i5 11600K",
+    "coresNumber": "6",
+    "price": "17790",
+    "brand": "INTEL",
+    "frequency": "3.9",
+    "threadsNumber": "12"
+  },
+  {
+    "title": "Intel Core i9 12900K",
+    "coresNumber": "16",
+    "price": "47990",
+    "brand": "INTEL",
+    "frequency": "3.2",
+    "threadsNumber": "24"
+  },
+  {
+    "title": "Intel Core i5 10600K",
+    "coresNumber": "6",
+    "price": "16990",
+    "brand": "INTEL",
+    "frequency": "4.1",
+    "threadsNumber": "12"
+  },
+  {
+    "title": "Intel Core i5 14600K",
+    "coresNumber": "14",
+    "price": "39990",
+    "brand": "INTEL",
+    "frequency": "3.5",
+    "threadsNumber": "20"
+  },
+  {
+    "title": "AMD Athlon 200GE",
+    "coresNumber": "2",
+    "price": "3990",
+    "brand": "AMD",
+    "frequency": "3.2",
+    "threadsNumber": "4"
+  },
+  {
+    "title": "Intel Core i7 12700K",
+    "coresNumber": "12",
+    "price": "37990",
+    "brand": "INTEL",
+    "frequency": "3.6",
+    "threadsNumber": "20"
+  },
+  {
+    "title": "Intel Core i5 14500",
+    "coresNumber": "14",
+    "price": "31990",
+    "brand": "INTEL",
+    "frequency": "2.6",
+    "threadsNumber": "20"
+  },
+  {
+    "title": "AMD Ryzen 5 5600X",
+    "coresNumber": "6",
+    "price": "18590",
+    "brand": "AMD",
+    "frequency": "3.7",
+    "threadsNumber": "12"
+  },
+  {
+    "title": "AMD Ryzen Threadripper Pro 5995WX",
+    "coresNumber": "64",
+    "price": "689990",
+    "brand": "AMD",
+    "frequency": "2.7",
+    "threadsNumber": "128"
+  },
+  {
+    "title": "Intel Core i9 10900F",
+    "coresNumber": "10",
+    "price": "29990",
+    "brand": "INTEL",
+    "frequency": "2.8",
+    "threadsNumber": "20"
+  },
+  {
+    "title": "Intel Core i7 10700F",
+    "coresNumber": "8",
+    "price": "22790",
+    "brand": "INTEL",
+    "frequency": "2.9",
+    "threadsNumber": "16"
+  },
+  {
+    "title": "AMD Ryzen 3 PRO 4350G",
+    "coresNumber": "4",
+    "price": "11790",
+    "brand": "AMD",
+    "frequency": "3.8",
+    "threadsNumber": "8"
+  },
+  {
+    "title": "AMD Ryzen 5 PRO 5650G",
+    "coresNumber": "6",
+    "price": "14990",
+    "brand": "AMD",
+    "frequency": "3.9",
+    "threadsNumber": "12"
+  },
+  {
+    "title": "Intel Core i5 14400F",
+    "coresNumber": "10",
+    "price": "25990",
+    "brand": "INTEL",
+    "frequency": "2.5",
+    "threadsNumber": "16"
+  },
+  {
+    "title": "Intel Core i7 10700K",
+    "coresNumber": "8",
+    "price": "29990",
+    "brand": "INTEL",
+    "frequency": "3.8",
+    "threadsNumber": "16"
+  },
+  {
+    "title": "Intel Core i3 13100F",
+    "coresNumber": "4",
+    "price": "12990",
+    "brand": "INTEL",
+    "frequency": "3.4",
+    "threadsNumber": "8"
+  },
+  {
+    "title": "AMD Ryzen 5 8500G",
+    "coresNumber": "6",
+    "price": "22690",
+    "brand": "AMD",
+    "frequency": "3.5",
+    "threadsNumber": "12"
+  },
+  {
+    "title": "AMD Ryzen 5 5500GT",
+    "coresNumber": "6",
+    "price": "14990",
+    "brand": "AMD",
+    "frequency": "3.6",
+    "threadsNumber": "12"
+  },
+  {
+    "title": "Intel Core i9 10900K",
+    "coresNumber": "10",
+    "price": "38990",
+    "brand": "INTEL",
+    "frequency": "3.7",
+    "threadsNumber": "20"
+  },
+  {
+    "title": "AMD Athlon Pro 200GE",
+    "coresNumber": "2",
+    "price": "3990",
+    "brand": "AMD",
+    "frequency": "3.2",
+    "threadsNumber": "4"
+  },
+  {
+    "title": "Intel Core i5 12400F",
+    "coresNumber": "6",
+    "price": "14490",
+    "brand": "INTEL",
+    "frequency": "2.5",
+    "threadsNumber": "12"
+  },
+  {
+    "title": "AMD Ryzen 5 5600",
+    "coresNumber": "6",
+    "price": "13190",
+    "brand": "AMD",
+    "frequency": "3.5",
+    "threadsNumber": "12"
+  },
+  {
+    "title": "Intel Core i5 12400F",
+    "coresNumber": "6",
+    "price": "14490",
+    "brand": "INTEL",
+    "frequency": "2.5",
+    "threadsNumber": "12"
+  },
+  {
+    "title": "AMD Ryzen 5 5600G",
+    "coresNumber": "6",
+    "price": "13990",
+    "brand": "AMD",
+    "frequency": "3.9",
+    "threadsNumber": "12"
+  },
+  {
+    "title": "AMD Ryzen 7 5700X",
+    "coresNumber": "8",
+    "price": "19590",
+    "brand": "AMD",
+    "frequency": "3.4",
+    "threadsNumber": "16"
+  },
+  {
+    "title": "AMD Ryzen 5 7500F",
+    "coresNumber": "6",
+    "price": "19990",
+    "brand": "AMD",
+    "frequency": "3.7",
+    "threadsNumber": "12"
+  },
+  {
+    "title": "AMD Ryzen 5 5600X",
+    "coresNumber": "6",
+    "price": "16990",
+    "brand": "AMD",
+    "frequency": "3.7",
+    "threadsNumber": "12"
+  },
+  {
+    "title": "Intel Core i3 12100F",
+    "coresNumber": "4",
+    "price": "9390",
+    "brand": "INTEL",
+    "frequency": "3.3",
+    "threadsNumber": "8"
+  },
+  {
+    "title": "AMD Ryzen 5 3600",
+    "coresNumber": "6",
+    "price": "8990",
+    "brand": "AMD",
+    "frequency": "3.6",
+    "threadsNumber": "12"
+  },
+  {
+    "title": "Intel Core i3 12100",
+    "coresNumber": "4",
+    "price": "11990",
+    "brand": "INTEL",
+    "frequency": "3.3",
+    "threadsNumber": "8"
+  }
+]
