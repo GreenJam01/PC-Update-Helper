@@ -4,7 +4,7 @@ import * as Yup from 'yup';
 
 import { signinAction } from '../../store/api-actions';
 import { useAppDispatch } from '../../hooks/use-app';
-
+import './SigninPage.css'
 
 const SigninPage = () => {
   const dispatch = useAppDispatch();
@@ -35,57 +35,68 @@ const SigninPage = () => {
   };
 
   return (
-    <div className="col-md-12">
-      <div className="card card-container">
-        <img
-          src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
-          alt="profile-img"
-          className="profile-img-card"
-        />
-        <Formik
-          initialValues={initialValues}
-          validationSchema={validationSchema}
-          onSubmit={handleLogin}
-        >
-          <Form>
-            <div className="form-group">
-              <label htmlFor="username">Username</label>
-              <Field name="username" type="text" className="form-control" />
-              <ErrorMessage
-                name="username"
-                component="div"
-                className="alert alert-danger"
-              />
-            </div>
-
-            <div className="form-group">
-              <label htmlFor="password">Password</label>
-              <Field name="password" type="password" className="form-control" />
-              <ErrorMessage
-                name="password"
-                component="div"
-                className="alert alert-danger"
-              />
-            </div>
-
-            <div className="form-group">
-              <button type="submit" className="btn btn-primary btn-block" disabled={loading}>
-                {loading && (
-                  <span className="spinner-border spinner-border-sm"></span>
-                )}
-                <span>Login</span>
-              </button>
-            </div>
-
-            {message && (
+    <div className="col-md-12 fullscreen">
+      <div className='main-container'>
+        <div className="card card-container">
+          <Formik
+            initialValues={initialValues}
+            validationSchema={validationSchema}
+            onSubmit={handleLogin}
+          >
+            <Form className='login-password'>
               <div className="form-group">
-                <div className="alert alert-danger" role="alert">
-                  {message}
+                <label className='form-group-item' htmlFor="username">Username:</label>
+                <Field  name="username" type="text" className="form-control" />
+                <div className='alert-container'>
+                      <ErrorMessage
+                        name="username"
+                        component="div"
+                        className="alert alert-danger errorMessage"
+                      />
                 </div>
               </div>
-            )}
-          </Form>
-        </Formik>
+
+              <div className="form-group">
+                <label className='form-group-item' htmlFor="password">Password: </label>
+                <Field name="password" type="password" className="form-control" />
+                <div className='alert-container'>
+                <ErrorMessage
+                        name="password"
+                        component="div"
+                        className="alert alert-danger errorMessage"
+                      />
+                </div>
+              </div>
+
+              <div className="form-group login-button">
+                <button type="submit" className="btn btn-primary btn-block" disabled={loading}>
+                  {loading && (
+                    <span className="spinner-border spinner-border-sm"></span>
+                  )}
+                  <span>Login</span>
+                </button>
+              </div>
+
+              {message && (
+                <div className="form-group">
+                  <div className="alert alert-danger" role="alert">
+                    {message}
+                  </div>
+                </div>
+              )}
+            </Form>
+          </Formik>
+          <div>
+            <div className='pcUp-title'>
+              PC-UP
+            </div>
+            <img
+            src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
+            alt="profile-img"
+            className="profile-img-card"
+          />
+          </div>
+        </div>
       </div>
     </div>
   );

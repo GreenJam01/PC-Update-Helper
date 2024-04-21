@@ -5,7 +5,10 @@ body{
     font-family: 'Open Sans', sans-serif;
     /* background-color: #020405; */
     /* background-image: url(https://images.hdqwalls.com/download/earth-rocket-minimalism-1600x1200.jpg); */
-    background: url("resourses/White-Wallpaper-1-XL.jpg") center center/cover repeat;; 
+    /* background: url("resourses/White-Wallpaper-1-XL.jpg") center center/cover repeat;;  */
+    /* background: url("resourses/shit.jpg") center center/cover repeat;;  */
+    background-image: url("resourses/shit.jpg");
+    background-repeat: repeat;
     /* background-color: #fff; */
     /* background-size:cover; */
     color: white;
