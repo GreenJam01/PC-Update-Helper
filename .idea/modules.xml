@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/PC Update Helper.iml" filepath="$PROJECT_DIR$/.idea/PC Update Helper.iml" />
-      <module fileurl="file://$PROJECT_DIR$/back/pcm-back.iml" filepath="$PROJECT_DIR$/back/pcm-back.iml" />
     </modules>
   </component>
 </project>

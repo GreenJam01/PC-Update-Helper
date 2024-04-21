@@ -1,5 +1,5 @@
 import {useState, useLayoutEffect} from 'react';
-import {Router} from 'react-router-dom';
+import {HashRouter, Router} from 'react-router-dom';
 import type {BrowserHistory} from 'history';
 
 export interface HistoryRouterProps {
@@ -21,14 +21,14 @@ function HistoryRouter({
   useLayoutEffect(() => history.listen(setState), [history]);
 
   return (
-    <Router
+    <HashRouter
       basename={basename}
       location={state.location}
       navigationType={state.action}
       navigator={history}
     >
       {children}
-    </Router>
+    </HashRouter>
   );
 }
 
