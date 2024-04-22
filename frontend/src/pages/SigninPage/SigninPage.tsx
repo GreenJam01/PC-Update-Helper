@@ -5,7 +5,7 @@ import * as Yup from 'yup';
 import { signinAction } from '../../store/api-actions';
 import { useAppDispatch } from '../../hooks/use-app';
 import './SigninPage.css'
-
+import './SigninPageMedia.css'
 const SigninPage = () => {
   const dispatch = useAppDispatch();
 
@@ -69,12 +69,14 @@ const SigninPage = () => {
               </div>
 
               <div className="form-group login-button">
-                <button type="submit" className="btn btn-primary btn-block" disabled={loading}>
-                  {loading && (
-                    <span className="spinner-border spinner-border-sm"></span>
-                  )}
-                  <span>Login</span>
-                </button>
+                <div>
+                  <button type="submit" className="btn btn-primary btn-block" disabled={loading}>
+                    {loading && (
+                      <span className="spinner-border spinner-border-sm"></span>
+                    )}
+                    <span>Login</span>
+                  </button>
+                </div>
               </div>
 
               {message && (

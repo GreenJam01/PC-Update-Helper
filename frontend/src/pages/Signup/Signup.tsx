@@ -100,7 +100,9 @@ const SignupPage: React.FC = () => {
                   </div>
 
                   <div className="form-group">
-                    <button type="submit" className="btn btn-primary btn-block">Sign Up</button>
+                    <div>
+                      <button type="submit" className="btn btn-primary btn-block">Sign Up</button>
+                    </div>
                   </div>
                 </React.Fragment>
               )}

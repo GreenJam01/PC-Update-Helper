@@ -9,6 +9,7 @@ import choiceImg from '../../resourses/choiceImg.png';
 import { Footer } from '../../components/footer/footer';
 import { LinkButton } from '../../components/link-button/link-button';
 import { AppRoutes } from '../../constants';
+import { Menu } from '@mui/material';
 // import { Promo } from "../../components/promo/promo";
 
 export function IndexPage(){
