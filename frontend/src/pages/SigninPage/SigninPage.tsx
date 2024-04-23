@@ -4,6 +4,7 @@ import * as Yup from 'yup';
 
 import { signinAction } from '../../store/api-actions';
 import { useAppDispatch } from '../../hooks/use-app';
+import { GoogleButton, googleButton } from '../../components/google-button/google-button';
 import './SigninPage.css'
 import './SigninPageMedia.css'
 const SigninPage = () => {
@@ -36,6 +37,7 @@ const SigninPage = () => {
 
   return (
     <div className="col-md-12 fullscreen">
+      <GoogleButton/>
       <div className='main-container'>
         <div className="card card-container">
           <Formik

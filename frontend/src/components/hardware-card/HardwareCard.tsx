@@ -9,6 +9,7 @@ export function HardwareCard({hardware, type}: HardwareCardProps){
         className={'hardware__card'}
       >
         <div className={'hardware__image-wrapper hardware-card__image-wrapper'}>
+          <div className='ussr-star'></div>
           <img className="hardware-card__image" src={getDefaultHardwareImage(type)} width="260" height="200" alt="hardware image"/>
         </div>
         <div className="hardware-card__info">

@@ -1,0 +1,20 @@
+.google-button {
+	width: 200px;
+	padding: 10px;
+	display: flex;
+	gap: 25px;
+	align-items: center;
+	text-decoration: none;
+	border: 3px solid #694aff;
+	border-radius: 50px;
+	background-color: #ffffff77;
+}
+.google-sign-in {
+	color: #2a00d2;
+}
+.google-button:hover {
+	border-color: #a08eff;
+}
+.google-button:hover > .google-sign-in {
+	color: #8c6fff;
+}
