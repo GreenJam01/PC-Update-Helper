@@ -1,15 +1,17 @@
 import { HardwareType } from '../../types/hardwares';
 import './HardwareCard.css';
 import { getDefaultHardwareImage } from '../../util/util';
+import { Star } from '../star/star';
 type HardwareCardProps = {hardware: HardwareType; type: string}
 export function HardwareCard({hardware, type}: HardwareCardProps){
+  const star = <Star isActive={true}/>
   return(
     <div className='hardware__card__wrapper'>
       <article
         className={'hardware__card'}
       >
         <div className={'hardware__image-wrapper hardware-card__image-wrapper'}>
-          <div className='ussr-star'></div>
+          {star}
           <img className="hardware-card__image" src={getDefaultHardwareImage(type)} width="260" height="200" alt="hardware image"/>
         </div>
         <div className="hardware-card__info">
