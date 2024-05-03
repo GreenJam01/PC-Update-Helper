@@ -8,6 +8,7 @@ import { dropToken, saveToken } from '../services/token';
 import { UserData } from '../types/user';
 import { Assembly } from '../types/assembly';
 import { setAuthorizationStatus, setUser } from '../slices/authSlice';
+import { AssembliesActions } from '../slices/assembliesSlice';
 
 export const redirectToRoute = createAction<AppRoutes>('redirectToRoute');
 
@@ -75,6 +76,7 @@ export const signoutAction = createAsyncThunk<void, undefined, {
     (_arg, {dispatch, }) => {
       dispatch(setAuthorizationStatus(AuthorizationStatus.NoAuth));
       dispatch(setUser(null));
+      dispatch(AssembliesActions.setAssemblies([]));
       dispatch(redirectToRoute(AppRoutes.Main));
       dropToken();
     },
