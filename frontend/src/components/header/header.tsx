@@ -12,7 +12,7 @@ export function Header(){
   return(
     <header className={'header'}>
       <NavLink className={'header_logo'} to={AppRoutes.Main} title={'На главную'}>
-        <img width="75" height="75" src={myImage} alt="Main Logo"></img>
+        <img className='header_logo-image' src={myImage} alt="Main Logo"></img>
       </NavLink>
       <nav className={'navigation'}>
         <ul className={'navigation_list'}>

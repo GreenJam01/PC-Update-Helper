@@ -49,75 +49,77 @@ const SignupPage: React.FC = () => {
 
   return (
     <div className="col-md-12 fullscreen">
-      <div className="main-container">
-        <div className="card card-container">
-          <Formik
-            initialValues={initialValues}
-            validationSchema={validationSchema}
-            onSubmit={handleRegister}
-          >
-            <Form className='login-password'>
-              {!successful && (
-                <React.Fragment>
-                  <div className="form-group">
-                    <label htmlFor="username" className='form-group-item'> Username </label>
-                    <Field name="username" type="text" className="form-control" />
-                    <div className='alert-container'>
-                      <ErrorMessage
-                        name="username"
-                        component="div"
-                        className="alert alert-danger errorMessage"
-                      />
+      <div className='signin-container'>
+        <div className="main-container">
+          <div className="card card-container">
+            <Formik
+              initialValues={initialValues}
+              validationSchema={validationSchema}
+              onSubmit={handleRegister}
+            >
+              <Form className='login-password'>
+                {!successful && (
+                  <React.Fragment>
+                    <div className="form-group">
+                      <label htmlFor="username" className='form-group-item'> Username </label>
+                      <Field name="username" type="text" className="form-control" />
+                      <div className='alert-container'>
+                        <ErrorMessage
+                          name="username"
+                          component="div"
+                          className="alert alert-danger errorMessage"
+                        />
+                      </div>
                     </div>
-                  </div>
 
-                  <div className="form-group">
-                    <label htmlFor="email" className='form-group-item'> Email </label>
-                    <Field name="email" type="email" className="form-control" />
-                    <div className='alert-container'>
-                      <ErrorMessage
-                        name="email"
-                        component="div"
-                        className="alert alert-danger errorMessage"
-                      />
+                    <div className="form-group">
+                      <label htmlFor="email" className='form-group-item'> Email </label>
+                      <Field name="email" type="email" className="form-control" />
+                      <div className='alert-container'>
+                        <ErrorMessage
+                          name="email"
+                          component="div"
+                          className="alert alert-danger errorMessage"
+                        />
+                      </div>
                     </div>
-                  </div>
 
-                  <div className="form-group">
-                    <label htmlFor="password" className='form-group-item'> Password </label>
-                    <Field
-                      name="password"
-                      type="password"
-                      className="form-control"
-                    />
-                    <div className='alert-container'>
-                      <ErrorMessage
+                    <div className="form-group">
+                      <label htmlFor="password" className='form-group-item'> Password </label>
+                      <Field
                         name="password"
-                        component="div"
-                        className="alert alert-danger errorMessage"
+                        type="password"
+                        className="form-control"
                       />
+                      <div className='alert-container'>
+                        <ErrorMessage
+                          name="password"
+                          component="div"
+                          className="alert alert-danger errorMessage"
+                        />
+                      </div>
                     </div>
-                  </div>
 
-                  <div className="form-group">
-                    <div>
-                      <button type="submit" className="btn btn-primary btn-block">Sign Up</button>
+                    <div className="form-group">
+                      <div>
+                        <button type="submit" className="btn btn-primary btn-block">Sign Up</button>
+                      </div>
                     </div>
-                  </div>
-                </React.Fragment>
-              )}
+                  </React.Fragment>
+                )}
 
-            </Form>
-          </Formik>
-          <div>
-            <div className='pcUp-title'>
-              PC-UP
+              </Form>
+            </Formik>
+            <div className='container-avatar'>
+              <div className='pcUp-title'>
+                PC-UP
+              </div>
+              <img
+              src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
+              alt="profile-img"
+              className="profile-img-card"
+            />
             </div>
-            <img
-            src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
-            alt="profile-img"
-            className="profile-img-card"
-          />
           </div>
         </div>
       </div>

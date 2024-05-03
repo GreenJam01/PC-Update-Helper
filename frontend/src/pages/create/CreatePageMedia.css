@@ -1,0 +1,18 @@
+@media (max-width: 1200px) {
+	.assemble_page__section {
+		width: 650px;
+	}
+}
+
+@media (max-width: 991px) {
+	.assemble_page__section {
+		width: 500px;
+	}
+	.assemble_component_text {
+		font-size: 24px;
+	}
+}
+
+@media (max-width: 575px) {
+
+}

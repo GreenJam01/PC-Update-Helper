@@ -10,6 +10,7 @@ import { Footer } from '../../components/footer/footer';
 import { LinkButton } from '../../components/link-button/link-button';
 import { AppRoutes } from '../../constants';
 import { Menu } from '@mui/material';
+import './indexPageMedia.css'
 // import { Promo } from "../../components/promo/promo";
 
 export function IndexPage(){
