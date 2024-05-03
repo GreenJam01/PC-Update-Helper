@@ -1,0 +1,18 @@
+.wrapper_assemble_page__container {
+	width: 70%;
+	background-color: #89898942;
+	margin: 0 auto;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	border-radius: 10px;
+}
+.assemble_page__section {
+	width: 800px;
+}
+.assemble-create-text {
+	color:#0032d2;
+}
+.assemble_component_text {
+	color: #1576ff;
+}

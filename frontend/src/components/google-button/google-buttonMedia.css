@@ -1,0 +1,21 @@
+@media (max-width: 1200px) { 
+	.google-button-icon {
+		width: 30px;
+		height: 30px;
+	}
+}
+@media (max-width: 575px) {
+	.google-sign-in {
+		font-size: 14px;
+	}
+	.google-button {
+		padding: 7px;
+		gap: 15px;
+		width: 185px;
+		border: 2px solid #1d00ab;
+	}
+	.google-button-icon {
+		width: 25px;
+		height: 25px;
+	}
+}

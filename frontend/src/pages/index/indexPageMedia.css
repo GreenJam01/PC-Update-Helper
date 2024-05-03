@@ -1,0 +1,39 @@
+@media (max-width: 1440px) {
+	.navigation_button {
+		font-size: 22px;
+	}
+	.navigation_list {
+		padding-left: 20px;
+	}
+}
+@media (max-width: 1200px) {
+	.header_logo-image {
+		width: 50px;
+		height: 50px;
+	}
+	.navigation_button {
+		font-size: 18px;
+	}
+	.promo_info {
+		padding: 3vw 0 0 0;
+	}
+	.promo_info_main {
+		font-size: 28px;
+		color: #0058d3;
+	}
+	.promo_info_add {
+		font-size: 16px;
+	}
+	.promo_imgText {
+		font-size: 20px;
+	}
+	.aboutUs_header{
+		font-size: 24px;
+	}
+	.aboutUs_item {
+		height: auto;
+	}
+}
+@media (max-width: 991px) {
+	
+}

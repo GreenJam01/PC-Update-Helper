@@ -11,6 +11,8 @@ import { CPU, GPU, HDD, Motherboard, RAM } from '../../types/hardwares';
 import { AppRoutes } from '../../constants';
 import { Header } from '../../components/header/header';
 
+import './CreatePage.css'
+import './CreatePageMedia.css'
 
 export function CreatePage() {
   const dispatch = useAppDispatch();
@@ -60,44 +62,43 @@ export function CreatePage() {
   return(
     <>
       <Header/>
-      <div className={'a12 xs12 s12 center'}><h1>Собрать сборку</h1></div>
+      <div className={'a12 xs12 s12 center assemble-create-text'}><h1>Собрать сборку</h1></div>
       <Container className={'assemble_page__container'}>
         <div className={'assemble_page__section a6 xs12 s12'}>
-          <h1>Процессор:</h1>
+          <h1 className='assemble_component_text'>Процессор:</h1>
           {cpus &&
-    <Select
-      options={cpus.map((cpu) => ({ value: cpu, label: `${cpu.title} -- ${cpu.price} рублей` }))}
-      ref={cpuRef}
-      styles={selectStyles}
-    />}
+            <Select
+              options={cpus.map((cpu) => ({ value: cpu, label: `${cpu.title} -- ${cpu.price} рублей` }))}
+              ref={cpuRef}
+              styles={selectStyles}
+          />}
 
-          <h1>Видеокарта:</h1>
+          <h1 className='assemble_component_text'>Видеокарта:</h1>
           {gpus &&
-    <Select
-      options={gpus.map((gpu) => ({ value: gpu, label: `${gpu.title} -- ${gpu.price} рублей` }))}
-      ref={gpuRef}
-      styles={selectStyles}
-    />}
+            <Select
+              options={gpus.map((gpu) => ({ value: gpu, label: `${gpu.title} -- ${gpu.price} рублей` }))}
+              ref={gpuRef}
+              styles={selectStyles}
+          />}
 
-          <h1>HDD:</h1>
+          <h1 className='assemble_component_text'>HDD:</h1>
           {hdds &&
-    <Select
-      options={hdds.map((hdd) => ({ value: hdd, label: `${hdd.title} -- ${hdd.price} рублей` }))}
-      ref={hddRef}
-      styles={selectStyles}
-    />}
+            <Select
+              options={hdds.map((hdd) => ({ value: hdd, label: `${hdd.title} -- ${hdd.price} рублей` }))}
+              ref={hddRef}
+              styles={selectStyles}
+          />}
         </div>
 
         <div className={'assemble_page__section a6 xs12 s12'}>
-          <h1>Материнская плата:</h1>
+          <h1 className='assemble_component_text'>Материнская плата:</h1>
           {motherboards &&
     <Select
       options={motherboards.map((motherboard) => ({ value: motherboard, label: `${motherboard.title} -- ${motherboard.price} рублей` }))}
       styles={selectStyles}
       ref={motherboardRef}
     />}
-
-          <h1>Оперативная память:</h1>
+          <h1 className='assemble_component_text'>Оперативная память:</h1>
           {rams &&
     <Select
       options={rams.map((ram) => ({ value: ram, label: `${ram.title} -- ${ram.price} рублей` }))}
@@ -105,13 +106,15 @@ export function CreatePage() {
       ref={ramRef}
     />}
         </div>
+        <div>
+          <div className={'isolated center'}>
+            <Button onClick={handleFormSubmit}>Собрать</Button>
+          </div>
+          <div className={'isolated center'}>
+            <LinkButton href={AppRoutes.Main}>На главную</LinkButton>
+          </div>
+        </div>
       </Container>
-      <div className={'isolated center'}>
-        <Button onClick={handleFormSubmit}>Собрать</Button>
-      </div>
-      <div className={'isolated center'}>
-        <LinkButton href={AppRoutes.Main}>На главную</LinkButton>
-      </div>
     </>
   );
 }

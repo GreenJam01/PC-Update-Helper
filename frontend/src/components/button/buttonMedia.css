@@ -1,0 +1,7 @@
+@media (max-width: 991px){
+	.button--primary {
+		width: 150px;
+		height: 35px;
+		font-size: 16px;
+	}
+}

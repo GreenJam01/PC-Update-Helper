@@ -32,3 +32,7 @@
 .navigation_button:hover {
 	color: #ffb938;
 }
+.header_logo-image {
+	width: 75px;
+	height: 75px;
+}

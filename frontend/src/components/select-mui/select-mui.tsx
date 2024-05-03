@@ -1,5 +1,6 @@
 import { FormControl, InputLabel, Select, MenuItem } from '@mui/material';
 import { Dispatch, SetStateAction } from 'react';
+import './select-mui.css'
 interface SelectMuiProps<T> {
   value: T ;
   setValue: (value: T) => void | Dispatch<SetStateAction<T | undefined>>;
@@ -9,7 +10,7 @@ interface SelectMuiProps<T> {
 
 const SelectMui = <T extends { title: string}>({ value, setValue, options, label }: SelectMuiProps<T>) => (
   <FormControl sx={{ m: 1, minWidth: 420 }}>
-    <InputLabel id="select-mui-label">{label}</InputLabel>
+    <InputLabel id="select-mui-label" className='label-sort'>{label}</InputLabel>
     <Select value={value} onChange={(e) => setValue(e.target.value as T)} defaultValue={value}>
       {options.map((option) => (
         <MenuItem key={option.name} value={option}>

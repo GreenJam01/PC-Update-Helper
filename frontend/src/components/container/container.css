@@ -31,6 +31,7 @@
 .aboutUs_header{
     text-align: center;
     color: #0058d3;
+    font-size: 24px;
 }
 .aboutUs_wrapper{
     display: flex;
