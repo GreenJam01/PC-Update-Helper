@@ -8,6 +8,8 @@
         <option value="$PROJECT_DIR$/back/pom.xml" />
         <option value="$PROJECT_DIR$/backend/back/pom.xml" />
         <option value="$PROJECT_DIR$/backend/eureka-server/pom.xml" />
+        <option value="$PROJECT_DIR$/backend/zuul-server/pom.xml" />
+        <option value="$PROJECT_DIR$/backend/gateway-service-eureka/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
