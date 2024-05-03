@@ -6,6 +6,8 @@
 	flex-direction: column;
 	align-items: center;
 	border-radius: 10px;
+	margin-bottom: 20px;
+	padding-bottom: 15px;
 }
 .assemble_page__section {
 	width: 800px;

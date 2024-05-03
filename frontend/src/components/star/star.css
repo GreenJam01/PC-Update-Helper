@@ -5,9 +5,11 @@
 	height: 0px;
 	margin: 0;
 	color: #32557f;
+	background-color: transparent;
 	border-left: 100px solid transparent;
 	border-right: 100px solid transparent;
 	border-bottom: 70px solid #32557f;
+	border-top-color: transparent;
 	transform: rotate(35deg);
 	position: absolute;
 	right: -80px;

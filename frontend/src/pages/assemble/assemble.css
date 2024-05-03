@@ -13,3 +13,11 @@
     display: flex;
     gap: 0.5em;
 }
+
+.input__label {
+    color: #1576ff;
+}
+
+.assemble_page_text {
+    color: #0032d2;
+}
