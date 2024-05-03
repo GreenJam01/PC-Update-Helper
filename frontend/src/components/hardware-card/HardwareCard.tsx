@@ -1,10 +1,10 @@
 import { HardwareType } from '../../types/hardwares';
 import './HardwareCard.css';
 import { getDefaultHardwareImage } from '../../util/util';
-import { Star } from '../star/star';
+import { StarButton } from '../star/star-button';
 type HardwareCardProps = {hardware: HardwareType; type: string}
 export function HardwareCard({hardware, type}: HardwareCardProps){
-  const star = <Star isActive={true}/>
+  const star = <StarButton hardware={hardware}/>;
   return(
     <div className='hardware__card__wrapper'>
       <article

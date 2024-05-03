@@ -11,8 +11,8 @@ import { CPU, GPU, HDD, Motherboard, RAM } from '../../types/hardwares';
 import { AppRoutes } from '../../constants';
 import { Header } from '../../components/header/header';
 
-import './CreatePage.css'
-import './CreatePageMedia.css'
+import './CreatePage.css';
+import './CreatePageMedia.css';
 
 export function CreatePage() {
   const dispatch = useAppDispatch();
@@ -71,7 +71,7 @@ export function CreatePage() {
               options={cpus.map((cpu) => ({ value: cpu, label: `${cpu.title} -- ${cpu.price} рублей` }))}
               ref={cpuRef}
               styles={selectStyles}
-          />}
+            />}
 
           <h1 className='assemble_component_text'>Видеокарта:</h1>
           {gpus &&
@@ -79,7 +79,7 @@ export function CreatePage() {
               options={gpus.map((gpu) => ({ value: gpu, label: `${gpu.title} -- ${gpu.price} рублей` }))}
               ref={gpuRef}
               styles={selectStyles}
-          />}
+            />}
 
           <h1 className='assemble_component_text'>HDD:</h1>
           {hdds &&
@@ -87,7 +87,7 @@ export function CreatePage() {
               options={hdds.map((hdd) => ({ value: hdd, label: `${hdd.title} -- ${hdd.price} рублей` }))}
               ref={hddRef}
               styles={selectStyles}
-          />}
+            />}
         </div>
 
         <div className={'assemble_page__section a6 xs12 s12'}>

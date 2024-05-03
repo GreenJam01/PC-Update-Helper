@@ -1,10 +1,11 @@
 import { PayloadAction, createSelector, createSlice } from '@reduxjs/toolkit/react';
 import { AppData, Sorts } from '../constants';
-import { CPU, GPU, HDD, Motherboard, RAM} from '../types/hardwares';
+import { CPU, GPU, HDD, HardwareType, Motherboard, RAM} from '../types/hardwares';
 import { fetchHardwaresAction } from '../store/api-actions';
 import { hardwares } from '../data/hardware-list';
 import { toast } from 'react-toastify';
 import { Sort } from '../types/sort';
+import { isCPU, isGPU } from '../util/util';
 
 
 type HardwareState = {
@@ -39,6 +40,21 @@ export const hardwareSlice = createSlice({
     },
     setHardwareSorting: (state, action: PayloadAction<Sort>) => {
       state.sort = action.payload;
+    },
+    setHardware: (state, action: PayloadAction<HardwareType>) => {
+      if(isCPU(action.payload)) {
+        const updatedHardware = action.payload as CPU;
+        const index = state.cpu.findIndex((hardware) => hardware.id === updatedHardware.id);
+        if (index !== -1) {
+          state.cpu[index] = updatedHardware; // заменяем старую сборку на новую
+        }
+      } else if (isGPU(action.payload)){
+        const updatedHardware = action.payload as GPU;
+        const index = state.gpu.findIndex((hardware) => hardware.id === updatedHardware.id);
+        if (index !== -1) {
+          state.gpu[index] = updatedHardware; // заменяем старую сборку на новую
+        }
+      }
     }
   },
   extraReducers(builder) {
