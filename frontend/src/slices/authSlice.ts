@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { Nullable } from '../types/nullable';
 import { AppData, AuthorizationStatus } from '../constants';
 import { UserData } from '../types/user';
-import { checkAuthAction, signinAction, signupAction } from '../store/api-actions';
+import { checkAuthAction, signinAction, signoutAction, signupAction } from '../store/api-actions';
 import { toast } from 'react-toastify';
 
 type AuthState = {
@@ -58,7 +58,13 @@ export const authSlice = createSlice({
       .addCase(signupAction.rejected, (state) => {
         state.authorizationStatus = AuthorizationStatus.NoAuth;
         toast.warn('Ошибка регистрации');
-      });
+      })
+      .addCase(signoutAction.fulfilled, 
+        (state) => {
+          state.authorizationStatus = AuthorizationStatus.NoAuth;
+          state.user = null;
+          toast.success('Вы вышли из аккаунта');
+        });
   },
   selectors: {
     getAuthorizationStatus: (state) => state.authorizationStatus,

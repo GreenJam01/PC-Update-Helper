@@ -5,7 +5,7 @@ import { fetchHardwaresAction } from '../store/api-actions';
 import { hardwares } from '../data/hardware-list';
 import { toast } from 'react-toastify';
 import { Sort } from '../types/sort';
-import { isCPU, isGPU } from '../util/util';
+import { isCPU, isGPU, isHDD, isMotherboard, isRAM } from '../util/util';
 
 
 type HardwareState = {
@@ -53,6 +53,24 @@ export const hardwareSlice = createSlice({
         const index = state.gpu.findIndex((hardware) => hardware.id === updatedHardware.id);
         if (index !== -1) {
           state.gpu[index] = updatedHardware; // заменяем старую сборку на новую
+        }
+      } else if (isHDD(action.payload)){
+        const updatedHardware = action.payload as HDD;
+        const index = state.gpu.findIndex((hardware) => hardware.id === updatedHardware.id);
+        if (index !== -1) {
+          state.hdd[index] = updatedHardware; // заменяем старую сборку на новую
+        }
+      } else if (isRAM(action.payload)){
+        const updatedHardware = action.payload as RAM;
+        const index = state.gpu.findIndex((hardware) => hardware.id === updatedHardware.id);
+        if (index !== -1) {
+          state.ram[index] = updatedHardware; // заменяем старую сборку на новую
+        }
+      } else if (isMotherboard(action.payload)){
+        const updatedHardware = action.payload as Motherboard;
+        const index = state.gpu.findIndex((hardware) => hardware.id === updatedHardware.id);
+        if (index !== -1) {
+          state.motherboard[index] = updatedHardware; // заменяем старую сборку на новую
         }
       }
     }

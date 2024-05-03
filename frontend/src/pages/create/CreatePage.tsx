@@ -7,7 +7,7 @@ import Select, { SelectInstance } from 'react-select';
 import { useAppDispatch, useAppSelector } from '../../hooks/use-app';
 import { hardwaresSelectors } from '../../slices/hardwareSlice';
 import { createAssembly } from '../../store/api-actions';
-import { CPU, GPU, HDD, Motherboard, RAM } from '../../types/hardwares';
+import { CPU, GPU, HDD, HardwareType, Motherboard, RAM } from '../../types/hardwares';
 import { AppRoutes } from '../../constants';
 import { Header } from '../../components/header/header';
 
@@ -42,22 +42,39 @@ export function CreatePage() {
   };
 
 
-  const cpus = useAppSelector(hardwaresSelectors.cpu);
+  const cpus = useAppSelector(hardwaresSelectors.getCpu);
   const gpus = useAppSelector(hardwaresSelectors.gpu);
   const rams = useAppSelector(hardwaresSelectors.ram);
   const motherboards = useAppSelector(hardwaresSelectors.motherboard);
   const hdds = useAppSelector(hardwaresSelectors.hdd);
+  const dot = (color = 'transparent') => ({
+    alignItems: 'center',
+    display: 'flex',
 
+    ':before': {
+      backgroundColor: color,
+      borderRadius: 10,
+      content: '" "',
+      display: 'block',
+      marginRight: 8,
+      height: 10,
+      width: 10,
+    },
+  });
   const selectStyles = {
     option: (provided : any, state:any) => ({
       ...provided,
       color: state.isSelected ? 'white' : 'black',
-      backgroundColor: state.isSelected ? 'blue' : 'white'
+      backgroundColor: state.isSelected ? 'blue' : state.data.value.isFavorite ? 'yellow' : 'white'
     }),
     control: (provided:any) => ({
       ...provided,
       backgroundColor: 'white'
-    })
+    }),
+    input: (styles) => ({ ...styles, ...dot() }),
+    placeholder: (styles) => ({ ...styles, ...dot('#ccc') }),
+    singleValue: (styles, state) => ({ ...styles, ...dot(state.data.value.isFavorite ? 'yellow' : 'black') }),
+
   };
   return(
     <>

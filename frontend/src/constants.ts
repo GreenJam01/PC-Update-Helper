@@ -66,48 +66,15 @@ export const HARDWARES = {
 export const Sorts: { [key: string]: Sort } = {
   None: {
     title: 'Без сортировки',
-    func: (a, b) => {
-      // Сначала проверяем isFavorite
-      if (a.isFavorite && !b.isFavorite) {
-        return -1;
-      }
-      if (!a.isFavorite && b.isFavorite) {
-        return 1;
-      }
-
-      // Если isFavorite одинаковый, сортируем по цене
-      return 0;
-    }
+    func: () => 0
   },
   PriceLowToHigh: {
     title: 'Сначала дешевые',
-    func: (a, b) => {
-      // Сначала проверяем isFavorite
-      if (a.isFavorite && !b.isFavorite) {
-        return -1;
-      }
-      if (!a.isFavorite && b.isFavorite) {
-        return 1;
-      }
-
-      // Если isFavorite одинаковый, сортируем по цене
-      return a.price - b.price;
-    }
+    func: (a, b) => a.price - b.price // Функция сортировки для сортировки по цене от меньшей к большей
   },
   PriceHighToLow: {
     title: 'Сначала дорогие',
-    func: (a, b) => {
-      // Сначала проверяем isFavorite
-      if (a.isFavorite && !b.isFavorite) {
-        return -1;
-      }
-      if (!a.isFavorite && b.isFavorite) {
-        return 1;
-      }
-
-      // Если isFavorite одинаковый, сортируем по цене
-      return b.price - a.price;
-    }
+    func: (a, b) => b.price - a.price // Функция сортировки для сортировки по цене от большей к меньшей
   },
 };
 
