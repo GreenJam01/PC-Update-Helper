@@ -42,8 +42,21 @@ public class HDDEntity{
     @Column(name="isSSD")
     private boolean isSSD;
 
+    ############################# типа для картинок добавил
+    @Column(name = "imgLink")
+    private  String imgLink;
+
+    public void setImgLink(String imgLink) {
+        this.imgLink = imgLink;
+    }
+
+    public String getImgLink() {
+        return imgLink;
+    }
+    #############################
+
     public HDDEntity(String title, String brand, String memory, String anInterface,
-                     String maxRecordingSpeed, String maxReadingSpeed, Boolean isSSD,Integer price) {
+                     String maxRecordingSpeed, String maxReadingSpeed, Boolean isSSD,Integer price, String imgLink) {
         this.title = title;
         this.brand = brand;
         this.memory = memory;
@@ -52,6 +65,9 @@ public class HDDEntity{
         this.maxReadingSpeed = maxReadingSpeed;
         this.maxRecordingSpeed = maxRecordingSpeed;
         this.isSSD= isSSD;
+
+        ######################### тоже новое
+        this.imgLink = imgLink;
     }
     @JsonIgnore
     @OneToMany(mappedBy = "hdd")

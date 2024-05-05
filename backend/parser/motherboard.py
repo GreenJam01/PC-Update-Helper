@@ -55,6 +55,10 @@ def parseMb(extraStr):
 			try:
 				time.sleep(random.randint(1,3))
 				print(links[i])
+
+				# типа добавил ссылку на картинку
+				img_link = soup.find('img', class_='e1fcwjnh0').get('src').strip
+
 				properties = soup.find('ul', class_='app-catalog-rxgulu e1ckvoeh6').text
 
 				price = soup.find('span', class_='e1j9birj0 e106ikdt0 app-catalog-8hy98m e1gjr6xo0').text.replace(" ", "")
@@ -81,7 +85,7 @@ def parseMb(extraStr):
 				maxMemory = properties[maxMemoryInd+37:]
 				maxMemory = maxMemory.split()[0]
 
-				sborka.append( {"title": title, "brand": brand, "socket": socket, "memoryType": memoryType, "maxMemory": maxMemory, "price": price})
+				sborka.append( {"title": title, "brand": brand, "socket": socket, "memoryType": memoryType, "maxMemory": maxMemory, "price": price, "img_link": img_link})
 				i += 1
 				j += 1
 			except:

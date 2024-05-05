@@ -35,6 +35,20 @@ public class GPUEntity{
 
     @Column(name = "Price")
     private Integer price;
+
+    ############################# типа для картинок добавил
+    @Column(name = "imgLink")
+    private  String imgLink;
+
+    public void setImgLink(String imgLink) {
+        this.imgLink = imgLink;
+    }
+
+    public String getImgLink() {
+        return imgLink;
+    }
+    #############################
+
     @JsonIgnore
     @OneToMany(mappedBy = "gpu")
     @Cascade(org.hibernate.annotations.CascadeType.ALL)
@@ -48,13 +62,16 @@ public class GPUEntity{
         this.assemblies = assemblies;
     }
 
-    public GPUEntity(String title, String brand, String memoryVolume, String memoryFrequency, String busWidth, Integer price) {
+    public GPUEntity(String title, String brand, String memoryVolume, String memoryFrequency, String busWidth, Integer price, String imgLink) {
         this.title = title;
         this.Brand = brand;
         this.MemoryVolume = memoryVolume;
         this.memoryFrequency = memoryFrequency;
         this.busWidth = busWidth;
         this.price = price;
+
+        ######################### тоже новое
+        this.imgLink = imgLink;
     }
 
     public String getBrand() {

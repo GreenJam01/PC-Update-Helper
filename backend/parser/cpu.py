@@ -52,6 +52,10 @@ def parseCpu(extraStr):
 			try:
 				time.sleep(random.randint(1,3))
 				print(links[i])
+
+				# типа добавил ссылку на картинку
+				imgLink = soup.find('img', class_='e1fcwjnh0').get('src').strip
+
 				title = soup.find("h1", class_='e1ubbx7u0 eml1k9j0 app-catalog-lc5se5 e1gjr6xo0').text.split(",")[0].partition(' ')[2]
 				title = title[10:]
 				
@@ -75,7 +79,7 @@ def parseCpu(extraStr):
 				threadsNumber = properties[threadsNumberInd+18:]
 				threadsNumber = threadsNumber.split()[0]
 
-				sborka.append( {"title": title, "coresNumber": cores, "price": price, "brand": brand, "frequency": frequency, "threadsNumber": threadsNumber})
+				sborka.append( {"title": title, "coresNumber": cores, "price": price, "brand": brand, "frequency": frequency, "threadsNumber": threadsNumber, "imgLink": imgLink})
 				i += 1
 				j += 1
 			except:

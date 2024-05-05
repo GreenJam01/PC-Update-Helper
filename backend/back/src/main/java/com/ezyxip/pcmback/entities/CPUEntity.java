@@ -61,6 +61,20 @@ public class CPUEntity{
 
     @Column(name = "ThreadsNumber")
     private  String threadsNumber;
+
+    ############################# типа для картинок добавил
+    @Column(name = "imgLink")
+    private  String imgLink;
+
+    public void setImgLink(String imgLink) {
+        this.imgLink = imgLink;
+    }
+
+    public String getImgLink() {
+        return imgLink;
+    }
+    #############################
+
     @JsonIgnore
     @OneToMany(mappedBy = "cpu")
     @Cascade(org.hibernate.annotations.CascadeType.ALL)
@@ -70,13 +84,16 @@ public class CPUEntity{
         return assemblies;
     }
 
-    public CPUEntity(String title, String brand, String frequency, String coresNumber, String threadsNumber, Integer price) {
+    public CPUEntity(String title, String brand, String frequency, String coresNumber, String threadsNumber, Integer price, String imgLink) {
         this.title = title;
         this.brand = brand;
         this.frequency = frequency;
         this.coresNumber = coresNumber;
         this.threadsNumber = threadsNumber;
         Price = price;
+
+        ######################### тоже новое
+        this.imgLink = imgLink;
     }
 
     @Column(name = "Price")

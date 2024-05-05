@@ -29,6 +29,20 @@ public class MotherboardEntity{
 
     @Column(name ="MemoryType")
     private String memoryType;
+
+    ############################# типа для картинок добавил
+    @Column(name = "imgLink")
+    private  String imgLink;
+
+    public void setImgLink(String imgLink) {
+        this.imgLink = imgLink;
+    }
+
+    public String getImgLink() {
+        return imgLink;
+    }
+    #############################
+
     @JsonIgnore
     @OneToMany(mappedBy = "motherboard")
     @Cascade(org.hibernate.annotations.CascadeType.ALL)
@@ -79,13 +93,16 @@ public class MotherboardEntity{
         this.price = price;
     }
 
-    public MotherboardEntity(String title, String brand, String socket, String memoryType, String maxMemory, Integer price) {
+    public MotherboardEntity(String title, String brand, String socket, String memoryType, String maxMemory, Integer price, String imgLink) {
         this.title = title;
         this.brand = brand;
         this.socket = socket;
         this.memoryType = memoryType;
         this.maxMemory = maxMemory;
         this.price = price;
+
+        ######################### тоже новое
+        this.imgLink = imgLink;
     }
 
     @Column(name = "MaxMemory")

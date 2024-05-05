@@ -30,6 +30,20 @@ public class RAMEntity{
     private String frequency;
     @Column(name = "Price")
     private Integer price;
+
+    ############################# типа для картинок добавил
+    @Column(name = "imgLink")
+    private  String imgLink;
+
+    public void setImgLink(String imgLink) {
+        this.imgLink = imgLink;
+    }
+
+    public String getImgLink() {
+        return imgLink;
+    }
+    #############################
+
     @JsonIgnore
     @OneToMany(mappedBy = "ram")
     @Cascade(org.hibernate.annotations.CascadeType.ALL)
@@ -40,12 +54,15 @@ public class RAMEntity{
     }
 
 
-    public RAMEntity(String title, String brand, String volume, String frequency, Integer price) {
+    public RAMEntity(String title, String brand, String volume, String frequency, Integer price, String imgLink) {
         this.title = title;
         this.brand = brand;
         this.volume = volume;
         this.frequency = frequency;
         this.price = price;
+
+        ######################### тоже новое
+        this.imgLink = imgLink;
     }
 
     public String getBrand() {
