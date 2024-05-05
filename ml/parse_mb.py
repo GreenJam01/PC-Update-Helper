@@ -8,9 +8,9 @@ import numpy as np
 
 
 def main():
-  columns_mb = ['link', 'name', 'soket', 'chipset', 'num_ram', 'frequency_ram', 'pcie', 'cost']
-  mb_am4 = pd.DataFrame(columns=columns_mb)
-  mb_lga1700 = pd.DataFrame(columns=columns_mb)
+  # columns_mb = ['link', 'name', 'soket', 'chipset', 'num_ram', 'frequency_ram', 'pcie', 'cost']
+  # mb_am4 = pd.DataFrame(columns=columns_mb)
+  # mb_lga1700 = pd.DataFrame(columns=columns_mb)
 
 
  # links_mb_am4 = ['https://www.citilink.ru/catalog/materinskie-platy--socet-am4/?sorting=price_asc',
@@ -27,7 +27,7 @@ def main():
   # mb_lga1700.to_excel(r'D:\trainDataset\makeDataset\src\mb_lga1700.xlsx')
 
 
-  columns_gpu = ['link', 'name', 'chipset', 'intefrace', 'memory', 'cost']
+  # columns_gpu = ['link', 'name', 'chipset', 'intefrace', 'memory', 'cost']
   # rtx_2060 = pd.DataFrame(columns=columns_gpu)
   #
   # links_rtx_2060 = ['https://www.citilink.ru/catalog/videokarty/?pf=discount.any,rating.any&f=discount.any,rating.any,9368_29nvidiad1d1geforced1rtxd12060']
@@ -36,11 +36,11 @@ def main():
 
 
 
-  # columns_cpu = ['link', 'name', 'core', 'threads', 'frequency', 'soket', 'pcie', 'cost']
-  # r3_cpu = pd.DataFrame(columns=columns_cpu)
-  # links_r3 = ['https://www.citilink.ru/catalog/processory/?pf=discount.any,rating.any&f=discount.any,rating.any,156_26ryzend13']
-  # parseCPU(links_r3, r3_cpu)
-  # r3_cpu.to_excel(r'D:\trainDataset\makeDataset\src\r3_cpu.xlsx')
+  columns_cpu = ['link', 'name', 'core', 'threads', 'frequency', 'soket', 'pcie', 'cost']
+  r3_cpu = pd.DataFrame(columns=columns_cpu)
+  links_r3 = ['https://www.citilink.ru/catalog/processory/?pf=discount.any,rating.any&f=discount.any,rating.any,156_26ryzend13']
+  parseCPU(links_r3, r3_cpu)
+  r3_cpu.to_excel(r'D:\trainDataset\makeDataset\src\r3_cpu.xlsx')
 
   # columns_cpu = ['link', 'name', 'core', 'threads', 'frequency', 'soket', 'pcie', 'cost']
   # i3_cpu = pd.DataFrame(columns=columns_cpu)
@@ -59,11 +59,11 @@ def main():
   # parseGPU(links_rtx_3061, rtx_3061)
   # rtx_3061.to_excel(r'D:\trainDataset\makeDataset\src\rtx_3061.xlsx')
 
-  rtx_4060 = pd.DataFrame(columns=columns_gpu)
-  links_rtx_4060 = [
-    'https://www.citilink.ru/catalog/videokarty/?pf=discount.any%2Crating.any&f=discount.any%2Crating.any%2C9368_29nvidiad1d1geforced1rtxd14060']
-  parseGPU(links_rtx_4060, rtx_4060)
-  rtx_4060.to_excel(r'D:\trainDataset\makeDataset\src\rtx_4060.xlsx')
+  # rtx_4060 = pd.DataFrame(columns=columns_gpu)
+  # links_rtx_4060 = [
+  #   'https://www.citilink.ru/catalog/videokarty/?pf=discount.any%2Crating.any&f=discount.any%2Crating.any%2C9368_29nvidiad1d1geforced1rtxd14060']
+  # parseGPU(links_rtx_4060, rtx_4060)
+  # rtx_4060.to_excel(r'D:\trainDataset\makeDataset\src\rtx_4060.xlsx')
 
   #rtx_4070 = pd.DataFrame(columns=columns_gpu)
   #links_rtx_4070 = [
@@ -291,7 +291,7 @@ def getInfoCPU(url, df):
       pcie = np.NAN
 
 
-    df.loc[len(df.index)] = [link, title, core_nums, threads, frequency, soket, pcie, cost]
+    df.loc[len(df.index)] = [link, title, core_nums, threads, frequency, soket, pcie, cost, img]
 
   except:
     return
