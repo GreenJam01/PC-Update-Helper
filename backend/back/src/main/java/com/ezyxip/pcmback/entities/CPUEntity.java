@@ -56,14 +56,13 @@ public class CPUEntity{
     @Column(name = "Frequency")
     private String frequency;
 
-    @Column(name = "coresNumber")
+    @Column(name = "CoresNumber")
     private String coresNumber;
 
     @Column(name = "ThreadsNumber")
     private  String threadsNumber;
 
-    ############################# типа для картинок добавил
-    @Column(name = "imgLink")
+    @Column(name = "ImgLink")
     private  String imgLink;
 
     public void setImgLink(String imgLink) {
@@ -73,7 +72,6 @@ public class CPUEntity{
     public String getImgLink() {
         return imgLink;
     }
-    #############################
 
     @JsonIgnore
     @OneToMany(mappedBy = "cpu")
@@ -92,7 +90,6 @@ public class CPUEntity{
         this.threadsNumber = threadsNumber;
         Price = price;
 
-        ######################### тоже новое
         this.imgLink = imgLink;
     }
 

@@ -30,8 +30,7 @@ public class MotherboardEntity{
     @Column(name ="MemoryType")
     private String memoryType;
 
-    ############################# типа для картинок добавил
-    @Column(name = "imgLink")
+    @Column(name = "ImgLink")
     private  String imgLink;
 
     public void setImgLink(String imgLink) {
@@ -41,7 +40,6 @@ public class MotherboardEntity{
     public String getImgLink() {
         return imgLink;
     }
-    #############################
 
     @JsonIgnore
     @OneToMany(mappedBy = "motherboard")
@@ -100,8 +98,6 @@ public class MotherboardEntity{
         this.memoryType = memoryType;
         this.maxMemory = maxMemory;
         this.price = price;
-
-        ######################### тоже новое
         this.imgLink = imgLink;
     }
 

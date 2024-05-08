@@ -1,6 +1,6 @@
 export type CPU = {
     id: number;
-    urlImage: string;
+    imgLink: string;
     title: string;
     price: number;
     brand: string;
@@ -12,7 +12,7 @@ export type CPU = {
 
 export type GPU ={
     id: number;
-    urlImage: string;
+    imgLink: string;
     title: string;
     brand: string;
     memoryVolume: string;
@@ -24,7 +24,7 @@ export type GPU ={
 
 export type HDD = {
     id: number;
-    urlImage: string;
+    imgLink: string;
     title: string;
     brand: string;
     memory: string;
@@ -38,7 +38,7 @@ export type HDD = {
 
 export type Motherboard = {
     id: number;
-    urlImage: string;
+    imgLink: string;
     title: string;
     brand: string;
     socket: string;
@@ -50,7 +50,7 @@ export type Motherboard = {
 
 export type RAM = {
     id: number;
-    urlImage: string;
+    imgLink: string;
     title: string;
     brand: string;
     volume: string;
@@ -61,7 +61,7 @@ export type RAM = {
 
 export type SSD = {
     id: number;
-    urlImage: string;
+    imgLink: string;
     title: string;
     brand: string;
     memory: string;

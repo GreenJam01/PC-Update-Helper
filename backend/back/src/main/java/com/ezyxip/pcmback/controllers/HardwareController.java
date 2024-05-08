@@ -37,7 +37,7 @@ public class HardwareController {
     public ResponseEntity<CPUEntity> createCPU(@RequestBody CPUEntity cpu) {
         try {
             CPUEntity _cpu = cpuRepository
-                    .save(new CPUEntity(cpu.getTitle(), cpu.getBrand(), cpu.getFrequency(), cpu.getCoresNumber(), cpu.getThreadsNumber(), cpu.getPrice()));
+                    .save(new CPUEntity(cpu.getTitle(), cpu.getBrand(), cpu.getFrequency(), cpu.getCoresNumber(), cpu.getThreadsNumber(), cpu.getPrice(), cpu.getImgLink()));
             return new ResponseEntity<>(cpu, HttpStatus.CREATED);
         } catch (Exception e) {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
@@ -52,7 +52,7 @@ public class HardwareController {
                 Optional<CPUEntity> cpuData = cpuRepository.findByTitle(cpuEntity.getTitle());
                 if(cpuData.isPresent()){
                     CPUEntity cpu = cpuData.get();
-                    cpu.setPrice(cpuEntity.getPrice());
+                    cpu = cpuEntity;
                     cpuRepository.save(cpu);
                     savedList.add(cpu);
                 }
@@ -73,7 +73,7 @@ public class HardwareController {
     public ResponseEntity<GPUEntity> createGPU(@RequestBody GPUEntity gpu) {
         try {
             GPUEntity _gpu = gpuRepository
-                    .save(new GPUEntity(gpu.getTitle(), gpu.getBrand(),gpu.getMemoryVolume(),gpu.getMemoryFrequency(), gpu.getBusWidth(),gpu.getPrice()));
+                    .save(new GPUEntity(gpu.getTitle(), gpu.getBrand(),gpu.getMemoryVolume(),gpu.getMemoryFrequency(), gpu.getBusWidth(),gpu.getPrice(), gpu.getImgLink()));
             return new ResponseEntity<>(_gpu, HttpStatus.CREATED);
         } catch (Exception e) {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
@@ -88,7 +88,7 @@ public class HardwareController {
                 Optional<GPUEntity> gpuData = gpuRepository.findByTitle(gpuEntity.getTitle());
                 if(gpuData.isPresent()){
                     GPUEntity gpu = gpuData.get();
-                    gpu.setPrice(gpuEntity.getPrice());
+                    gpu = gpuEntity;
                     gpuRepository.save(gpu);
                     savedList.add(gpu);
                 }
@@ -109,7 +109,7 @@ public class HardwareController {
     public ResponseEntity<RAMEntity> createRAM(@RequestBody RAMEntity ram) {
         try {
             RAMEntity _gpu = ramRepository
-                    .save(new RAMEntity(ram.getTitle(), ram.getBrand(),ram.getVolume(), ram.getFrequency(), ram.getPrice() ));
+                    .save(new RAMEntity(ram.getTitle(), ram.getBrand(),ram.getVolume(), ram.getFrequency(), ram.getPrice(), ram.getImgLink() ));
             return new ResponseEntity<>(_gpu, HttpStatus.CREATED);
         } catch (Exception e) {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
@@ -124,7 +124,7 @@ public class HardwareController {
                 Optional<RAMEntity> ramData = ramRepository.findByTitle(ramEntity.getTitle());
                 if(ramData.isPresent()){
                     RAMEntity ram = ramData.get();
-                    ram.setPrice(ramEntity.getPrice());
+                    ram = ramEntity;
                     ramRepository.save(ram);
                     savedList.add(ram);
                 }
@@ -146,7 +146,7 @@ public class HardwareController {
         try {
             HDDEntity _gpu = hddRepository
                     .save(new HDDEntity(hdd.getTitle(), hdd.getBrand(), hdd.getMemory(), hdd.getInterface()
-                            , hdd.getMaxRecordingSpeed(), hdd.getMaxReadingSpeed(), hdd.isSSD(),hdd.getPrice()));
+                            , hdd.getMaxRecordingSpeed(), hdd.getMaxReadingSpeed(), hdd.isSSD(),hdd.getPrice(), hdd.getImgLink()));
             return new ResponseEntity<>(_gpu, HttpStatus.CREATED);
         } catch (Exception e) {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
@@ -162,7 +162,7 @@ public class HardwareController {
                 Optional<HDDEntity> hddData = hddRepository.findByTitle(hddEntity.getTitle());
                 if(hddData.isPresent()){
                     HDDEntity hdd = hddData.get();
-                    hdd.setPrice(hddEntity.getPrice());
+                    hdd = hddEntity;
                     hddRepository.save(hdd);
                     savedList.add(hdd);
                 }
@@ -183,7 +183,7 @@ public class HardwareController {
         try {
 
             MotherboardEntity _gpu = motherboardRepository
-                    .save(new MotherboardEntity(mothBoard.getTitle(), mothBoard.getBrand(), mothBoard.getSocket(),mothBoard.getMemoryType(),mothBoard.getMaxMemory(),mothBoard.getPrice()));
+                    .save(new MotherboardEntity(mothBoard.getTitle(), mothBoard.getBrand(), mothBoard.getSocket(),mothBoard.getMemoryType(),mothBoard.getMaxMemory(),mothBoard.getPrice(), mothBoard.getImgLink()));
             return new ResponseEntity<>(_gpu, HttpStatus.CREATED);
         } catch (Exception e) {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
@@ -198,7 +198,7 @@ public class HardwareController {
                 Optional<MotherboardEntity> mbData = motherboardRepository.findByTitle(mbEntity.getTitle());
                 if(mbData.isPresent()){
                     MotherboardEntity mb = mbData.get();
-                    mb.setPrice(mbEntity.getPrice());
+                    mb = mbEntity;
                     motherboardRepository.save(mb);
                     savedList.add(mb);
                 }

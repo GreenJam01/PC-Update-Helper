@@ -31,7 +31,6 @@ public class RAMEntity{
     @Column(name = "Price")
     private Integer price;
 
-    ############################# типа для картинок добавил
     @Column(name = "imgLink")
     private  String imgLink;
 
@@ -42,7 +41,6 @@ public class RAMEntity{
     public String getImgLink() {
         return imgLink;
     }
-    #############################
 
     @JsonIgnore
     @OneToMany(mappedBy = "ram")
@@ -60,8 +58,6 @@ public class RAMEntity{
         this.volume = volume;
         this.frequency = frequency;
         this.price = price;
-
-        ######################### тоже новое
         this.imgLink = imgLink;
     }
 

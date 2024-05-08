@@ -36,8 +36,7 @@ public class GPUEntity{
     @Column(name = "Price")
     private Integer price;
 
-    ############################# типа для картинок добавил
-    @Column(name = "imgLink")
+    @Column(name = "ImgLink")
     private  String imgLink;
 
     public void setImgLink(String imgLink) {
@@ -47,7 +46,6 @@ public class GPUEntity{
     public String getImgLink() {
         return imgLink;
     }
-    #############################
 
     @JsonIgnore
     @OneToMany(mappedBy = "gpu")
@@ -70,7 +68,6 @@ public class GPUEntity{
         this.busWidth = busWidth;
         this.price = price;
 
-        ######################### тоже новое
         this.imgLink = imgLink;
     }
 

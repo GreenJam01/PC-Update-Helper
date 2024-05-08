@@ -13,5 +13,7 @@ def init():
                                 instance_port=your_rest_server_port)
     #получаем сервис
     service = eureka_client.get_client().applications.get_application("EUREKA-APP-CLIENT").up_instances[0]
-    
+    print(service.status)
+    print(service.hostName)
     url = f"http://{service.hostName}:{service.port.port}"
+    print(url)
