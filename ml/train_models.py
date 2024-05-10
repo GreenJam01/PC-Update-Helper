@@ -1,9 +1,7 @@
 import pandas as pd
 from sklearn.linear_model import LogisticRegression
-from sklearn.metrics import recall_score, f1_score
 from sklearn.model_selection import train_test_split
-from sklearn.model_selection import cross_validate
-import random
+import pickle
 
 ################################################################################
 # Названия столбцов для сборок (которые требуют апгрейда)
@@ -38,6 +36,13 @@ y_upgrade_gpu = pd.DataFrame()
 X_upgrade_ssd = pd.DataFrame()
 y_upgrade_ssd = pd.DataFrame()
 ################################################################################
+# Модели
+################################################################################
+log_chose_upgrade = LogisticRegression()
+log_upgrade_cpu = LogisticRegression()
+log_upgrade_gpu = LogisticRegression()
+log_upgrade_ssd = LogisticRegression()
+################################################################################
 # Здесь мы загружаем все датасеты для обучения
 ################################################################################
 def loadTrainDatasets():
@@ -56,7 +61,6 @@ def trainChoseModel():
     X_train_chose_upgrade, X_test_chose_upgrade, y_train_chose_upgrade, y_test_chose_upgrade = train_test_split(
         X_chose_upgrade, y_chose_upgrade, train_size=0.8)
 
-    log_chose_upgrade = LogisticRegression()
     log_chose_upgrade.fit(X_train_chose_upgrade, y_train_chose_upgrade)
 ################################################################################
 # тренируем модель, которая улучшает процессор
@@ -74,7 +78,6 @@ def trainUpgradeCpuModel():
     X_train_upgrade_cpu, X_test_upgrade_cpu, y_train_upgrade_cpu, y_test_upgrade_cpu = train_test_split(X_upgrade_cpu,
                                                                                                         y_upgrade_cpu,
                                                                                                         train_size=0.8)
-    log_upgrade_cpu = LogisticRegression()
     log_upgrade_cpu.fit(X_train_upgrade_cpu, y_train_upgrade_cpu)
     upgrade_cpu_predictions = log_upgrade_cpu.predict(X_test_upgrade_cpu)
 ################################################################################
@@ -93,9 +96,7 @@ def trainUpgradeGpuModel():
     X_train_upgrade_gpu, X_test_upgrade_gpu, y_train_upgrade_gpu, y_test_upgrade_gpu = train_test_split(X_upgrade_gpu,
                                                                                                         y_upgrade_gpu,
                                                                                                         train_size=0.8)
-    log_upgrade_gpu = LogisticRegression()
     log_upgrade_gpu.fit(X_train_upgrade_gpu, y_train_upgrade_gpu)
-    upgrade_gpu_predictions = log_upgrade_gpu.predict(X_test_upgrade_gpu)
 ################################################################################
 # тренируем модель, которая улучшает ссд диск
 ################################################################################
@@ -112,7 +113,30 @@ def trainUpgradeSSDModel():
     X_train_upgrade_ssd, X_test_upgrade_ssd, y_train_upgrade_ssd, y_test_upgrade_ssd = train_test_split(X_upgrade_ssd,
                                                                                                         y_upgrade_ssd,
                                                                                              train_size=0.2)
-    log_upgrade_ssd = LogisticRegression()
     log_upgrade_ssd.fit(X_train_upgrade_ssd, y_train_upgrade_ssd)
     upgrade_ssd_predictions = log_upgrade_ssd.predict(X_test_upgrade_ssd)
+################################################################################
+# тренируем модель, которая улучшает ссд диск
+################################################################################
+def saveModels():
+    with open('choseModel.pkl', 'wb') as f:
+        pickle.dump(log_chose_upgrade, f)
 
+    with open('cpuModel.pkl', 'wb') as f:
+        pickle.dump(log_upgrade_cpu, f)
+
+    with open('gpuModel.pkl', 'wb') as f:
+        pickle.dump(log_upgrade_gpu, f)
+
+    with open('ssdModel.pkl', 'wb') as f:
+        pickle.dump(log_upgrade_ssd, f)
+
+def main():
+    loadTrainDatasets()
+    trainChoseModel()
+    trainUpgradeCpuModel()
+    trainUpgradeGpuModel()
+    trainUpgradeSSDModel()
+    saveModels()
+
+main()
