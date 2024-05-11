@@ -1,4 +1,5 @@
 import pandas as pd
+import numpy
 import random
 
 ################################################################################
@@ -33,20 +34,26 @@ cat_cols = ['cpu_name', 'cpu_soket',
             'goal']
 ################################################################################
 # Датасеты продуктов (комплектующих)
-################################################################################
-r3 = pd.DataFrame()
+# ################################################################################
+# r3 = pd.DataFrame()
+r3 = pd.read_excel('./datasets/r3_cpu.xlsx')
+r3 = r3[column_cpu]
 r5 = pd.DataFrame(columns=column_cpu)
 i5 = pd.DataFrame(columns=column_cpu)
-mb_am4 = pd.DataFrame()
-mb_lga1700 = pd.DataFrame()
+# mb_am4 = pd.DataFrame()
+# mb_lga1700 = pd.DataFrame()
+mb_am4 = pd.read_excel(r'./datasets/mb_am4.xlsx')
+mb_am4 = mb_am4[['name', 'soket', 'chipset', 'num_ram', 'frequency_ram', 'cost']]
+mb_lga1700 = pd.read_excel(r'./datasets/mb_lga1700.xlsx')
+mb_lga1700 = mb_lga1700[['name', 'soket', 'chipset', 'num_ram', 'frequency_ram', 'cost']]
 gpu = pd.DataFrame(columns=column_gpu)
 ram = pd.DataFrame(columns=column_ram)
 hdd = pd.DataFrame(columns=column_hdd)
 ssd = pd.DataFrame(columns=column_ssd)
-build_with_bad_gpu = pd.DataFrame(columns=column_build)
 ################################################################################
 # Датасеты для обучения моделей
 ################################################################################
+builds = pd.DataFrame(columns=column_build)
 target = pd.DataFrame(columns=['choose'])
 target_cpu = pd.DataFrame(columns=['choose'])
 build_bad_cpu = pd.DataFrame(columns=column_build)
@@ -63,8 +70,8 @@ def loadAllDatasets():
   ################################################################################
   # Ryzen 3 dataset
   ################################################################################
-  r3 = pd.read_excel('r3_cpu.xlsx')
-  r3 = r3[column_cpu]
+  # r3 = pd.read_excel('./datasets/r3_cpu.xlsx')
+  # r3 = r3[column_cpu]
   ################################################################################
   # Ryzen 5 dataset
   ################################################################################
@@ -83,10 +90,10 @@ def loadAllDatasets():
   ################################################################################
   # matherboads dataset
   ################################################################################
-  mb_am4 = pd.read_excel('mb_am4.xlsx')
-  mb_am4 = mb_am4[['name', 'soket', 'chipset', 'num_ram', 'frequency_ram', 'cost']]
-  mb_lga1700 = pd.read_excel('mb_lga1700.xlsx')
-  mb_lga1700 = mb_lga1700[['name', 'soket', 'chipset', 'num_ram', 'frequency_ram', 'cost']]
+  # mb_am4 = pd.read_excel(r'./datasets/mb_am4.xlsx')
+  # mb_am4 = mb_am4[['name', 'soket', 'chipset', 'num_ram', 'frequency_ram', 'cost']]
+  # mb_lga1700 = pd.read_excel(r'./datasets/mb_lga1700.xlsx')
+  # mb_lga1700 = mb_lga1700[['name', 'soket', 'chipset', 'num_ram', 'frequency_ram', 'cost']]
   ################################################################################
   # gpu datasets
   ################################################################################
@@ -111,7 +118,9 @@ def loadAllDatasets():
 ################################################################################
 def makeDataSet():
   build = []
-  update = []
+################################################################################
+# Общий датасет и датасет для улучшения видеокарты
+################################################################################
   for index, cpu in r5.iterrows():
     for index, mb in mb_am4.iterrows():
       for i in range(10):
@@ -123,15 +132,16 @@ def makeDataSet():
         build.extend(ssd.loc[0].values)
         build.append(random.randint(47900, 50000))
         build.append('game')
-
-        build_with_bad_gpu.loc[ len(build_with_bad_gpu.index) ] = build
+        builds.loc[ len(builds.index) ] = build
         build_bad_gpu.loc[ len(build_bad_gpu.index) ] = build
         target_gpu.loc[ len(target_gpu.index) ] = 1
 
         build = []
 
         target.loc[ len(target.index) ] = ['gpu']
-
+################################################################################
+# Общий датасет и датасет для улучшения видеокарты
+################################################################################
   for index, cpu in i5.iterrows():
     for index, mb in mb_lga1700.iterrows():
       for i in range(10):
@@ -144,7 +154,7 @@ def makeDataSet():
         build.append(random.randint(47900, 50000))
         build.append('game')
 
-        build_with_bad_gpu.loc[ len(build_with_bad_gpu.index) ] = build
+        builds.loc[ len(builds.index) ] = build
         build_bad_gpu.loc[ len(build_bad_gpu.index) ] = build
         if i % 2 == 0:
           target_gpu.loc[ len(target_gpu.index) ] = 1
@@ -154,7 +164,9 @@ def makeDataSet():
         build = []
 
         target.loc[ len(target.index) ] = ['gpu']
-
+################################################################################
+# Общий датасет и датасет для улучшения видеокарты и датасет для улучшения ссд
+################################################################################
   build = []
   update = []
   for index, cpu in r5.iterrows():
@@ -169,7 +181,7 @@ def makeDataSet():
         build.append(random.randint(4300, 5000))
         build.append('game')
 
-        build_with_bad_gpu.loc[ len(build_with_bad_gpu.index) ] = build
+        builds.loc[ len(builds.index) ] = build
         build_bad_ssd.loc[ len(build_bad_ssd.index) ] = build
         if i % 2 == 0:
           target_ssd.loc[ len(target_ssd.index) ] = 0
@@ -179,7 +191,9 @@ def makeDataSet():
         build = []
 
         target.loc[ len(target.index) ] = ['ssd']
-
+################################################################################
+# Общий датасет и датасет для улучшения видеокарты и датасет для улучшения ссд
+################################################################################
   build = []
   update = []
   for index, cpu in i5.iterrows():
@@ -194,7 +208,7 @@ def makeDataSet():
         build.append(random.randint(4300, 5000))
         build.append('game')
 
-        build_with_bad_gpu.loc[ len(build_with_bad_gpu.index) ] = build
+        builds.loc[ len(builds.index) ] = build
         build_bad_ssd.loc[ len(build_bad_ssd.index) ] = build
         if i % 2 == 0:
           target_ssd.loc[ len(target_ssd.index) ] = 0
@@ -204,7 +218,9 @@ def makeDataSet():
         build = []
 
         target.loc[ len(target.index) ] = ['ssd']
-
+################################################################################
+# Общий датасет и датасет для улучшения видеокарты и процессора
+################################################################################
   build = []
   update = []
   for index, cpu in r3.iterrows():
@@ -219,7 +235,7 @@ def makeDataSet():
         build.append(random.randint(47900, 50000))
         build.append('game')
 
-        build_with_bad_gpu.loc[ len(build_with_bad_gpu.index) ] = build
+        builds.loc[ len(builds.index) ] = build
         build_bad_cpu.loc[ len(build_bad_cpu.index) ] = build
         if i % 2 == 0:
           target_cpu.loc[ len(target_cpu.index) ] = 'ryzen 5 5500'
@@ -229,38 +245,27 @@ def makeDataSet():
         build = []
 
         target.loc[ len(target.index) ] = ['cpu']
-
-  for col in cat_cols:
-    col_values = pd.Series(build_with_bad_gpu[col].unique())
-    build_with_bad_gpu[col] = build_with_bad_gpu[col].apply(lambda x: col_values[col_values == x].index[0])
-
-  builds = build_with_bad_gpu
-  target_values = pd.Series(target['choose'].unique())
-  target['choose'] = target['choose'].apply(lambda x: target_values[target_values == x].index[0])
-
   ################################################################################
   # датасет для обучения модели, которая выбирает, что нужно улучшить
   ################################################################################
-  builds.to_excel(r'./X_chose_upgrade.xlsx')
-  target.to_excel(r'./y_chose_upgrade.xlsx')
+  builds.to_excel('./datasets/X_chose_upgrade.xlsx')
+  target.to_excel('./datasets/y_chose_upgrade.xlsx')
   ################################################################################
   # датасет для обучения модели, которая улучшает процессор
   ################################################################################
-  build_bad_cpu.to_excel(r'./X_upgrade_cpu')
-  target_cpu.to_excel(r'./y_upgrade_cpu')
+  build_bad_cpu.to_excel('./datasets/X_upgrade_cpu.xlsx')
+  target_cpu.to_excel('./datasets/y_upgrade_cpu.xlsx')
   ################################################################################
   # датасет для обучения модели, которая улучшает видеокарту
   ################################################################################
-  build_bad_gpu.to_excel(r'./X_upgrade_gpu')
-  target_gpu.to_excel(r'./y_upgrade_gpu')
+  build_bad_gpu.to_excel('./datasets/X_upgrade_gpu.xlsx')
+  target_gpu.to_excel('./datasets/y_upgrade_gpu.xlsx')
   ################################################################################
   # датасет для обучения модели, которая улучшает ссд диск
   ################################################################################
-  build_bad_ssd.to_excel(r'./X_upgrade_ssd')
-  target_ssd.to_excel(r'./y_upgrade_ssd')
+  build_bad_ssd.to_excel('./datasets/X_upgrade_ssd.xlsx')
+  target_ssd.to_excel('./datasets/y_upgrade_ssd.xlsx')
 
-def main():
-  loadAllDatasets()
-  makeDataSet()
 
-main()
+loadAllDatasets()
+makeDataSet()

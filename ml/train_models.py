@@ -27,14 +27,14 @@ cat_cols = ['cpu_name', 'cpu_soket',
 ################################################################################
 # Датасеты для обучения моделей
 ################################################################################
-X_chose_upgrade = pd.DataFrame()
-y_chose_upgrade = pd.DataFrame()
-X_upgrade_cpu = pd.DataFrame()
-y_upgrade_cpu = pd.DataFrame()
-X_upgrade_gpu = pd.DataFrame()
-y_upgrade_gpu = pd.DataFrame()
-X_upgrade_ssd = pd.DataFrame()
-y_upgrade_ssd = pd.DataFrame()
+# X_chose_upgrade = pd.DataFrame()
+# y_chose_upgrade = pd.DataFrame()
+# X_upgrade_cpu = pd.DataFrame()
+# y_upgrade_cpu = pd.DataFrame()
+# X_upgrade_gpu = pd.DataFrame()
+# y_upgrade_gpu = pd.DataFrame()
+# X_upgrade_ssd = pd.DataFrame()
+# y_upgrade_ssd = pd.DataFrame()
 ################################################################################
 # Модели
 ################################################################################
@@ -45,23 +45,39 @@ log_upgrade_ssd = LogisticRegression()
 ################################################################################
 # Здесь мы загружаем все датасеты для обучения
 ################################################################################
-def loadTrainDatasets():
-    X_chose_upgrade = pd.read_excel('X_chose_upgrade')
-    y_chose_upgrade = pd.read_excel('y_chose_upgrade')
-    X_upgrade_cpu = pd.read_excel('X_upgrade_cpu')
-    y_upgrade_cpu = pd.read_excel('y_upgrade_cpu')
-    X_upgrade_gpu = pd.read_excel('X_upgrade_gpu')
-    y_upgrade_gpu = pd.read_excel('y_upgrade_gpu')
-    X_upgrade_ssd = pd.read_excel('X_upgrade_ssd')
-    y_upgrade_ssd = pd.read_excel('y_upgrade_ssd')
+# def loadTrainDatasets():
+#     X_chose_upgrade = pd.read_excel('./datasets/X_chose_upgrade.xlsx')
+#     y_chose_upgrade = pd.read_excel('./datasets/y_chose_upgrade.xlsx')
+#     X_upgrade_cpu = pd.read_excel('./datasets/X_upgrade_cpu.xlsx')
+#     y_upgrade_cpu = pd.read_excel('./datasets/y_upgrade_cpu.xlsx')
+#     X_upgrade_gpu = pd.read_excel('./datasets/X_upgrade_gpu.xlsx')
+#     y_upgrade_gpu = pd.read_excel('./datasets/y_upgrade_gpu.xlsx')
+#     X_upgrade_ssd = pd.read_excel('./datasets/X_upgrade_ssd.xlsx')
+#     y_upgrade_ssd = pd.read_excel('./datasets/y_upgrade_ssd.xlsx')
+X_chose_upgrade = pd.read_excel('./datasets/X_chose_upgrade.xlsx')
+y_chose_upgrade = pd.read_excel('./datasets/y_chose_upgrade.xlsx')
+X_upgrade_cpu = pd.read_excel('./datasets/X_upgrade_cpu.xlsx')
+y_upgrade_cpu = pd.read_excel('./datasets/y_upgrade_cpu.xlsx')
+X_upgrade_gpu = pd.read_excel('./datasets/X_upgrade_gpu.xlsx')
+y_upgrade_gpu = pd.read_excel('./datasets/y_upgrade_gpu.xlsx')
+X_upgrade_ssd = pd.read_excel('./datasets/X_upgrade_ssd.xlsx')
+y_upgrade_ssd = pd.read_excel('./datasets/y_upgrade_ssd.xlsx')
 ################################################################################
 # тренируем модель, которая выбирает, что улучшить
 ################################################################################
 def trainChoseModel():
+    for col in cat_cols:
+        col_values = pd.Series(X_chose_upgrade[col].unique())
+        X_chose_upgrade[col] = X_chose_upgrade[col].apply(lambda x: col_values[col_values == x].index[0])
+
+    y_chose_upgrade_values = pd.Series(y_chose_upgrade['choose'].unique())
+    y_chose_upgrade['choose'] = y_chose_upgrade['choose'].apply(
+        lambda x: y_chose_upgrade_values[y_chose_upgrade_values == x].index[0])
+
     X_train_chose_upgrade, X_test_chose_upgrade, y_train_chose_upgrade, y_test_chose_upgrade = train_test_split(
         X_chose_upgrade, y_chose_upgrade, train_size=0.8)
 
-    log_chose_upgrade.fit(X_train_chose_upgrade, y_train_chose_upgrade)
+    log_chose_upgrade.fit(X_train_chose_upgrade, y_train_chose_upgrade['choose'])
 ################################################################################
 # тренируем модель, которая улучшает процессор
 ################################################################################
@@ -78,8 +94,7 @@ def trainUpgradeCpuModel():
     X_train_upgrade_cpu, X_test_upgrade_cpu, y_train_upgrade_cpu, y_test_upgrade_cpu = train_test_split(X_upgrade_cpu,
                                                                                                         y_upgrade_cpu,
                                                                                                         train_size=0.8)
-    log_upgrade_cpu.fit(X_train_upgrade_cpu, y_train_upgrade_cpu)
-    upgrade_cpu_predictions = log_upgrade_cpu.predict(X_test_upgrade_cpu)
+    log_upgrade_cpu.fit(X_train_upgrade_cpu, y_train_upgrade_cpu['choose'])
 ################################################################################
 # тренируем модель, которая улучшает видеокарту
 ################################################################################
@@ -96,7 +111,7 @@ def trainUpgradeGpuModel():
     X_train_upgrade_gpu, X_test_upgrade_gpu, y_train_upgrade_gpu, y_test_upgrade_gpu = train_test_split(X_upgrade_gpu,
                                                                                                         y_upgrade_gpu,
                                                                                                         train_size=0.8)
-    log_upgrade_gpu.fit(X_train_upgrade_gpu, y_train_upgrade_gpu)
+    log_upgrade_gpu.fit(X_train_upgrade_gpu, y_train_upgrade_gpu['choose'])
 ################################################################################
 # тренируем модель, которая улучшает ссд диск
 ################################################################################
@@ -113,26 +128,25 @@ def trainUpgradeSSDModel():
     X_train_upgrade_ssd, X_test_upgrade_ssd, y_train_upgrade_ssd, y_test_upgrade_ssd = train_test_split(X_upgrade_ssd,
                                                                                                         y_upgrade_ssd,
                                                                                              train_size=0.2)
-    log_upgrade_ssd.fit(X_train_upgrade_ssd, y_train_upgrade_ssd)
-    upgrade_ssd_predictions = log_upgrade_ssd.predict(X_test_upgrade_ssd)
+    log_upgrade_ssd.fit(X_train_upgrade_ssd, y_train_upgrade_ssd['choose'])
 ################################################################################
 # тренируем модель, которая улучшает ссд диск
 ################################################################################
 def saveModels():
-    with open('choseModel.pkl', 'wb') as f:
+    with open('choseModel.sav', 'wb') as f:
         pickle.dump(log_chose_upgrade, f)
 
-    with open('cpuModel.pkl', 'wb') as f:
+    with open('cpuModel.sav', 'wb') as f:
         pickle.dump(log_upgrade_cpu, f)
 
-    with open('gpuModel.pkl', 'wb') as f:
+    with open('gpuModel.sav', 'wb') as f:
         pickle.dump(log_upgrade_gpu, f)
 
-    with open('ssdModel.pkl', 'wb') as f:
+    with open('ssdModel.sav', 'wb') as f:
         pickle.dump(log_upgrade_ssd, f)
 
 def main():
-    loadTrainDatasets()
+    # loadTrainDatasets()
     trainChoseModel()
     trainUpgradeCpuModel()
     trainUpgradeGpuModel()
