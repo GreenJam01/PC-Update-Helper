@@ -3,6 +3,7 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import train_test_split
 import pickle
 from flask import Flask, request, jsonify
+from flask_cors import CORS, cross_origin
 
 ################################################################################
 column_build = ['cpu_name', 'cpu_core', 'cpu_frequency', 'cpu_threads', 'cpu_soket', 'cpu_pcie', 'cpu_cost',
@@ -86,8 +87,11 @@ target_gpu = pd.read_excel('./datasets/y_upgrade_gpu.xlsx')
 target_ssd = pd.read_excel('./datasets/y_upgrade_ssd.xlsx')
 
 app = Flask(__name__)
+cors = CORS(app)
+app.config['CORS_HEADERS'] = 'Content-Type'
 
 @app.route('/prediction', methods=['GET'])
+@cross_origin()
 def prediction():
   # Загружаем сборку и преобразуем её в датасет
   str_sborka = str(request.args.get('sborka'))
