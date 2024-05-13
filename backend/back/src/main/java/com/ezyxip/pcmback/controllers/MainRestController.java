@@ -101,6 +101,45 @@ public class MainRestController {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
+    @PostMapping(value = "/post-scanned-assembly", consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
+    public ResponseEntity<AssemblyEntity> createParsedAssembly(@RequestBody AssemblyEntity assembly, String username) {
+        try {
+
+
+            Optional<User> userEntity = userRepository.findByUsername(username);
+            if(userEntity.isEmpty()) throw new EntityNotFoundException("User is not found");
+
+            Optional<CPUEntity> cpuEntity = cpuRepository.findByTitle(assembly.getCPU().getTitle());
+            if(cpuEntity.isEmpty()){
+                cpuEntity = Optional.ofNullable(cpuRepository.save(cpuEntity.get()));
+            }
+            Optional<GPUEntity> gpuEntity = gpuRepository.findByTitle(assembly.getGPU().getTitle());
+            if(gpuEntity.isEmpty()){
+                gpuEntity = Optional.ofNullable(gpuRepository.save(gpuEntity.get()));
+            }
+            Optional<RAMEntity> ramEntity = ramRepository.findByTitle(assembly.getRAM().getTitle());
+            if(ramEntity.isEmpty()){
+                ramEntity = Optional.ofNullable(ramRepository.save(ramEntity.get()));
+            }
+            Optional<HDDEntity> hddEntity = hddRepository.findByTitle(assembly.getHDD().getTitle());
+            if(hddEntity.isEmpty()){
+                hddEntity = Optional.ofNullable(hddRepository.save(hddEntity.get()));
+            }
+            Optional<MotherboardEntity> motherboardEntity = motherboardRepository.findById(assembly.getMotherboard().getId());
+            if(motherboardEntity.isEmpty()){
+                motherboardEntity = Optional.ofNullable(motherboardRepository.save(motherboardEntity.get()));
+            }
+            AssemblyEntity _assembly = assemblyRepository.save(new AssemblyEntity(cpuEntity.get(), gpuEntity.get(),
+                    hddEntity.get(), motherboardEntity.get(), ramEntity.get(), userEntity.get()));
+
+            return new ResponseEntity<>(_assembly, HttpStatus.CREATED);
+        } catch (EntityNotFoundException e) {
+            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+        } catch (Exception e) {
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
     @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
     @Operation(
             summary = "Получить список сборок из таблицы"
