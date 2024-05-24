@@ -48,7 +48,7 @@ import org.springframework.web.bind.annotation.RestController;
         AuthController.class
 
 })
-@EnableDiscoveryClient
+
 public class PcmBackApplication {
 
     public static void main(String[] args) {
