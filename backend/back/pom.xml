@@ -72,11 +72,11 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
-                <dependency>
-                    <groupId>org.flywaydb</groupId>
-                    <artifactId>flyway-core</artifactId>
-                    <version>9.0.0</version>
-                </dependency>
+<!--                <dependency>-->
+<!--                    <groupId>org.flywaydb</groupId>-->
+<!--                    <artifactId>flyway-core</artifactId>-->
+<!--                    <version>9.0.0</version>-->
+<!--                </dependency>-->
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-test</artifactId>
@@ -104,16 +104,16 @@
             <version>1.18.32</version>
             <scope>provided</scope>
         </dependency>
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-openfeign</artifactId>
-            <version>4.1.0</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
-            <version>4.1.0</version>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.springframework.cloud</groupId>-->
+<!--            <artifactId>spring-cloud-starter-openfeign</artifactId>-->
+<!--            <version>4.1.0</version>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>org.springframework.cloud</groupId>-->
+<!--            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>-->
+<!--            <version>4.1.0</version>-->
+<!--        </dependency>-->
     </dependencies>
 
 
@@ -123,20 +123,20 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
-                        <plugin>
-                            <groupId>org.flywaydb</groupId>
-                            <artifactId>flyway-maven-plugin</artifactId>
-                            <version>9.0.0</version>
-                            <configuration>
-                                <url>jdbc:postgresql://localhost:5432/PCUpdateHelper?currentSchema=boot</url>
-                                <user>postgres</user>
-                                <password>Limak123</password>
-                                <schemas>
-                                    <schema>boot</schema>
-                                </schemas>
-                                <cleanDisabled>false</cleanDisabled>
-                            </configuration>
-                        </plugin>
+<!--                        <plugin>-->
+<!--                            <groupId>org.flywaydb</groupId>-->
+<!--                            <artifactId>flyway-maven-plugin</artifactId>-->
+<!--                            <version>9.0.0</version>-->
+<!--                            <configuration>-->
+<!--                                <url>jdbc:postgresql://localhost:5432/PCUpdateHelper?currentSchema=public</url>-->
+<!--                                <user>postgres</user>-->
+<!--                                <password>Limak123</password>-->
+<!--                                <schemas>-->
+<!--                                    <schema>boot</schema>-->
+<!--                                </schemas>-->
+<!--                                <cleanDisabled>false</cleanDisabled>-->
+<!--                            </configuration>-->
+<!--                        </plugin>-->
 
             <plugin>
                 <artifactId>maven-resources-plugin</artifactId>
