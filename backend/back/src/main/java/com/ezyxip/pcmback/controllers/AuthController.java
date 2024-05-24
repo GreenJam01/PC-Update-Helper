@@ -136,7 +136,7 @@ public class AuthController {
             UserDetailsImpl user = (UserDetailsImpl) authentication.getPrincipal();
 
             authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
-            List<String> roles = userDetails.getAuthorities().stream().map(item -> item.getAuthority())
+            List<String> roles = userDetails.getAuthorities().parallelStream().map(item -> item.getAuthority())
                     .collect(Collectors.toList());
             SecurityContextHolder.getContext().setAuthentication(authentication);
 

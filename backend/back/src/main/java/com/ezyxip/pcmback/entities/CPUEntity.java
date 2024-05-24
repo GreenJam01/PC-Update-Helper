@@ -64,6 +64,12 @@ public class CPUEntity{
 
     @Column(name = "ImgLink")
     private  String imgLink;
+    @Transient
+    private boolean isFavorite;
+
+    public void setFavorite(boolean favorite) {
+        isFavorite = favorite;
+    }
 
     public void setImgLink(String imgLink) {
         this.imgLink = imgLink;
@@ -95,35 +101,6 @@ public class CPUEntity{
 
     @Column(name = "Price")
     private Integer Price;
-
-    public void setBrand(String brand) {
-        this.brand = brand;
-    }
-
-    public Integer getPrice() {
-        return Price;
-    }
-
-    public void setPrice(Integer price) {
-        Price = price;
-    }
-
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
 
 
 

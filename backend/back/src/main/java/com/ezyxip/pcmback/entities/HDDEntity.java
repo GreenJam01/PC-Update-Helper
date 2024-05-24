@@ -44,6 +44,8 @@ public class HDDEntity{
 
     @Column(name = "ImgLink")
     private  String imgLink;
+    @Transient
+    private boolean isFavorite;
 
     public void setImgLink(String imgLink) {
         this.imgLink = imgLink;

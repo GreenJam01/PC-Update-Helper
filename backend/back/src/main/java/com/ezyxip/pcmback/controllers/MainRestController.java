@@ -105,8 +105,6 @@ public class MainRestController {
     @PostMapping(value = "/post-scanned-assembly", consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
     public ResponseEntity<AssemblyEntity> createParsedAssembly(@RequestBody AssemblyEntity assembly, String username) {
         try {
-
-
             Optional<User> userEntity = userRepository.findByUsername(username);
             if(userEntity.isEmpty()) throw new EntityNotFoundException("User is not found");
 

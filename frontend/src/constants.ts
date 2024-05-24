@@ -46,7 +46,12 @@ export enum APIRoutes {
     GetAllSSD = '/hardware/get-all-ssd',
     Signup = '/api/auth/signup',
     Signin = '/api/auth/signin',
-    Signout = 'api/auth/signout'
+    Signout = 'api/auth/signout',
+    PostFavoriteCpu = 'hardware/post-favorite-cpu',
+    PostFavoriteGpu = 'hardware/post-favorite-gpu',
+    PostFavoriteMotherboard = 'hardware/post-favorite-motherboard',
+    PostFavoriteHdd = 'hardware/post-favorite-hdd',
+    PostFavoriteRam = 'hardware/post-favorite-ram',
 }
 
 export enum AuthorizationStatus {

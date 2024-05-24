@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { Nullable } from '../types/nullable';
 import { AppData, AuthorizationStatus } from '../constants';
 import { UserData } from '../types/user';
-import { checkAuthAction, signinAction, signoutAction, signupAction } from '../store/api-actions';
+import { checkAuthAction, fetchHardwaresAction, signinAction, signoutAction, signupAction } from '../store/api-actions';
 import { toast } from 'react-toastify';
 
 type AuthState = {
@@ -11,7 +11,7 @@ type AuthState = {
 }
 
 export const initialState: AuthState = {
-  authorizationStatus: AuthorizationStatus.Unknown,
+  authorizationStatus: AuthorizationStatus.NoAuth,
   user: null,
 };
 
@@ -28,15 +28,6 @@ export const authSlice = createSlice({
   },
   extraReducers(builder) {
     builder
-      .addCase(checkAuthAction.fulfilled, (state, action) => {
-        state.authorizationStatus = AuthorizationStatus.Auth;
-        state.user = action.payload;
-      })
-      .addCase(checkAuthAction.rejected, (state) => {
-        state.authorizationStatus = AuthorizationStatus.NoAuth;
-        state.user = null;
-        toast.warn('Ошибка аутентификации');
-      })
       .addCase(signinAction.fulfilled, (state, action) => {
         state.authorizationStatus = AuthorizationStatus.Auth;
         state.user = action.payload;

@@ -7,7 +7,7 @@ export type CPU = {
     frequency: string;
     coresNumber: string;
     threadsNumber: string;
-    isFavorite: boolean;
+    favorite: boolean;
 }
 
 export type GPU ={
@@ -19,7 +19,7 @@ export type GPU ={
     memoryFrequency: string;
     busWidth: string;
     price: number;
-    isFavorite: boolean;
+    favorite: boolean;
 }
 
 export type HDD = {
@@ -33,7 +33,7 @@ export type HDD = {
     // maxRecordingSpeed: string;
     // ssd: boolean;
     price: number;
-    isFavorite: boolean;
+    favorite: boolean;
 }
 
 export type Motherboard = {
@@ -45,7 +45,7 @@ export type Motherboard = {
     memoryType: string;
     maxMemory: string;
     price: number;
-    isFavorite: boolean;
+    favorite: boolean;
 };
 
 export type RAM = {
@@ -56,7 +56,7 @@ export type RAM = {
     volume: string;
     frequency: string;
     price: number;
-    isFavorite: boolean;
+    favorite: boolean;
 };
 
 export type SSD = {
@@ -67,7 +67,7 @@ export type SSD = {
     memory: string;
     interface: string;
     price: number;
-    isFavorite: boolean;
+    favorite: boolean;
 };
 
 export type HardwareType = CPU | RAM | GPU | HDD | Motherboard;

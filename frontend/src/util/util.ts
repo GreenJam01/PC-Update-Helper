@@ -11,7 +11,7 @@ export const isRAM = (hardware: HardwareType) => 'volume' in hardware &&
 'frequency' in hardware;
 
 export const isHDD = (hardware: HardwareType) => 'memory' in hardware &&
-'anInterface' in hardware;
+'interface' in hardware;
 
 export const isMotherboard = (hardware: HardwareType) => 'socket' in hardware &&
 'memoryType' in hardware &&

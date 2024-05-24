@@ -118,7 +118,7 @@ export const hardwaresSelectors = {
     hardwareSlice.selectors.sort, (motherboards, sort) => [...motherboards].sort(sort.func)),
 
   getBrandsCpu: createSelector(hardwareSlice.selectors.cpu,
-    (cpus) => cpus.reduce((acc:string[], cpu) => {
+    (cpus) => Array.from(cpus).reduce((acc:string[], cpu) => {
       if (!acc.includes(cpu.brand)) {
         acc.push(cpu.brand);
       }
@@ -126,7 +126,7 @@ export const hardwaresSelectors = {
     }, [])
   ),
   getBrandsGpu: createSelector(hardwareSlice.selectors.gpu,
-    (gpus) => gpus.reduce((acc:string[], gpu) => {
+    (gpus) => Array.from(gpus).reduce((acc:string[], gpu) => {
       if (!acc.includes(gpu.brand)) {
         acc.push(gpu.brand);
       }
@@ -134,7 +134,7 @@ export const hardwaresSelectors = {
     }, [])
   ),
   getBrandsHdd: createSelector(hardwareSlice.selectors.hdd,
-    (hdds) => hdds.reduce((acc:string[], hdd) => {
+    (hdds) => Array.from(hdds).reduce((acc:string[], hdd) => {
       if (!acc.includes(hdd.brand)) {
         acc.push(hdd.brand);
       }
@@ -142,7 +142,7 @@ export const hardwaresSelectors = {
     }, [])
   ),
   getBrandsRam: createSelector(hardwareSlice.selectors.ram,
-    (rams) => rams.reduce((acc:string[], ram) => {
+    (rams) => Array.from(rams).reduce((acc:string[], ram) => {
       if (!acc.includes(ram.brand)) {
         acc.push(ram.brand);
       }
@@ -150,7 +150,7 @@ export const hardwaresSelectors = {
     }, [])
   ),
   getBrandsMotherboards: createSelector(hardwareSlice.selectors.motherboard,
-    (motherboards) => motherboards.reduce((acc:string[], motherboard) => {
+    (motherboards) => Array.from(motherboards).reduce((acc:string[], motherboard) => {
       if (!acc.includes(motherboard.brand)) {
         acc.push(motherboard.brand);
       }

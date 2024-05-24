@@ -1,7 +1,7 @@
 import { createAction, createAsyncThunk } from '@reduxjs/toolkit';
 import { AppDispatch, State } from '../types/store';
 import { AxiosInstance } from 'axios';
-import { CPU, GPU, HDD, Hardwares, Motherboard, RAM } from '../types/hardwares';
+import { CPU, GPU, HDD, HardwareType, Hardwares, Motherboard, RAM } from '../types/hardwares';
 import { APIRoutes, AppRoutes, AuthorizationStatus } from '../constants';
 import { AuthData } from '../types/auth-data';
 import { dropToken, saveToken } from '../services/token';
@@ -47,9 +47,15 @@ export const checkAuthAction = createAsyncThunk<UserData, undefined, {
 }>(
   'user/checkAuth',
   async (_arg, { dispatch, extra: api}) => {
-    const {data: user} = await api.get<UserData>(APIRoutes.Signin);
-    dispatch(fetchAssemblies());
-    return user;
+    try{
+      const {data: user} = await api.get<UserData>(APIRoutes.Signin);
+      dispatch(fetchHardwaresAction());
+      dispatch(fetchAssemblies());
+      return user;
+    } catch(e){
+      dispatch(setAuthorizationStatus(AuthorizationStatus.NoAuth));
+      dispatch(fetchHardwaresAction());
+    }
   },
 );
 export const signinAction = createAsyncThunk<UserData, AuthData, {
@@ -63,6 +69,7 @@ export const signinAction = createAsyncThunk<UserData, AuthData, {
       saveToken(user.accessToken);
       dispatch(fetchAssemblies());
       dispatch(redirectToRoute(AppRoutes.Main));
+      dispatch(fetchHardwaresAction());
       return user;
     },
   );
@@ -77,6 +84,7 @@ export const signoutAction = createAsyncThunk<void, undefined, {
       dispatch(setAuthorizationStatus(AuthorizationStatus.NoAuth));
       dispatch(setUser(null));
       dispatch(AssembliesActions.setAssemblies([]));
+      dispatch(fetchHardwaresAction());
       dispatch(redirectToRoute(AppRoutes.Main));
       dropToken();
     },
@@ -130,3 +138,65 @@ export const putAssembly = createAsyncThunk<Assembly, Assembly, {
     return assembly;
   },
 );
+
+export const postFavoriteCpu = createAsyncThunk<void, HardwareType, {
+  dispatch: AppDispatch;
+  state: State;
+  extra: AxiosInstance;
+}>(
+  'data/post-favorite-cpu',
+  async (cpu, { extra: api}) => {
+    await api.post<CPU>(APIRoutes.PostFavoriteCpu,
+      cpu);
+  },
+);
+
+export const postFavoriteGpu = createAsyncThunk<void, HardwareType, {
+  dispatch: AppDispatch;
+  state: State;
+  extra: AxiosInstance;
+}>(
+  'data/post-favorite-gpu',
+  async (cpu, { extra: api}) => {
+    await api.post<GPU>(APIRoutes.PostFavoriteGpu,
+      cpu);
+  },
+);
+
+export const postFavoriteMotherboard = createAsyncThunk<void, HardwareType, {
+  dispatch: AppDispatch;
+  state: State;
+  extra: AxiosInstance;
+}>(
+  'data/post-favorite-motherboard',
+  async (cpu, { extra: api}) => {
+    await api.post<Motherboard>(APIRoutes.PostFavoriteMotherboard,
+      cpu);
+  },
+);
+
+export const postFavoriteRam = createAsyncThunk<void, HardwareType, {
+  dispatch: AppDispatch;
+  state: State;
+  extra: AxiosInstance;
+}>(
+  'data/post-favorite-ram',
+  async (ram, { extra: api}) => {
+    await api.post<RAM>(APIRoutes.PostFavoriteRam,
+      ram);
+  },
+);
+
+export const postFavoriteHdd = createAsyncThunk<void, HardwareType, {
+  dispatch: AppDispatch;
+  state: State;
+  extra: AxiosInstance;
+}>(
+  'data/post-favorite-hdd',
+  async (hdd, { extra: api}) => {
+    await api.post<HDD>(APIRoutes.PostFavoriteHdd,
+      hdd);
+  },
+);
+
+

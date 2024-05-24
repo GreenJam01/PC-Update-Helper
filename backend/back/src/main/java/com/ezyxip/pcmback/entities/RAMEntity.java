@@ -47,6 +47,9 @@ public class RAMEntity{
     @Cascade(org.hibernate.annotations.CascadeType.ALL)
     private List<AssemblyEntity> assemblies;
 
+    @Transient
+    private boolean isFavorite;
+
     public List<AssemblyEntity> getAssemblies() {
         return assemblies;
     }

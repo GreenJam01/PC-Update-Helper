@@ -17,13 +17,13 @@
         <java.version>17</java.version>
     </properties>
 
-<!--    <repositories>-->
-<!--        <repository>-->
-<!--            <id>jcenter-snapshots</id>-->
-<!--            <name>jcenter</name>-->
-<!--            <url>https://jcenter.bintray.com/</url>-->
-<!--        </repository>-->
-<!--    </repositories>-->
+    <!--    <repositories>-->
+    <!--        <repository>-->
+    <!--            <id>jcenter-snapshots</id>-->
+    <!--            <name>jcenter</name>-->
+    <!--            <url>https://jcenter.bintray.com/</url>-->
+    <!--        </repository>-->
+    <!--    </repositories>-->
 
     <dependencies>
         <dependency>
@@ -63,25 +63,25 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
-<!--        <dependency>-->
-<!--            <groupId>org.apache.httpcomponents</groupId>-->
-<!--            <artifactId>httpclient</artifactId>-->
-<!--            <scope>test</scope>-->
-<!--        </dependency>-->
-         <dependency>
-         <groupId>org.springframework.boot</groupId>
-         <artifactId>spring-boot-starter-security</artifactId>
-         </dependency>
+        <!--        <dependency>-->
+        <!--            <groupId>org.apache.httpcomponents</groupId>-->
+        <!--            <artifactId>httpclient</artifactId>-->
+        <!--            <scope>test</scope>-->
+        <!--        </dependency>-->
         <dependency>
-            <groupId>org.flywaydb</groupId>
-            <artifactId>flyway-core</artifactId>
-            <version>9.0.0</version>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
-         <dependency>
-         <groupId>org.springframework.security</groupId>
-         <artifactId>spring-security-test</artifactId>
-         <scope>test</scope>
-         </dependency>
+                <dependency>
+                    <groupId>org.flywaydb</groupId>
+                    <artifactId>flyway-core</artifactId>
+                    <version>9.0.0</version>
+                </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-test</artifactId>
+            <scope>test</scope>
+        </dependency>
 
         <dependency>
             <groupId>org.springdoc</groupId>
@@ -123,20 +123,20 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
-            <plugin>
-                <groupId>org.flywaydb</groupId>
-                <artifactId>flyway-maven-plugin</artifactId>
-                <version>9.0.0</version>
-                <configuration>
-                    <url>jdbc:postgresql://localhost:5432/PCUpdateHelper?currentSchema=boot</url>
-                    <user>postgres</user>
-                    <password>Limak123</password>
-                    <schemas>
-                        <schema>boot</schema>
-                    </schemas>
-                    <cleanDisabled>false</cleanDisabled>
-                </configuration>
-            </plugin>
+                        <plugin>
+                            <groupId>org.flywaydb</groupId>
+                            <artifactId>flyway-maven-plugin</artifactId>
+                            <version>9.0.0</version>
+                            <configuration>
+                                <url>jdbc:postgresql://localhost:5432/PCUpdateHelper?currentSchema=boot</url>
+                                <user>postgres</user>
+                                <password>Limak123</password>
+                                <schemas>
+                                    <schema>boot</schema>
+                                </schemas>
+                                <cleanDisabled>false</cleanDisabled>
+                            </configuration>
+                        </plugin>
 
             <plugin>
                 <artifactId>maven-resources-plugin</artifactId>
@@ -148,7 +148,7 @@
                             <goal>copy-resources</goal>
                         </goals>
                         <configuration>
-                            <outputDirectory> src/main/resources/static</outputDirectory>
+                            <outputDirectory> target/classes/static/</outputDirectory>
                             <resources>
                                 <resource>
                                     <directory> ../../frontend/dist </directory>

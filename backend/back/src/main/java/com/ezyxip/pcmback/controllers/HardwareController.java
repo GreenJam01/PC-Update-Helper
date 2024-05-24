@@ -1,8 +1,11 @@
 package com.ezyxip.pcmback.controllers;
 
 import com.ezyxip.pcmback.entities.*;
+import com.ezyxip.pcmback.entities.User.User;
 import com.ezyxip.pcmback.repositories.*;
+import com.ezyxip.pcmback.security.jwt.JwtUtils;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,6 +14,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 @RestController
@@ -18,6 +23,12 @@ import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 @RequestMapping("/hardware")
 @Tag(name="Контроллер железа", description="Контроллер позволяет взаимодейтсвовать с ресурсом hardware")
 public class HardwareController {
+
+    @Autowired
+    JwtUtils jwtUtils;
+
+    @Autowired
+    UserRepository userRepository;
     @Autowired
     CPURepository cpuRepository;
 
@@ -216,48 +227,289 @@ public class HardwareController {
     }
 
     @GetMapping(value = "get-all-cpu")
-    public ResponseEntity<List<CPUEntity>> getAllCPU() {
+    public ResponseEntity<List<CPUEntity>> getAllCpus(HttpServletRequest request) {
         try {
-            return ResponseEntity.ok(cpuRepository.findAll());
+            String token = jwtUtils.parseJwt(request);
+            if (!jwtUtils.validateJwtToken(token)) {
+                return ResponseEntity.ok(cpuRepository.findAll());
+            }
+            String username = jwtUtils.getUserNameFromJwtToken(token);
+            Optional<User> userEntity = userRepository.findByUsername(username);
+            if (userEntity.isEmpty())
+                return ResponseEntity.ok(cpuRepository.findAll());
+
+            return ResponseEntity.ok(cpuRepository
+                    .findAll().stream()
+                    .peek(i -> i.setFavorite(userEntity.get().getCpus().contains(i)))
+                    .collect(Collectors.toList()));
         } catch (Exception e) {
             return new ResponseEntity<>(null, HttpStatus.NO_CONTENT);
         }
     }
 
-    @GetMapping(value = "get-all-gpu")
-    public ResponseEntity<List<GPUEntity>> getAllGPU() {
+
+    @PostMapping(value = "post-favorite-cpu")
+    public ResponseEntity<?> postFavoriteCPU(@RequestBody CPUEntity cpu, HttpServletRequest request) {
         try {
-            return ResponseEntity.ok(gpuRepository.findAll());
+            String token = jwtUtils.parseJwt(request);
+            if (!jwtUtils.validateJwtToken(token)) {
+                throw new Exception("Вы не авторизованны!");
+            }
+            String username = jwtUtils.getUserNameFromJwtToken(token);
+            Optional<User> userEntity = userRepository.findByUsername(username);
+            if (userEntity.isEmpty()) {
+                throw new Exception("Вы не авторизованны!");
+            }
+
+            CPUEntity cpuEntity = cpuRepository.findById(cpu.getId()).orElse(null);
+            if (cpuEntity == null) {
+                throw new Exception("Процессор не найден!");
+            }
+
+            Set<CPUEntity> userCPUs = userEntity.get().getCpus();
+            boolean isFavorite = userCPUs.contains(cpuEntity);
+
+            if (isFavorite) {
+                userCPUs.remove(cpuEntity);
+            } else {
+                userCPUs.add(cpuEntity);
+            }
+            userEntity.get().setCpus(userCPUs);
+            userRepository.save(userEntity.get());
+            return new ResponseEntity<>(null, HttpStatus.OK);
+
+        } catch (Exception e) {
+            return new ResponseEntity<>(null, HttpStatus.NO_CONTENT);
+        }
+
+    }
+
+    @PostMapping(value = "post-favorite-gpu")
+    public ResponseEntity<?> postFavoriteGPU(@RequestBody GPUEntity gpu, HttpServletRequest request) {
+        try {
+            String token = jwtUtils.parseJwt(request);
+            if (!jwtUtils.validateJwtToken(token)) {
+                throw new Exception("Вы не авторизованны!");
+            }
+            String username = jwtUtils.getUserNameFromJwtToken(token);
+            Optional<User> userEntity = userRepository.findByUsername(username);
+            if (userEntity.isEmpty()) {
+                throw new Exception("Вы не авторизованны!");
+            }
+
+            GPUEntity gpuEntity = gpuRepository.findById(gpu.getId()).orElse(null);
+            if (gpuEntity == null) {
+                throw new Exception("Процессор не найден!");
+            }
+
+            Set<GPUEntity> userGPUs = userEntity.get().getGpus();
+            boolean isFavorite = userGPUs.contains(gpuEntity);
+
+            if (isFavorite) {
+                userGPUs.remove(gpuEntity);
+            } else {
+                userGPUs.add(gpuEntity);
+            }
+            userEntity.get().setGpus(userGPUs);
+            userRepository.save(userEntity.get());
+            return new ResponseEntity<>(null, HttpStatus.OK);
+
+        } catch (Exception e) {
+            return new ResponseEntity<>(null, HttpStatus.NO_CONTENT);
+        }
+
+    }
+
+    @PostMapping(value = "post-favorite-ram")
+    public ResponseEntity<?> postFavoriteRAM(@RequestBody RAMEntity ram, HttpServletRequest request) {
+        try {
+            String token = jwtUtils.parseJwt(request);
+            if (!jwtUtils.validateJwtToken(token)) {
+                throw new Exception("Вы не авторизованны!");
+            }
+            String username = jwtUtils.getUserNameFromJwtToken(token);
+            Optional<User> userEntity = userRepository.findByUsername(username);
+            if (userEntity.isEmpty()) {
+                throw new Exception("Вы не авторизованны!");
+            }
+
+            RAMEntity ramEntity = ramRepository.findById(ram.getId()).orElse(null);
+            if (ramEntity == null) {
+                throw new Exception("Процессор не найден!");
+            }
+
+            Set<RAMEntity> userRAMs = userEntity.get().getRams();
+            boolean isFavorite = userRAMs.contains(ramEntity);
+
+            if (isFavorite) {
+                userRAMs.remove(ramEntity);
+            } else {
+                userRAMs.add(ramEntity);
+            }
+            userEntity.get().setRams(userRAMs);
+            userRepository.save(userEntity.get());
+            return new ResponseEntity<>(null, HttpStatus.OK);
+
+        } catch (Exception e) {
+            return new ResponseEntity<>(null, HttpStatus.NO_CONTENT);
+        }
+
+    }
+
+    @PostMapping(value = "post-favorite-hdd")
+    public ResponseEntity<?> postFavoriteCPU(@RequestBody HDDEntity hdd, HttpServletRequest request) {
+        try {
+            String token = jwtUtils.parseJwt(request);
+            if (!jwtUtils.validateJwtToken(token)) {
+                throw new Exception("Вы не авторизованны!");
+            }
+            String username = jwtUtils.getUserNameFromJwtToken(token);
+            Optional<User> userEntity = userRepository.findByUsername(username);
+            if (userEntity.isEmpty()) {
+                throw new Exception("Вы не авторизованны!");
+            }
+
+            HDDEntity hddEntity = hddRepository.findById(hdd.getId()).orElse(null);
+            if (hddEntity == null) {
+                throw new Exception("Жесткий диск не найден!");
+            }
+
+            Set<HDDEntity> userHDDs = userEntity.get().getHdds();
+            boolean isFavorite = userHDDs.contains(hddEntity);
+
+            if (isFavorite) {
+                userHDDs.remove(hddEntity);
+            } else {
+                userHDDs.add(hddEntity);
+            }
+            userEntity.get().setHdds(userHDDs);
+            userRepository.save(userEntity.get());
+            return new ResponseEntity<>(null, HttpStatus.OK);
+
+        } catch (Exception e) {
+            return new ResponseEntity<>(null, HttpStatus.NO_CONTENT);
+        }
+
+    }
+
+    @PostMapping(value = "post-favorite-motherboard")
+    public ResponseEntity<?> postFavoriteCPU(@RequestBody MotherboardEntity motherboard, HttpServletRequest request) {
+        try {
+            String token = jwtUtils.parseJwt(request);
+            if (!jwtUtils.validateJwtToken(token)) {
+                throw new Exception("Вы не авторизованны!");
+            }
+            String username = jwtUtils.getUserNameFromJwtToken(token);
+            Optional<User> userEntity = userRepository.findByUsername(username);
+            if (userEntity.isEmpty()) {
+                throw new Exception("Вы не авторизованны!");
+            }
+
+            MotherboardEntity motherboardEntity = motherboardRepository.findById(motherboard.getId()).orElse(null);
+            if (motherboardEntity == null) {
+                throw new Exception("Материнская плата не найдена!");
+            }
+
+            Set<MotherboardEntity> userMotherboards = userEntity.get().getMotherboards();
+            boolean isFavorite = userMotherboards.contains(motherboardEntity);
+
+            if (isFavorite) {
+                userMotherboards.remove(motherboardEntity);
+            } else {
+                userMotherboards.add(motherboardEntity);
+            }
+            userEntity.get().setMotherboards(userMotherboards);
+            userRepository.save(userEntity.get());
+            return new ResponseEntity<>(null, HttpStatus.OK);
+
+        } catch (Exception e) {
+            return new ResponseEntity<>(null, HttpStatus.NO_CONTENT);
+        }
+
+    }
+
+    @GetMapping(value = "get-all-gpu")
+    public ResponseEntity<List<GPUEntity>> getAllGpus(HttpServletRequest request) {
+        try {
+            String token = jwtUtils.parseJwt(request);
+            if (!jwtUtils.validateJwtToken(token)) {
+                return ResponseEntity.ok(gpuRepository.findAll());
+            }
+            String username = jwtUtils.getUserNameFromJwtToken(token);
+            Optional<User> userEntity = userRepository.findByUsername(username);
+            if (userEntity.isEmpty())
+                return ResponseEntity.ok(gpuRepository.findAll());
+
+            return ResponseEntity.ok(gpuRepository
+                    .findAll().stream()
+                    .peek(i -> i.setFavorite(userEntity.get().getGpus().contains(i)))
+                    .collect(Collectors.toList()));
         } catch (Exception e) {
             return new ResponseEntity<>(null, HttpStatus.NO_CONTENT);
         }
     }
     @GetMapping(value = "get-all-motherboard")
-    public ResponseEntity<List<MotherboardEntity>> getAllMotherboard() {
+    public ResponseEntity<List<MotherboardEntity>> getAllMotherboard(HttpServletRequest request) {
         try {
-            return ResponseEntity.ok(motherboardRepository.findAll());
-        } catch (Exception e) {
-            return new ResponseEntity<>(null, HttpStatus.NO_CONTENT);
-        }
-    }
-    @GetMapping(value = "get-all-ram")
-    public ResponseEntity<List<RAMEntity>> getAllRAM() {
-        try {
-            return ResponseEntity.ok(ramRepository.findAll());
+            String token = jwtUtils.parseJwt(request);
+            if (!jwtUtils.validateJwtToken(token)) {
+                throw new Exception("Invalid or expired token");
+            }
+
+            String username = jwtUtils.getUserNameFromJwtToken(token);
+            Optional<User> userEntity = userRepository.findByUsername(username);
+            if (userEntity.isEmpty())
+                return ResponseEntity.ok(motherboardRepository.findAll());
+
+            return ResponseEntity.ok(motherboardRepository
+                    .findAll().stream()
+                    .peek(i -> i.setFavorite(userEntity.get().getMotherboards().contains(i)))
+                    .collect(Collectors.toList()));
         } catch (Exception e) {
             return new ResponseEntity<>(null, HttpStatus.NO_CONTENT);
         }
     }
     @GetMapping(value = "get-all-hdd")
-    public ResponseEntity<List<HDDEntity>> getAllHDD() {
+    public ResponseEntity<List<HDDEntity>> getAllHdds(HttpServletRequest request) {
         try {
-            var rep = hddRepository.findAll();
-            return ResponseEntity.ok(hddRepository.findAll());
+            String token = jwtUtils.parseJwt(request);
+            if (!jwtUtils.validateJwtToken(token)) {
+                return ResponseEntity.ok(hddRepository.findAll());
+            }
+            String username = jwtUtils.getUserNameFromJwtToken(token);
+            Optional<User> userEntity = userRepository.findByUsername(username);
+            if (userEntity.isEmpty())
+                return ResponseEntity.ok(hddRepository.findAll());
+
+            return ResponseEntity.ok(hddRepository
+                    .findAll().stream()
+                    .peek(i -> i.setFavorite(userEntity.get().getHdds().contains(i)))
+                    .collect(Collectors.toList()));
         } catch (Exception e) {
             return new ResponseEntity<>(null, HttpStatus.NO_CONTENT);
         }
     }
 
+    @GetMapping(value = "get-all-ram")
+    public ResponseEntity<List<RAMEntity>> getAllRams(HttpServletRequest request) {
+        try {
+            String token = jwtUtils.parseJwt(request);
+            if (!jwtUtils.validateJwtToken(token)) {
+                return ResponseEntity.ok(ramRepository.findAll());
+            }
+            String username = jwtUtils.getUserNameFromJwtToken(token);
+            Optional<User> userEntity = userRepository.findByUsername(username);
+            if (userEntity.isEmpty())
+                return ResponseEntity.ok(ramRepository.findAll());
+
+            return ResponseEntity.ok(ramRepository
+                    .findAll().stream()
+                    .peek(i -> i.setFavorite(userEntity.get().getRams().contains(i)))
+                    .collect(Collectors.toList()));
+        } catch (Exception e) {
+            return new ResponseEntity<>(null, HttpStatus.NO_CONTENT);
+        }
+    }
     @GetMapping("/cpu/{id}")
     public ResponseEntity<CPUEntity> getCpuById(@PathVariable("id") long id) {
         Optional<CPUEntity> cpuData = cpuRepository.findById(id);
