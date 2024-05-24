@@ -148,7 +148,7 @@
                             <goal>copy-resources</goal>
                         </goals>
                         <configuration>
-                            <outputDirectory> static</outputDirectory>
+                            <outputDirectory> src/main/resources/static</outputDirectory>
                             <resources>
                                 <resource>
                                     <directory> ../../frontend/dist </directory>
