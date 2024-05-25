@@ -1,20 +1,227 @@
 [
   {
+    "title": "AMD Ryzen 7 5700G",
+    "coresNumber": "8",
+    "price": "21890",
+    "brand": "AMD",
+    "frequency": "3.8",
+    "threadsNumber": "16",
+    "imgLink": "https://rstatic.citilink.ru/react-ssr-app-catalog/80d28032/_next/static/images/44cc90bae2f51210440d660425462dbf.jpg"
+  },
+  {
+    "title": "AMD Ryzen 5 5600G",
+    "coresNumber": "6",
+    "price": "16990",
+    "brand": "AMD",
+    "frequency": "3.9",
+    "threadsNumber": "12",
+    "imgLink": "https://rstatic.citilink.ru/react-ssr-app-catalog/80d28032/_next/static/images/44cc90bae2f51210440d660425462dbf.jpg"
+  },
+  {
+    "title": "AMD Ryzen 5 5600X",
+    "coresNumber": "6",
+    "price": "22440",
+    "brand": "AMD",
+    "frequency": "3.7",
+    "threadsNumber": "12",
+    "imgLink": "https://rstatic.citilink.ru/react-ssr-app-catalog/80d28032/_next/static/images/44cc90bae2f51210440d660425462dbf.jpg"
+  },
+  {
+    "title": "AMD Ryzen 9 5950X",
+    "coresNumber": "16",
+    "price": "53990",
+    "brand": "AMD",
+    "frequency": "3.4",
+    "threadsNumber": "32",
+    "imgLink": "https://rstatic.citilink.ru/react-ssr-app-catalog/80d28032/_next/static/images/44cc90bae2f51210440d660425462dbf.jpg"
+  },
+  {
+    "title": "AMD Ryzen 9 7950X3D",
+    "coresNumber": "16",
+    "price": "79990",
+    "brand": "AMD",
+    "frequency": "4.2",
+    "threadsNumber": "32",
+    "imgLink": "https://rstatic.citilink.ru/react-ssr-app-catalog/80d28032/_next/static/images/44cc90bae2f51210440d660425462dbf.jpg"
+  },
+  {
+    "title": "AMD Ryzen 9 7900X3D",
+    "coresNumber": "12",
+    "price": "59990",
+    "brand": "AMD",
+    "frequency": "4.4",
+    "threadsNumber": "24",
+    "imgLink": "https://rstatic.citilink.ru/react-ssr-app-catalog/80d28032/_next/static/images/44cc90bae2f51210440d660425462dbf.jpg"
+  },
+  {
+    "title": "Intel Core i5 11600KF",
+    "coresNumber": "6",
+    "price": "14990",
+    "brand": "INTEL",
+    "frequency": "3.9",
+    "threadsNumber": "12",
+    "imgLink": "https://rstatic.citilink.ru/react-ssr-app-catalog/80d28032/_next/static/images/44cc90bae2f51210440d660425462dbf.jpg"
+  },
+  {
+    "title": "AMD Ryzen 7 7800X3D",
+    "coresNumber": "8",
+    "price": "63340",
+    "brand": "AMD",
+    "frequency": "4.2",
+    "threadsNumber": "16",
+    "imgLink": "https://rstatic.citilink.ru/react-ssr-app-catalog/80d28032/_next/static/images/44cc90bae2f51210440d660425462dbf.jpg"
+  },
+  {
+    "title": "AMD Ryzen 7 3800X",
+    "coresNumber": "8",
+    "price": "21990",
+    "brand": "AMD",
+    "frequency": "3.9",
+    "threadsNumber": "16",
+    "imgLink": "https://rstatic.citilink.ru/react-ssr-app-catalog/80d28032/_next/static/images/44cc90bae2f51210440d660425462dbf.jpg"
+  },
+  {
+    "title": "AMD Ryzen 9 7950X",
+    "coresNumber": "16",
+    "price": "66990",
+    "brand": "AMD",
+    "frequency": "4.5",
+    "threadsNumber": "32",
+    "imgLink": "https://rstatic.citilink.ru/react-ssr-app-catalog/80d28032/_next/static/images/44cc90bae2f51210440d660425462dbf.jpg"
+  },
+  {
+    "title": "AMD Ryzen 9 7900X",
+    "coresNumber": "12",
+    "price": "48990",
+    "brand": "AMD",
+    "frequency": "4.7",
+    "threadsNumber": "24",
+    "imgLink": "https://rstatic.citilink.ru/react-ssr-app-catalog/80d28032/_next/static/images/44cc90bae2f51210440d660425462dbf.jpg"
+  },
+  {
+    "title": "AMD Ryzen 7 7700X",
+    "coresNumber": "8",
+    "price": "39990",
+    "brand": "AMD",
+    "frequency": "4.5",
+    "threadsNumber": "16",
+    "imgLink": "https://rstatic.citilink.ru/react-ssr-app-catalog/80d28032/_next/static/images/44cc90bae2f51210440d660425462dbf.jpg"
+  },
+  {
+    "title": "AMD Ryzen 5 5600G",
+    "coresNumber": "6",
+    "price": "16990",
+    "brand": "AMD",
+    "frequency": "3.9",
+    "threadsNumber": "12",
+    "imgLink": "https://rstatic.citilink.ru/react-ssr-app-catalog/80d28032/_next/static/images/44cc90bae2f51210440d660425462dbf.jpg"
+  },
+  {
+    "title": "AMD Ryzen 9 5950X",
+    "coresNumber": "16",
+    "price": "53990",
+    "brand": "AMD",
+    "frequency": "3.4",
+    "threadsNumber": "32",
+    "imgLink": "https://rstatic.citilink.ru/react-ssr-app-catalog/80d28032/_next/static/images/44cc90bae2f51210440d660425462dbf.jpg"
+  },
+  {
+    "title": "AMD Ryzen 5 3600X",
+    "coresNumber": "6",
+    "price": "12580",
+    "brand": "AMD",
+    "frequency": "3.8",
+    "threadsNumber": "12",
+    "imgLink": "https://rstatic.citilink.ru/react-ssr-app-catalog/80d28032/_next/static/images/44cc90bae2f51210440d660425462dbf.jpg"
+  },
+  {
     "title": "Intel Core i5 12400F",
     "coresNumber": "6",
-    "price": "14490",
+    "price": "13890",
     "brand": "INTEL",
     "frequency": "2.5",
     "threadsNumber": "12",
-    "imgLink": "https://cdn.citilink.ru/BnXw-bO363Qb1eNufbwIDNdhVDUKj6QYMJ4T21_MIY4/resizing_type:fit/gravity:sm/width:1200/height:1200/plain/product-images/03df872e-c930-48b0-82e5-67b29c4d9e1d.jpg"
+    "imgLink": "https://rstatic.citilink.ru/react-ssr-app-catalog/80d28032/_next/static/images/44cc90bae2f51210440d660425462dbf.jpg"
   },
   {
-    "title": "AMD Ryzen 7 5700X3D",
-    "coresNumber": "8",
-    "price": "39970",
+    "title": "Intel Core i5 12400F",
+    "coresNumber": "6",
+    "price": "13890",
+    "brand": "INTEL",
+    "frequency": "2.5",
+    "threadsNumber": "12",
+    "imgLink": "https://rstatic.citilink.ru/react-ssr-app-catalog/80d28032/_next/static/images/44cc90bae2f51210440d660425462dbf.jpg"
+  },
+  {
+    "title": "AMD Ryzen 5 5600",
+    "coresNumber": "6",
+    "price": "12990",
     "brand": "AMD",
-    "frequency": "3",
+    "frequency": "3.5",
+    "threadsNumber": "12",
+    "imgLink": "https://rstatic.citilink.ru/react-ssr-app-catalog/80d28032/_next/static/images/44cc90bae2f51210440d660425462dbf.jpg"
+  },
+  {
+    "title": "AMD Ryzen 7 5700X",
+    "coresNumber": "8",
+    "price": "18990",
+    "brand": "AMD",
+    "frequency": "3.4",
     "threadsNumber": "16",
-    "imgLink": "https://cdn.citilink.ru/SOOdMnpDKG9pphq9Grr9-_F5uSw_HPg4we8XPGtWsX0/resizing_type:fit/gravity:sm/width:1200/height:1200/plain/product-images/96417c51-1b38-4053-a96f-22d3c4a6ad24.jpg"
+    "imgLink": "https://rstatic.citilink.ru/react-ssr-app-catalog/80d28032/_next/static/images/44cc90bae2f51210440d660425462dbf.jpg"
+  },
+  {
+    "title": "AMD Ryzen 5 7500F",
+    "coresNumber": "6",
+    "price": "19990",
+    "brand": "AMD",
+    "frequency": "3.7",
+    "threadsNumber": "12",
+    "imgLink": "https://rstatic.citilink.ru/react-ssr-app-catalog/80d28032/_next/static/images/44cc90bae2f51210440d660425462dbf.jpg"
+  },
+  {
+    "title": "Intel Core i5 12400",
+    "coresNumber": "6",
+    "price": "17990",
+    "brand": "INTEL",
+    "frequency": "2.5",
+    "threadsNumber": "12",
+    "imgLink": "https://rstatic.citilink.ru/react-ssr-app-catalog/80d28032/_next/static/images/44cc90bae2f51210440d660425462dbf.jpg"
+  },
+  {
+    "title": "AMD Ryzen 5 5600G",
+    "coresNumber": "6",
+    "price": "13890",
+    "brand": "AMD",
+    "frequency": "3.9",
+    "threadsNumber": "12",
+    "imgLink": "https://rstatic.citilink.ru/react-ssr-app-catalog/80d28032/_next/static/images/44cc90bae2f51210440d660425462dbf.jpg"
+  },
+  {
+    "title": "Intel Core i3 12100",
+    "coresNumber": "4",
+    "price": "11490",
+    "brand": "INTEL",
+    "frequency": "3.3",
+    "threadsNumber": "8",
+    "imgLink": "https://rstatic.citilink.ru/react-ssr-app-catalog/80d28032/_next/static/images/44cc90bae2f51210440d660425462dbf.jpg"
+  },
+  {
+    "title": "Intel Core i5 13400F",
+    "coresNumber": "10",
+    "price": "20990",
+    "brand": "INTEL",
+    "frequency": "2.5",
+    "threadsNumber": "16",
+    "imgLink": "https://rstatic.citilink.ru/react-ssr-app-catalog/80d28032/_next/static/images/44cc90bae2f51210440d660425462dbf.jpg"
+  },
+  {
+    "title": "AMD Ryzen 5 5500",
+    "coresNumber": "6",
+    "price": "9390",
+    "brand": "AMD",
+    "frequency": "3.6",
+    "threadsNumber": "12",
+    "imgLink": "https://rstatic.citilink.ru/react-ssr-app-catalog/80d28032/_next/static/images/44cc90bae2f51210440d660425462dbf.jpg"
   }
 ]

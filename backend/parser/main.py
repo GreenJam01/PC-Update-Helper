@@ -27,9 +27,9 @@ def parse_hdd_daily():
 def parse_ssd_daily():
     parseSsd("/catalog/ssd-nakopiteli/")
 
-schedule.every().day.at("01:00").do(parse_cpu_daily)
-schedule.every().day.at("02:00").do(parse_gpu_daily)
-schedule.every().day.at("03:00").do(parse_ram_daily)
+# schedule.every().day.at("01:00").do(parse_cpu_daily)
+# schedule.every().day.at("02:00").do(parse_gpu_daily)
+# schedule.every().day.at("03:00").do(parse_ram_daily)
 schedule.every().day.at("04:00").do(parse_mb_daily)
 schedule.every().day.at("05:00").do(parse_hdd_daily)
 schedule.every().day.at("06:00").do(parse_ssd_daily)

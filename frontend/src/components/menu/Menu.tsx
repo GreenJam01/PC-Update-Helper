@@ -18,7 +18,7 @@ function Menu(){
       <nav className="navbar navbar-expand navbar-dark bg-dark">
         {user ? (
           <div className="navbar-nav ml-auto">
-            <li className="nav-item">
+            <li className="nav-item" style={{ color: 'blue' }}>
               {user.email}
             </li>
             <li className="nav-item">

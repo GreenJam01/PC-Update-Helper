@@ -95,7 +95,7 @@ app.config['CORS_HEADERS'] = 'Content-Type'
 def prediction():
   # Загружаем сборку и преобразуем её в датасет
   str_sborka = str(request.args.get('sborka'))
-  column_sborka = ['cpu_name', 'mb_name', 'gpu_name', 'ram_name', 'hdd_name', 'ssd_name']
+  column_sborka = ['cpu_name', 'mb_name', 'gpu_name', 'ram_name', 'hdd_name']
   df_sborka = pd.DataFrame(columns=column_sborka)
   df_sborka.loc[ len(df_sborka.index) ] = str_sborka.split('|')
 
@@ -112,24 +112,22 @@ def prediction():
 
   chose_change = target_values.loc[log_chose_upgrade.predict(df_full_sborka_for_train.head(1))].values[0]
 
+  assembly = {}
+  for col in column_sborka:
+    assembly[col] = df_sborka.loc[0, col]
+
   match chose_change:
     case 'cpu':
-      print('here')
       chose_new_cpu = log_upgrade_cpu.predict(df_full_sborka_for_train)
-      df_sborka.loc[0, 'cpu_name'] = target_cpu.loc[chose_new_cpu, 'choose'].values[0]
+      assembly['cpu_name'] = target_cpu.loc[chose_new_cpu, 'choose'].values[0]
     case 'gpu':
       chose_new_gpu = log_upgrade_gpu.predict(df_full_sborka_for_train)
-      df_sborka.loc[0, 'gpu_name'] = target_gpu.loc[chose_new_gpu, 'choose'].values[0]
+      assembly['gpu_name'] = target_gpu.loc[chose_new_gpu, 'choose'].values[0]
     case 'ssd':
       chose_new_ssd = log_upgrade_ssd.predict(df_full_sborka_for_train)
-      df_sborka.loc[0, 'ssd_name'] = target_ssd.loc[chose_new_ssd, 'choose'].values[0]
+      assembly['hdd_name'] = target_ssd.loc[chose_new_ssd, 'choose'].values[0]
 
-  # new_sborka = ''
-  # for el in df_sborka.loc[0].values:
-  #   new_sborka += el
-  #   new_sborka += '|'
-
-  return jsonify(df_sborka.head(1).values.tolist())
+  return jsonify(assembly)
 
 if __name__ == '__main__':
     app.run()

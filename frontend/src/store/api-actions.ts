@@ -40,7 +40,7 @@ export const fetchAssemblies = createAsyncThunk<Assembly[], undefined, {
   },
 );
 
-export const checkAuthAction = createAsyncThunk<UserData, undefined, {
+export const checkAuthAction = createAsyncThunk<void, undefined, {
   dispatch: AppDispatch;
   state: State;
   extra: AxiosInstance;
@@ -49,9 +49,10 @@ export const checkAuthAction = createAsyncThunk<UserData, undefined, {
   async (_arg, { dispatch, extra: api}) => {
     try{
       const {data: user} = await api.get<UserData>(APIRoutes.Signin);
+      dispatch(setUser(user));
+      dispatch(setAuthorizationStatus(AuthorizationStatus.Auth));
       dispatch(fetchHardwaresAction());
       dispatch(fetchAssemblies());
-      return user;
     } catch(e){
       dispatch(setAuthorizationStatus(AuthorizationStatus.NoAuth));
       dispatch(fetchHardwaresAction());

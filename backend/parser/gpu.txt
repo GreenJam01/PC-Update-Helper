@@ -1,18 +1,29 @@
 [
   {
-    "title": "ASROCK AMD  Radeon RX 7800XT RX7800XT CL 16GO",
-    "brand": "ASROCK",
-    "memoryVolume": "16",
-    "busWidth": "256",
-    "memoryFrequency": "16000",
-    "price": "64700"
+    "title": "MSI NVIDIA  GeForce RTX 4070TI RTX 4070 Ti GAMING X SLIM 12G",
+    "brand": "MSI",
+    "memoryVolume": "12",
+    "busWidth": "192",
+    "memoryFrequency": "21000",
+    "price": "102200",
+    "img_link": "https://rstatic.citilink.ru/react-ssr-app-catalog/80d28032/_next/static/images/44cc90bae2f51210440d660425462dbf.jpg"
   },
   {
-    "title": "ASROCK AMD  Radeon RX 7900XTX RX7900XTX TCW 24GO",
-    "brand": "ASROCK",
-    "memoryVolume": "24",
-    "busWidth": "384",
-    "memoryFrequency": "20000",
-    "price": "121600"
+    "title": "GIGABYTE NVIDIA  GeForce RTX 4070TI Super GV-N407TSGAMING OC-16GD",
+    "brand": "GIGABYTE",
+    "memoryVolume": "16",
+    "busWidth": "256",
+    "memoryFrequency": "21000",
+    "price": "121700",
+    "img_link": "https://rstatic.citilink.ru/react-ssr-app-catalog/80d28032/_next/static/images/44cc90bae2f51210440d660425462dbf.jpg"
+  },
+  {
+    "title": "ASUS NVIDIA  GeForce RTX 4060 DUAL-RTX4060-O8G-WHITE",
+    "brand": "ASUS",
+    "memoryVolume": "8",
+    "busWidth": "128",
+    "memoryFrequency": "17000",
+    "price": "43200",
+    "img_link": "https://rstatic.citilink.ru/react-ssr-app-catalog/80d28032/_next/static/images/44cc90bae2f51210440d660425462dbf.jpg"
   }
 ]

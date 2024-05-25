@@ -40,7 +40,7 @@ def parseRam(extraStr):
 	i = 0
 	j = 1
 
-	while i < 2:
+	while i < 3:
 		# time.sleep(6)
 		if j >= 3:
 			newOpt =  Options()

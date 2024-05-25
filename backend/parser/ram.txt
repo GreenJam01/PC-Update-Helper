@@ -1,16 +1,66 @@
 [
   {
-    "title": "PATRIOT PVS416G300C",
-    "brand": "PATRIOT",
-    "volume": "16",
-    "frequency": "3000",
-    "price": "4290"
+    "title": "\u0422\u041c\u0418 \u0426\u0420\u041c\u041f.467526.00",
+    "brand": "\u0422\u041c\u0418",
+    "volume": "8",
+    "frequency": "2666",
+    "price": "10990",
+    "img_link": "https://rstatic.citilink.ru/react-ssr-app-catalog/80d28032/_next/static/images/44cc90bae2f51210440d660425462dbf.jpg"
   },
   {
-    "title": "AMD \u043d\u0435",
-    "brand": "AMD",
-    "volume": "2",
-    "frequency": "800",
-    "price": "1390"
+    "title": "SAMSUNG M323R1GB4DB0-CW",
+    "brand": "SAMSUNG",
+    "volume": "8",
+    "frequency": "5600",
+    "price": "3290",
+    "img_link": "https://rstatic.citilink.ru/react-ssr-app-catalog/80d28032/_next/static/images/44cc90bae2f51210440d660425462dbf.jpg"
+  },
+  {
+    "title": "KINGSTON KF432C16BB2AK2/6",
+    "brand": "KINGSTON",
+    "volume": "32",
+    "frequency": "3200",
+    "price": "18990",
+    "img_link": "https://rstatic.citilink.ru/react-ssr-app-catalog/80d28032/_next/static/images/44cc90bae2f51210440d660425462dbf.jpg"
+  },
+  {
+    "title": "KINGSTON KF432C16BB12A/1",
+    "brand": "KINGSTON",
+    "volume": "16",
+    "frequency": "3200",
+    "price": "5590",
+    "img_link": "https://rstatic.citilink.ru/react-ssr-app-catalog/80d28032/_next/static/images/44cc90bae2f51210440d660425462dbf.jpg"
+  },
+  {
+    "title": "PATRIOT PSD432G26662",
+    "brand": "PATRIOT",
+    "volume": "32",
+    "frequency": "2666",
+    "price": "7990",
+    "img_link": "https://rstatic.citilink.ru/react-ssr-app-catalog/80d28032/_next/static/images/44cc90bae2f51210440d660425462dbf.jpg"
+  },
+  {
+    "title": "PATRIOT PVXR548G80C38",
+    "brand": "PATRIOT",
+    "volume": "24",
+    "frequency": "8000",
+    "price": "32990",
+    "img_link": "https://rstatic.citilink.ru/react-ssr-app-catalog/80d28032/_next/static/images/44cc90bae2f51210440d660425462dbf.jpg"
+  },
+  {
+    "title": "PATRIOT PVXR548G76C36",
+    "brand": "PATRIOT",
+    "volume": "24",
+    "frequency": "7600",
+    "price": "28990",
+    "img_link": "https://rstatic.citilink.ru/react-ssr-app-catalog/80d28032/_next/static/images/44cc90bae2f51210440d660425462dbf.jpg"
+  },
+  {
+    "title": "A-DATA AX4U36008G18I-DB1",
+    "brand": "A-DATA",
+    "volume": "8",
+    "frequency": "3600",
+    "price": "5590",
+    "img_link": "https://rstatic.citilink.ru/react-ssr-app-catalog/80d28032/_next/static/images/44cc90bae2f51210440d660425462dbf.jpg"
   }
 ]

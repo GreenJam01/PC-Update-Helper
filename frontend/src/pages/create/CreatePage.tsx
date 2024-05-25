@@ -65,7 +65,7 @@ export function CreatePage() {
     option: (provided : any, state:any) => ({
       ...provided,
       color: state.isSelected ? 'white' : 'black',
-      backgroundColor: state.isSelected ? 'blue' : state.data.value.isFavorite ? 'yellow' : 'white'
+      backgroundColor: state.isSelected ? 'blue' : state.data.value.favorite ? 'yellow' : 'white'
     }),
     control: (provided:any) => ({
       ...provided,
@@ -73,7 +73,7 @@ export function CreatePage() {
     }),
     input: (styles) => ({ ...styles, ...dot() }),
     placeholder: (styles) => ({ ...styles, ...dot('#ccc') }),
-    singleValue: (styles, state) => ({ ...styles, ...dot(state.data.value.isFavorite ? 'yellow' : 'black') }),
+    singleValue: (styles, state) => ({ ...styles, ...dot(state.data.value.favorite ? 'yellow' : 'black') }),
 
   };
   return(
