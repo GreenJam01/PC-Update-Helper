@@ -93,41 +93,38 @@ app.config['CORS_HEADERS'] = 'Content-Type'
 @app.route('/prediction', methods=['GET'])
 @cross_origin()
 def prediction():
-  # Загружаем сборку и преобразуем её в датасет
-  str_sborka = str(request.args.get('sborka'))
-  column_sborka = ['cpu_name', 'mb_name', 'gpu_name', 'ram_name', 'hdd_name']
-  df_sborka = pd.DataFrame(columns=column_sborka)
-  df_sborka.loc[ len(df_sborka.index) ] = str_sborka.split('|')
+    str_sborka = str(request.args.get('sborka'))
+    column_sborka = ['cpu_name', 'mb_name', 'gpu_name', 'ram_name', 'hdd_name', 'ssd_name']
+    df_sborka = pd.DataFrame(columns=column_sborka)
+    df_sborka.loc[len(df_sborka.index)] = str_sborka.split('|')
 
-  # Получаем всю необходимую информацию для обучения
-  df_full_sborka = builds[ (builds['cpu_name'] == df_sborka.loc[0, 'cpu_name'])].head(1)
+    df_full_sborka = builds[(builds['cpu_name'] == df_sborka.loc[0, 'cpu_name'])].head(1)
 
-  # Преобразуем категориальные столбцы для обучения
-  df_full_sborka_for_train = df_full_sborka.copy()
-  target_values = pd.Series(target['choose'].unique())
-  target['choose'] = target['choose'].apply(lambda x: target_values[target_values == x].index[0])
-  for col in cat_cols:
-    col_values = pd.Series(builds[col].unique())
-    df_full_sborka_for_train[col] = df_full_sborka_for_train[col].apply(lambda x: col_values[col_values == x].index[0])
+    df_full_sborka_for_train = df_full_sborka.copy()
+    target_values = pd.Series(target['choose'].unique())
+    target['choose'] = target['choose'].apply(lambda x: target_values[target_values == x].index[0])
+    for col in cat_cols:
+        col_values = pd.Series(builds[col].unique())
+        df_full_sborka_for_train[col] = df_full_sborka_for_train[col].apply(lambda x: col_values[col_values == x].index[0])
 
-  chose_change = target_values.loc[log_chose_upgrade.predict(df_full_sborka_for_train.head(1))].values[0]
+    chose_change = target_values.loc[log_chose_upgrade.predict(df_full_sborka_for_train.head(1))].values[0]
 
-  assembly = {}
-  for col in column_sborka:
-    assembly[col] = df_sborka.loc[0, col]
+    assembly = {}
+    for col in column_sborka:
+        assembly[col] = df_sborka.loc[0, col]
 
-  match chose_change:
-    case 'cpu':
-      chose_new_cpu = log_upgrade_cpu.predict(df_full_sborka_for_train)
-      assembly['cpu_name'] = target_cpu.loc[chose_new_cpu, 'choose'].values[0]
-    case 'gpu':
-      chose_new_gpu = log_upgrade_gpu.predict(df_full_sborka_for_train)
-      assembly['gpu_name'] = target_gpu.loc[chose_new_gpu, 'choose'].values[0]
-    case 'ssd':
-      chose_new_ssd = log_upgrade_ssd.predict(df_full_sborka_for_train)
-      assembly['hdd_name'] = target_ssd.loc[chose_new_ssd, 'choose'].values[0]
+    if chose_change == 'cpu':
+        chose_new_cpu = log_upgrade_cpu.predict(df_full_sborka_for_train)
+        assembly['cpu_name'] = target_cpu.loc[chose_new_cpu, 'choose'].values[0]
+    elif chose_change == 'gpu':
+        chose_new_gpu = log_upgrade_gpu.predict(df_full_sborka_for_train)
+        assembly['gpu_name'] = target_gpu.loc[chose_new_gpu, 'choose'].values[0]
+    elif chose_change == 'ssd':
+        chose_new_ssd = log_upgrade_ssd.predict(df_full_sborka_for_train)
+        assembly['ssd_name'] = target_ssd.loc[chose_new_ssd, 'choose'].values[0]
 
-  return jsonify(assembly)
+    return jsonify(assembly)
+
 
 if __name__ == '__main__':
     app.run()
