@@ -4,9 +4,9 @@ import * as Yup from 'yup';
 
 import { signinAction } from '../../store/api-actions';
 import { useAppDispatch } from '../../hooks/use-app';
-import { GoogleButton, googleButton } from '../../components/google-button/google-button';
-import './SigninPage.css'
-import './SigninPageMedia.css'
+import { GoogleButton } from '../../components/google-button/google-button';
+import './SigninPage.css';
+import './SigninPageMedia.css';
 const SigninPage = () => {
   const dispatch = useAppDispatch();
 
@@ -48,13 +48,13 @@ const SigninPage = () => {
               <Form className='login-password'>
                 <div className="form-group">
                   <label className='form-group-item' htmlFor="username">Username:</label>
-                  <Field  name="username" type="text" className="form-control" />
+                  <Field name="username" type="text" className="form-control" />
                   <div className='alert-container'>
-                        <ErrorMessage
-                          name="username"
-                          component="div"
-                          className="alert alert-danger errorMessage"
-                        />
+                    <ErrorMessage
+                      name="username"
+                      component="div"
+                      className="alert alert-danger errorMessage"
+                    />
                   </div>
                 </div>
 
@@ -62,11 +62,11 @@ const SigninPage = () => {
                   <label className='form-group-item' htmlFor="password">Password: </label>
                   <Field name="password" type="password" className="form-control" />
                   <div className='alert-container'>
-                  <ErrorMessage
-                          name="password"
-                          component="div"
-                          className="alert alert-danger errorMessage"
-                        />
+                    <ErrorMessage
+                      name="password"
+                      component="div"
+                      className="alert alert-danger errorMessage"
+                    />
                   </div>
                 </div>
 
@@ -95,10 +95,10 @@ const SigninPage = () => {
                 PC-UP
               </div>
               <img
-              src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
-              alt="profile-img"
-              className="profile-img-card"
-            />
+                src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
+                alt="profile-img"
+                className="profile-img-card"
+              />
             </div>
           </div>
         </div>

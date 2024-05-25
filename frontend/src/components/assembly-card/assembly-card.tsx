@@ -7,6 +7,7 @@ import { useState } from 'react';
 import { EditAssemblyCard } from './edit-assembly-card';
 import './assembly-card.css';
 import axios from 'axios';
+import { getRandomMotherboard, getRandomProcessor } from '../../data/hardware-list';
 
 type AssemblyCardProps = {
   assembly: Assembly;
@@ -15,12 +16,13 @@ type AssemblyCardProps = {
 export const AssemblyCard = ({assembly}:AssemblyCardProps) => {
   const [editModeOn, setEditModeOn ] = useState(false);
   const [showModal, setShowModal] = useState(false);
-  const [predictionResult, setPredictionResult] = useState(null);
+  const [predictionResult, setPredictionResult] = useState('');
 
   const clickOfferHandle = async () => {
     try {
       // Формируем строку запроса
       const requestString = `AMD 2200G|ASUS PRIME A320M-K/CSM|KFA2 GeForce GTX 1650 X Black|Kingston Fury Beast Black|WD Blue|Kingston A400`;
+      const requestString2 = `${getRandomProcessor()}|${getRandomMotherboard()}|KFA2 GeForce GTX 1650 X Black|Kingston Fury Beast Black|WD Blue|Kingston A400`;
 
       // Отправляем GET-запрос с помощью axios
       const response = await axios.get(`http://127.0.0.1:5000/prediction?sborka=${requestString}`);

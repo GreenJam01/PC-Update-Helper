@@ -56,6 +56,7 @@ export const checkAuthAction = createAsyncThunk<void, undefined, {
     } catch(e){
       dispatch(setAuthorizationStatus(AuthorizationStatus.NoAuth));
       dispatch(fetchHardwaresAction());
+      dispatch(setUser(null));
     }
   },
 );
