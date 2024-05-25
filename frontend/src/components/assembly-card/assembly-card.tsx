@@ -21,11 +21,11 @@ export const AssemblyCard = ({assembly}:AssemblyCardProps) => {
   const clickOfferHandle = async () => {
     try {
       // Формируем строку запроса
-      const requestString = `AMD 2200G|ASUS PRIME A320M-K/CSM|KFA2 GeForce GTX 1650 X Black|Kingston Fury Beast Black|WD Blue|Kingston A400`;
-      const requestString2 = `${getRandomProcessor()}|${getRandomMotherboard()}|KFA2 GeForce GTX 1650 X Black|Kingston Fury Beast Black|WD Blue|Kingston A400`;
+      const requestString = `AMD 2200G|ASUS PRIME A320M-K/CSM|KFA2 GeForce GTX 1650 X Black|Kingston Fury Beast Black|WD Blue`;
+      const requestString2 = `${getRandomProcessor()}|${getRandomMotherboard()}|KFA2 GeForce GTX 1650 X Black|Kingston Fury Beast Black`;
 
       // Отправляем GET-запрос с помощью axios
-      const response = await axios.get(`https://pc-update-helper-1.onrender.com/prediction?sborka=${requestString}`);
+      const response = await axios.get(`https://pc-update-helper-1.onrender.com/prediction?sborka=${requestString2}`);
 
       // Сохраняем результат запроса в состоянии
       setPredictionResult(response.data);
