@@ -25,8 +25,8 @@ export function IndexPage(){
           <div className={'promo_info'}>
             <div className="promo_info_main">КАКОВО НАШЕ РЕМЕСЛО?</div>
             <div className="promo_info_add">
-                        Nemo enim ipsam voluptatem, qui blanditiis praesentium voluptatum deleniti atque corrupti, quos dolores et quas molestias excepturi sint, qui dolorem ipsum, quia dolor sit, amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt, ut labore et dolore magnam aliquam quaerat voluptatem.
-                        Ut enim ad minim veniam, qui blanditiis praesentium voluptatum deleniti atque corrupti, quos dolores et quas molestias excepturi sint, facere possimus, omnis voluptas assumenda est, omnis dolor repellendus? Ut enim ad minima veniam, nam libero tempore, cum soluta nobis est eligendi optio, cumque nihil impedit, quo voluptas nulla pariatur.
+            Мы стремимся предложить вам только лучшие комплектующие для вашего ПК,
+            чтобы каждый ваш проект, игровая сессия или работа стали незабываемыми!
             </div>
           </div>
           <div>

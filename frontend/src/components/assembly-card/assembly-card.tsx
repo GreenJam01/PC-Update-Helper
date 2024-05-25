@@ -25,7 +25,7 @@ export const AssemblyCard = ({assembly}:AssemblyCardProps) => {
       const requestString2 = `${getRandomProcessor()}|${getRandomMotherboard()}|KFA2 GeForce GTX 1650 X Black|Kingston Fury Beast Black|WD Blue|Kingston A400`;
 
       // Отправляем GET-запрос с помощью axios
-      const response = await axios.get(`http://127.0.0.1:5000/prediction?sborka=${requestString}`);
+      const response = await axios.get(`https://pc-update-helper-1.onrender.com/prediction?sborka=${requestString}`);
 
       // Сохраняем результат запроса в состоянии
       setPredictionResult(response.data);
@@ -77,7 +77,11 @@ export const AssemblyCard = ({assembly}:AssemblyCardProps) => {
           <div className="modal-content">
             <span className="close" onClick={closeModal}>&times;</span>
             <h2>Результат:</h2>
-            <p>{predictionResult}</p>
+            <p>CPU {predictionResult.cpu_name}</p>
+            <p>GPU {predictionResult.gpu_name}</p>
+            <p>RAM {predictionResult.ram_name}</p>
+            <p>HDD {predictionResult.hdd_name}</p>
+            <p>Motherboard {predictionResult.mb_name}</p>
           </div>
         </div>
       )}
