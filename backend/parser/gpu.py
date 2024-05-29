@@ -56,7 +56,7 @@ def parseGpu(extraStr):
 				print(links[i])
 
 				# типа добавил ссылку на картинку
-				img_link = soup.find('img', class_='e1fcwjnh0').get('src').strip()
+				imgLink = soup.find('img', class_='e1fcwjnh0').get('src').strip()
 
 				properties = soup.find('ul', class_='app-catalog-rxgulu e1ckvoeh6').text
 
@@ -88,7 +88,7 @@ def parseGpu(extraStr):
 				mf = properties[mfInd+19:]
 				mf = mf.split()[0]
 
-				sborka.append( {"title": title, "brand": brand, "memoryVolume": mv, "busWidth": busW, "memoryFrequency": mf, "price": price, "img_link": img_link})
+				sborka.append( {"title": title, "brand": brand, "memoryVolume": mv, "busWidth": busW, "memoryFrequency": mf, "price": price, "imgLink": imgLink})
 				i += 1
 				j += 1
 			except:

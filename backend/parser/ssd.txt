@@ -1,12 +1,35 @@
 [
   {
-    "title": "NETAC NT01NV2000-1T0-E4X",
-    "brand": "NETAC",
-    "memory": "1024",
-    "interface": "PCIe 3.0 x4",
-    "maxReadingSpeed": "2500",
-    "maxRecordingSpeed": "2100",
-    "price": "8190",
-    "isSsd": 1
+    "title": "KINGSTON SA400S37/480G",
+    "brand": "KINGSTON",
+    "memory": "480",
+    "interface": "SATA III",
+    "maxReadingSpeed": "500",
+    "maxRecordingSpeed": "450",
+    "price": "4090",
+    "isSsd": 1,
+    "imgLink": "https://rstatic.citilink.ru/react-ssr-app-catalog/6c80e028/_next/static/images/44cc90bae2f51210440d660425462dbf.jpg"
+  },
+  {
+    "title": "SAMSUNG MZ-77E500BW",
+    "brand": "SAMSUNG",
+    "memory": "500",
+    "interface": "SATA III",
+    "maxReadingSpeed": "560",
+    "maxRecordingSpeed": "530",
+    "price": "6890",
+    "isSsd": 1,
+    "imgLink": "https://rstatic.citilink.ru/react-ssr-app-catalog/6c80e028/_next/static/images/44cc90bae2f51210440d660425462dbf.jpg"
+  },
+  {
+    "title": "KINGPRICE KPSS960G1",
+    "brand": "KINGPRICE",
+    "memory": "960",
+    "interface": "SATA III",
+    "maxReadingSpeed": "500",
+    "maxRecordingSpeed": "450",
+    "price": "7790",
+    "isSsd": 1,
+    "imgLink": "https://rstatic.citilink.ru/react-ssr-app-catalog/6c80e028/_next/static/images/44cc90bae2f51210440d660425462dbf.jpg"
   }
 ]

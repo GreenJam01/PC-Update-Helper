@@ -55,7 +55,7 @@ def parseRam(extraStr):
 			print(links[i])
 
 			# типа добавил ссылку на картинку
-			img_link = soup.find('img', class_='e1fcwjnh0').get('src').strip()
+			imgLink = soup.find('img', class_='e1fcwjnh0').get('src').strip()
 
 			properties = soup.find('ul', class_='app-catalog-rxgulu e1ckvoeh6').text
 
@@ -79,7 +79,7 @@ def parseRam(extraStr):
 			frequency = properties[frequencyInd+16:]
 			frequency = frequency.split()[0]
 
-			sborka.append( {"title": title, "brand": brand, "volume": volume, "frequency": frequency, "price": price, "img_link": img_link})
+			sborka.append( {"title": title, "brand": brand, "volume": volume, "frequency": frequency, "price": price, "imgLink": imgLink})
 			i += 1
 			j += 1
 		except:

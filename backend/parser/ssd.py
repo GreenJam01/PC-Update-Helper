@@ -3,6 +3,7 @@ import time
 from bs4 import BeautifulSoup
 import requests
 from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.edge.options import Options
 import json
 import eureka
@@ -18,7 +19,7 @@ def parseSsd(extraStr):
 		# browser = webdriver.Chrome("parserSoup\chromedriver.exe")
 	options = Options()
 	options.binary_location = "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe"
-	driver = webdriver.Edge(options = options, executable_path='parser\\msedgedriver.exe')
+	driver = webdriver.Edge(options=options, executable_path='parser\\msedgedriver.exe')
 	driver.get("https://www.citilink.ru" + extraStr)
 
 	html = driver.page_source
@@ -55,7 +56,7 @@ def parseSsd(extraStr):
 				print(links[i])
 
 				# типа добавил ссылку на картинку
-				img_link = soup.find('img', class_='e1fcwjnh0').get('src').strip()
+				imgLink = soup.find('img', class_='e1fcwjnh0').get('src').strip()
 
 				properties = soup.find('ul', class_='app-catalog-rxgulu e1ckvoeh6').text
 
@@ -92,7 +93,7 @@ def parseSsd(extraStr):
 
 				title = brand + " " + model
 
-				sborka.append( {"title": title, "brand": brand, "memory": memory, "interface": interface, "maxReadingSpeed": maxReadingSpeed, "maxRecordingSpeed": maxRecordingSpeed , "price": price, "isSsd": 1, "img_link": img_link})
+				sborka.append( {"title": title, "brand": brand, "memory": memory, "interface": interface, "maxReadingSpeed": maxReadingSpeed, "maxRecordingSpeed": maxRecordingSpeed , "price": price, "isSsd": 1, "imgLink": imgLink})
 				i += 1
 				j += 1
 			except:
