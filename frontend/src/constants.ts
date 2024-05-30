@@ -1,6 +1,6 @@
 import { Sort } from './types/sort';
 
-export const BASE_URL = 'http://localhost:8081/';
+export const BASE_URL = 'https://pc-update-helper-3.onrender.com/';
 export const TIME_OUT = 5000;
 
 export enum AppData{
