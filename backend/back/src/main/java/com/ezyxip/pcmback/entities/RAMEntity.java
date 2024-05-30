@@ -58,13 +58,15 @@ public class RAMEntity{
     }
 
 
-    public RAMEntity(String title, String brand, String volume, String frequency, Integer price, String imgLink) {
+    public RAMEntity(String title, String brand, String volume, String frequency,
+                     Integer price, String imgLink, boolean visible) {
         this.title = title;
         this.brand = brand;
         this.volume = volume;
         this.frequency = frequency;
         this.price = price;
         this.imgLink = imgLink;
+        this.visible = visible;
     }
 
     public String getBrand() {

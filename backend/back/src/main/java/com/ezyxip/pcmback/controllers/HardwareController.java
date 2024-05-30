@@ -86,7 +86,9 @@ public class HardwareController {
                 return new ResponseEntity<>(gpuRepository.save(existing), HttpStatus.OK);
             } else {
                 GPUEntity _gpu = gpuRepository
-                        .save(new GPUEntity(gpu.getTitle(), gpu.getBrand(), gpu.getMemoryVolume(), gpu.getMemoryFrequency(), gpu.getBusWidth(), gpu.getPrice(), gpu.getImgLink()));
+                        .save(new GPUEntity(gpu.getTitle(), gpu.getBrand(),
+                                gpu.getMemoryVolume(), gpu.getMemoryFrequency(),
+                                gpu.getBusWidth(), gpu.getPrice(), gpu.getImgLink(), gpu.isVisible()));
                 return new ResponseEntity<>(_gpu, HttpStatus.CREATED);
             }
         } catch (Exception e) {
@@ -135,7 +137,9 @@ public class HardwareController {
                 return new ResponseEntity<>(ramRepository.save(existing), HttpStatus.OK);
             } else {
                 RAMEntity _ram = ramRepository
-                        .save(new RAMEntity(ram.getTitle(), ram.getBrand(), ram.getVolume(), ram.getFrequency(), ram.getPrice(), ram.getImgLink()));
+                        .save(new RAMEntity(ram.getTitle(), ram.getBrand(),
+                                ram.getVolume(), ram.getFrequency(),
+                                ram.getPrice(), ram.getImgLink(), ram.isVisible()));
                 return new ResponseEntity<>(_ram, HttpStatus.CREATED);
             }
         } catch (Exception e) {
@@ -190,7 +194,7 @@ public class HardwareController {
                         hdd.getTitle(), hdd.getBrand(), hdd.getMemory(),
                         hdd.getInterface(), hdd.getMaxRecordingSpeed(), hdd.getMaxReadingSpeed(),
                         hdd.isSSD(), hdd.getPrice(),
-                        hdd.getImgLink()));
+                        hdd.getImgLink(), hdd.isVisible()));
                 return new ResponseEntity<>(_hdd, HttpStatus.CREATED);
             }
         } catch (Exception e) {
@@ -246,7 +250,7 @@ public class HardwareController {
                 MotherboardEntity _mb = motherboardRepository.save(new MotherboardEntity(
                         mothBoard.getTitle(), mothBoard.getBrand(), mothBoard.getSocket(),
                         mothBoard.getMemoryType(), mothBoard.getMaxMemory(), mothBoard.getPrice(),
-                        mothBoard.getImgLink()));
+                        mothBoard.getImgLink(), mothBoard.isVisible()));
                 return new ResponseEntity<>(_mb, HttpStatus.CREATED);
             }
         } catch (Exception e) {

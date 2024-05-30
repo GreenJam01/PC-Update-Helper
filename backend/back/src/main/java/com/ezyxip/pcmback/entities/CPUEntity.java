@@ -91,7 +91,10 @@ public class CPUEntity{
         return assemblies;
     }
 
-    public CPUEntity(String title, String brand, String frequency, String coresNumber, String threadsNumber, Integer price, String imgLink) {
+    public CPUEntity(String title, String brand, String frequency, String coresNumber,
+                     String threadsNumber, Integer price, String imgLink,
+                     boolean visible
+    ) {
         this.title = title;
         this.brand = brand;
         this.frequency = frequency;
@@ -99,6 +102,7 @@ public class CPUEntity{
         this.threadsNumber = threadsNumber;
         Price = price;
         this.imgLink = imgLink;
+        this.visible = visible;
     }
 
     @Column(name = "Price")

@@ -59,7 +59,8 @@ public class HDDEntity{
     }
 
     public HDDEntity(String title, String brand, String memory, String anInterface,
-                     String maxRecordingSpeed, String maxReadingSpeed, Boolean isSSD,Integer price, String imgLink) {
+                     String maxRecordingSpeed, String maxReadingSpeed, Boolean isSSD,
+                     Integer price, String imgLink, boolean visible) {
         this.title = title;
         this.brand = brand;
         this.memory = memory;
@@ -68,8 +69,8 @@ public class HDDEntity{
         this.maxReadingSpeed = maxReadingSpeed;
         this.maxRecordingSpeed = maxRecordingSpeed;
         this.isSSD= isSSD;
-
         this.imgLink = imgLink;
+        this.visible = visible;
     }
     @JsonIgnore
     @OneToMany(mappedBy = "hdd")

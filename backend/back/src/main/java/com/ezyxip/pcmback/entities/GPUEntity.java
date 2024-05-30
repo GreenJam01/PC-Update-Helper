@@ -65,15 +65,17 @@ public class GPUEntity{
         this.assemblies = assemblies;
     }
 
-    public GPUEntity(String title, String brand, String memoryVolume, String memoryFrequency, String busWidth, Integer price, String imgLink) {
+    public GPUEntity(String title, String brand, String memoryVolume,
+                     String memoryFrequency, String busWidth, Integer price,
+                     String imgLink, boolean visible) {
         this.title = title;
         this.Brand = brand;
         this.MemoryVolume = memoryVolume;
         this.memoryFrequency = memoryFrequency;
         this.busWidth = busWidth;
         this.price = price;
-
         this.imgLink = imgLink;
+        this.visible = visible;
     }
 
     public String getBrand() {

@@ -96,7 +96,9 @@ public class MotherboardEntity{
         this.price = price;
     }
 
-    public MotherboardEntity(String title, String brand, String socket, String memoryType, String maxMemory, Integer price, String imgLink) {
+    public MotherboardEntity(String title, String brand, String socket,
+                             String memoryType, String maxMemory, Integer price,
+                             String imgLink, boolean visible) {
         this.title = title;
         this.brand = brand;
         this.socket = socket;
@@ -104,6 +106,7 @@ public class MotherboardEntity{
         this.maxMemory = maxMemory;
         this.price = price;
         this.imgLink = imgLink;
+        this.visible = visible;
     }
 
     @Column(name = "MaxMemory")
