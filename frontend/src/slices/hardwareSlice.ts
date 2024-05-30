@@ -107,15 +107,20 @@ export const hardwareSlice = createSlice({
 export const hardwaresSelectors = {
   ...hardwareSlice.selectors,
   getCpu: createSelector(hardwareSlice.selectors.cpu,
-    hardwareSlice.selectors.sort, (cpus, sort) => [...cpus].sort(sort.func)),
+    hardwareSlice.selectors.sort, (cpus, sort) => [...cpus].filter((i) => i.visible === true)
+      .sort(sort.func)),
   getGpu: createSelector(hardwareSlice.selectors.gpu,
-    hardwareSlice.selectors.sort, (gpus, sort) => [...gpus].sort(sort.func)),
+    hardwareSlice.selectors.sort, (gpus, sort) => [...gpus].filter((i) => i.visible)
+      .sort(sort.func)),
   getRam: createSelector(hardwareSlice.selectors.ram,
-    hardwareSlice.selectors.sort, (rams, sort) => [...rams].sort(sort.func)),
+    hardwareSlice.selectors.sort, (rams, sort) => [...rams].filter((i) => i.visible)
+      .sort(sort.func)),
   getHdd: createSelector(hardwareSlice.selectors.hdd,
-    hardwareSlice.selectors.sort, (hdds, sort) => [...hdds].sort(sort.func)),
+    hardwareSlice.selectors.sort, (hdds, sort) => [...hdds].filter((i) => i.visible)
+      .sort(sort.func)),
   getMotherboard: createSelector(hardwareSlice.selectors.motherboard,
-    hardwareSlice.selectors.sort, (motherboards, sort) => [...motherboards].sort(sort.func)),
+    hardwareSlice.selectors.sort, (motherboards, sort) => [...motherboards].filter((i) => i.visible)
+      .sort(sort.func)),
 
   getBrandsCpu: createSelector(hardwareSlice.selectors.cpu,
     (cpus) => Array.from(cpus).reduce((acc:string[], cpu) => {

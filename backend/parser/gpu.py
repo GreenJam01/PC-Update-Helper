@@ -89,7 +89,9 @@ def parseGpu(extraStr):
 				mf = properties[mfInd+19:]
 				mf = mf.split()[0]
 
-				sborka.append( {"title": title, "brand": brand, "memoryVolume": mv, "busWidth": busW, "memoryFrequency": mf, "price": price, "imgLink": imgLink})
+				sborka.append( {"title": title, "brand": brand, "memoryVolume": mv, "busWidth": busW, 
+					"memoryFrequency": mf, "price": price, "imgLink": imgLink,
+					"visible": True})
 				i += 1
 				j += 1
 			except:

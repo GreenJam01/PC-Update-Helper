@@ -79,7 +79,8 @@ def parseRam(extraStr):
 			frequency = properties[frequencyInd+16:]
 			frequency = frequency.split()[0]
 
-			sborka.append( {"title": title, "brand": brand, "volume": volume, "frequency": frequency, "price": price, "imgLink": imgLink})
+			sborka.append( {"title": title, "brand": brand, "volume": volume, "frequency": frequency, "price": price, "imgLink": imgLink
+				   , "visible": True})
 			i += 1
 			j += 1
 		except:

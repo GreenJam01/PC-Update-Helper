@@ -22,7 +22,7 @@ public class CPUEntity{
     @Column(name = "Title")
     private  String title;
 
-    @Column(name = "Visible", columnDefinition = "BOOLEAN default true")
+    @Column(name = "Visible")
     private boolean visible;
 
     public String getBrand() {
@@ -98,7 +98,6 @@ public class CPUEntity{
         this.coresNumber = coresNumber;
         this.threadsNumber = threadsNumber;
         Price = price;
-
         this.imgLink = imgLink;
     }
 

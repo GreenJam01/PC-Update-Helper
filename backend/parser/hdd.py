@@ -94,7 +94,10 @@ def parseHdd(extraStr):
 
 				title = brand + " " + model
 
-				sborka.append( {"title": title, "brand": brand, "memory": memory, "interface": interface, "maxReadingSpeed": "0", "maxRecordingSpeed": "0", "price": price, "isSsd": "false", "imgLink": imgLink})
+				sborka.append( {"title": title, "brand": brand, "memory": memory,
+					 "interface": interface, "maxReadingSpeed": "0",
+					   "maxRecordingSpeed": "0", "price": price, "isSsd": "false", 
+					   "imgLink": imgLink, "visible": True})
 				i += 1
 				j += 1
 			except:

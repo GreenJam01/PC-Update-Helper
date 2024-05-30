@@ -93,7 +93,8 @@ def parseSsd(extraStr):
 
 				title = brand + " " + model
 
-				sborka.append( {"title": title, "brand": brand, "memory": memory, "interface": interface, "maxReadingSpeed": maxReadingSpeed, "maxRecordingSpeed": maxRecordingSpeed , "price": price, "isSsd": 1, "imgLink": imgLink})
+				sborka.append( {"title": title, "brand": brand, "memory": memory, "interface": interface, "maxReadingSpeed": maxReadingSpeed, "maxRecordingSpeed": maxRecordingSpeed 
+					, "price": price, "isSsd": 1, "imgLink": imgLink, "visible": True})
 				i += 1
 				j += 1
 			except:

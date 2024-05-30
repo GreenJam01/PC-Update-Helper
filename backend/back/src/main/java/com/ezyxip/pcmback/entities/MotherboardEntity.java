@@ -33,7 +33,7 @@ public class MotherboardEntity{
     @Column(name = "ImgLink")
     private  String imgLink;
 
-    @Column(name = "Visible", columnDefinition = "BOOLEAN default true")
+    @Column(name = "Visible")
     private boolean visible;
 
     public void setImgLink(String imgLink) {

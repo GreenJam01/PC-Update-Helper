@@ -26,12 +26,13 @@ const SigninPage = () => {
     password: Yup.string().required('This field is required!'),
   });
 
-  const handleLogin = (formValue: { username: string; password: string }) => {
+  const handleLogin = async (formValue: { username: string; password: string }) => {
     const { username, password } = formValue;
 
     setMessage('');
     setLoading(true);
-    dispatch(signinAction({username, password}));
+    await dispatch(signinAction({username, password}));
+    setLoading(false);
   };
 
   return (

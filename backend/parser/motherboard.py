@@ -85,7 +85,8 @@ def parseMb(extraStr):
 				maxMemory = properties[maxMemoryInd+37:]
 				maxMemory = maxMemory.split()[0]
 
-				sborka.append( {"title": title, "brand": brand, "socket": socket, "memoryType": memoryType, "maxMemory": maxMemory, "price": price, "imgLink": imgLink})
+				sborka.append( {"title": title, "brand": brand, "socket": socket, "memoryType": memoryType, "maxMemory": maxMemory, "price": price, "imgLink": imgLink
+					, "visible": True})
 				i += 1
 				j += 1
 			except:

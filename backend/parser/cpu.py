@@ -78,7 +78,7 @@ def parseCpu(extraStr):
 				threadsNumber = properties[threadsNumberInd+18:]
 				threadsNumber = threadsNumber.split()[0]
 
-				sborka.append( {"title": title, "coresNumber": cores, "price": price, "brand": brand, "frequency": frequency, "threadsNumber": threadsNumber, "imgLink": imgLink})
+				sborka.append( {"title": title, "coresNumber": cores, "price": price, "brand": brand, "frequency": frequency, "threadsNumber": threadsNumber, "imgLink": imgLink, "visible": True})
 				i += 1
 				j += 1
 			except:

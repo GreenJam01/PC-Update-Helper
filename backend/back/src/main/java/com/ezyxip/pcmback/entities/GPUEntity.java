@@ -39,7 +39,7 @@ public class GPUEntity{
     @Column(name = "ImgLink")
     private  String imgLink;
 
-    @Column(name = "Visible", columnDefinition = "BOOLEAN default true")
+    @Column(name = "Visible")
     private boolean visible;
     @Transient
     private boolean isFavorite;
