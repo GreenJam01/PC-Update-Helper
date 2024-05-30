@@ -53,7 +53,7 @@ def parseCpu(extraStr):
 				print(links[i])
 
 				# типа добавил ссылку на картинку
-				imgLink = soup.find('img', class_='e1fcwjnh0').get('src').strip()
+				imgLink = soup.find('div', class_='is-selected').find('img', class_='e1fcwjnh0').get('src').strip()
 
 				title = soup.find("h1", class_='e1ubbx7u0 eml1k9j0 app-catalog-lc5se5 e1gjr6xo0').text.split(",")[0].partition(' ')[2]
 				title = title[10:]

@@ -6,7 +6,7 @@ import {SelectList} from '../../components/select-list/select-list';
 import {appointmentList} from '../../data/appointment-list';
 import {Button} from '../../components/button/button';
 import { AppRoutes } from '../../constants';
-import { Header } from '../../components/header/header';
+import Header from '../../components/header/header';
 
 import './assemble.css'
 export function AssemblePage(){

@@ -22,6 +22,9 @@ public class CPUEntity{
     @Column(name = "Title")
     private  String title;
 
+    @Column(name = "Visible", columnDefinition = "BOOLEAN default true")
+    private boolean visible;
+
     public String getBrand() {
         return brand;
     }

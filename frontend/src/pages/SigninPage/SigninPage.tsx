@@ -31,7 +31,6 @@ const SigninPage = () => {
 
     setMessage('');
     setLoading(true);
-
     dispatch(signinAction({username, password}));
   };
 

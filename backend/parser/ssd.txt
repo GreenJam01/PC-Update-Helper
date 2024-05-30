@@ -1,35 +1,35 @@
 [
   {
-    "title": "KINGSTON SA400S37/480G",
-    "brand": "KINGSTON",
+    "title": "TRANSCEND TS240GMTS420S",
+    "brand": "TRANSCEND",
+    "memory": "240",
+    "interface": "SATA III",
+    "maxReadingSpeed": "500",
+    "maxRecordingSpeed": "430",
+    "price": "3290",
+    "isSsd": 1,
+    "imgLink": "https://cdn.citilink.ru/z4aiGdG8eTwgJTGFtypScXLnOhw8LOK6gyHCvWSoSs0/resizing_type:fit/gravity:sm/width:400/height:400/plain/product-images/4e82561d-c592-4d4f-910c-e0c182d5896e.jpg"
+  },
+  {
+    "title": "TRANSCEND TS120GMTS420S",
+    "brand": "TRANSCEND",
+    "memory": "120",
+    "interface": "SATA III",
+    "maxReadingSpeed": "500",
+    "maxRecordingSpeed": "350",
+    "price": "2190",
+    "isSsd": 1,
+    "imgLink": "https://cdn.citilink.ru/-HKBvyAq3Gjw_khO96VM79XU3SBkfnrJQNRd9bqRCiw/resizing_type:fit/gravity:sm/width:400/height:400/plain/product-images/88ad898e-9351-46c4-b8ad-04e5e2ccd5af.jpg"
+  },
+  {
+    "title": "TRANSCEND TS480GMTS820S",
+    "brand": "TRANSCEND",
     "memory": "480",
     "interface": "SATA III",
-    "maxReadingSpeed": "500",
-    "maxRecordingSpeed": "450",
-    "price": "4090",
+    "maxReadingSpeed": "530",
+    "maxRecordingSpeed": "480",
+    "price": "5190",
     "isSsd": 1,
-    "imgLink": "https://rstatic.citilink.ru/react-ssr-app-catalog/6c80e028/_next/static/images/44cc90bae2f51210440d660425462dbf.jpg"
-  },
-  {
-    "title": "SAMSUNG MZ-77E500BW",
-    "brand": "SAMSUNG",
-    "memory": "500",
-    "interface": "SATA III",
-    "maxReadingSpeed": "560",
-    "maxRecordingSpeed": "530",
-    "price": "6890",
-    "isSsd": 1,
-    "imgLink": "https://rstatic.citilink.ru/react-ssr-app-catalog/6c80e028/_next/static/images/44cc90bae2f51210440d660425462dbf.jpg"
-  },
-  {
-    "title": "KINGPRICE KPSS960G1",
-    "brand": "KINGPRICE",
-    "memory": "960",
-    "interface": "SATA III",
-    "maxReadingSpeed": "500",
-    "maxRecordingSpeed": "450",
-    "price": "7790",
-    "isSsd": 1,
-    "imgLink": "https://rstatic.citilink.ru/react-ssr-app-catalog/6c80e028/_next/static/images/44cc90bae2f51210440d660425462dbf.jpg"
+    "imgLink": "https://cdn.citilink.ru/NDqvY7qAXDBvoxR8UtBZSwF-7vtuSEdfzG57H0DYJmA/resizing_type:fit/gravity:sm/width:400/height:400/plain/product-images/cb0f33b3-f923-4d92-80b5-86a5ad00f5df.jpg"
   }
 ]

@@ -55,7 +55,7 @@ def parseRam(extraStr):
 			print(links[i])
 
 			# типа добавил ссылку на картинку
-			imgLink = soup.find('img', class_='e1fcwjnh0').get('src').strip()
+			imgLink = soup.find('div', class_='is-selected').find('img', class_='e1fcwjnh0').get('src').strip()
 
 			properties = soup.find('ul', class_='app-catalog-rxgulu e1ckvoeh6').text
 

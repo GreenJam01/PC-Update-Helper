@@ -5,7 +5,7 @@ import { hardwaresSelectors } from '../../slices/hardwareSlice';
 import { HardwareHeader } from './HardwaresHeader/HardwaresHeader';
 import { FormControl, InputLabel, MenuItem, Select } from '@mui/material';
 import './HardwaresPage.css';
-import { Header } from '../../components/header/header';
+import Header from '../../components/header/header';
 import { SortForm } from '../../components/sort-form/sort-form';
 import { filterLess } from '../../constants';
 export type GPUHardwarePageProps = {

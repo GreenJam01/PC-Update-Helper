@@ -13,6 +13,8 @@ import jakarta.validation.constraints.Size;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 @Data
 @NoArgsConstructor
@@ -50,11 +52,13 @@ public class User {
     private List<AssemblyEntity> assemblies;
 
     @ManyToMany(fetch = FetchType.LAZY)
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinTable(name = "user_cpus", joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "cpu_id"))
     private Set<CPUEntity> cpus = new HashSet<>();
 
     @ManyToMany(fetch = FetchType.LAZY)
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinTable(name = "user_gpus", joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "gpu_id"))
     private Set<GPUEntity> gpus = new HashSet<>();
@@ -65,11 +69,13 @@ public class User {
     private Set<RAMEntity> rams = new HashSet<>();
 
     @ManyToMany(fetch = FetchType.LAZY)
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinTable(name = "user_hdds", joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "hdd_id"))
     private Set<HDDEntity> hdds = new HashSet<>();
 
     @ManyToMany(fetch = FetchType.LAZY)
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinTable(name = "user_motherboards", joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "motherboard_id"))
     private Set<MotherboardEntity> motherboards = new HashSet<>();

@@ -81,12 +81,12 @@ export const hardwareSlice = createSlice({
         state.isHardwareDataLoading = true;
       })
       .addCase(fetchHardwaresAction.fulfilled, (state, action) => {
-        state.isHardwareDataLoading = false;
         state.cpu = action.payload.cpu;
         state.gpu = action.payload.gpu;
         state.ram = action.payload.ram;
         state.motherboard = action.payload.motherboard;
         state.hdd = action.payload.hdd;
+        state.isHardwareDataLoading = false;
         toast.success('Железо получено');
       })
       .addCase(fetchHardwaresAction.rejected, (state) => {

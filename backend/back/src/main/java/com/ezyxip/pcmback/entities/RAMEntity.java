@@ -34,6 +34,9 @@ public class RAMEntity{
     @Column(name = "imgLink")
     private  String imgLink;
 
+    @Column(name = "Visible", columnDefinition = "BOOLEAN default true")
+    private boolean visible;
+
     public void setImgLink(String imgLink) {
         this.imgLink = imgLink;
     }

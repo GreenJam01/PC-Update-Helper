@@ -4,7 +4,7 @@ import { useAppSelector } from '../../hooks/use-app';
 import { hardwaresSelectors } from '../../slices/hardwareSlice';
 import { HardwareHeader } from './HardwaresHeader/HardwaresHeader';
 import './HardwaresPage.css';
-import { Header } from '../../components/header/header';
+import Header from '../../components/header/header';
 import { FormControl, InputLabel, MenuItem, Select } from '@mui/material';
 import { filterLess } from '../../constants';
 import { SortForm } from '../../components/sort-form/sort-form';

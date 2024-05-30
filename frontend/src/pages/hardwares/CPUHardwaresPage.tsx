@@ -6,7 +6,7 @@ import { HardwareHeader } from './HardwaresHeader/HardwaresHeader';
 import './HardwaresPage.css';
 import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
-import { Header } from '../../components/header/header';
+import Header from '../../components/header/header';
 import { SortForm } from '../../components/sort-form/sort-form';
 import { filterLess } from '../../constants';
 import InputLabel from '@mui/material/InputLabel/InputLabel';

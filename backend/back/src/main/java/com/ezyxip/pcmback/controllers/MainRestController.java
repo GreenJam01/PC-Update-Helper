@@ -103,30 +103,30 @@ public class MainRestController {
     }
 
     @PostMapping(value = "/post-scanned-assembly", consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
-    public ResponseEntity<AssemblyEntity> createParsedAssembly(@RequestBody AssemblyEntity assembly, String username) {
+    public ResponseEntity<AssemblyEntity> createParsedAssembly(@RequestBody AssemblyEntity assembly, @RequestParam String username) {
         try {
             Optional<User> userEntity = userRepository.findByUsername(username);
             if(userEntity.isEmpty()) throw new EntityNotFoundException("User is not found");
 
             Optional<CPUEntity> cpuEntity = cpuRepository.findByTitle(assembly.getCPU().getTitle());
             if(cpuEntity.isEmpty()){
-                cpuEntity = Optional.ofNullable(cpuRepository.save(cpuEntity.get()));
+                cpuEntity = Optional.ofNullable(cpuRepository.save(assembly.getCPU()));
             }
             Optional<GPUEntity> gpuEntity = gpuRepository.findByTitle(assembly.getGPU().getTitle());
             if(gpuEntity.isEmpty()){
-                gpuEntity = Optional.ofNullable(gpuRepository.save(gpuEntity.get()));
+                gpuEntity = Optional.ofNullable(gpuRepository.save(assembly.getGPU()));
             }
             Optional<RAMEntity> ramEntity = ramRepository.findByTitle(assembly.getRAM().getTitle());
             if(ramEntity.isEmpty()){
-                ramEntity = Optional.ofNullable(ramRepository.save(ramEntity.get()));
+                ramEntity = Optional.ofNullable(ramRepository.save(assembly.getRAM()));
             }
             Optional<HDDEntity> hddEntity = hddRepository.findByTitle(assembly.getHDD().getTitle());
             if(hddEntity.isEmpty()){
-                hddEntity = Optional.ofNullable(hddRepository.save(hddEntity.get()));
+                hddEntity = Optional.ofNullable(hddRepository.save(assembly.getHDD()));
             }
-            Optional<MotherboardEntity> motherboardEntity = motherboardRepository.findById(assembly.getMotherboard().getId());
+            Optional<MotherboardEntity> motherboardEntity = motherboardRepository.findByTitle(assembly.getMotherboard().getTitle());
             if(motherboardEntity.isEmpty()){
-                motherboardEntity = Optional.ofNullable(motherboardRepository.save(motherboardEntity.get()));
+                motherboardEntity = Optional.ofNullable(motherboardRepository.save(assembly.getMotherboard()));
             }
             AssemblyEntity _assembly = assemblyRepository.save(new AssemblyEntity(cpuEntity.get(), gpuEntity.get(),
                     hddEntity.get(), motherboardEntity.get(), ramEntity.get(), userEntity.get()));

@@ -44,6 +44,9 @@ public class HDDEntity{
 
     @Column(name = "ImgLink")
     private  String imgLink;
+
+    @Column(name = "Visible", columnDefinition = "BOOLEAN default true")
+    private boolean visible;
     @Transient
     private boolean isFavorite;
 

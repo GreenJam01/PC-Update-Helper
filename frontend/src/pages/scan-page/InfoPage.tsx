@@ -2,7 +2,7 @@ import {LinkButton} from '../../components/link-button/link-button';
 import {Button} from '../../components/button/button';
 import './scan-page.css';
 import { AppRoutes } from '../../constants';
-import { Header } from '../../components/header/header';
+import Header from '../../components/header/header';
 
 export function InfoPage() {
 

@@ -1,29 +1,29 @@
 [
   {
-    "title": "MSI NVIDIA  GeForce RTX 4070TI RTX 4070 Ti GAMING X SLIM 12G",
-    "brand": "MSI",
+    "title": "PNY NVIDIA  RTX A2000 RTX A2000",
+    "brand": "PNY",
+    "memoryVolume": "12",
+    "busWidth": "192",
+    "memoryFrequency": "\u0441\u0442\u0438\u043a\u0438\u0411\u0440\u0435\u043d\u0434PNY",
+    "price": "97600",
+    "imgLink": "https://cdn.citilink.ru/CPqfQoCqvOv5cl9jPYHdGu8z0BtSO6opPXantQb-_hU/resizing_type:fit/gravity:sm/width:400/height:400/plain/product-images/e70544e4-4638-414e-9a85-8e9bda7aa032.jpg"
+  },
+  {
+    "title": "ASUS NVIDIA  GeForce RTX 4070TI ROG-STRIX-RTX4070TI-O12G-GAMING",
+    "brand": "ASUS",
     "memoryVolume": "12",
     "busWidth": "192",
     "memoryFrequency": "21000",
-    "price": "102200",
-    "img_link": "https://rstatic.citilink.ru/react-ssr-app-catalog/80d28032/_next/static/images/44cc90bae2f51210440d660425462dbf.jpg"
+    "price": "120400",
+    "imgLink": "https://cdn.citilink.ru/--17gnfJn5dgjwgDzeapc75dtDlxVrlrrpKrbWvkQU4/resizing_type:fit/gravity:sm/width:400/height:400/plain/product-images/74f9b216-78ea-4a79-87eb-1592e65786c0.jpg"
   },
   {
-    "title": "GIGABYTE NVIDIA  GeForce RTX 4070TI Super GV-N407TSGAMING OC-16GD",
-    "brand": "GIGABYTE",
-    "memoryVolume": "16",
-    "busWidth": "256",
-    "memoryFrequency": "21000",
-    "price": "121700",
-    "img_link": "https://rstatic.citilink.ru/react-ssr-app-catalog/80d28032/_next/static/images/44cc90bae2f51210440d660425462dbf.jpg"
-  },
-  {
-    "title": "ASUS NVIDIA  GeForce RTX 4060 DUAL-RTX4060-O8G-WHITE",
+    "title": "ASUS NVIDIA  GeForce RTX 4070TI ROG-STRIX-RTX4070TI-12G-GAMING",
     "brand": "ASUS",
-    "memoryVolume": "8",
-    "busWidth": "128",
-    "memoryFrequency": "17000",
-    "price": "43200",
-    "img_link": "https://rstatic.citilink.ru/react-ssr-app-catalog/80d28032/_next/static/images/44cc90bae2f51210440d660425462dbf.jpg"
+    "memoryVolume": "12",
+    "busWidth": "192",
+    "memoryFrequency": "21000",
+    "price": "124200",
+    "imgLink": "https://cdn.citilink.ru/yfhUnojiTRFgGyGPa_UQHqotKNnXrEiMeXFDmfj1cOE/resizing_type:fit/gravity:sm/width:400/height:400/plain/product-images/7608c4ec-9ee6-4254-8d69-263e35d39f31.jpg"
   }
 ]

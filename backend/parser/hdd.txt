@@ -1,42 +1,35 @@
 [
   {
-    "title": "SEAGATE ST16000NM000J",
+    "title": "TOSHIBA HDWD220UZSVA",
+    "brand": "TOSHIBA",
+    "memory": "2048",
+    "interface": "SATA III",
+    "maxReadingSpeed": "0",
+    "maxRecordingSpeed": "0",
+    "price": "6790",
+    "isSsd": "false",
+    "imgLink": "https://cdn.citilink.ru/Uo7MAih2B6GA7-SH5XwaF14jfuiG_wN_3IgajIEktYg/resizing_type:fit/gravity:sm/width:400/height:400/plain/product-images/d194865d-5f11-4cd9-ae95-fbfc070cdf53.jpg"
+  },
+  {
+    "title": "SEAGATE ST22000NM001E",
     "brand": "SEAGATE",
-    "memory": "16384",
+    "memory": "22528",
     "interface": "SATA III",
     "maxReadingSpeed": "0",
     "maxRecordingSpeed": "0",
-    "price": "34990",
-    "isSsd": "false"
+    "price": "49990",
+    "isSsd": "false",
+    "imgLink": "https://cdn.citilink.ru/3ikrndWA4hgyuyopdZCrDMunJXnS_vZojyOiD-uDcxA/resizing_type:fit/gravity:sm/width:400/height:400/plain/product-images/6d7cf62e-8b32-42be-8ec2-241a5e59d9a5.jpg"
   },
   {
-    "title": "WD WD33PURZ",
-    "brand": "WD",
-    "memory": "3072",
-    "interface": "SATA III",
+    "title": "SEAGATE ST10000NT001",
+    "brand": "SEAGATE",
+    "memory": "10240",
+    "interface": "SATA III ",
     "maxReadingSpeed": "0",
     "maxRecordingSpeed": "0",
-    "price": "9990",
-    "isSsd": "false"
-  },
-  {
-    "title": "WD WD1003FZEX",
-    "brand": "WD",
-    "memory": "1024",
-    "interface": "SATA III",
-    "maxReadingSpeed": "0",
-    "maxRecordingSpeed": "0",
-    "price": "9990",
-    "isSsd": "false"
-  },
-  {
-    "title": "WD WD8001PURP",
-    "brand": "WD",
-    "memory": "8192",
-    "interface": "SATA III",
-    "maxReadingSpeed": "0",
-    "maxRecordingSpeed": "0",
-    "price": "25990",
-    "isSsd": "false"
+    "price": "35990",
+    "isSsd": "false",
+    "imgLink": "https://cdn.citilink.ru/zEK7NW1w3hFGldOJqor5D1PhmaJM47m3FjJOQ_dl0UI/resizing_type:fit/gravity:sm/width:400/height:400/plain/product-images/f07ae12c-08f7-4abb-9794-6caed5abade4.jpg"
   }
 ]

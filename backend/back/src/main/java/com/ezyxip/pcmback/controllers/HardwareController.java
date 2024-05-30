@@ -44,37 +44,28 @@ public class HardwareController {
     HDDRepository hddRepository;
 
 
-    @PostMapping(value = "/post-cpu", produces = APPLICATION_JSON_VALUE)
-    public ResponseEntity<CPUEntity> createCPU(@RequestBody CPUEntity cpu) {
-        try {
-            CPUEntity _cpu = cpuRepository
-                    .save(new CPUEntity(cpu.getTitle(), cpu.getBrand(), cpu.getFrequency(), cpu.getCoresNumber(), cpu.getThreadsNumber(), cpu.getPrice(), cpu.getImgLink()));
-            return new ResponseEntity<>(cpu, HttpStatus.CREATED);
-        } catch (Exception e) {
-            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-    }
-
     @PostMapping(value = "/post-cpu-list", produces = APPLICATION_JSON_VALUE)
     public ResponseEntity<List<CPUEntity>> createCPUList(@RequestBody List<CPUEntity> list) {
         try {
             List<CPUEntity> savedList = new ArrayList<>();
             for (CPUEntity cpuEntity : list) {
-                Optional<CPUEntity> cpuData = cpuRepository.findByTitle(cpuEntity.getTitle());
-                if(cpuData.isPresent()){
-                    CPUEntity cpu = cpuData.get();
-                    cpu = cpuEntity;
-                    cpuRepository.save(cpu);
-                    savedList.add(cpu);
-                }
-                else {
-                    CPUEntity savedEntity = cpuRepository.save(cpuEntity);
-                    savedList.add(savedEntity);
+                Optional<CPUEntity> existingCpu = cpuRepository.findByTitle(cpuEntity.getTitle());
+                if (existingCpu.isPresent()) {
+                    CPUEntity existing = existingCpu.get();
+                    // Обновляем существующую сущность новыми данными
+                    existing.setBrand(cpuEntity.getBrand());
+                    existing.setCoresNumber((cpuEntity.getCoresNumber()));
+                    existing.setThreadsNumber(cpuEntity.getThreadsNumber());
+                    existing.setFrequency(cpuEntity.getFrequency());
+                    existing.setPrice(cpuEntity.getPrice());
+                    existing.setImgLink(cpuEntity.getImgLink());
+                    savedList.add(cpuRepository.save(existing));
+                } else {
+                    savedList.add(cpuRepository.save(cpuEntity));
                 }
             }
             return new ResponseEntity<>(savedList, HttpStatus.CREATED);
         } catch (Exception e) {
-            // Лучше логировать исключение для отладки
             e.printStackTrace();
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
@@ -83,9 +74,21 @@ public class HardwareController {
     @PostMapping(value = "/post-gpu", produces = APPLICATION_JSON_VALUE)
     public ResponseEntity<GPUEntity> createGPU(@RequestBody GPUEntity gpu) {
         try {
-            GPUEntity _gpu = gpuRepository
-                    .save(new GPUEntity(gpu.getTitle(), gpu.getBrand(),gpu.getMemoryVolume(),gpu.getMemoryFrequency(), gpu.getBusWidth(),gpu.getPrice(), gpu.getImgLink()));
-            return new ResponseEntity<>(_gpu, HttpStatus.CREATED);
+            Optional<GPUEntity> existingGpu = gpuRepository.findByTitle(gpu.getTitle());
+            if (existingGpu.isPresent()) {
+                GPUEntity existing = existingGpu.get();
+                existing.setBrand(gpu.getBrand());
+                existing.setMemoryVolume(gpu.getMemoryVolume());
+                existing.setMemoryFrequency(gpu.getMemoryFrequency());
+                existing.setBusWidth(gpu.getBusWidth());
+                existing.setPrice(gpu.getPrice());
+                existing.setImgLink(gpu.getImgLink());
+                return new ResponseEntity<>(gpuRepository.save(existing), HttpStatus.OK);
+            } else {
+                GPUEntity _gpu = gpuRepository
+                        .save(new GPUEntity(gpu.getTitle(), gpu.getBrand(), gpu.getMemoryVolume(), gpu.getMemoryFrequency(), gpu.getBusWidth(), gpu.getPrice(), gpu.getImgLink()));
+                return new ResponseEntity<>(_gpu, HttpStatus.CREATED);
+            }
         } catch (Exception e) {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
@@ -96,21 +99,23 @@ public class HardwareController {
         try {
             List<GPUEntity> savedList = new ArrayList<>();
             for (GPUEntity gpuEntity : list) {
-                Optional<GPUEntity> gpuData = gpuRepository.findByTitle(gpuEntity.getTitle());
-                if(gpuData.isPresent()){
-                    GPUEntity gpu = gpuData.get();
-                    gpu = gpuEntity;
-                    gpuRepository.save(gpu);
-                    savedList.add(gpu);
-                }
-                else {
-                    GPUEntity savedEntity = gpuRepository.save(gpuEntity);
-                    savedList.add(savedEntity);
+                Optional<GPUEntity> existingGpu = gpuRepository.findByTitle(gpuEntity.getTitle());
+                if (existingGpu.isPresent()) {
+                    GPUEntity existing = existingGpu.get();
+                    // Обновляем существующую сущность новыми данными
+                    existing.setBrand(gpuEntity.getBrand());
+                    existing.setMemoryVolume(gpuEntity.getMemoryVolume());
+                    existing.setMemoryFrequency(gpuEntity.getMemoryFrequency());
+                    existing.setBusWidth(gpuEntity.getBusWidth());
+                    existing.setPrice(gpuEntity.getPrice());
+                    existing.setImgLink(gpuEntity.getImgLink());
+                    savedList.add(gpuRepository.save(existing));
+                } else {
+                    savedList.add(gpuRepository.save(gpuEntity));
                 }
             }
             return new ResponseEntity<>(savedList, HttpStatus.CREATED);
         } catch (Exception e) {
-            // Лучше логировать исключение для отладки
             e.printStackTrace();
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
@@ -119,13 +124,25 @@ public class HardwareController {
     @PostMapping(value = "/post-ram", produces = APPLICATION_JSON_VALUE)
     public ResponseEntity<RAMEntity> createRAM(@RequestBody RAMEntity ram) {
         try {
-            RAMEntity _gpu = ramRepository
-                    .save(new RAMEntity(ram.getTitle(), ram.getBrand(),ram.getVolume(), ram.getFrequency(), ram.getPrice(), ram.getImgLink() ));
-            return new ResponseEntity<>(_gpu, HttpStatus.CREATED);
+            Optional<RAMEntity> existingRam = ramRepository.findByTitle(ram.getTitle());
+            if (existingRam.isPresent()) {
+                RAMEntity existing = existingRam.get();
+                existing.setBrand(ram.getBrand());
+                existing.setVolume(ram.getVolume());
+                existing.setFrequency(ram.getFrequency());
+                existing.setPrice(ram.getPrice());
+                existing.setImgLink(ram.getImgLink());
+                return new ResponseEntity<>(ramRepository.save(existing), HttpStatus.OK);
+            } else {
+                RAMEntity _ram = ramRepository
+                        .save(new RAMEntity(ram.getTitle(), ram.getBrand(), ram.getVolume(), ram.getFrequency(), ram.getPrice(), ram.getImgLink()));
+                return new ResponseEntity<>(_ram, HttpStatus.CREATED);
+            }
         } catch (Exception e) {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
 
     @PostMapping(value = "/post-ram-list", produces = APPLICATION_JSON_VALUE)
     public ResponseEntity<List<RAMEntity>> createRAMList(@RequestBody List<RAMEntity> list) {
@@ -153,12 +170,29 @@ public class HardwareController {
     }
 
     @PostMapping(value = "/post-hdd", produces = APPLICATION_JSON_VALUE)
-    public ResponseEntity<HDDEntity> createGPU(@RequestBody HDDEntity hdd) {
+    public ResponseEntity<HDDEntity> createHDD(@RequestBody HDDEntity hdd) {
         try {
-            HDDEntity _gpu = hddRepository
-                    .save(new HDDEntity(hdd.getTitle(), hdd.getBrand(), hdd.getMemory(), hdd.getInterface()
-                            , hdd.getMaxRecordingSpeed(), hdd.getMaxReadingSpeed(), hdd.isSSD(),hdd.getPrice(), hdd.getImgLink()));
-            return new ResponseEntity<>(_gpu, HttpStatus.CREATED);
+            Optional<HDDEntity> existingHdd = hddRepository.findByTitle(hdd.getTitle());
+            if (existingHdd.isPresent()) {
+                HDDEntity hddToUpdate = existingHdd.get();
+                hddToUpdate.setBrand(hdd.getBrand());
+                hddToUpdate.setMemory(hdd.getMemory());
+                hddToUpdate.setInterface(hdd.getInterface());
+                hddToUpdate.setMaxRecordingSpeed(hdd.getMaxRecordingSpeed());
+                hddToUpdate.setMaxReadingSpeed(hdd.getMaxReadingSpeed());
+                hddToUpdate.setSSD(hdd.isSSD());
+                hddToUpdate.setPrice(hdd.getPrice());
+                hddToUpdate.setImgLink(hdd.getImgLink());
+                hddRepository.save(hddToUpdate);
+                return new ResponseEntity<>(hddToUpdate, HttpStatus.OK); // Return OK for update
+            } else {
+                HDDEntity _hdd = hddRepository.save(new HDDEntity(
+                        hdd.getTitle(), hdd.getBrand(), hdd.getMemory(),
+                        hdd.getInterface(), hdd.getMaxRecordingSpeed(), hdd.getMaxReadingSpeed(),
+                        hdd.isSSD(), hdd.getPrice(),
+                        hdd.getImgLink()));
+                return new ResponseEntity<>(_hdd, HttpStatus.CREATED);
+            }
         } catch (Exception e) {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
@@ -167,35 +201,54 @@ public class HardwareController {
     @PostMapping(value = "/post-hdd-list", produces = APPLICATION_JSON_VALUE)
     public ResponseEntity<List<HDDEntity>> createHDDList(@RequestBody List<HDDEntity> list) {
         try {
-
             List<HDDEntity> savedList = new ArrayList<>();
             for (HDDEntity hddEntity : list) {
-                Optional<HDDEntity> hddData = hddRepository.findByTitle(hddEntity.getTitle());
-                if(hddData.isPresent()){
-                    HDDEntity hdd = hddData.get();
-                    hdd = hddEntity;
-                    hddRepository.save(hdd);
-                    savedList.add(hdd);
-                }
-                else {
+                Optional<HDDEntity> existingHdd = hddRepository.findByTitle(hddEntity.getTitle());
+                if (existingHdd.isPresent()) {
+                    HDDEntity hddToUpdate = existingHdd.get();
+                    hddToUpdate.setBrand(hddEntity.getBrand());
+                    hddToUpdate.setMemory(hddEntity.getMemory());
+                    hddToUpdate.setInterface(hddEntity.getInterface());
+                    hddToUpdate.setMaxRecordingSpeed(hddEntity.getMaxRecordingSpeed());
+                    hddToUpdate.setMaxReadingSpeed(hddEntity.getMaxReadingSpeed());
+                    hddToUpdate.setSSD(hddEntity.isSSD());
+                    hddToUpdate.setPrice(hddEntity.getPrice());
+                    hddToUpdate.setImgLink(hddEntity.getImgLink());
+                    hddRepository.save(hddToUpdate);
+                    savedList.add(hddToUpdate);
+                } else {
                     HDDEntity savedEntity = hddRepository.save(hddEntity);
                     savedList.add(savedEntity);
                 }
             }
             return new ResponseEntity<>(savedList, HttpStatus.CREATED);
         } catch (Exception e) {
-            // Лучше логировать исключение для отладки
             e.printStackTrace();
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
     @PostMapping(value = "/post-motherboard", produces = APPLICATION_JSON_VALUE)
     public ResponseEntity<MotherboardEntity> createMotherboard(@RequestBody MotherboardEntity mothBoard) {
         try {
-
-            MotherboardEntity _gpu = motherboardRepository
-                    .save(new MotherboardEntity(mothBoard.getTitle(), mothBoard.getBrand(), mothBoard.getSocket(),mothBoard.getMemoryType(),mothBoard.getMaxMemory(),mothBoard.getPrice(), mothBoard.getImgLink()));
-            return new ResponseEntity<>(_gpu, HttpStatus.CREATED);
+            Optional<MotherboardEntity> existingMb = motherboardRepository.findByTitle(mothBoard.getTitle());
+            if (existingMb.isPresent()) {
+                MotherboardEntity mbToUpdate = existingMb.get();
+                mbToUpdate.setBrand(mothBoard.getBrand());
+                mbToUpdate.setSocket(mothBoard.getSocket());
+                mbToUpdate.setMemoryType(mothBoard.getMemoryType());
+                mbToUpdate.setMaxMemory(mothBoard.getMaxMemory());
+                mbToUpdate.setPrice(mothBoard.getPrice());
+                mbToUpdate.setImgLink(mothBoard.getImgLink());
+                motherboardRepository.save(mbToUpdate);
+                return new ResponseEntity<>(mbToUpdate, HttpStatus.OK); // Return OK for update
+            } else {
+                MotherboardEntity _mb = motherboardRepository.save(new MotherboardEntity(
+                        mothBoard.getTitle(), mothBoard.getBrand(), mothBoard.getSocket(),
+                        mothBoard.getMemoryType(), mothBoard.getMaxMemory(), mothBoard.getPrice(),
+                        mothBoard.getImgLink()));
+                return new ResponseEntity<>(_mb, HttpStatus.CREATED);
+            }
         } catch (Exception e) {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
@@ -206,21 +259,24 @@ public class HardwareController {
         try {
             List<MotherboardEntity> savedList = new ArrayList<>();
             for (MotherboardEntity mbEntity : list) {
-                Optional<MotherboardEntity> mbData = motherboardRepository.findByTitle(mbEntity.getTitle());
-                if(mbData.isPresent()){
-                    MotherboardEntity mb = mbData.get();
-                    mb = mbEntity;
-                    motherboardRepository.save(mb);
-                    savedList.add(mb);
-                }
-                else {
+                Optional<MotherboardEntity> existingMb = motherboardRepository.findByTitle(mbEntity.getTitle());
+                if (existingMb.isPresent()) {
+                    MotherboardEntity mbToUpdate = existingMb.get();
+                    mbToUpdate.setBrand(mbEntity.getBrand());
+                    mbToUpdate.setSocket(mbEntity.getSocket());
+                    mbToUpdate.setMemoryType(mbEntity.getMemoryType());
+                    mbToUpdate.setMaxMemory(mbEntity.getMaxMemory());
+                    mbToUpdate.setPrice(mbEntity.getPrice());
+                    mbToUpdate.setImgLink(mbEntity.getImgLink());
+                    motherboardRepository.save(mbToUpdate);
+                    savedList.add(mbToUpdate);
+                } else {
                     MotherboardEntity savedEntity = motherboardRepository.save(mbEntity);
                     savedList.add(savedEntity);
                 }
             }
             return new ResponseEntity<>(savedList, HttpStatus.CREATED);
         } catch (Exception e) {
-            // Лучше логировать исключение для отладки
             e.printStackTrace();
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
@@ -553,6 +609,109 @@ public class HardwareController {
                 new ResponseEntity<>(motherboard, HttpStatus.OK)).orElseGet(() ->
                 new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
+
+    @DeleteMapping("/cpu")
+    public ResponseEntity<HttpStatus> deleteAllCPUs() {
+        try {
+            cpuRepository.deleteAll();
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @DeleteMapping("/gpu")
+    public ResponseEntity<HttpStatus> deleteAllGPUs() {
+        try {
+            gpuRepository.deleteAll();
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @DeleteMapping("/ram")
+    public ResponseEntity<HttpStatus> deleteAllRAMs() {
+        try {
+            ramRepository.deleteAll();
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @DeleteMapping("/hdd")
+    public ResponseEntity<HttpStatus> deleteAllHDDs() {
+        try {
+            hddRepository.deleteAll();
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @DeleteMapping("/motherboard")
+    public ResponseEntity<HttpStatus> deleteAllMotherboards() {
+        try {
+            motherboardRepository.deleteAll();
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    // Delete a single component by ID
+
+    @DeleteMapping("/cpu/{id}")
+    public ResponseEntity<HttpStatus> deleteCPUById(@PathVariable Long id) {
+        try {
+            cpuRepository.deleteById(id);
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @DeleteMapping("/gpu/{id}")
+    public ResponseEntity<HttpStatus> deleteGPUById(@PathVariable Long id) {
+        try {
+            gpuRepository.deleteById(id);
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @DeleteMapping("/ram/{id}")
+    public ResponseEntity<HttpStatus> deleteRAMById(@PathVariable Long id) {
+        try {
+            ramRepository.deleteById(id);
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @DeleteMapping("/hdd/{id}")
+    public ResponseEntity<HttpStatus> deleteHDDById(@PathVariable Long id) {
+        try {
+            hddRepository.deleteById(id);
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @DeleteMapping("/motherboard/{id}")
+    public ResponseEntity<HttpStatus> deleteMotherboardById(@PathVariable Long id) {
+        try {
+            motherboardRepository.deleteById(id);
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
 
 
 }

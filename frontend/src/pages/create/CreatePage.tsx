@@ -9,7 +9,7 @@ import { hardwaresSelectors } from '../../slices/hardwareSlice';
 import { createAssembly } from '../../store/api-actions';
 import { CPU, GPU, HDD, HardwareType, Motherboard, RAM } from '../../types/hardwares';
 import { AppRoutes } from '../../constants';
-import { Header } from '../../components/header/header';
+import Header from '../../components/header/header';
 
 import './CreatePage.css';
 import './CreatePageMedia.css';

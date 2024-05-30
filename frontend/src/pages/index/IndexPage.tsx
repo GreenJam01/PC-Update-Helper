@@ -1,5 +1,5 @@
 import {Container} from '../../components/container/container';
-import { Header } from '../../components/header/header';
+import Header from '../../components/header/header';
 import { HorizontalBar } from '../../components/horizBar/horizBar';
 import pc from '../../resourses/pc.png';
 import pcIcon from '../../resourses/pc_icon.png';

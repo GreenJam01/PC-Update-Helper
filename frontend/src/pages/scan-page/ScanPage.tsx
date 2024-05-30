@@ -4,7 +4,7 @@ import {Button} from '../../components/button/button';
 import './scan-page.css';
 import {useEffect, useState} from 'react';
 import { AppRoutes } from '../../constants';
-import { Header } from '../../components/header/header';
+import Header from '../../components/header/header';
 
 type Assembly = {
     id: number;

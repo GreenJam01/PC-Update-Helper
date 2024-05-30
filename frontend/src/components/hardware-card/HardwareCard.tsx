@@ -1,9 +1,11 @@
+/* eslint-disable react/display-name */
 import { HardwareType } from '../../types/hardwares';
 import './HardwareCard.css';
 import { StarButton } from '../star/star-button';
+import React from 'react';
 type HardwareCardProps = {hardware: HardwareType}
-export function HardwareCard({hardware}: HardwareCardProps){
-  const star = <StarButton hardware={hardware}/>;
+export const HardwareCard = React.memo(({ hardware }: HardwareCardProps) => {
+  const star = <StarButton hardware={hardware} />;
   return(
     <div className='hardware__card__wrapper'>
       <article
@@ -93,4 +95,4 @@ export function HardwareCard({hardware}: HardwareCardProps){
       </article>
     </div>
   );
-}
+});

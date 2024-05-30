@@ -54,8 +54,7 @@ def parseHdd(extraStr):
 				print(links[i])
 
 				# типа добавил ссылку на картинку
-				imgLink = soup.find('img', class_='e1fcwjnh0').get('src').strip()
-
+				imgLink = soup.find('div', class_='is-selected').find('img', class_='e1fcwjnh0').get('src').strip()
 				properties = soup.find('ul', class_='app-catalog-rxgulu e1ckvoeh6').text
 
 				price = soup.find('span', class_='e1j9birj0 e106ikdt0 app-catalog-8hy98m e1gjr6xo0').text.replace(" ", "")

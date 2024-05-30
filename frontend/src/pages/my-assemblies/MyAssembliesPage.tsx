@@ -2,7 +2,7 @@ import {Container} from '../../components/container/container';
 import { useAppSelector } from '../../hooks/use-app';
 import { AssembliesSelectors } from '../../slices/assembliesSlice';
 import { AssemblyCard } from '../../components/assembly-card/assembly-card';
-import { Header } from '../../components/header/header';
+import Header from '../../components/header/header';
 
 import "./MyAssembliesPage.css"
 export function MyAssembliesPage(){

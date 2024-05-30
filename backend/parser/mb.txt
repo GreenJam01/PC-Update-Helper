@@ -1,18 +1,29 @@
 [
   {
-    "title": "ASUS  ROG MAXIMUS Z790 HERO",
-    "brand": "ASUS",
-    "socket": "LGA",
-    "memoryType": "DDR5",
-    "maxMemory": "128",
-    "price": "78630"
-  },
-  {
-    "title": "ASUS  PRIME Z790-P D4",
+    "title": "ASUS  TUF GAMING B660M-E D4",
     "brand": "ASUS",
     "socket": "LGA",
     "memoryType": "DDR4",
     "maxMemory": "128",
-    "price": "25740"
+    "price": "18790",
+    "imgLink": "https://cdn.citilink.ru/Uqe-PApOBRFoEq-A9MvaOMcWBX_iynhTjUk9xWk3WNo/resizing_type:fit/gravity:sm/width:400/height:400/plain/product-images/0643e069-9b69-4cca-80bd-86519f1646b8.jpg"
+  },
+  {
+    "title": "ASUS  TUF GAMING B660-PLUS WIFI D4",
+    "brand": "ASUS",
+    "socket": "LGA",
+    "memoryType": "DDR4",
+    "maxMemory": "128",
+    "price": "23340",
+    "imgLink": "https://cdn.citilink.ru/NZX_Kom2LsvSkbI4nqA6JFsAISZmPNsYihpUe8JkZX8/resizing_type:fit/gravity:sm/width:400/height:400/plain/product-images/827d5676-c116-4116-bc75-1bf7c98dba5e.jpg"
+  },
+  {
+    "title": "ASUS  ROG STRIX Z690-I GAMING WIFI",
+    "brand": "ASUS",
+    "socket": "LGA",
+    "memoryType": "DDR5",
+    "maxMemory": "64",
+    "price": "43430",
+    "imgLink": "https://cdn.citilink.ru/Ig2OvLIWVWZgcrmBtyK36ozH0r_7t0GHTr9j_jesbsE/resizing_type:fit/gravity:sm/width:400/height:400/plain/product-images/7c15624c-6cbc-401d-baf7-e614c78b6d9f.jpg"
   }
 ]

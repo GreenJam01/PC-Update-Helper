@@ -1,7 +1,7 @@
 import {LinkButton} from '../../components/link-button/link-button';
 import {Container} from '../../components/container/container';
 import { AppRoutes } from '../../constants';
-import { Header } from '../../components/header/header';
+import Header from '../../components/header/header';
 
 export function UpgradePage(){
   return(
