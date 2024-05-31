@@ -1,0 +1,18 @@
+.assembly-table-wrapper {
+	min-width: 39vw;
+}
+.assembly-table {
+	height: 3.4vh;
+}
+.assembly-table-item {
+	width: 6.77vw;
+}
+.assembly-table-button {
+	font-weight: 700 !important;
+	color: #00016f !important;
+	font-size: 16px !important
+}
+
+.assembly-table-title {
+	font-size: 14px
+}

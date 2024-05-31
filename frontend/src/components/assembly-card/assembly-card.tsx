@@ -13,6 +13,8 @@ import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import React from 'react';
 
+import './assembly-card.css'
+
 type AssemblyCardProps = {
   assembly: Assembly;
 }
@@ -92,44 +94,44 @@ export const AssemblyCard = ({assembly}:AssemblyCardProps) => {
           aria-describedby="modal-modal-description"
         >
           {loading ? <BeatLoader color='green'/> :
-            <Box sx={style}>
+            <Box sx={style} className='assembly-table-wrapper'>
               <Typography id="modal-modal-title" variant="h6" component="h2" color={'black'}>
               Результат
               </Typography>
               <Typography id="modal-modal-description" sx={{ mt: 2 }} color={'black'}>
                 <table>
-                  <tr>
+                  <tr className='assembly-table'>
                     <td></td>
-                    <td>Изначальная сборка</td>
-                    <td>Предложенная сборка</td>
+                    <td className='assembly-table-title'>Изначальная сборка</td>
+                    <td className='assembly-table-title'>Предложенная сборка</td>
                   </tr>
-                  <tr>
-                    <td>CPU</td>
-                    <td> {assembly.cpu.title}</td>
-                    <td>{predictionResult?.cpu_name}</td>
+                  <tr className='assembly-table'>
+                    <td className='assembly-table-item assembly-table-title'>CPU</td>
+                    <td className='assembly-table-title'> {assembly.cpu.title}</td>
+                    <td className='assembly-table-title'>{predictionResult?.cpu_name}</td>
                   </tr>
-                  <tr>
-                    <td>GPU</td>
-                    <td>GPU: {assembly.gpu.title}</td>
-                    <td>{predictionResult?.gpu_name}</td>
+                  <tr className='assembly-table'>
+                    <td className='assembly-table-item assembly-table-title'>GPU</td>
+                    <td className='assembly-table-title'>GPU: {assembly.gpu.title}</td>
+                    <td className='assembly-table-title'>{predictionResult?.gpu_name}</td>
                   </tr>
-                  <tr>
-                    <td>RAM</td>
-                    <td>{assembly.ram.title}</td>
-                    <td>{predictionResult?.ram_name}</td>
+                  <tr className='assembly-table'>
+                    <td className='assembly-table-item assembly-table-title'>RAM</td>
+                    <td className='assembly-table-title'>{assembly.ram.title}</td>
+                    <td className='assembly-table-title'>{predictionResult?.ram_name}</td>
                   </tr>
-                  <tr>
-                    <td>HDD</td>
-                    <td>{assembly.hdd.title}</td>
-                    <td>{predictionResult?.hdd_name}</td>
+                  <tr className='assembly-table'>
+                    <td className='assembly-table-item assembly-table-title'>HDD</td>
+                    <td className='assembly-table-title'>{assembly.hdd.title}</td>
+                    <td className='assembly-table-title'>{predictionResult?.hdd_name}</td>
                   </tr>
-                  <tr>
-                    <td>Motherboard</td>
-                    <td>{assembly.motherboard.title}</td>
-                    <td>{predictionResult?.mb_name}</td>
+                  <tr className='assembly-table'>
+                    <td className='assembly-table-item assembly-table-title'>Motherboard</td>
+                    <td className='assembly-table-title'>{assembly.motherboard.title}</td>
+                    <td className='assembly-table-title'>{predictionResult?.mb_name}</td>
                   </tr>
                 </table>
-                <Button disabled = {true}>Добавить в сборки</Button>
+                <Button disabled = {true} className='assembly-table-button'>Добавить в сборки</Button>
               </Typography>
             </Box>}
         </Modal>
