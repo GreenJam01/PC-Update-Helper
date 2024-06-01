@@ -95,7 +95,7 @@ export const AssemblyCard = ({assembly}:AssemblyCardProps) => {
           aria-labelledby="modal-modal-title"
           aria-describedby="modal-modal-description"
         >
-          {loading ? <ClipLoader color="#36d7b7" /> :
+          {loading ? <ClipLoader color="#36d7b7" className='spinner'/> :
             <Box sx={style} className='assembly-table-wrapper'>
               <Typography id="modal-modal-title" variant="h6" component="h2" color={'black'}>
               Результат

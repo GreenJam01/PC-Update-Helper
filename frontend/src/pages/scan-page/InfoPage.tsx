@@ -14,7 +14,7 @@ export function InfoPage() {
                 Скачайте программу по кнопке ниже, запустите скрипт, после этого нажмите на кнопку "Далее".
       </div>
       <div className={'isolated center'}>
-        <a href="https://disk.yandex.ru/d/ioq-5D-3WMcnXQ">
+        <a href="dist\assets\Scanner.exe">
           <Button>Скачать</Button>
         </a>
       </div>
