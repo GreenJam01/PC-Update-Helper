@@ -85,11 +85,11 @@ public class MainRestController {
             String username = jwtUtils.getUserNameFromJwtToken(token);
 
             Optional<User> userEntity = userRepository.findByUsername(username);
-            Optional<CPUEntity> cpuEntity = cpuRepository.findByTitle(assembly.getCPU().getTitle());
-            Optional<GPUEntity> gpuEntity = gpuRepository.findByTitle(assembly.getGPU().getTitle());
-            Optional<RAMEntity> ramEntity = ramRepository.findByTitle(assembly.getRAM().getTitle());
-            Optional<HDDEntity> hddEntity = hddRepository.findByTitle(assembly.getHDD().getTitle());
-            Optional<MotherboardEntity> motherboardEntity = motherboardRepository.findByTitle(assembly.
+            Optional<CPUEntity> cpuEntity = cpuRepository.findFirstByTitle(assembly.getCPU().getTitle());
+            Optional<GPUEntity> gpuEntity = gpuRepository.findFirstByTitle(assembly.getGPU().getTitle());
+            Optional<RAMEntity> ramEntity = ramRepository.findFirstByTitle(assembly.getRAM().getTitle());
+            Optional<HDDEntity> hddEntity = hddRepository.findFirstByTitle(assembly.getHDD().getTitle());
+            Optional<MotherboardEntity> motherboardEntity = motherboardRepository.findFirstByTitle(assembly.
                     getMotherboard().getTitle());
 
             if (userEntity.isEmpty() || cpuEntity.isEmpty() || gpuEntity.isEmpty() || ramEntity.isEmpty() ||

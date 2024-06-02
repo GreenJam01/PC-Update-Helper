@@ -15,5 +15,7 @@ public interface MotherboardRepository extends CrudRepository<MotherboardEntity,
     MotherboardEntity findFirstByOrderByIdDesc();
 
     Optional<MotherboardEntity> findByTitle(String title);
+
+    Optional<MotherboardEntity> findFirstByTitle(String title);
 }
 
