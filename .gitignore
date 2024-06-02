@@ -1,17 +1,3 @@
-/project1/.idea/codeStyles/codeStyleConfig.xml
-/project1/.idea/codeStyles/Project.xml
-/project1/.idea/.gitignore
-/project1/.idea/misc.xml
-/project1/.idea/modules.xml
-/project1/.idea/scala_settings.xml
-/project1/.idea/vcs.xml
-/project1/out/production/project1/1.sc
-/project1/out/production/project1/Main$.class
-/project1/out/production/project1/Main.class
-/project1/out/production/project1/Main.tasty
-/project1/src/1.sc
-/project1/src/Main.scala
-/project1/project1.iml
 backend/parser/__pycache__/cpu.cpython-312.pyc
 backend/parser/__pycache__/cpu.cpython-312.pyc
 backend/parser/__pycache__/gpu.cpython-312.pyc
