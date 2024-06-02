@@ -134,7 +134,7 @@ def makeDataSet():
         build.append('game')
         builds.loc[ len(builds.index) ] = build
         build_bad_gpu.loc[ len(build_bad_gpu.index) ] = build
-        target_gpu.loc[ len(target_gpu.index) ] = 1
+        target_gpu.loc[ len(target_gpu.index) ] = 'MSI NVIDIA GeForce RTX 2060 VENTUS GP OC'
 
         build = []
 
@@ -157,9 +157,9 @@ def makeDataSet():
         builds.loc[ len(builds.index) ] = build
         build_bad_gpu.loc[ len(build_bad_gpu.index) ] = build
         if i % 2 == 0:
-          target_gpu.loc[ len(target_gpu.index) ] = 1
+          target_gpu.loc[ len(target_gpu.index) ] = 'MSI NVIDIA GeForce RTX 2060 VENTUS GP OC'
         else:
-          target_gpu.loc[ len(target_gpu.index) ] = 2
+          target_gpu.loc[ len(target_gpu.index) ] = 'GIGABYTE NVIDIA GeForce RTX 4060 GV-N4060EAGLE OC-8GD'
 
         build = []
 
@@ -184,9 +184,9 @@ def makeDataSet():
         builds.loc[ len(builds.index) ] = build
         build_bad_ssd.loc[ len(build_bad_ssd.index) ] = build
         if i % 2 == 0:
-          target_ssd.loc[ len(target_ssd.index) ] = 0
+          target_ssd.loc[ len(target_ssd.index) ] = 'Kingston A400'
         else:
-          target_ssd.loc[ len(target_ssd.index) ] = 1
+          target_ssd.loc[ len(target_ssd.index) ] = 'Kingston A400'
 
         build = []
 
@@ -211,9 +211,9 @@ def makeDataSet():
         builds.loc[ len(builds.index) ] = build
         build_bad_ssd.loc[ len(build_bad_ssd.index) ] = build
         if i % 2 == 0:
-          target_ssd.loc[ len(target_ssd.index) ] = 0
+          target_ssd.loc[ len(target_ssd.index) ] = 'Kingston A400'
         else:
-          target_ssd.loc[ len(target_ssd.index) ] = 1
+          target_ssd.loc[ len(target_ssd.index) ] = 'Kingston A400'
 
         build = []
 
@@ -238,9 +238,9 @@ def makeDataSet():
         builds.loc[ len(builds.index) ] = build
         build_bad_cpu.loc[ len(build_bad_cpu.index) ] = build
         if i % 2 == 0:
-          target_cpu.loc[ len(target_cpu.index) ] = 'ryzen 5 5500'
+          target_cpu.loc[ len(target_cpu.index) ] = 'AMD Ryzen 5 5500'
         else:
-          target_cpu.loc[ len(target_cpu.index) ] = 'ryzen 5 5600'
+          target_cpu.loc[ len(target_cpu.index) ] = 'AMD Ryzen 5 5600'
 
         build = []
 
