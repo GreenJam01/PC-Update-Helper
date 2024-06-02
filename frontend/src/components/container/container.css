@@ -13,6 +13,7 @@
 }
 .promo_imgText {
     font-size: 22px;
+    font-size: 1.14vw;
     text-align: center;
     color: #0058d3;;
 }
@@ -32,6 +33,7 @@
     text-align: center;
     color: #0058d3;
     font-size: 24px;
+    font-size: 1.25vw;
 }
 .aboutUs_wrapper{
     display: flex;
@@ -53,12 +55,15 @@
 	align-items: center;
 	width: 113px;
 	height: 113px;
+    width: 5.88vw;
+	height: 5.88vw;
 	background-color: #5099ff;
 	border-radius: 100%;
     margin: 0 auto;
 }
 .aboutUs_img {
     width: 35px;
+    width:  1.8vw;
 }
 .aboutUs_descr{
     margin-top: 20px;
@@ -72,6 +77,7 @@
 .wrapper_choice{
     position: relative;
 }
+
 .choice {
 	min-height: 895px;
 	padding: 57px 0 138px 0;
@@ -82,6 +88,7 @@
 	display: block;
 	margin: 30px auto 0 auto;
 	z-index: 2;
+    width: 44.5vw;
 }
 .choice_descr {
 	text-align: center;
@@ -95,6 +102,7 @@
     top: 0;
     left: 0;
     height: 500px;
+    height: 41.5vh;
     width: 100vw;
     background-color: #08083f;
     transform: translate(-15vw);

@@ -1,6 +1,7 @@
 .header {
 	display: flex;
 	padding: 8px;
+	padding: 0.41vw;
     align-items: center;
     justify-content: space-around;
 	background-color: #00000029;
@@ -23,6 +24,7 @@
 	text-decoration: none;
 	transition: 0.5s;
 	font-size: 24px;
+	font-size: 1.2vw;
     font-weight: 700;
 	color: #ffd858;
     text-shadow: 0 0 3px #000000;

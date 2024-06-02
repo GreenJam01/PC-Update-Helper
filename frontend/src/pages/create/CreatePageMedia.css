@@ -7,9 +7,11 @@
 @media (max-width: 991px) {
 	.assemble_page__section {
 		width: 500px;
+		width: 50.4vw;
 	}
 	.assemble_component_text {
 		font-size: 24px;
+		font-size: 3.2vw;
 	}
 }
 

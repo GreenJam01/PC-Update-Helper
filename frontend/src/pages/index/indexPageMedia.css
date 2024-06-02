@@ -13,12 +13,15 @@
 	}
 	.navigation_button {
 		font-size: 18px;
+		width: 3.9vw;
+		height: 3.9vw;
 	}
 	.promo_info {
 		padding: 3vw 0 0 0;
 	}
 	.promo_info_main {
 		font-size: 28px;
+		font-size: 1.6vw;
 		color: #0058d3;
 	}
 	.promo_info_add {
@@ -29,11 +32,21 @@
 	}
 	.aboutUs_header{
 		font-size: 24px;
+		font-size: 1.33vw;
 	}
 	.aboutUs_item {
 		height: auto;
 	}
+	.aboutUs_descr {
+		font-size: 12px;
+	}
 }
 @media (max-width: 991px) {
 	
+	.choice_title {
+		font-size: 14px;
+	}
+	.choice_subtitle {
+		font-size: 12px;
+	}
 }

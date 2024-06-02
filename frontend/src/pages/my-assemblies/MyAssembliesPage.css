@@ -1,3 +1,7 @@
 .myAssemblies-text {
 	color: #001493;
 }
+.myAssembly {
+	margin: 0 auto;
+    max-width: 650px;
+}

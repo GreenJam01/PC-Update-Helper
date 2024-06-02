@@ -10,6 +10,7 @@ export function Footer(){
       <div className="footer_wrapper">
         <Link className={'footer_logo'} to = {AppRoutes.Main} title={'На главную'}>
           <img width="75" height="75" src={myImage} alt="Main Logo"></img>
+          <img width="75" height="75" src={myImage} className='footer_logo-img' alt="Main Logo"></img>
         </Link>
         <div className="footer_container">
           <div className="footer_title">PC UP</div>

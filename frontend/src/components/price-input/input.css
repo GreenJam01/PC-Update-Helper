@@ -11,6 +11,7 @@
     border-color: #3849d4;
     color: white;
     transition-duration: 0.2s;
+    width: 33.33vw;
 }
 
 .input__field:focus{

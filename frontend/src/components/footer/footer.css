@@ -8,6 +8,7 @@
     top: 0;
     left: 0;
     height: 100px;
+    height: 9.14vh;
     width: 100vw;
     background-color: #424242;
     transform: translate(-15vw);
@@ -23,24 +24,32 @@
 	z-index: 2;
 	padding: 10px 0 0 0;
 }
+.footer_logo-img {
+	width: 4vw;
+	height: 4vw;
+}
 .footer_container {
 	display: flex;
 	flex-direction: column;
 	padding: 5px 0 0 0;
 }
 .footer_title {
+	font-size: 0.84vw;
 	color: #fff;
 	z-index: 2;
 }
 .footer_email {
 	color: #fff;
 	z-index: 2;
+	font-size: 0.84vw;
 }
 .footer_email2 {
 	color: #fff;
 	z-index: 2;
+	font-size: 0.84vw;
 }
 .footer_pcUp {
 	color: #fff;
 	z-index: 2;
+	font-size: 0.84vw;
 }
