@@ -80,21 +80,31 @@ cat_cols = ['cpu_name', 'cpu_soket',
             'ssd_name',
             'goal']
 ################################################################################
-# Необходимые для предсказания датасеты
 ################################################################################
-builds = pd.read_excel('./datasets/X_chose_upgrade.xlsx')
-target = pd.read_excel('./datasets/y_chose_upgrade.xlsx')
-target_cpu = pd.read_excel('./datasets/y_upgrade_cpu.xlsx')
-target_gpu = pd.read_excel('./datasets/y_upgrade_gpu.xlsx')
-target_ssd = pd.read_excel('./datasets/y_upgrade_ssd.xlsx')
-
+################################################################################
 app = Flask(__name__)
 cors = CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
-
+################################################################################
+################################################################################
+################################################################################
 @app.route('/prediction', methods=['POST'])
 @cross_origin()
 def prediction():
+    ################################################################################
+    # Необходимые для предсказания датасеты
+    ################################################################################
+    builds = pd.read_excel('./datasets/X_chose_upgrade.xlsx')
+    target = pd.read_excel('./datasets/y_chose_upgrade.xlsx')
+    # target_cpu = pd.read_excel('./datasets/y_upgrade_cpu.xlsx')
+    # target_gpu = pd.read_excel('./datasets/y_upgrade_gpu.xlsx')
+    # target_ssd = pd.read_excel('./datasets/y_upgrade_ssd.xlsx')
+    ################################################################################
+    ################################################################################
+    ################################################################################
+    ################################################################################
+    ################################################################################
+    ################################################################################
     content = request.get_json()
 
     try:
@@ -132,16 +142,19 @@ def prediction():
         print(chose_change)
 
         if chose_change == 'cpu':
+            target_cpu = pd.read_excel('./datasets/y_upgrade_cpu.xlsx')
             chose_new_cpu = log_upgrade_cpu.predict(df_full_sborka_for_train)
             print(target_cpu.loc[chose_new_cpu, 'choose'].values[0])
             content['cpu']['title'] = target_cpu.loc[chose_new_cpu, 'choose'].values[0]
             assembly['cpu_name'] = target_cpu.loc[chose_new_cpu, 'choose'].values[0]
         elif chose_change == 'gpu':
+            target_gpu = pd.read_excel('./datasets/y_upgrade_gpu.xlsx')
             chose_new_gpu = log_upgrade_gpu.predict(df_full_sborka_for_train)
             print(target_gpu.loc[chose_new_gpu, 'choose'].values[0])
             content['gpu']['title'] = target_gpu.loc[chose_new_gpu, 'choose'].values[0]
             assembly['gpu_name'] = target_gpu.loc[chose_new_gpu, 'choose'].values[0]
         elif chose_change == 'ssd':
+            target_ssd = pd.read_excel('./datasets/y_upgrade_ssd.xlsx')
             chose_new_ssd = log_upgrade_ssd.predict(df_full_sborka_for_train)
             print(target_ssd.loc[chose_new_ssd, 'choose'].values[0])
             content['hdd']['title'] = target_ssd.loc[chose_new_ssd, 'choose'].values[0]
