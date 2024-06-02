@@ -99,12 +99,13 @@ def prediction():
 
     try:
         cpu_name = content['cpu']['title']
-        print(cpu_name)
         mb_name = content['motherboard']['title']
         gpu_name = content['gpu']['title']
         ram_name = content['ram']['title']
         hdd_name = content['hdd']['title']
         ssd_name = np.nan
+
+        print(content)
 
         column_sborka = ['cpu_name', 'mb_name', 'gpu_name', 'ram_name', 'hdd_name', 'ssd_name']
         df_sborka = pd.DataFrame(columns=column_sborka)
@@ -128,24 +129,30 @@ def prediction():
         for col in column_sborka:
             assembly[col] = df_sborka.loc[0, col]
 
+        print(chose_change)
+
         if chose_change == 'cpu':
             chose_new_cpu = log_upgrade_cpu.predict(df_full_sborka_for_train)
+            print(target_cpu.loc[chose_new_cpu, 'choose'].values[0])
             content['cpu']['title'] = target_cpu.loc[chose_new_cpu, 'choose'].values[0]
             assembly['cpu_name'] = target_cpu.loc[chose_new_cpu, 'choose'].values[0]
         elif chose_change == 'gpu':
             chose_new_gpu = log_upgrade_gpu.predict(df_full_sborka_for_train)
+            print(target_gpu.loc[chose_new_gpu, 'choose'].values[0])
             content['gpu']['title'] = target_gpu.loc[chose_new_gpu, 'choose'].values[0]
             assembly['gpu_name'] = target_gpu.loc[chose_new_gpu, 'choose'].values[0]
         elif chose_change == 'ssd':
             chose_new_ssd = log_upgrade_ssd.predict(df_full_sborka_for_train)
+            print(target_ssd.loc[chose_new_ssd, 'choose'].values[0])
             content['hdd']['title'] = target_ssd.loc[chose_new_ssd, 'choose'].values[0]
             assembly['ssd_name'] = target_ssd.loc[chose_new_ssd, 'choose'].values[0]
+
+        print(content)
 
         return content
     except:
 
         return jsonify(content)
 
-
 if __name__ == '__main__':
-    app.run(host='0.0.0.0')
+    app.run()
