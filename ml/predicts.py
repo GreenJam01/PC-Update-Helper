@@ -131,15 +131,19 @@ def prediction():
 
         if chose_change == 'cpu':
             chose_new_cpu = log_upgrade_cpu.predict(df_full_sborka_for_train)
+            data[0]['cpu']['title'] = chose_new_cpu
             assembly['cpu_name'] = target_cpu.loc[chose_new_cpu, 'choose'].values[0]
         elif chose_change == 'gpu':
             chose_new_gpu = log_upgrade_gpu.predict(df_full_sborka_for_train)
+            data[0]['gpu']['title'] = chose_new_gpu
             assembly['gpu_name'] = target_gpu.loc[chose_new_gpu, 'choose'].values[0]
         elif chose_change == 'ssd':
             chose_new_ssd = log_upgrade_ssd.predict(df_full_sborka_for_train)
+            data[0]['hdd']['title'] = chose_new_ssd
             assembly['ssd_name'] = target_ssd.loc[chose_new_ssd, 'choose'].values[0]
 
-        return jsonify(assembly)
+
+        return jsonify(data)
     except:
 
         return jsonify(content)
