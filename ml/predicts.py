@@ -143,7 +143,7 @@ def prediction():
             assembly['ssd_name'] = target_ssd.loc[chose_new_ssd, 'choose'].values[0]
 
 
-        return jsonify(data)
+        return data
     except:
 
         return jsonify(content)
