@@ -16,5 +16,7 @@ public interface HDDRepository extends CrudRepository<HDDEntity, Long> {
     HDDEntity findFirstByOrderByIdDesc();
 
     Optional<HDDEntity> findByTitle(String Title);
+
+    Optional<HDDEntity> findFirstByTitle(String title);
 }
 

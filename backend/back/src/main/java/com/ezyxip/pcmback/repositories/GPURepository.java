@@ -14,5 +14,7 @@ public interface GPURepository extends CrudRepository<GPUEntity, Long> {
     GPUEntity findFirstByOrderByIdDesc();
 
     Optional<GPUEntity> findByTitle(String title);
+
+    Optional<GPUEntity> findFirstByTitle(String title);
 }
 

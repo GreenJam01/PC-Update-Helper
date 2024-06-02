@@ -13,5 +13,7 @@ public interface RAMRepository extends CrudRepository<RAMEntity, Long> {
     Optional<RAMEntity> findByTitle(String title);
     List<RAMEntity> findAll();
     RAMEntity findFirstByOrderByIdDesc();
+
+    Optional<RAMEntity> findFirstByTitle(String title);
 }
 

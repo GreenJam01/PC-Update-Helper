@@ -13,5 +13,7 @@ public interface CPURepository extends CrudRepository<CPUEntity, Long> {
     CPUEntity findFirstByOrderByIdDesc();
 
     Optional<CPUEntity> findByTitle(String title);
+
+    Optional<CPUEntity> findFirstByTitle(String title);
 }
 
