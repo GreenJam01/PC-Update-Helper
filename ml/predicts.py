@@ -1,9 +1,11 @@
+import numpy as np
 import pandas as pd
 from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import train_test_split
 import pickle
 from flask import Flask, request, jsonify
 from flask_cors import CORS, cross_origin
+import json
 
 ################################################################################
 column_build = ['cpu_name', 'cpu_core', 'cpu_frequency', 'cpu_threads', 'cpu_soket', 'cpu_pcie', 'cpu_cost',
@@ -96,12 +98,23 @@ def prediction():
     content = request.get_json()
 
     try:
-        str_sborka = str(request.args.get('sborka'))
+        data = json.loads(content)
+
+        cpu_name = data[0]['cpu']['title']
+        mb_name = data[0]['motherboard']['title']
+        gpu_name = data[0]['gpu']['title']
+        ram_name = data[0]['ram']['title']
+        hdd_name = data[0]['hdd']['title']
+        ssd_name = np.nan
+
         column_sborka = ['cpu_name', 'mb_name', 'gpu_name', 'ram_name', 'hdd_name', 'ssd_name']
         df_sborka = pd.DataFrame(columns=column_sborka)
-        df_sborka.loc[len(df_sborka.index)] = str_sborka.split('|')
+        df_sborka.loc[len(df_sborka.index)] = [cpu_name, mb_name, gpu_name, ram_name, hdd_name, ssd_name]
 
-        df_full_sborka = builds[(builds['cpu_name'] == df_sborka.loc[0, 'cpu_name'])].head(1)
+        try:
+            df_full_sborka = builds[(builds['cpu_name'] == df_sborka.loc[0, 'cpu_name']) and (builds['gpu_name'] == df_sborka.loc[0, 'gpu_name'])].head(1)
+        except:
+            df_full_sborka = builds[(builds['cpu_name'] == df_sborka.loc[0, 'cpu_name'])].head(1)
 
         df_full_sborka_for_train = df_full_sborka.copy()
         target_values = pd.Series(target['choose'].unique())
@@ -125,6 +138,7 @@ def prediction():
         elif chose_change == 'ssd':
             chose_new_ssd = log_upgrade_ssd.predict(df_full_sborka_for_train)
             assembly['ssd_name'] = target_ssd.loc[chose_new_ssd, 'choose'].values[0]
+
         return jsonify(assembly)
     except:
 
