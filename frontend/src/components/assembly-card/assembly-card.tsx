@@ -1,12 +1,12 @@
 import { useAppDispatch } from '../../hooks/use-app';
-import { deleteAssembly } from '../../store/api-actions';
+import { createAssembly, deleteAssembly } from '../../store/api-actions';
 import { Assembly } from '../../types/assembly';
 import { calculateTotalPrice } from '../../util/util';
 import { useState } from 'react';
 import { EditAssemblyCard } from './edit-assembly-card';
 import axios from 'axios';
 import { getRandomMotherboard, getRandomProcessor } from '../../data/hardware-list';
-import { BeatLoader } from 'react-spinners';
+import { BeatLoader, ClipLoader } from 'react-spinners';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
@@ -32,20 +32,22 @@ const style = {
 };
 
 export const AssemblyCard = ({assembly}:AssemblyCardProps) => {
+  const dispatch = useAppDispatch();
   const [loading, setLoading] = useState(false);
   const [editModeOn, setEditModeOn ] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [predictionResult, setPredictionResult] = useState();
   const [open, setOpen] = React.useState(false);
-
+  const clickAddAssemblyHandle = () => {
+    dispatch(createAssembly(predictionResult));
+  }
   const clickOfferHandle = async () => {
     try {
       setShowModal(true);
       // Формируем строку запроса
-      const requestString = 'AMD 2200G|ASUS PRIME A320M-K/CSM|KFA2 GeForce GTX 1650 X Black|Kingston Fury Beast Black|WD Blue|Kingston A400';
       setLoading(true);
       // Отправляем GET-запрос с помощью axios
-      const response = await axios.get(`https://pc-update-helper-1.onrender.com/prediction?sborka=${requestString}`);
+      const response = await axios.post(`https://pc-update-helper-1.onrender.com/prediction`, assembly);
       // Сохраняем результат запроса в состоянии
       setPredictionResult(response.data);
       setLoading(false);
@@ -54,7 +56,7 @@ export const AssemblyCard = ({assembly}:AssemblyCardProps) => {
     }
   };
 
-  const dispatch = useAppDispatch();
+
   const handleClose = () => {
     setShowModal(false);
   };
@@ -93,7 +95,7 @@ export const AssemblyCard = ({assembly}:AssemblyCardProps) => {
           aria-labelledby="modal-modal-title"
           aria-describedby="modal-modal-description"
         >
-          {loading ? <BeatLoader color='green'/> :
+          {loading ? <ClipLoader color="#36d7b7" className='spinner'/> :
             <Box sx={style} className='assembly-table-wrapper'>
               <Typography id="modal-modal-title" variant="h6" component="h2" color={'black'}>
               Результат
@@ -108,30 +110,31 @@ export const AssemblyCard = ({assembly}:AssemblyCardProps) => {
                   <tr className='assembly-table'>
                     <td className='assembly-table-item assembly-table-title'>CPU</td>
                     <td className='assembly-table-title'> {assembly.cpu.title}</td>
-                    <td className='assembly-table-title'>{predictionResult?.cpu_name}</td>
+                    <td className='assembly-table-title'>{predictionResult?.cpu.title}</td>
                   </tr>
                   <tr className='assembly-table'>
                     <td className='assembly-table-item assembly-table-title'>GPU</td>
-                    <td className='assembly-table-title'>GPU: {assembly.gpu.title}</td>
-                    <td className='assembly-table-title'>{predictionResult?.gpu_name}</td>
+                    <td className='assembly-table-title'>{assembly.gpu.title}</td>
+                    <td className='assembly-table-title'>{predictionResult?.gpu.title}</td>
                   </tr>
                   <tr className='assembly-table'>
                     <td className='assembly-table-item assembly-table-title'>RAM</td>
                     <td className='assembly-table-title'>{assembly.ram.title}</td>
-                    <td className='assembly-table-title'>{predictionResult?.ram_name}</td>
+                    <td className='assembly-table-title'>{predictionResult?.ram.title}</td>
                   </tr>
                   <tr className='assembly-table'>
                     <td className='assembly-table-item assembly-table-title'>HDD</td>
                     <td className='assembly-table-title'>{assembly.hdd.title}</td>
-                    <td className='assembly-table-title'>{predictionResult?.hdd_name}</td>
+                    <td className='assembly-table-title'>{predictionResult?.hdd.title}</td>
                   </tr>
                   <tr className='assembly-table'>
                     <td className='assembly-table-item assembly-table-title'>Motherboard</td>
                     <td className='assembly-table-title'>{assembly.motherboard.title}</td>
-                    <td className='assembly-table-title'>{predictionResult?.mb_name}</td>
+                    <td className='assembly-table-title'>{predictionResult?.motherboard.title}</td>
                   </tr>
                 </table>
-                <Button disabled = {true} className='assembly-table-button'>Добавить в сборки</Button>
+                <Button disabled = {!assembly.cpu.visible}
+                  className='assembly-table-button' onClick={clickAddAssemblyHandle}>Добавить в сборки</Button>
               </Typography>
             </Box>}
         </Modal>
